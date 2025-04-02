@@ -7,9 +7,9 @@ public class State
     protected FiniteStateMachine stateMachine;
     protected Entity entity;
 
-    protected float startTIme;      // »óÅÂ ½ÃÀÛ ½Ã°£
+    protected float startTIme;      // ìƒíƒœ ì‹œì‘ ì‹œê°„
 
-    protected string animBoolName;  // ¾Ö´Ï¸ŞÀÌ¼Ç ÀÌ¸§
+    protected string animBoolName;  // ì• ë‹ˆë©”ì´ì…˜ ì´ë¦„
     
     public State(Entity entity, FiniteStateMachine stateMachine, string animBoolName)
     {
@@ -18,15 +18,18 @@ public class State
         this.animBoolName = animBoolName;
     }
 
-    public virtual void Enter()     // »óÅÂ ÁøÀÔ ½Ã
+    public virtual void Enter()     // ìƒíƒœ ì§„ì… ì‹œ
     {
+        Debug.Log($"{stateMachine.currentState} ìƒíƒœ ì§„ì…");
         startTIme = Time.time;
-
+        entity.anim.SetBool(animBoolName, true);
+        DoCheck();
     }
 
-    public virtual void Eixt()      // »óÅÂ Á¾·á ½Ã
+    public virtual void Exit()      // ìƒíƒœ ì¢…ë£Œ ì‹œ
     {
-
+        Debug.Log($"{stateMachine.currentState} ìƒíƒœ ì¢…ë£Œ");
+        entity.anim.SetBool(animBoolName, false);
     }
 
     public virtual void LogicalUpdate() // Update
@@ -39,7 +42,7 @@ public class State
         DoCheck();
     }
 
-    public virtual void DoCheck()       // »óÅÂ º¯¼öµé Ã¼Å©
+    public virtual void DoCheck()       // ìƒíƒœ ë³€ìˆ˜ë“¤ ì²´í¬
     {
 
     }

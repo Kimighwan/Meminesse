@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class FiniteStateMachine
 {
-    // Start is called before the first frame update
-    void Start()
+    public State currentState {  get; private set; }    // 현재 상태
+
+    public void Init(State startState)
     {
-        
+        currentState = startState;
+        currentState.Enter();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeState(State newState)
     {
-        
+        currentState.Exit();
+        currentState = newState;
+        currentState.Enter();
     }
 }
