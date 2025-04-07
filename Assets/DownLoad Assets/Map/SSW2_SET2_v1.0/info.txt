@@ -1,0 +1,12 @@
+animated objects sprite sheet block size:
+
+big_ship_col1/col2	- 544x544
+
+cargo crane1/2		- 128x160
+rag_pole_col1/col2/col3	- 128x256
+
+water1			- 64x64
+water2			- 64x32
+
+waterfallA_col1/col2	- 32x32
+waterfallB_col1/col2	- 64x32

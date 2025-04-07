@@ -1,0 +1,817 @@
+fileFormatVersion: 2
+guid: afd54c9164c932e4dbf4ac01f6786792
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5902387206353408883
+    second: dec_rocks_col2_0
+  - first:
+      213: 1621255062592638397
+    second: dec_rocks_col2_1
+  - first:
+      213: -9101233960212620372
+    second: dec_rocks_col2_2
+  - first:
+      213: 8236422912246819688
+    second: dec_rocks_col2_3
+  - first:
+      213: -2903836791818551732
+    second: dec_rocks_col2_4
+  - first:
+      213: 2629697680465120129
+    second: dec_rocks_col2_5
+  - first:
+      213: 4522295520984752175
+    second: dec_rocks_col2_6
+  - first:
+      213: 247328959884376932
+    second: dec_rocks_col2_7
+  - first:
+      213: -3957808213633500529
+    second: dec_rocks_col2_8
+  - first:
+      213: -7653860269500084114
+    second: dec_rocks_col2_9
+  - first:
+      213: -6684132102986163267
+    second: dec_rocks_col2_10
+  - first:
+      213: 301374481588656607
+    second: dec_rocks_col2_11
+  - first:
+      213: -1170941029571735121
+    second: dec_rocks_col2_12
+  - first:
+      213: -2436905246850854737
+    second: dec_rocks_col2_13
+  - first:
+      213: -1456063207767139412
+    second: dec_rocks_col2_14
+  - first:
+      213: 3568883284843578118
+    second: dec_rocks_col2_15
+  - first:
+      213: 2831854142497830421
+    second: dec_rocks_col2_16
+  - first:
+      213: 1312724110218043129
+    second: dec_rocks_col2_17
+  - first:
+      213: 1156489341967607889
+    second: dec_rocks_col2_18
+  - first:
+      213: 8733341156224040477
+    second: dec_rocks_col2_19
+  - first:
+      213: -5815495336950003631
+    second: dec_rocks_col2_20
+  - first:
+      213: -7719360170830243206
+    second: dec_rocks_col2_21
+  - first:
+      213: -1060698125236974783
+    second: dec_rocks_col2_22
+  - first:
+      213: 7621099411368930085
+    second: dec_rocks_col2_23
+  - first:
+      213: 1403885465684962387
+    second: dec_rocks_col2_24
+  - first:
+      213: -20767497573623398
+    second: dec_rocks_col2_25
+  - first:
+      213: 2447133444507247423
+    second: dec_rocks_col2_26
+  - first:
+      213: 5188951322768399718
+    second: dec_rocks_col2_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dec_rocks_col2_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1119
+        width: 389
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8cae76ab12861ea0800000000000000
+      internalID: -5902387206353408883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_1
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 1119
+        width: 341
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbd4320c3eadf7610800000000000000
+      internalID: 1621255062592638397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_2
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 1119
+        width: 335
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cab1ecffeebe1b180800000000000000
+      internalID: -9101233960212620372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_3
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 1195
+        width: 153
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86b2c501007ad4270800000000000000
+      internalID: 8236422912246819688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_4
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 1215
+        width: 152
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4ef1f1b2df73b7d0800000000000000
+      internalID: -2903836791818551732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_5
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 1208
+        width: 186
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18bcace8b109e7420800000000000000
+      internalID: 2629697680465120129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_6
+      rect:
+        serializedVersion: 2
+        x: 1807
+        y: 1098
+        width: 424
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f20e2a1f0db62ce30800000000000000
+      internalID: 4522295520984752175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_7
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 735
+        width: 424
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46b339ce060be6300800000000000000
+      internalID: 247328959884376932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_8
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 735
+        width: 186
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8a7049266a0319c0800000000000000
+      internalID: -3957808213633500529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_9
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 735
+        width: 152
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e60d8f303a608c590800000000000000
+      internalID: -7653860269500084114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_10
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 735
+        width: 153
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbb99b134413d33a0800000000000000
+      internalID: -6684132102986163267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_11
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 915
+        width: 335
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd995778e72be2400800000000000000
+      internalID: 301374481588656607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_12
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 828
+        width: 341
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa15277665bffbfe0800000000000000
+      internalID: -1170941029571735121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_13
+      rect:
+        serializedVersion: 2
+        x: 1842
+        y: 755
+        width: 389
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa05b2ad69f5e2ed0800000000000000
+      internalID: -2436905246850854737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_14
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 383
+        width: 335
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cab16822a360bcbe0800000000000000
+      internalID: -1456063207767139412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_15
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 383
+        width: 341
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6034ee55078378130800000000000000
+      internalID: 3568883284843578118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_16
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 383
+        width: 389
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5163d4bb654cc4720800000000000000
+      internalID: 2831854142497830421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_17
+      rect:
+        serializedVersion: 2
+        x: 1129
+        y: 362
+        width: 424
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fe13a58f9bb73210800000000000000
+      internalID: 1312724110218043129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_18
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 472
+        width: 186
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 158218eddecac0010800000000000000
+      internalID: 1156489341967607889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_19
+      rect:
+        serializedVersion: 2
+        x: 1793
+        y: 479
+        width: 152
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1e7807a28f033970800000000000000
+      internalID: 8733341156224040477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_20
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 459
+        width: 153
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15887288dc53b4fa0800000000000000
+      internalID: -5815495336950003631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_21
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 0
+        width: 153
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7a5d54d2d25fd490800000000000000
+      internalID: -7719360170830243206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_22
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 0
+        width: 152
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14bc357cca4a741f0800000000000000
+      internalID: -1060698125236974783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_23
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 0
+        width: 186
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52b659c498593c960800000000000000
+      internalID: 7621099411368930085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_24
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 0
+        width: 424
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35c6c77946a9b7310800000000000000
+      internalID: 1403885465684962387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_25
+      rect:
+        serializedVersion: 2
+        x: 1129
+        y: 19
+        width: 389
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a99104c221836bff0800000000000000
+      internalID: -20767497573623398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_26
+      rect:
+        serializedVersion: 2
+        x: 1545
+        y: 92
+        width: 341
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3325ddf6e6f5f120800000000000000
+      internalID: 2447133444507247423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dec_rocks_col2_27
+      rect:
+        serializedVersion: 2
+        x: 1902
+        y: 179
+        width: 335
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66d576e5cbbd20840800000000000000
+      internalID: 5188951322768399718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

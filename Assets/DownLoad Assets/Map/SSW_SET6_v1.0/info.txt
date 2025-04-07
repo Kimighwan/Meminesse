@@ -1,0 +1,10 @@
+animated objects sprite sheet block size:
+
+tree1 - 256x288
+tree2 - 160x256
+bush - 128x96
+flower1/2 - 32x32
+plant - 32x64
+grass - 32x32
+
+

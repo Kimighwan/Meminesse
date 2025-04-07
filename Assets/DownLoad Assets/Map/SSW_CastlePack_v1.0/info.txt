@@ -1,0 +1,6 @@
+animated objects sprite sheet block size:
+
+decorativ - 32x64
+light - 32x32
+torch - 32x32
+

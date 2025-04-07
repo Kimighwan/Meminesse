@@ -1,0 +1,12 @@
+animated objects sprite sheet block size:
+
+lightA1/A2 - 32x64
+lightB1/B2 - 32x64
+
+plantA/B - 32x32
+
+s_web1 - 128x128
+s_web2 - 96x96
+
+treeA1/A2 - 288x288
+treeB1/B2 - 288x288
