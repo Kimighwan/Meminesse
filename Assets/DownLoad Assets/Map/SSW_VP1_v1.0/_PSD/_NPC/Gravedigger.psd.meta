@@ -684,7 +684,30 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Gravedigger_0: -3284151758808637668
+      Gravedigger_1: 6312351677789724570
+      Gravedigger_10: -3116666686657707947
+      Gravedigger_11: 9153997864629394938
+      Gravedigger_12: 2344695218161136230
+      Gravedigger_13: 3689588650713477354
+      Gravedigger_14: -3614524286753909113
+      Gravedigger_15: 7036108955664647241
+      Gravedigger_16: -3163209167485230031
+      Gravedigger_17: 8923927785034698165
+      Gravedigger_18: -7998272245169343592
+      Gravedigger_19: 6339718341035929763
+      Gravedigger_2: 1445591051520204168
+      Gravedigger_20: -6755011357420555906
+      Gravedigger_21: 4772603703300505643
+      Gravedigger_22: 1251419117343893929
+      Gravedigger_3: -4434637558708770817
+      Gravedigger_4: -2595989260129933660
+      Gravedigger_5: -5709018038414277617
+      Gravedigger_6: -2102373100143498399
+      Gravedigger_7: -4476369944879121362
+      Gravedigger_8: -9183722704671250512
+      Gravedigger_9: -2374227442033488681
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -70,7 +70,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -84,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,7 +108,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -409,7 +409,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      VP2_Interriors_0: -543041512834975723
+      VP2_Interriors_1: 4590907458368472688
+      VP2_Interriors_10: 2993491729559625008
+      VP2_Interriors_11: -9026388059298430545
+      VP2_Interriors_2: -7395384585219119967
+      VP2_Interriors_3: 8403438053340954831
+      VP2_Interriors_4: -4343927244809238514
+      VP2_Interriors_5: -2017760589020013302
+      VP2_Interriors_6: -9163334631274264514
+      VP2_Interriors_7: -5680745100944952846
+      VP2_Interriors_8: 7495575622423063368
+      VP2_Interriors_9: -4108056920128081257
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

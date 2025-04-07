@@ -130,7 +130,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -144,7 +144,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -168,7 +168,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -909,7 +909,39 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      waterfallB_col1_0: -8442748715069154510
+      waterfallB_col1_1: -9168210477678903800
+      waterfallB_col1_10: -9195626708552369520
+      waterfallB_col1_11: 4519261422184050314
+      waterfallB_col1_12: 2595343198625591709
+      waterfallB_col1_13: -2606980561010920757
+      waterfallB_col1_14: -1231937549126320891
+      waterfallB_col1_15: 7251172098962581112
+      waterfallB_col1_16: -2546471604606632937
+      waterfallB_col1_17: 8105834453708896559
+      waterfallB_col1_18: 2684562941501734446
+      waterfallB_col1_19: -5795475574878779590
+      waterfallB_col1_2: -2085912651272699424
+      waterfallB_col1_20: -6912761388538302176
+      waterfallB_col1_21: 4378918315756051280
+      waterfallB_col1_22: 599284769410104351
+      waterfallB_col1_23: -7151631587039365185
+      waterfallB_col1_24: -215571306935806184
+      waterfallB_col1_25: 166804377975202230
+      waterfallB_col1_26: 4054869530070407509
+      waterfallB_col1_27: 6807715127747461684
+      waterfallB_col1_28: 5514957898623829520
+      waterfallB_col1_29: -227358809773862806
+      waterfallB_col1_3: -1181857058428741042
+      waterfallB_col1_30: 6964298920393442968
+      waterfallB_col1_31: -4571231468250638622
+      waterfallB_col1_4: -4929321527540345561
+      waterfallB_col1_5: 7296803152458088469
+      waterfallB_col1_6: -6730409570242936947
+      waterfallB_col1_7: 8949895390458423990
+      waterfallB_col1_8: -4135821129513755469
+      waterfallB_col1_9: 7712181816154056438
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

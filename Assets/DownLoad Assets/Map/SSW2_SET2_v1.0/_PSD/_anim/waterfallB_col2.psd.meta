@@ -909,7 +909,39 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      waterfallB_col2_0: -1946965133200313647
+      waterfallB_col2_1: 9048385716306708354
+      waterfallB_col2_10: -5565669663873515509
+      waterfallB_col2_11: -4600853418953866168
+      waterfallB_col2_12: -8805605331985348747
+      waterfallB_col2_13: -3521991855941944129
+      waterfallB_col2_14: 3176553783076717277
+      waterfallB_col2_15: -5710035855448430556
+      waterfallB_col2_16: 2350685145830968938
+      waterfallB_col2_17: -6882059962817045892
+      waterfallB_col2_18: 5421503356407167608
+      waterfallB_col2_19: 2321081250962157092
+      waterfallB_col2_2: -4222617116356594293
+      waterfallB_col2_20: 1891134329858508152
+      waterfallB_col2_21: 1727615401507081732
+      waterfallB_col2_22: -1606543982355355785
+      waterfallB_col2_23: -7995867835445454038
+      waterfallB_col2_24: -7458458829595675503
+      waterfallB_col2_25: 9142443760284912382
+      waterfallB_col2_26: 752700032846927942
+      waterfallB_col2_27: 1319293114800529266
+      waterfallB_col2_28: -3609871077726663445
+      waterfallB_col2_29: -4453477465100883814
+      waterfallB_col2_3: 215732111233460130
+      waterfallB_col2_30: -8439174393248890630
+      waterfallB_col2_31: -1576931915594290827
+      waterfallB_col2_4: -5216166101785948013
+      waterfallB_col2_5: 1411816946048133261
+      waterfallB_col2_6: -7580683160467968766
+      waterfallB_col2_7: -8892499656986405469
+      waterfallB_col2_8: -1112367704133319974
+      waterfallB_col2_9: -1969364245832713710
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

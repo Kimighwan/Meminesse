@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cargo crane1_0: -5030671951616235418
+      cargo crane1_1: -9006079797120721867
+      cargo crane1_2: 2022460437319199886
+      cargo crane1_3: -799205739232768447
+      cargo crane1_4: 2885498620494866600
+      cargo crane1_5: 6996780729257288907
+      cargo crane1_6: 7755293965739146830
+      cargo crane1_7: 8025059002166916427
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

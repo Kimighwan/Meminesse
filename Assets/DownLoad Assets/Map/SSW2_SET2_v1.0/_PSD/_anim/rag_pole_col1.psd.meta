@@ -409,7 +409,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      rag_pole_col1_0: -6234639713728293557
+      rag_pole_col1_1: 5133394403203984701
+      rag_pole_col1_10: 8040615285053046420
+      rag_pole_col1_11: 6982151345508430613
+      rag_pole_col1_2: 3575925887968006350
+      rag_pole_col1_3: 6856217420716012609
+      rag_pole_col1_4: -4070762494118028587
+      rag_pole_col1_5: -5465136772793060332
+      rag_pole_col1_6: -2853086815849139362
+      rag_pole_col1_7: 4309259294035043808
+      rag_pole_col1_8: 7642282048655885400
+      rag_pole_col1_9: -2523596709910824887
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

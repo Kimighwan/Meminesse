@@ -109,7 +109,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -123,7 +123,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -147,7 +147,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -734,7 +734,32 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mainlev_build1_0: 7548920019600827532
+      mainlev_build1_1: 7092608070117328715
+      mainlev_build1_10: 5641853474886105902
+      mainlev_build1_11: 5795583263136187368
+      mainlev_build1_12: -2042880952185039378
+      mainlev_build1_13: -631264084823251699
+      mainlev_build1_14: -8437070386449073879
+      mainlev_build1_15: 4581453792811446463
+      mainlev_build1_16: 1093467096359396506
+      mainlev_build1_17: -2294191742256786455
+      mainlev_build1_18: 1482861203366796030
+      mainlev_build1_19: -7394521599129338272
+      mainlev_build1_2: 3883802036153756107
+      mainlev_build1_20: 7353578110392267661
+      mainlev_build1_21: -5338746900506608263
+      mainlev_build1_22: -1751023643998528075
+      mainlev_build1_23: -4521246498830834644
+      mainlev_build1_24: -1132079195978494396
+      mainlev_build1_3: 2957791463412649915
+      mainlev_build1_4: 8364901797600420944
+      mainlev_build1_5: 8542141929809111667
+      mainlev_build1_6: -7740890729347574291
+      mainlev_build1_7: 7552700948828377825
+      mainlev_build1_8: -5424105850216670896
+      mainlev_build1_9: -1214933768755576768
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

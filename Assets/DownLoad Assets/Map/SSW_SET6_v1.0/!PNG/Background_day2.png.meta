@@ -79,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -93,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,7 +117,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -484,7 +484,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Background_day2_0: -8279798424540397917
+      Background_day2_1: -6825942410445634223
+      Background_day2_10: 7085051841517167712
+      Background_day2_11: -2809603739772203208
+      Background_day2_12: -8474588093898473869
+      Background_day2_13: 1051658949113546497
+      Background_day2_14: 7204472351883782640
+      Background_day2_2: -6689922088140903217
+      Background_day2_3: 6584260971626456074
+      Background_day2_4: -7136058270460249513
+      Background_day2_5: -980878009911315638
+      Background_day2_6: -9099880277085502520
+      Background_day2_7: -3294908007037918619
+      Background_day2_8: -1035050692614834914
+      Background_day2_9: -5246161176150264558
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

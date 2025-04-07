@@ -118,7 +118,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -132,7 +132,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -156,7 +156,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -809,7 +809,35 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dec_rocks_col1_0: -6267019241283933384
+      dec_rocks_col1_1: -2842505476626665350
+      dec_rocks_col1_10: -3066278333017439575
+      dec_rocks_col1_11: 953493070217248790
+      dec_rocks_col1_12: 8636755906331016752
+      dec_rocks_col1_13: 6892845597291987088
+      dec_rocks_col1_14: -8399721860498649275
+      dec_rocks_col1_15: -7052095047218116509
+      dec_rocks_col1_16: 1811500111961510213
+      dec_rocks_col1_17: 3975118577638607068
+      dec_rocks_col1_18: 5244093752151072062
+      dec_rocks_col1_19: 610844164678989528
+      dec_rocks_col1_2: 9015660908587435105
+      dec_rocks_col1_20: 1068434167003668755
+      dec_rocks_col1_21: 620065356294315226
+      dec_rocks_col1_22: 3839076124660514887
+      dec_rocks_col1_23: 2705513450303973218
+      dec_rocks_col1_24: -9104146989189020320
+      dec_rocks_col1_25: 7562698371290754043
+      dec_rocks_col1_26: -504392878652550334
+      dec_rocks_col1_27: 2042835060214352127
+      dec_rocks_col1_3: 5798583139862467360
+      dec_rocks_col1_4: 7079055793917246978
+      dec_rocks_col1_5: 7443417595610790105
+      dec_rocks_col1_6: -7374732141492107210
+      dec_rocks_col1_7: -5607628999395913567
+      dec_rocks_col1_8: -2548989961350061975
+      dec_rocks_col1_9: 7027454783985228442
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

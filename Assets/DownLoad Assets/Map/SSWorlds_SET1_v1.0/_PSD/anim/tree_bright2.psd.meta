@@ -409,7 +409,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tree_bright2_0: -4711763805733443297
+      tree_bright2_1: -4743934507542361536
+      tree_bright2_10: -2694378928417132110
+      tree_bright2_11: 7602236610345305057
+      tree_bright2_2: 6640685351286516468
+      tree_bright2_3: -5231831497254967577
+      tree_bright2_4: 4161412120324017358
+      tree_bright2_5: 4193771362579627229
+      tree_bright2_6: -4507563941663458208
+      tree_bright2_7: 8330805963618198295
+      tree_bright2_8: 4277407480213091943
+      tree_bright2_9: -8356644402416851281
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

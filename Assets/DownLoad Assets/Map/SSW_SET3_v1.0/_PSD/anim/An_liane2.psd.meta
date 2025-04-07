@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      An_liane2_0: 1518820956675070887
+      An_liane2_1: -872356456583937877
+      An_liane2_2: 2018979895608092093
+      An_liane2_3: -7088755851724466504
+      An_liane2_4: 3647006369605469959
+      An_liane2_5: -3948648228167108368
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

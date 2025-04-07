@@ -82,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -96,7 +96,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -120,7 +120,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -509,7 +509,23 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      grassB1_0: -1091710226038452055
+      grassB1_1: 785613879301070301
+      grassB1_10: -7740393276270562367
+      grassB1_11: -2066941867080250957
+      grassB1_12: -5598436122883819350
+      grassB1_13: 828843176879410986
+      grassB1_14: -1964195066607984153
+      grassB1_15: -4344816209184187151
+      grassB1_2: -3111884955086023475
+      grassB1_3: -6239862398337385624
+      grassB1_4: 2505273682643839552
+      grassB1_5: -8853790499754053798
+      grassB1_6: -5675493234537999929
+      grassB1_7: 1167085193360328131
+      grassB1_8: -4716592856266129819
+      grassB1_9: -2940623380803201027
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

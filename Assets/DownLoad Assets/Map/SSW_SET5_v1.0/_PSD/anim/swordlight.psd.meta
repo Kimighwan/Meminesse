@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      swordlight_0: -8303133259562142962
+      swordlight_1: 1176731402393247052
+      swordlight_2: 3949830536188956119
+      swordlight_3: 8257577548824348776
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

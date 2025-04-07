@@ -484,7 +484,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      veg_gh2_0: 2891274788750931322
+      veg_gh2_1: -9123248884340477482
+      veg_gh2_10: -6263025220364580390
+      veg_gh2_11: 8073741681448459705
+      veg_gh2_12: 8905587997021264671
+      veg_gh2_13: 8720354351495774168
+      veg_gh2_14: 6976079778558323570
+      veg_gh2_2: 5319869936763271087
+      veg_gh2_3: 500012388737879631
+      veg_gh2_4: 5065496129459449645
+      veg_gh2_5: -789839831907995970
+      veg_gh2_6: 8818803381289392195
+      veg_gh2_7: 6039589932663967865
+      veg_gh2_8: -116390380328691583
+      veg_gh2_9: -8500730088064358660
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

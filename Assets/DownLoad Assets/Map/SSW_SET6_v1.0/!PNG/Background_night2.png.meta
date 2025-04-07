@@ -79,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -93,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,7 +117,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -484,7 +484,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Background_night2_0: 4742421531092069042
+      Background_night2_1: -166049528672016056
+      Background_night2_10: -3999640015041696087
+      Background_night2_11: -4760576403986701133
+      Background_night2_12: -7558249882662475266
+      Background_night2_13: 9110982280145114310
+      Background_night2_14: 499251499918179779
+      Background_night2_2: -8268030090192298732
+      Background_night2_3: -3739057138185457505
+      Background_night2_4: -5227934377258410469
+      Background_night2_5: 2246510698459443237
+      Background_night2_6: 3154116248220129993
+      Background_night2_7: -3044801740599638986
+      Background_night2_8: -918529851872510719
+      Background_night2_9: -938250058433616896
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

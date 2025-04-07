@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Traveling_Merchant_0: 1242386344258653455
+      Traveling_Merchant_1: 121275623712104106
+      Traveling_Merchant_2: -2193311090292653948
+      Traveling_Merchant_3: 4634638664858844030
+      Traveling_Merchant_4: -8879436486962991187
+      Traveling_Merchant_5: -763923144217583190
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
