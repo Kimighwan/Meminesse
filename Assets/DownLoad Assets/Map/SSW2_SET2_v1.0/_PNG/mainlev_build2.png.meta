@@ -247,7 +247,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -261,7 +261,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -285,7 +285,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1884,7 +1884,78 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mainlev_build2_0: -8345199236679310844
+      mainlev_build2_1: 1136854365361710682
+      mainlev_build2_10: 5001750699871257184
+      mainlev_build2_11: -7511312413435697938
+      mainlev_build2_12: -2454741727192140606
+      mainlev_build2_13: 5977383176889288004
+      mainlev_build2_14: -4699728174496217411
+      mainlev_build2_15: 6923271174137385543
+      mainlev_build2_16: 2753031928069795650
+      mainlev_build2_17: -6341488295756788018
+      mainlev_build2_18: 6397443098980301557
+      mainlev_build2_19: 4282388470047076451
+      mainlev_build2_2: 4014853172317923679
+      mainlev_build2_20: -6207492604515334287
+      mainlev_build2_21: -9106315988016758209
+      mainlev_build2_22: 3125972859174607586
+      mainlev_build2_23: 5974617719208482044
+      mainlev_build2_24: -2188081608558443252
+      mainlev_build2_25: 7490805645766585172
+      mainlev_build2_26: 7345528309973249839
+      mainlev_build2_27: -180668050694519143
+      mainlev_build2_28: -6543859245902876740
+      mainlev_build2_29: -926810798722295842
+      mainlev_build2_3: 7574445496549838263
+      mainlev_build2_30: -7184720610077027257
+      mainlev_build2_31: 7339074771919302322
+      mainlev_build2_32: 1378484023651929235
+      mainlev_build2_33: -3558044938009730988
+      mainlev_build2_34: 1003298608374410269
+      mainlev_build2_35: -2063663838266696460
+      mainlev_build2_36: 5277315441322170994
+      mainlev_build2_37: -1795122528604419224
+      mainlev_build2_38: -3024182175079837558
+      mainlev_build2_39: 5397817519511031948
+      mainlev_build2_4: -4568552362760766932
+      mainlev_build2_40: 5981079088100184572
+      mainlev_build2_41: -540837533641300423
+      mainlev_build2_42: -4467803865370771807
+      mainlev_build2_43: 3784714869854300217
+      mainlev_build2_44: -5489666753650183830
+      mainlev_build2_45: 2030337386572761953
+      mainlev_build2_46: 5308755367949821163
+      mainlev_build2_47: -1051400451180446610
+      mainlev_build2_48: 4113085119566464686
+      mainlev_build2_49: 1410148603589784263
+      mainlev_build2_5: 3870152301403821722
+      mainlev_build2_50: 6659393908982707354
+      mainlev_build2_51: 1081104014595585906
+      mainlev_build2_52: 3348848744116639994
+      mainlev_build2_53: -4555471972606076962
+      mainlev_build2_54: -8659359558530760518
+      mainlev_build2_55: -2103245688974375139
+      mainlev_build2_56: 5473900715020115025
+      mainlev_build2_57: 5113408391352897738
+      mainlev_build2_58: 2307801918729615245
+      mainlev_build2_59: -7650125836971716287
+      mainlev_build2_6: 172831189685834766
+      mainlev_build2_60: -7945037231946229593
+      mainlev_build2_61: -1998117375683621919
+      mainlev_build2_62: -785101811243503873
+      mainlev_build2_63: 3635015105259528952
+      mainlev_build2_64: -4780620641672282349
+      mainlev_build2_65: 400475291715035594
+      mainlev_build2_66: 6927796007911770769
+      mainlev_build2_67: 3292383430471714965
+      mainlev_build2_68: 6552013649868617673
+      mainlev_build2_69: -8803760316672378364
+      mainlev_build2_7: 8321079184227546291
+      mainlev_build2_70: -6807708163688828625
+      mainlev_build2_8: -8674221560275079019
+      mainlev_build2_9: 816185128547417801
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

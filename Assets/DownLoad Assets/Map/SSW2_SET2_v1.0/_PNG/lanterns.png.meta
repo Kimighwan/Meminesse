@@ -130,7 +130,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -144,7 +144,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -168,7 +168,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -909,7 +909,39 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      lanterns_0: -5226003320845735217
+      lanterns_1: 2312245969013839561
+      lanterns_10: -1354073710839381763
+      lanterns_11: 6533355471068271315
+      lanterns_12: -9151148222752350837
+      lanterns_13: -3940842586961533567
+      lanterns_14: -8484409016979971582
+      lanterns_15: 4160218016867392309
+      lanterns_16: 6554946783149914984
+      lanterns_17: 6837110559108889458
+      lanterns_18: 2818026577905511680
+      lanterns_19: 1774846407669023025
+      lanterns_2: -5928484895896822070
+      lanterns_20: -7391120168960286092
+      lanterns_21: -1994961319056386640
+      lanterns_22: 5329413023927805596
+      lanterns_23: 8879434731141314657
+      lanterns_24: -8294911590613950481
+      lanterns_25: 5429985346400984366
+      lanterns_26: -1212592671073286847
+      lanterns_27: 5949837372050687820
+      lanterns_28: 1140641177349347955
+      lanterns_29: -8459196869360466522
+      lanterns_3: -3384103804730055460
+      lanterns_30: 7293244054564925009
+      lanterns_31: 8558219745492018071
+      lanterns_4: 6916722600763313180
+      lanterns_5: 8455398397684955622
+      lanterns_6: -4985970688951719120
+      lanterns_7: -1209339899388460427
+      lanterns_8: -6923290048535050661
+      lanterns_9: 7055272298862915165
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

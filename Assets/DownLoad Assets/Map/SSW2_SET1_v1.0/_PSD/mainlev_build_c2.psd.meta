@@ -334,7 +334,16 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mainlev_build_c2_0: -3054192380677293958
+      mainlev_build_c2_1: -4457213022453552099
+      mainlev_build_c2_2: 2345079525167168432
+      mainlev_build_c2_3: 6471335144370607444
+      mainlev_build_c2_4: -3040606622674722557
+      mainlev_build_c2_5: 7283687236348374487
+      mainlev_build_c2_6: 2870786729954068609
+      mainlev_build_c2_7: -1289848505825042637
+      mainlev_build_c2_8: -4235165665343674820
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

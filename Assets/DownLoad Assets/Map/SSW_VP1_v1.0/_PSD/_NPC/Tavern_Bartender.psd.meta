@@ -409,7 +409,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tavern_Bartender_0: 3009628297556858540
+      Tavern_Bartender_1: 7889946691618512057
+      Tavern_Bartender_10: -8920159961887261491
+      Tavern_Bartender_11: -4653634333175055660
+      Tavern_Bartender_2: -7103421189690964709
+      Tavern_Bartender_3: 1745276814161165698
+      Tavern_Bartender_4: 5800534248422942851
+      Tavern_Bartender_5: 5758757874846777874
+      Tavern_Bartender_6: 4075984677082318121
+      Tavern_Bartender_7: 4203273705818908449
+      Tavern_Bartender_8: 4889909876617765371
+      Tavern_Bartender_9: 293258906168083376
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

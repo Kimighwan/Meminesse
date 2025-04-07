@@ -659,7 +659,29 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      handrail_0: -197198171622996886
+      handrail_1: 4316954427556550241
+      handrail_10: -1642610730269747000
+      handrail_11: -7994600010841029669
+      handrail_12: 1849039616092245789
+      handrail_13: 2667357602117680303
+      handrail_14: -1387695209692314672
+      handrail_15: -107845411018180118
+      handrail_16: -1728591141423019400
+      handrail_17: -1053637611418945961
+      handrail_18: -7926319547819177968
+      handrail_19: 5088512242040186518
+      handrail_2: 6372725574017538857
+      handrail_20: 5320921898497655792
+      handrail_21: -1325453148544156628
+      handrail_3: -635267080439932687
+      handrail_4: 4961874920716692849
+      handrail_5: -3743350176787102355
+      handrail_6: 7025857763289630511
+      handrail_7: -7380087891739389313
+      handrail_8: 7598180846871189493
+      handrail_9: 2412021584881646931
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

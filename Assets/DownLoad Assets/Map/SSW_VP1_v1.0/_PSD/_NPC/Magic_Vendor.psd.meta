@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Magic_Vendor_0: 2794697175111523312
+      Magic_Vendor_1: -9201346926513260350
+      Magic_Vendor_2: -8430151240976317994
+      Magic_Vendor_3: 3291673058695522044
+      Magic_Vendor_4: -7078841892120089979
+      Magic_Vendor_5: -8392128757375285595
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

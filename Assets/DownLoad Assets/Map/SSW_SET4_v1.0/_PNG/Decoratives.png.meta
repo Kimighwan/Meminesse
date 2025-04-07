@@ -127,7 +127,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -141,7 +141,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -165,7 +165,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -884,7 +884,38 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Decoratives_0: -862299164219564682
+      Decoratives_1: -519451178675965424
+      Decoratives_10: -1805443295814289304
+      Decoratives_11: -2477139078558134946
+      Decoratives_12: 1681848623715062167
+      Decoratives_13: -466464509550511284
+      Decoratives_14: -2549496114087233091
+      Decoratives_15: -4873649763542018672
+      Decoratives_16: -938077747308746203
+      Decoratives_17: 8374176654807931539
+      Decoratives_18: 8970358666286809551
+      Decoratives_19: -5781263008028567513
+      Decoratives_2: 5571243932722750011
+      Decoratives_20: -8100746763477293012
+      Decoratives_21: -2846043496401205946
+      Decoratives_22: 3869145185248986808
+      Decoratives_23: 3928405248833687813
+      Decoratives_24: -2977090759627062084
+      Decoratives_25: 8814414438941678344
+      Decoratives_26: -1705854536689867908
+      Decoratives_27: 1442704571243930117
+      Decoratives_28: -4013942331220441565
+      Decoratives_29: -1693380727793337949
+      Decoratives_3: -8351306987295499071
+      Decoratives_30: -1243673934055699887
+      Decoratives_4: 7852729281950133148
+      Decoratives_5: -370689932319236764
+      Decoratives_6: -4024456830608611665
+      Decoratives_7: 3287155059688851305
+      Decoratives_8: 6246408012149250189
+      Decoratives_9: 8756896026881769309
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

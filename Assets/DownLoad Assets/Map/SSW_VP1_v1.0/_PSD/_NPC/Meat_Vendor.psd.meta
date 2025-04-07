@@ -484,7 +484,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Meat_Vendor_0: -6675575882935158118
+      Meat_Vendor_1: 7590169316862217238
+      Meat_Vendor_10: 5712817055257543963
+      Meat_Vendor_11: -556250924400495082
+      Meat_Vendor_12: -2409385037573245914
+      Meat_Vendor_13: -8315750046351879262
+      Meat_Vendor_14: 2111766750978076523
+      Meat_Vendor_2: 6908674500903606407
+      Meat_Vendor_3: 1606196408866965281
+      Meat_Vendor_4: -5149261238448446616
+      Meat_Vendor_5: -5426470525332645056
+      Meat_Vendor_6: 1220796215026188732
+      Meat_Vendor_7: 8556361423358424919
+      Meat_Vendor_8: 7723521565912460944
+      Meat_Vendor_9: 4255227510580696768
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

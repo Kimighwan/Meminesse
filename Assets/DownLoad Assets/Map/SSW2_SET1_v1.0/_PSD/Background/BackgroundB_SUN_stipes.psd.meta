@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BackgroundB_SUN_stipes_0: -869450844063833018
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      NightBorne_idle_0: -6680728163969812129
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

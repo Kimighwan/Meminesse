@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      NightBorne_attack_0: 8139614212084782497
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

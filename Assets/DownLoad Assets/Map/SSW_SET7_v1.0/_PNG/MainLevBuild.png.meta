@@ -79,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -93,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,7 +117,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -484,7 +484,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MainLevBuild_0: 5567052363520208655
+      MainLevBuild_1: 1637444506382668375
+      MainLevBuild_10: -7205734031207259531
+      MainLevBuild_11: 6982412026143461350
+      MainLevBuild_12: -9155331815673082272
+      MainLevBuild_13: 3450268878223397852
+      MainLevBuild_14: 4960893753490486008
+      MainLevBuild_2: 5519109557236255215
+      MainLevBuild_3: 1425469139294375143
+      MainLevBuild_4: 2905246733867781892
+      MainLevBuild_5: -8223806729908239730
+      MainLevBuild_6: -6172998191493985850
+      MainLevBuild_7: 6675402233000976834
+      MainLevBuild_8: 1463790378821059966
+      MainLevBuild_9: 7118706325257974002
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

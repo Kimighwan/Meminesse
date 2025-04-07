@@ -434,7 +434,20 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      OpenChest1-Sheet_0: -2008773064511561811
+      OpenChest1-Sheet_1: 5529377459349718474
+      OpenChest1-Sheet_10: 4245892121001699249
+      OpenChest1-Sheet_11: 6482061552330119941
+      OpenChest1-Sheet_12: 6886117521600688281
+      OpenChest1-Sheet_2: -874462331904368398
+      OpenChest1-Sheet_3: -5834214154895125439
+      OpenChest1-Sheet_4: -5652990790047679960
+      OpenChest1-Sheet_5: -6858931752967442958
+      OpenChest1-Sheet_6: -7611760923597510447
+      OpenChest1-Sheet_7: -2161658566454104206
+      OpenChest1-Sheet_8: -4768324264779706358
+      OpenChest1-Sheet_9: -6693809598361288364
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

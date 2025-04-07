@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FrontLightAtk8_0: 3638048245893997276
+      FrontLightAtk8_1: 3936061063127980890
+      FrontLightAtk8_2: -1716320525570626152
+      FrontLightAtk8_3: -8340257448072472061
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

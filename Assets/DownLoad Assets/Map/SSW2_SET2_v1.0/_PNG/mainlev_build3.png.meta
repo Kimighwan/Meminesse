@@ -106,7 +106,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -120,7 +120,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -144,7 +144,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -709,7 +709,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mainlev_build3_0: 2204019832367226317
+      mainlev_build3_1: 8538255930771141888
+      mainlev_build3_10: 8371672522070063313
+      mainlev_build3_11: -6571279175504513089
+      mainlev_build3_12: -1684521567721522119
+      mainlev_build3_13: -7509022038125842814
+      mainlev_build3_14: -2342800979703796672
+      mainlev_build3_15: 7250982914598402486
+      mainlev_build3_16: 1323020301107533209
+      mainlev_build3_17: 659877952705999422
+      mainlev_build3_18: -7172901449165777521
+      mainlev_build3_19: 2840829406544807963
+      mainlev_build3_2: -1309618833688846734
+      mainlev_build3_20: 4431985033580620903
+      mainlev_build3_21: 439560157819535310
+      mainlev_build3_22: -7133276039783301934
+      mainlev_build3_23: 3610122584131537805
+      mainlev_build3_3: 7447888511238305105
+      mainlev_build3_4: -1977540752068979654
+      mainlev_build3_5: 3797719146802140622
+      mainlev_build3_6: -3241800840671347037
+      mainlev_build3_7: 7344815451125852182
+      mainlev_build3_8: -3324221721901293928
+      mainlev_build3_9: -206018869998184916
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
