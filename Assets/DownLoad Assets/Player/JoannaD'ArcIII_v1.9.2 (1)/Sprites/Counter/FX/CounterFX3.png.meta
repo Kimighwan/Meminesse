@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CounterFX3_0: -891029305203750186
+      CounterFX3_1: -5914105607095520164
+      CounterFX3_2: 6617055444521316787
+      CounterFX3_3: 2039158745878832896
+      CounterFX3_4: 1820542339534226073
+      CounterFX3_5: -747645689574135400
+      CounterFX3_6: -162342403775370931
+      CounterFX3_7: -3873746894586596287
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

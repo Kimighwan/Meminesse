@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HolySlashCast2_16_0: -1756722073345903147
+      HolySlashCast2_16_1: 8248912749937284302
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

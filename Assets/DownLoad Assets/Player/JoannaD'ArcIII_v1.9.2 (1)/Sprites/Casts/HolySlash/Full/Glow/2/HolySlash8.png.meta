@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HolySlash8_0: 7105465719442391321
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

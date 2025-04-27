@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SaintHeal12_0: 7859384089220312926
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

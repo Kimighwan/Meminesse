@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ShiledCast14_0: 4235678653389924622
+      ShiledCast14_1: -368712343123790131
+      ShiledCast14_2: -5060562561560622162
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

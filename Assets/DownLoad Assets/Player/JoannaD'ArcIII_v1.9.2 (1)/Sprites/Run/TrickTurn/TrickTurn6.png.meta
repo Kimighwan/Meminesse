@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TrickTurn6_0: 7731597899435155991
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

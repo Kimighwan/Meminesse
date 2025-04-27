@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BreakDashDust(2)2_0: -2076104660952264777
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

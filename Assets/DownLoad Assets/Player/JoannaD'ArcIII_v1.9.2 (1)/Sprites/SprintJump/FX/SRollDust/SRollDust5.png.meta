@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SRollDust5_0: 6540392286965208292
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

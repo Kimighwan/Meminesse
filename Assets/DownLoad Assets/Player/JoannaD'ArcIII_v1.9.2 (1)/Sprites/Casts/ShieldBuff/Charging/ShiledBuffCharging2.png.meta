@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ShiledBuffCharging2_0: 4406041108682522742
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CastLightCut6_0: 5029186649811757517
+      CastLightCut6_1: 8552601153258299298
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

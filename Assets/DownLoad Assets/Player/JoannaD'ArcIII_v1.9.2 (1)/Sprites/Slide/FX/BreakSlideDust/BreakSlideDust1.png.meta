@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BreakSlideDust1_0: 1322262766489225932
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

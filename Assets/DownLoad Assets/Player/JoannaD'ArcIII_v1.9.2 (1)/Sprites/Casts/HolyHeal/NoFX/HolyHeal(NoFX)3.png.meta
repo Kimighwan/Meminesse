@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HolyHeal(NoFX)3_0: -2081309900508442739
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

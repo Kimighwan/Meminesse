@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      JumpAndFall(FX)8_0: -4035224641999560163
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

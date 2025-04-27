@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CircleDustFx5_0: -6467553438048927129
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
