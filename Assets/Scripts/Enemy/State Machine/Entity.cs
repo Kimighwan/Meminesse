@@ -25,8 +25,8 @@ public class Entity : MonoBehaviour
         facingDirection = 1; // 기본 Entity의 방향이 오른쪽임 // 만약 스프라이트 기본 방향이 왼쪽이라면 sprite flip 해줘야 함
 
         aliveGO = transform.Find("Alive").gameObject;
-        anim = GetComponent<Animator>();
-        rigid = GetComponent<Rigidbody2D>();
+        anim = aliveGO.GetComponent<Animator>();
+        rigid = aliveGO.GetComponent<Rigidbody2D>();
         //animationStateMachineAnimation = aliveGO.GetComponent<AnimationToStateMachine>();
 
         stateMachine = new FiniteStateMachine();
@@ -45,6 +45,7 @@ public class Entity : MonoBehaviour
     public virtual void SetVelocity(float velocity)     // 속도 설정
     {
         entityVelocity = new Vector2(facingDirection * velocity, rigid.linearVelocityY);
+        rigid.linearVelocity = entityVelocity;
     }
 
     public virtual void Flip()                          // 방향 뒤집기
@@ -73,7 +74,7 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckWall()
     {
-        return Physics2D.Raycast(wallCheck.position, aliveGO.transform.right, entityData.wallCheckDistance, entityData.whatIsPlayer);
+        return Physics2D.Raycast(wallCheck.position, aliveGO.transform.right, entityData.wallCheckDistance, entityData.whatIsPlatform);
     }
 
     public virtual bool CheckLedge()
@@ -82,4 +83,17 @@ public class Entity : MonoBehaviour
     }
 
     #endregion
+
+    public virtual void OnDrawGizmos()
+    {
+        // 벽 체크 씬창에 표시
+        Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.wallCheckDistance));
+        //Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * entityData.ledgeCheckDistance));
+
+        // 땅 체크 씬창에 표시
+        Gizmos.DrawWireSphere(ledgeCheck.position, 0.14f);
+
+        // 플레이어 탐지 씬창에 표시
+        Gizmos.DrawLine(playerCheck.position, playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerDetectedMinRange));
+    }
 }

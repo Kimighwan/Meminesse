@@ -5,7 +5,7 @@ public class MoveState : State
     protected D_MoveState stateData;
 
     protected bool isDetectWall;        // 벽을 감지했는가?
-    protected bool isDetecLedge;     // Platform을 감지하고 있는가? 아니라면 빈 공간,즉 낭떨어지 
+    protected bool isDetectLedge;     // Platform을 감지하고 있는가? 아니라면 빈 공간,즉 낭떨어지 
     protected bool isPlayerInMinDetectedRange;
 
     public MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(entity, stateMachine, animBoolName)
@@ -18,7 +18,7 @@ public class MoveState : State
         base.DoCheck();
 
         isDetectWall = entity.CheckWall();
-        isDetecLedge = entity.CheckLedge();
+        isDetectLedge = entity.CheckLedge();
         isPlayerInMinDetectedRange = entity.CheckPlayerInMinRange();
     }
 
