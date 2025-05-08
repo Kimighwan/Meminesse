@@ -356,72 +356,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MainLevBuild_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 1280
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e758343189d605410800000000000000
-      internalID: 1463790378821059966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MainLevBuild_9
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 1280
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2f0f351bfa9bac260800000000000000
-      internalID: 7118706325257974002
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MainLevBuild_10
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 1280
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 572a2f38317100c90800000000000000
-      internalID: -7205734031207259531
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: MainLevBuild_11
       rect:
         serializedVersion: 2
@@ -717,7 +651,7 @@ TextureImporter:
         height: 37
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 3}
       customData: 
       outline: []
       physicsShape: []
@@ -739,7 +673,7 @@ TextureImporter:
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 4}
       customData: 
       outline: []
       physicsShape: []
@@ -956,10 +890,10 @@ TextureImporter:
         x: 352
         y: 1248
         width: 32
-        height: 32
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 6}
       customData: 
       outline: []
       physicsShape: []
@@ -978,7 +912,7 @@ TextureImporter:
         x: 384
         y: 1248
         width: 32
-        height: 32
+        height: 37
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -7202,7 +7136,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1005
-        y: 849
+        y: 850
         width: 19
         height: 62
       alignment: 0
