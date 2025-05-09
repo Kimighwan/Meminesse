@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class FiniteStateMachine
 {
-    public State currentState {  get; private set; }    // ÇöÀç »óÅÂ
+    public State currentState {  get; private set; }    // í˜„ì¬ ìƒíƒœ 
 
-    public void Init(State startState)  // ÃÊ±â ½ÃÀÛ »óÅÂ ¼³Á¤
+    public void Init(State startState)  // ì´ˆê¸° ì‹œì‘ ìƒíƒœ ì„¤ì •
     {
         currentState = startState;
         currentState.Enter();
@@ -16,4 +16,5 @@ public class FiniteStateMachine
         currentState = newState;
         currentState.Enter();
     }
+
 }

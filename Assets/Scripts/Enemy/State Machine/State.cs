@@ -5,9 +5,9 @@ public class State
     protected FiniteStateMachine stateMachine;
     protected Entity entity;
 
-    protected float startTIme;  // »óÅÂ ½ÃÀÛ ½Ã°£
+    protected float startTIme;  // ìƒíƒœ ì‹œì‘ ì‹œê°„
 
-    protected string animBoolName;  // ¾Ö´Ï¸ŞÀÌ¼Ç ÀÌ¸§
+    protected string animBoolName;  // ì• ë‹ˆë©”ì´ì…˜ ì´ë¦„
 
     public State(Entity entity, FiniteStateMachine stateMachine, string animBoolName)
     {
@@ -16,31 +16,31 @@ public class State
         this.animBoolName = animBoolName;
     }
 
-    public virtual void Enter() // »óÅÂ ÁøÀÔ
+    public virtual void Enter() // ìƒíƒœ ì§„ì…
     {
-        Debug.Log($"{stateMachine.currentState} »óÅÂ ÁøÀÔ");
+        Debug.Log($"{stateMachine.currentState} ìƒíƒœ ì§„ì…");
         startTIme = Time.time;
         entity.anim.SetBool(animBoolName, true);
         DoCheck();
     }
 
-    public virtual void Exit()  // »óÅÂ Á¾·á
+    public virtual void Exit()  // ìƒíƒœ ì¢…ë£Œ
     {
-        Debug.Log($"{stateMachine.currentState} »óÅÂ Á¾·á");
+        Debug.Log($"{stateMachine.currentState} ìƒíƒœ ì¢…ë£Œ");
         entity.anim.SetBool(animBoolName, false);
     }
 
-    public virtual void LogicalUpdate() // Update¿¡¼­ »ç¿ë
+    public virtual void LogicalUpdate() // Updateì—ì„œ ì‚¬ìš©
     {
 
     }
 
-    public virtual void PhysicsUpdate()  // FixedUpdate¿¡¼­ »ç¿ë
+    public virtual void PhysicsUpdate()  // FixedUpdateì—ì„œ ì‚¬ìš©
     {
         DoCheck();
     }
 
-    public virtual void DoCheck()       // »óÅÂ Ã¼Å© ÇÔ¼öµéÀ» ´ã´Â ÇÔ¼ö
+    public virtual void DoCheck()       // ìƒíƒœ ì²´í¬ í•¨ìˆ˜ë“¤ì„ ë‹´ëŠ” í•¨ìˆ˜
     {
 
     }
