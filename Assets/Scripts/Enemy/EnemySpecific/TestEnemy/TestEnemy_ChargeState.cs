@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class TestEnemy_IdleState : IdleState
+public class TestEnemy_ChargeState : ChargeState
 {
     private TestEnemy enemy;
 
-    public TestEnemy_IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData, TestEnemy enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public TestEnemy_ChargeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_ChargeState stateData, TestEnemy enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
@@ -28,14 +28,11 @@ public class TestEnemy_IdleState : IdleState
     {
         base.LogicalUpdate();
 
-        if (isIdleTimeOver)
+        if (isDetectWall || isDetectLedge || isChargeTimeOver)
         {
-            stateMachine.ChangeState(enemy.moveState);
+            stateMachine.ChangeState(enemy.idleState);
         }
-        else if (isPlayerInMinDetectedRange)
-        {
-            stateMachine.ChangeState(enemy.chargeState);
-        }
+
     }
 
     public override void PhysicsUpdate()

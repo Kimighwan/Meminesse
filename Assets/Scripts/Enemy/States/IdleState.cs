@@ -4,11 +4,11 @@ public class IdleState : State
 {
     protected D_IdleState stateData;
 
-    protected bool flipAfterIdle;       // Idle 상태 종료후 Flip을 실행할 것인가?
-    protected bool isIdleTimeOver;      // Idle 상태 지속 시간을 초과 했는가?
-    protected bool isPlayerInMinDetectedRange;       // 플레이어 탐지 범위에 들어왔는가?
+    protected bool flipAfterIdle;                   // Idle 상태 종료후 Flip을 실행할 것인가?
+    protected bool isIdleTimeOver;                  // Idle 상태 지속 시간을 초과 했는가?
+    protected bool isPlayerInMinDetectedRange;      // 플레이어 탐지 범위에 들어왔는가?
 
-    protected float idleTime;           // Idle 상태 지속 시간
+    protected float idleTime;                       // Idle 상태 지속 시간
 
     public IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData) : base(entity, stateMachine, animBoolName)
     {
