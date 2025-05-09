@@ -32,7 +32,6 @@ public class TestEnemy_ChargeState : ChargeState
         {
             stateMachine.ChangeState(enemy.idleState);
         }
-
     }
 
     public override void PhysicsUpdate()
