@@ -35,7 +35,7 @@ public class TestEnemy_MoveState : MoveState
             enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);
         }
-        else if(isPlayerInMinDetectedRange)
+        else if(isPlayerInMeleeAttackRange)
             stateMachine.ChangeState(enemy.meleeAttackState);
     }
 

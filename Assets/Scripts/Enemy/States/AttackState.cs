@@ -16,7 +16,7 @@ public class AttackState : State
     {
         base.DoCheck();
 
-        isPlayerInMeleeAttackRange = entity.CheckPlayerInMinRange();
+        isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
     }
 
     public override void Enter()

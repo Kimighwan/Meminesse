@@ -58,14 +58,14 @@ public class Entity : MonoBehaviour
     // 현재는 모든 몬스터가 어느 한 위치에서 일직선으로 탐지 한다(2025-05-01)
     // 몬스터 종류가 많아지면서 탐지 방법이 달라진다면 변경하기
 
-    public virtual bool CheckPlayerInMinRange()     // 플레이어가 몬스터의 최소 감지 범위에서 탐지되는지
+    public virtual bool CheckPlayerInMeleeAttackRange()     // 플레이어가 몬스터의 최소 감지 범위에서 탐지되는지
     {
-        return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerDetectedMinRange, entityData.whatIsPlayer);
+        return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInMeleeAttackRange, entityData.whatIsPlayer);
     }
 
-    public virtual bool CheckPlayerInMaxRange()     // 플레이어가 몬스터의 최대 감지 범위에서 탐지되는지
+    public virtual bool CheckPlayerInChargeRange()     // 플레이어가 몬스터의 최대 감지 범위에서 탐지되는지
     {
-        return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerDetectedMaxRange, entityData.whatIsPlayer);
+        return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInChargeRange, entityData.whatIsPlayer);
     }
 
     #endregion
@@ -94,6 +94,6 @@ public class Entity : MonoBehaviour
         Gizmos.DrawWireSphere(ledgeCheck.position, 0.14f);
 
         // 플레이어 탐지 씬창에 표시
-        Gizmos.DrawLine(playerCheck.position, playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerDetectedMinRange));
+        Gizmos.DrawLine(playerCheck.position, playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerInMeleeAttackRange));
     }
 }

@@ -32,7 +32,7 @@ public class TestEnemy_IdleState : IdleState
         {
             stateMachine.ChangeState(enemy.moveState);
         }
-        else if (isPlayerInMinDetectedRange)
+        else if (isPlayerInMeleeAttackRange)
         {
             stateMachine.ChangeState(enemy.meleeAttackState);
         }
