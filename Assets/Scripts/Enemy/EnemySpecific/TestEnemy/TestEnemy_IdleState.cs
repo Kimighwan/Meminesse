@@ -34,7 +34,7 @@ public class TestEnemy_IdleState : IdleState
         }
         else if (isPlayerInMinDetectedRange)
         {
-            stateMachine.ChangeState(enemy.chargeState);
+            stateMachine.ChangeState(enemy.meleeAttackState);
         }
     }
 

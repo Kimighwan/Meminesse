@@ -9,8 +9,9 @@ public class Entity : MonoBehaviour
     public int facingDirection { get; private set; }
     public Animator anim { get; private set; }
     public Rigidbody2D rigid { get; private set; }
-    public GameObject aliveGO { get; private set; }
-    //public AnimationToStateMachine animationStateMachineAnimation { get; private set; }
+    public AnimationToStatemachine animationToStatemachine { get; private set; }
+
+    //public GameObject aliveGO { get; private set; }
 
     [SerializeField]
     private Transform wallCheck;    // 벽체크
@@ -24,10 +25,9 @@ public class Entity : MonoBehaviour
     {
         facingDirection = 1; // 기본 Entity의 방향이 오른쪽임 // 만약 스프라이트 기본 방향이 왼쪽이라면 sprite flip 해줘야 함
 
-        aliveGO = transform.Find("Alive").gameObject;
-        anim = aliveGO.GetComponent<Animator>();
-        rigid = aliveGO.GetComponent<Rigidbody2D>();
-        //animationStateMachineAnimation = aliveGO.GetComponent<AnimationToStateMachine>();
+        anim = GetComponent<Animator>();
+        rigid = GetComponent<Rigidbody2D>();
+        animationToStatemachine = GetComponent<AnimationToStatemachine>();
 
         stateMachine = new FiniteStateMachine();
     }
@@ -51,7 +51,7 @@ public class Entity : MonoBehaviour
     public virtual void Flip()                          // 방향 뒤집기
     {
         facingDirection *= -1;
-        aliveGO.transform.Rotate(0f, 180f, 0f);
+        transform.Rotate(0f, 180f, 0f);
     }
 
     #region Player Dectected
@@ -60,12 +60,12 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckPlayerInMinRange()     // 플레이어가 몬스터의 최소 감지 범위에서 탐지되는지
     {
-        return Physics2D.Raycast(playerCheck.position, aliveGO.transform.right, entityData.playerDetectedMinRange, entityData.whatIsPlayer);
+        return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerDetectedMinRange, entityData.whatIsPlayer);
     }
 
     public virtual bool CheckPlayerInMaxRange()     // 플레이어가 몬스터의 최대 감지 범위에서 탐지되는지
     {
-        return Physics2D.Raycast(playerCheck.position, aliveGO.transform.right, entityData.playerDetectedMaxRange, entityData.whatIsPlayer);
+        return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerDetectedMaxRange, entityData.whatIsPlayer);
     }
 
     #endregion
@@ -74,7 +74,7 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckWall()
     {
-        return Physics2D.Raycast(wallCheck.position, aliveGO.transform.right, entityData.wallCheckDistance, entityData.whatIsPlatform);
+        return Physics2D.Raycast(wallCheck.position, transform.right, entityData.wallCheckDistance, entityData.whatIsPlatform);
     }
 
     public virtual bool CheckLedge()
