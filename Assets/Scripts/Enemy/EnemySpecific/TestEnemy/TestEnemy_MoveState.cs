@@ -37,6 +37,8 @@ public class TestEnemy_MoveState : MoveState
         }
         else if(isPlayerInMeleeAttackRange)
             stateMachine.ChangeState(enemy.meleeAttackState);
+        else if(isDetectedPlayer)
+            stateMachine.ChangeState(enemy.detectState);
     }
 
     public override void PhysicsUpdate()

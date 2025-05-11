@@ -3,7 +3,7 @@ using UnityEngine;
 public class TestEnemy_MeleeAttackState : MeleeAttackState
 {
     private TestEnemy enemy;
-    public TestEnemy_MeleeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttack stateData, TestEnemy enemy) : base(entity, stateMachine, animBoolName, attackPosition, stateData)
+    public TestEnemy_MeleeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttackState stateData, TestEnemy enemy) : base(entity, stateMachine, animBoolName, attackPosition, stateData)
     {
         this.enemy = enemy;
     }

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6066a386fc454da027b372848cbdc, type: 3}
   m_Name: TestEnemy_EntityData
   m_EditorClassIdentifier: 
-  playerDetectedMinRange: 3
-  playerDetectedMaxRange: 4
+  playerInMeleeAttackRange: 5
+  playerInChargeRange: 0
+  playerDetectRange: 9.74
   wallCheckDistance: 0.2
   ledgeCheckDistance: 0.4
   whatIsPlatform:

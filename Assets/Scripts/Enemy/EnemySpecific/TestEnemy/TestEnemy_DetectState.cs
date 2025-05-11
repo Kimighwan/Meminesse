@@ -1,10 +1,9 @@
 using UnityEngine;
 
-public class TestEnemy_IdleState : IdleState
+public class TestEnemy_DetectState : DetectState
 {
     private TestEnemy enemy;
-
-    public TestEnemy_IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData, TestEnemy enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public TestEnemy_DetectState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DetectState stateData, TestEnemy enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
@@ -28,18 +27,10 @@ public class TestEnemy_IdleState : IdleState
     {
         base.LogicalUpdate();
 
-        if (isIdleTimeOver)
-        {
-            stateMachine.ChangeState(enemy.moveState);
-        }
-        else if (isPlayerInMeleeAttackRange)
-        {
+        if (!isDetectedPlayer)
+            stateMachine.ChangeState(enemy.idleState);
+        else if(isPlayerInMeleeAttackRange)
             stateMachine.ChangeState(enemy.meleeAttackState);
-        }
-        else if(isDetectedPlayer)
-        {
-            stateMachine.ChangeState(enemy.detectState);
-        }
     }
 
     public override void PhysicsUpdate()

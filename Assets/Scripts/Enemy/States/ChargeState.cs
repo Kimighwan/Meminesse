@@ -38,6 +38,8 @@ public class ChargeState : State
     {
         base.LogicalUpdate();
 
+
+
         if (Time.time >= startTIme + stateData.chargeTime)
             isChargeTimeOver = true;
     }

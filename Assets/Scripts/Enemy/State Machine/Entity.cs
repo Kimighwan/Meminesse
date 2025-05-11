@@ -21,6 +21,8 @@ public class Entity : MonoBehaviour
     private Transform playerCheck;  // 플레이어 체크
     private Vector2 entityVelocity;
 
+    private RaycastHit2D hit;
+
     public virtual void Start()
     {
         facingDirection = 1; // 기본 Entity의 방향이 오른쪽임 // 만약 스프라이트 기본 방향이 왼쪽이라면 sprite flip 해줘야 함
@@ -58,14 +60,24 @@ public class Entity : MonoBehaviour
     // 현재는 모든 몬스터가 어느 한 위치에서 일직선으로 탐지 한다(2025-05-01)
     // 몬스터 종류가 많아지면서 탐지 방법이 달라진다면 변경하기
 
-    public virtual bool CheckPlayerInMeleeAttackRange()     // 플레이어가 몬스터의 최소 감지 범위에서 탐지되는지
+    public virtual bool CheckPlayerInMeleeAttackRange()     // 플레이어가 몬스터의 근접 공격 범위에서 탐지되는지
     {
         return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInMeleeAttackRange, entityData.whatIsPlayer);
     }
 
-    public virtual bool CheckPlayerInChargeRange()     // 플레이어가 몬스터의 최대 감지 범위에서 탐지되는지
+    public virtual bool CheckPlayerInChargeRange()     // 플레이어가 몬스터의 돌진 패턴 범위에서 탐지되는지
     {
         return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInChargeRange, entityData.whatIsPlayer);
+    }
+
+    public virtual bool CheckPlayerDectedRange()
+    {
+        hit = Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerDetectRange, ~(1<<8));
+        
+        if (hit &&  hit.collider.name == "TempPlayer")
+            return true;
+        else 
+            return false;
     }
 
     #endregion
@@ -86,14 +98,20 @@ public class Entity : MonoBehaviour
 
     public virtual void OnDrawGizmos()
     {
-        // 벽 체크 씬창에 표시
+        // 벽 체크 표시
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.wallCheckDistance));
         //Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * entityData.ledgeCheckDistance));
 
-        // 땅 체크 씬창에 표시
+        // 땅 체크 표시
         Gizmos.DrawWireSphere(ledgeCheck.position, 0.14f);
 
-        // 플레이어 탐지 씬창에 표시
+        // 플레이어 탐지 거리 표시
+        Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerDetectRange), 0.14f);
+
+        // 근접 공격 발동 범위 표시
         Gizmos.DrawLine(playerCheck.position, playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerInMeleeAttackRange));
+
+        // 돌진 거리 표시
+        Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerInChargeRange), 0.14f);
     }
 }
