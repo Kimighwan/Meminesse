@@ -4,9 +4,10 @@ public class MoveState : State
 {
     protected D_MoveState stateData;
 
-    protected bool isDetectWall;        // 벽을 감지했는가?
-    protected bool isDetectLedge;     // Platform을 감지하고 있는가? 아니라면 빈 공간,즉 낭떨어지 
-    protected bool isPlayerInMinDetectedRange;
+    protected bool isDetectWall;                // 벽을 감지했는가?
+    protected bool isDetectLedge;               // Platform을 감지하고 있는가? 아니라면 빈 공간,즉 낭떨어지 
+    protected bool isPlayerInMeleeAttackRange;
+    protected bool isDetectedPlayer;            // 플레이어를 감지했는가
 
     public MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -19,13 +20,16 @@ public class MoveState : State
 
         isDetectWall = entity.CheckWall();
         isDetectLedge = entity.CheckLedge();
-        isPlayerInMinDetectedRange = entity.CheckPlayerInMinRange();
+        isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
+        isDetectedPlayer = entity.CheckPlayerDectedRange();
     }
 
     public override void Enter()
     {
         base.Enter();
+
         entity.SetVelocity(stateData.moveSpeed);
+        isDetectedPlayer = false;
     }
 
     public override void Exit()

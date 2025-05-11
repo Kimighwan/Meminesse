@@ -35,8 +35,10 @@ public class TestEnemy_MoveState : MoveState
             enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);
         }
-        else if(isPlayerInMinDetectedRange)
-            stateMachine.ChangeState(enemy.chargeState);
+        else if(isPlayerInMeleeAttackRange)
+            stateMachine.ChangeState(enemy.meleeAttackState);
+        else if(isDetectedPlayer)
+            stateMachine.ChangeState(enemy.detectState);
     }
 
     public override void PhysicsUpdate()
