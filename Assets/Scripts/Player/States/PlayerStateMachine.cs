@@ -6,7 +6,7 @@ public enum PlayerState
     Running,
     Jumping,
     Falling,
-    Turning
+    Dashing
 }
 
 public class PlayerStateMachine : MonoBehaviour
@@ -39,7 +39,7 @@ public class PlayerStateMachine : MonoBehaviour
         animator.SetBool("isRunning", currentState == PlayerState.Running);
         animator.SetBool("isJumping", currentState == PlayerState.Jumping);
         animator.SetBool("isFalling", currentState == PlayerState.Falling);
-        animator.SetBool("isTurning", currentState == PlayerState.Turning);
+        animator.SetBool("isDashing", currentState == PlayerState.Dashing);
     }
 
     private void ApplyStateEffects()
@@ -54,9 +54,13 @@ public class PlayerStateMachine : MonoBehaviour
         {
             case PlayerState.Falling:
                 // Increased gravity for faster descent
-                rigid.gravityScale = 4.5f; 
+                rigid.gravityScale = 5.5f; 
                 break;
-            
+            /*
+            case PlayerState.Jumping:
+                rigid.gravityScale = 1.5f;
+                break;
+*/
             default:
                 rigid.gravityScale = 2.5f;
                 break;
