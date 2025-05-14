@@ -31,6 +31,11 @@ public class TestEnemy_DetectState : DetectState
             stateMachine.ChangeState(enemy.idleState);
         else if(isPlayerInMeleeAttackRange)
             stateMachine.ChangeState(enemy.meleeAttackState);
+        else if(isDetectLedge)
+        {
+            entity.Flip();
+            stateMachine.ChangeState(enemy.idleState);
+        }
     }
 
     public override void PhysicsUpdate()

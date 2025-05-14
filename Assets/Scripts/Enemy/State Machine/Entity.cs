@@ -27,15 +27,20 @@ public class Entity : MonoBehaviour
     private Vector2 entityVelocity;
 
     private float currentHp;
-    protected float lastStunTime;
 
     private RaycastHit2D hit;
+
+
+    protected float lastStunTime;
+
+    protected bool isDead;
 
     public virtual void Start()
     {
         facingDirection = 1; // 기본 Entity의 방향이 오른쪽임 // 만약 스프라이트 기본 방향이 왼쪽이라면 sprite flip 해줘야 함
         currentHp = entityData.maxHp;
         IsStun = true;
+        isDead = false;
 
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
@@ -93,6 +98,8 @@ public class Entity : MonoBehaviour
 
         Knockback(entityData.knockbackSpeed, entityData.knockbackAngle, LastDamagedDirection);
 
+        // 데미지 입을 때 생성될 파티클 인스턴스화
+
         if (position.x > transform.position.x)   // 플레이어가 오른쪽에 있음
         {
             LastDamagedDirection = -1;
@@ -101,6 +108,8 @@ public class Entity : MonoBehaviour
         {
             LastDamagedDirection = 1;
         }
+
+        if (currentHp <= 0) isDead = true;
     }
 
     #region Player Dectected

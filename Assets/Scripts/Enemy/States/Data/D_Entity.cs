@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "newEntityData", menuName = "Data/Entity Data/Base Data")]
 public class D_Entity : ScriptableObject
 {
-    public float maxHp = 30f;                       // 최대 Hp
+    public float maxHp = 50f;                       // 최대 Hp
 
     public float knockbackSpeed = 10f;              // 넉백 속도
     public Vector2 knockbackAngle;                  // 넉백 각도
@@ -18,6 +18,8 @@ public class D_Entity : ScriptableObject
     public float groundCheckRadius = 0.3f;          // 넉백후 땅 확인용 반지름
 
     public float stunRecoveryTIme = 2f;             // 스턴 후 다시 스턴 걸리는 쿨타임
+
+    // 피격시 생성될 파티클 GameObject
 
     public LayerMask whatIsPlatform;                // Platform 레이어 마스크
     public LayerMask whatIsPlayer;                  // Player 레이어 마스크

@@ -604,7 +604,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.359375, y: 0.5625}
+    oldSize: {x: 0.34375, y: 0.625}
     newSize: {x: 0.34375, y: 0.625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -657,6 +657,7 @@ MonoBehaviour:
   meleeAttackStateData: {fileID: 11400000, guid: d775964936c434a469870a49a4bc392d, type: 2}
   detectStateData: {fileID: 11400000, guid: 4dd7f15bb7169114fb34093116df393c, type: 2}
   stunStateData: {fileID: 11400000, guid: 5b7ca2a6730cb3441910131951e7a0a9, type: 2}
+  deadStateData: {fileID: 11400000, guid: c066eb0f96c14354fb680b79844b92c5, type: 2}
   meleeAttackPosition: {fileID: 911745328}
 --- !u!114 &675893012
 MonoBehaviour:

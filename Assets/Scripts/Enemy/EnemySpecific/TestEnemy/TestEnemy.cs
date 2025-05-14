@@ -1,4 +1,5 @@
 using NUnit.Framework.Interfaces;
+using System.Xml;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class TestEnemy : Entity
     public TestEnemy_MeleeAttackState meleeAttackState { get; private set; }
     public TestEnemy_DetectState detectState { get; private set; }
     public TestEnemy_StunState stunState { get; private set; }
-
+    public TestEnemy_DeadState deadState { get; private set; }
 
     [SerializeField]
     private D_IdleState idleStateData;
@@ -24,6 +25,8 @@ public class TestEnemy : Entity
     private D_DetectState detectStateData;
     [SerializeField]
     private D_StunState stunStateData;
+    [SerializeField]
+    private D_DeadState deadStateData;
 
 
     [SerializeField]
@@ -39,6 +42,7 @@ public class TestEnemy : Entity
         meleeAttackState = new TestEnemy_MeleeAttackState(this, stateMachine, "meleeAttack", meleeAttackPosition, meleeAttackStateData, this);
         detectState = new TestEnemy_DetectState(this, stateMachine, "detect", detectStateData, this);
         stunState = new TestEnemy_StunState(this, stateMachine, "stun", stunStateData, this);
+        deadState = new TestEnemy_DeadState(this, stateMachine, "dead", deadStateData, this);
 
         stateMachine.Init(idleState);
     }
@@ -54,13 +58,19 @@ public class TestEnemy : Entity
     public override void Damaged(float damage, Vector2 position, bool isStun)
     {
         base.Damaged(damage, position, isStun);
-
-        // 스턴 공격이 들어오면 // IsStun는 스턴 상태 전환 가능한지 체크
-        if (isStun && IsStun && stateMachine.currentState != stunState) 
+        if (isDead)
         {
+            stateMachine.ChangeState(deadState);
+        }
+        else if (isStun && IsStun && stateMachine.currentState != stunState) 
+        {
+            // 스턴 공격이 들어오면 // IsStun는 스턴 상태 전환 가능한지 체크
+
             stateMachine.ChangeState(stunState);
             SetIsStun(false);   // 스턴 불가 상태로 설정
             lastStunTime = Time.time;
         }
+
+        
     }
 }
