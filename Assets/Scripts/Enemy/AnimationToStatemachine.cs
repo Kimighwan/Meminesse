@@ -3,6 +3,7 @@ using UnityEngine;
 public class AnimationToStatemachine : MonoBehaviour
 {
     public AttackState attackState;
+    public DamagedState damageState;
 
     private void TriggerAttack()
     {
@@ -12,5 +13,10 @@ public class AnimationToStatemachine : MonoBehaviour
     private void FinishAttack()
     {
         attackState.FinishAttack();
+    }
+
+    private void DamagedAnimationDone()
+    {
+        damageState.DamagedAnimationDone();
     }
 }

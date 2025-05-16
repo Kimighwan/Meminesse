@@ -12,6 +12,7 @@ public class TestEnemy : Entity
     public TestEnemy_DetectState detectState { get; private set; }
     public TestEnemy_StunState stunState { get; private set; }
     public TestEnemy_DeadState deadState { get; private set; }
+    public TestEnemy_DamagedState damagedState { get; private set; }
 
     [SerializeField]
     private D_IdleState idleStateData;
@@ -43,6 +44,7 @@ public class TestEnemy : Entity
         detectState = new TestEnemy_DetectState(this, stateMachine, "detect", detectStateData, this);
         stunState = new TestEnemy_StunState(this, stateMachine, "stun", stunStateData, this);
         deadState = new TestEnemy_DeadState(this, stateMachine, "dead", deadStateData, this);
+        damagedState = new TestEnemy_DamagedState(this, stateMachine, "damaged", this);
 
         stateMachine.Init(idleState);
     }
@@ -58,6 +60,7 @@ public class TestEnemy : Entity
     public override void Damaged(float damage, Vector2 position, bool isStun)
     {
         base.Damaged(damage, position, isStun);
+
         if (isDead)
         {
             stateMachine.ChangeState(deadState);
@@ -70,7 +73,19 @@ public class TestEnemy : Entity
             SetIsStun(false);   // 스턴 불가 상태로 설정
             lastStunTime = Time.time;
         }
+        else
+        {
+            stateMachine.ChangeState(damagedState);
+        }
+    }
 
-        
+    public void OnClickDamaged()
+    {
+        Damaged(10, new Vector2(0, 0), false);
+    }
+
+    public void OnClickStun()
+    {
+        Damaged(5, new Vector2(0, 0), true);
     }
 }

@@ -92,7 +92,7 @@ public class Entity : MonoBehaviour
     /// <param name="damage"></param>
     /// <param name="position"></param>
     /// <param name="isStun"></param>
-    public virtual void Damaged(float damage, Vector2 position, bool isStun = true) // 테스트로 true 설정 / 이후 false로 설정
+    public virtual void Damaged(float damage, Vector2 position, bool isStun = false)
     {
         currentHp -= damage;
 
@@ -142,6 +142,7 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckWall()
     {
+        //return Physics2D.OverlapCircle(wallCheck.position, 0.14f, entityData.whatIsPlatform);
         return Physics2D.Raycast(wallCheck.position, transform.right, entityData.wallCheckDistance, entityData.whatIsPlatform);
     }
 
@@ -160,8 +161,9 @@ public class Entity : MonoBehaviour
     public virtual void OnDrawGizmos()
     {
         // 벽 체크 표시
-        //Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.wallCheckDistance));
+        Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.wallCheckDistance));
         //Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * entityData.ledgeCheckDistance));
+        //Gizmos.DrawWireSphere(wallCheck.position, 0.14f);
 
         // 땅 체크 표시
         //Gizmos.DrawWireSphere(ledgeCheck.position, 0.14f);
