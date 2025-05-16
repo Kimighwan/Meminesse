@@ -6,7 +6,7 @@ public class MoveState : State
 
     protected bool isDetectWall;                // 벽을 감지했는가?
     protected bool isDetectLedge;               // Platform을 감지하고 있는가? 아니라면 빈 공간,즉 낭떨어지 
-    protected bool isPlayerInMeleeAttackRange;
+    protected bool isPlayerInMeleeAttackRange;  // 플레이어가 근접 공격 거리에 있는가?
     protected bool isDetectedPlayer;            // 플레이어를 감지했는가
 
     public MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(entity, stateMachine, animBoolName)

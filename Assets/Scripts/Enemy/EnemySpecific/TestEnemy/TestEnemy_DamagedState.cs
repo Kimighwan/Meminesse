@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
-public class TestEnemy_DetectState : DetectState
+public class TestEnemy_DamagedState : DamagedState
 {
     private TestEnemy enemy;
-    public TestEnemy_DetectState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DetectState stateData, TestEnemy enemy) : base(entity, stateMachine, animBoolName, stateData)
+
+
+    public TestEnemy_DamagedState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, TestEnemy enemy) : base(entity, stateMachine, animBoolName)
     {
         this.enemy = enemy;
     }
@@ -27,13 +30,8 @@ public class TestEnemy_DetectState : DetectState
     {
         base.LogicalUpdate();
 
-        if (!isDetectedPlayer)
-            stateMachine.ChangeState(enemy.idleState);
-        else if(isPlayerInMeleeAttackRange)
-            stateMachine.ChangeState(enemy.meleeAttackState);
-        else if(isDetectLedge)
+        if (isAnimationDone)
         {
-            entity.Flip();
             stateMachine.ChangeState(enemy.idleState);
         }
     }

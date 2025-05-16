@@ -28,6 +28,8 @@ public class TestEnemy_MoveState : MoveState
     {
         base.LogicalUpdate();
 
+        Debug.Log($"isDetectWall : {isDetectWall}");
+
         if (isDetectWall || isDetectLedge)
         {
             // 벽과 낭떨어지 감지하면 Idle 상태로 전환

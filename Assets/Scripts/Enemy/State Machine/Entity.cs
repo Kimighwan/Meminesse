@@ -10,6 +10,9 @@ public class Entity : MonoBehaviour
     public Animator anim { get; private set; }
     public Rigidbody2D rigid { get; private set; }
     public AnimationToStatemachine animationToStatemachine { get; private set; }
+    public int LastDamagedDirection { get; private set; }
+    public bool IsStun { get; private set; }        // 스턴 상태에 돌입이 가능한가?
+    protected void SetIsStun(bool value) { IsStun = value; }
 
     //public GameObject aliveGO { get; private set; }
 
@@ -19,13 +22,25 @@ public class Entity : MonoBehaviour
     private Transform ledgeCheck;   // 낭떨어지 체크
     [SerializeField]
     private Transform playerCheck;  // 플레이어 체크
+    [SerializeField]
+    private Transform groundCheck;
     private Vector2 entityVelocity;
 
+    private float currentHp;
+
     private RaycastHit2D hit;
+
+
+    protected float lastStunTime;
+
+    protected bool isDead;
 
     public virtual void Start()
     {
         facingDirection = 1; // 기본 Entity의 방향이 오른쪽임 // 만약 스프라이트 기본 방향이 왼쪽이라면 sprite flip 해줘야 함
+        currentHp = entityData.maxHp;
+        IsStun = true;
+        isDead = false;
 
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
@@ -37,6 +52,14 @@ public class Entity : MonoBehaviour
     private void Update()
     {
         stateMachine.currentState.LogicalUpdate();
+
+        if (!IsStun)    // 스턴 불가능시 다시 회복하기 위함
+        {
+            if(Time.time >= lastStunTime + entityData.stunRecoveryTIme)
+            {
+                IsStun = true;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -54,6 +77,39 @@ public class Entity : MonoBehaviour
     {
         facingDirection *= -1;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    public virtual void Knockback(float velocity, Vector2 angle, int direction)
+    {
+        angle.Normalize();
+        rigid.linearVelocity = new Vector2(velocity * angle.x * direction, angle.y * direction);
+    }
+
+    /// <summary>
+    /// position는 공격 위치 즉 player의 transform.position을 전달
+    /// isStun은 스턴 공격인지 확인하는 변수, 스턴 공격이라면 true를 전달
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <param name="position"></param>
+    /// <param name="isStun"></param>
+    public virtual void Damaged(float damage, Vector2 position, bool isStun = false)
+    {
+        currentHp -= damage;
+
+        Knockback(entityData.knockbackSpeed, entityData.knockbackAngle, LastDamagedDirection);
+
+        // 데미지 입을 때 생성될 파티클 인스턴스화
+
+        if (position.x > transform.position.x)   // 플레이어가 오른쪽에 있음
+        {
+            LastDamagedDirection = -1;
+        }
+        else
+        {
+            LastDamagedDirection = 1;
+        }
+
+        if (currentHp <= 0) isDead = true;
     }
 
     #region Player Dectected
@@ -86,12 +142,18 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckWall()
     {
+        //return Physics2D.OverlapCircle(wallCheck.position, 0.14f, entityData.whatIsPlatform);
         return Physics2D.Raycast(wallCheck.position, transform.right, entityData.wallCheckDistance, entityData.whatIsPlatform);
     }
 
     public virtual bool CheckLedge()
     {
         return Physics2D.OverlapCircle(ledgeCheck.position, 0.14f, entityData.whatIsPlatform);
+    }
+
+    public virtual bool CheckGround()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, entityData.groundCheckRadius, entityData.whatIsPlatform);
     }
 
     #endregion
@@ -101,9 +163,10 @@ public class Entity : MonoBehaviour
         // 벽 체크 표시
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.wallCheckDistance));
         //Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * entityData.ledgeCheckDistance));
+        //Gizmos.DrawWireSphere(wallCheck.position, 0.14f);
 
         // 땅 체크 표시
-        Gizmos.DrawWireSphere(ledgeCheck.position, 0.14f);
+        //Gizmos.DrawWireSphere(ledgeCheck.position, 0.14f);
 
         // 플레이어 탐지 거리 표시
         Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerDetectRange), 0.14f);
@@ -112,6 +175,6 @@ public class Entity : MonoBehaviour
         Gizmos.DrawLine(playerCheck.position, playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerInMeleeAttackRange));
 
         // 돌진 거리 표시
-        Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerInChargeRange), 0.14f);
+
     }
 }

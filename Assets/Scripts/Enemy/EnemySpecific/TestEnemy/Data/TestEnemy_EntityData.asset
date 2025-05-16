@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6066a386fc454da027b372848cbdc, type: 3}
   m_Name: TestEnemy_EntityData
   m_EditorClassIdentifier: 
+  maxHp: 50
+  knockbackSpeed: 10
+  knockbackAngle: {x: 1, y: 2}
   playerInMeleeAttackRange: 5
   playerInChargeRange: 0
   playerDetectRange: 9.74
-  wallCheckDistance: 0.2
+  wallCheckDistance: 1
   ledgeCheckDistance: 0.4
+  groundCheckRadius: 0.3
+  stunRecoveryTIme: 2
   whatIsPlatform:
     serializedVersion: 2
     m_Bits: 128
