@@ -1,0 +1,4 @@
+1st Attack: 1~9     , 0.16s (Scan Duration)
+2nd Attack: 10~16   , 0.12s
+3rd Attack: 17~30   , 0.08s
+           (22, 23 is repeated once)
