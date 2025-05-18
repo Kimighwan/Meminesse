@@ -572,8 +572,15 @@ MonoBehaviour:
   baseJumpForce: 7
   holdJumpForce: 12
   dashSpeed: 12
+  backDashSpeed: 9
   dashDuration: 0.2
-  dashCooldown: 0
+  dashCooldown: 1
+  attackCoolDown: 0
+  maxAttackInterval: 0.3
+  damage_GroundedComboAttack:
+  - 5
+  - 5
+  - 7
 --- !u!114 &1443255749
 MonoBehaviour:
   m_ObjectHideFlags: 0
