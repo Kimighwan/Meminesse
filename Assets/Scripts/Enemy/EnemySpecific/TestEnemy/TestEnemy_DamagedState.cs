@@ -6,7 +6,7 @@ public class TestEnemy_DamagedState : DamagedState
     private TestEnemy enemy;
 
 
-    public TestEnemy_DamagedState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, TestEnemy enemy) : base(entity, stateMachine, animBoolName)
+    public TestEnemy_DamagedState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DamagedState stateData, TestEnemy enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }

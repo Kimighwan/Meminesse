@@ -1131,6 +1131,7 @@ MonoBehaviour:
   detectStateData: {fileID: 11400000, guid: 4dd7f15bb7169114fb34093116df393c, type: 2}
   stunStateData: {fileID: 11400000, guid: 5b7ca2a6730cb3441910131951e7a0a9, type: 2}
   deadStateData: {fileID: 11400000, guid: c066eb0f96c14354fb680b79844b92c5, type: 2}
+  dmagedStateData: {fileID: 11400000, guid: 33af0bae418ff6d43ab8868d1d2c0e58, type: 2}
   meleeAttackPosition: {fileID: 911745328}
 --- !u!114 &675893012
 MonoBehaviour:

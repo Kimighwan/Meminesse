@@ -28,6 +28,8 @@ public class TestEnemy : Entity
     private D_StunState stunStateData;
     [SerializeField]
     private D_DeadState deadStateData;
+    [SerializeField]
+    private D_DamagedState dmagedStateData;
 
 
     [SerializeField]
@@ -44,7 +46,7 @@ public class TestEnemy : Entity
         detectState = new TestEnemy_DetectState(this, stateMachine, "detect", detectStateData, this);
         stunState = new TestEnemy_StunState(this, stateMachine, "stun", stunStateData, this);
         deadState = new TestEnemy_DeadState(this, stateMachine, "dead", deadStateData, this);
-        damagedState = new TestEnemy_DamagedState(this, stateMachine, "damaged", this);
+        damagedState = new TestEnemy_DamagedState(this, stateMachine, "damaged", dmagedStateData, this);
 
         stateMachine.Init(idleState);
     }
