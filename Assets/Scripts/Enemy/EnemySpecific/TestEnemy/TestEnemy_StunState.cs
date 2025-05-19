@@ -41,7 +41,6 @@ public class TestEnemy_StunState : StunState
             }
             else
             {
-                Debug.Log("스턴되고 Idle 상태로 전환");
                 stateMachine.ChangeState(enemy.idleState);
             }
         }

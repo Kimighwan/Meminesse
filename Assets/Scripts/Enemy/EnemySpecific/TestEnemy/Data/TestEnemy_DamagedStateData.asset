@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24090dd54534d4d478cba5c5ef248cac, type: 3}
-  m_Name: TestEnemy_StunStateData
+  m_Script: {fileID: 11500000, guid: 1e137b8506301e546b578b0a62f9606c, type: 3}
+  m_Name: TestEnemy_DamagedStateData
   m_EditorClassIdentifier: 
-  stunTime: 1.5
-  stunKnocbackTime: 0.2
-  stunKnocbackSpeed: 15
-  stunKnocbackAngle: {x: 2, y: 3}
+  knocbackTime: 0.2
+  knocbackSpeed: 10
+  knocbackAngle: {x: 1, y: 2}

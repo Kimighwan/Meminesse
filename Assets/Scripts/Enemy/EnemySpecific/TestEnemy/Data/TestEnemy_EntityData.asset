@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 50
   knockbackSpeed: 10
-  knockbackAngle: {x: 1, y: 2}
+  knockbackAngle: {x: 2, y: 3}
   playerInMeleeAttackRange: 5
   playerInChargeRange: 0
   playerDetectRange: 9.74

@@ -30,6 +30,7 @@ public class StunState : State
 
         isStunTimeOver = false;
         isMoveStopped = false;
+        entity.SetVelocity(0f);
         entity.Knockback(stateData.stunKnocbackSpeed, stateData.stunKnocbackAngle, entity.LastDamagedDirection);
     }
 
