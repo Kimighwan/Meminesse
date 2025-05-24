@@ -8,7 +8,8 @@ public class D_Entity : ScriptableObject
     public float knockbackSpeed = 10f;              // 넉백 속도
     public Vector2 knockbackAngle;                  // 넉백 각도
 
-    public float playerInMeleeAttackRange = 3f;     // 플레이어 감지 최소 거리
+    public float playerInMeleeAttackRange = 3f;     // 플레이어 근접 공격을 위한 최소 감지 거리
+    public float playerInRangeAttackRadius = 10f;    // 플레이어 원거리 공격을 위한 최소 감지 거리
     public float playerInChargeRange = 7f;          // 플레이어 감지 최대 거리
 
     public float playerDetectRange = 7f;            // 플레이어 추적 최대 거리

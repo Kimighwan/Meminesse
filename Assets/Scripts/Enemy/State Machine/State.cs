@@ -5,7 +5,7 @@ public class State
     protected FiniteStateMachine stateMachine;
     protected Entity entity;
 
-    protected float startTIme;  // 상태 시작 시간
+    public float startTIme { get; protected set; }  // 상태 시작 시간
 
     protected string animBoolName;  // 애니메이션 이름
 

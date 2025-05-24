@@ -49,9 +49,11 @@ public class Entity : MonoBehaviour
         stateMachine = new FiniteStateMachine();
     }
 
-    private void Update()
+    public virtual void Update()
     {
         stateMachine.currentState.LogicalUpdate();
+
+        anim.SetFloat("yVelocity", rigid.linearVelocityY);
 
         if (!IsStun)    // 스턴 불가능시 다시 회복하기 위함
         {
@@ -62,7 +64,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         stateMachine.currentState.PhysicsUpdate();
     }
@@ -70,6 +72,13 @@ public class Entity : MonoBehaviour
     public virtual void SetVelocity(float velocity)     // 속도 설정
     {
         entityVelocity = new Vector2(facingDirection * velocity, rigid.linearVelocityY);
+        rigid.linearVelocity = entityVelocity;
+    }
+
+    public virtual void SetVelocity(float velocity, Vector2 angle, int direction)     // 속도 설정 및 방향 설정
+    {
+        angle.Normalize();
+        entityVelocity = new Vector2(angle.x * direction * velocity, angle.y * velocity);
         rigid.linearVelocity = entityVelocity;
     }
 
@@ -119,6 +128,12 @@ public class Entity : MonoBehaviour
     public virtual bool CheckPlayerInMeleeAttackRange()     // 플레이어가 몬스터의 근접 공격 범위에서 탐지되는지
     {
         return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInMeleeAttackRange, entityData.whatIsPlayer);
+    }
+
+    public virtual bool CheckPlayerInRangeAttackRange()     // 플레이어가 몬스터의 원거리 공격 범위에서 탐지되는지
+    {
+        return Physics2D.OverlapCircle(playerCheck.position, entityData.playerInRangeAttackRadius);
+        //return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInRangeAttackRange, entityData.whatIsPlayer);
     }
 
     public virtual bool CheckPlayerInChargeRange()     // 플레이어가 몬스터의 돌진 패턴 범위에서 탐지되는지
@@ -171,10 +186,14 @@ public class Entity : MonoBehaviour
         // 플레이어 탐지 거리 표시
         Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerDetectRange), 0.14f);
 
-        // 근접 공격 발동 범위 표시
-        Gizmos.DrawLine(playerCheck.position, playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerInMeleeAttackRange));
+        // 근접 공격 발동될 조건 거리 표시
+        Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerInMeleeAttackRange), 0.14f);
 
         // 돌진 거리 표시
 
+        
+
+        // 원거리 공격 범위 표시
+        Gizmos.DrawWireSphere(playerCheck.position, entityData.playerInRangeAttackRadius);
     }
 }
