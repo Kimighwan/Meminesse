@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class MainMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        EventSystem.current.SetSelectedGameObject(firstButton);   //게임 시작시 디폴트 : 첫번째 버튼이 선택되어있는 상태
+        EventSystem.current.SetSelectedGameObject(firstButton);   // Default -> first button is selected
     }
 
     // Update is called once per frame 
@@ -19,24 +20,27 @@ public class MainMenu : MonoBehaviour
 
     public void OnClickNewGame()
     {
+        
     }
 
     public void OnClickLoadGame()
     {
-    }  
+        SceneManager.LoadScene("ReloadScene");   // 세이브 파일 불러오기 씬으로 이동
+    }
 
     public void OnClickSetting()
     {
     }
 
-    public void OnClickQuit()
+    public void OnClickQuit()     //Quit button
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        Debug.Log("Game closed");
+#if UNITY_EDITOR                  //Unity 에디터에서 실행 중일 때만 아래 코드를 실행
+        UnityEditor.EditorApplication.isPlaying = false;       //에디터에서 Play 중지
 #else
-    Application.Quit();
+        Application.Quit();       //실제 게임에서 종료
 #endif
     }
 
-    
+
 }
