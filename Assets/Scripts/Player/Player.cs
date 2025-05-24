@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
 
 public class PlayerController : MonoBehaviour
 {
@@ -92,7 +91,7 @@ public class PlayerController : MonoBehaviour
             float moveInput = Input.GetAxisRaw("Horizontal");
 
             // Priorities
-            // Dashing/Backdashing > GroundAttack > Jumping > Falling > Running > Idle
+            // Dashing/Backdashing > GroundAttack > Jumping > Falling > Running > Crouching > Idle
             // Dashing
             if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
             {
@@ -131,13 +130,18 @@ public class PlayerController : MonoBehaviour
                 if (Mathf.Sign(moveInput) != previousDirection)
                 {
                     // Turn around
-                    spriteRenderer.flipX = !spriteRenderer.flipX; 
+                    spriteRenderer.flipX = !spriteRenderer.flipX;
                     previousDirection = Mathf.Sign(moveInput);
                 }
                 else
                 {
                     stateMachine.ChangeState(PlayerState.Running);
                 }
+            }
+            // Crouching
+            else if (Input.GetKey(KeyCode.DownArrow) && isGrounded)
+            {
+                stateMachine.ChangeState(PlayerState.Crouching);
             }
             // Idle
             else if (rigid.linearVelocityX == 0 && rigid.linearVelocity.y == 0)
