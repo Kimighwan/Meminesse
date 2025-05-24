@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c77789c63141e49938a0e7ee01c12a, type: 3}
+  m_Name: Archer_RangeAttackStateData
+  m_EditorClassIdentifier: 
+  projectileGameObject: {fileID: 4615923376900856792, guid: b485cdb0d71c1844696846f953b7dc26, type: 3}
+  projectileDamage: 10
+  projectileSpeed: 12
+  projectiletravelDistance: 8

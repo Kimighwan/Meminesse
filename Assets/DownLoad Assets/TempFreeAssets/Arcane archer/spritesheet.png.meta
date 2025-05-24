@@ -1259,7 +1259,7 @@ TextureImporter:
       name: spritesheet_46
       rect:
         serializedVersion: 2
-        x: 256
+        x: 192
         y: 0
         width: 64
         height: 64
@@ -1281,7 +1281,7 @@ TextureImporter:
       name: spritesheet_47
       rect:
         serializedVersion: 2
-        x: 320
+        x: 256
         y: 0
         width: 64
         height: 64
@@ -1303,7 +1303,7 @@ TextureImporter:
       name: spritesheet_48
       rect:
         serializedVersion: 2
-        x: 384
+        x: 320
         y: 0
         width: 64
         height: 64
@@ -1325,7 +1325,7 @@ TextureImporter:
       name: spritesheet_49
       rect:
         serializedVersion: 2
-        x: 448
+        x: 384
         y: 0
         width: 64
         height: 64
@@ -1339,6 +1339,28 @@ TextureImporter:
       bones: []
       spriteID: b1fd65a6778c70b49abedba2df8bb140
       internalID: -718298416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8740eaa75f4ffd84eaae791e5644055f
+      internalID: -250761442
       vertices: []
       indices: 
       edges: []
@@ -1403,6 +1425,7 @@ TextureImporter:
       spritesheet_48: -109943998
       spritesheet_49: -718298416
       spritesheet_5: 226702753830753226
+      spritesheet_50: -250761442
       spritesheet_6: -7921052967969465774
       spritesheet_7: -1370661682523340017
       spritesheet_8: -8276262488406422588

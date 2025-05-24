@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Archer_MoveState : MoveState
+public class Archer_DodgeState : DodgeState
 {
     private Archer enemy;
 
-    public Archer_MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData, Archer enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public Archer_DodgeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DodgeState stateData, Archer enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
@@ -28,21 +28,22 @@ public class Archer_MoveState : MoveState
     {
         base.LogicalUpdate();
 
-        // TODO : transition to attackState and dodgeState
-        if(isPlayerInMeleeAttackRange)
+        if (isDodgeTimeOver)
         {
-            enemy.stateMachine.ChangeState(enemy.detectState);
+            if (isPlayerInRangeAttackRange)
+            {
+                enemy.stateMachine.ChangeState(enemy.rangeAttackState);
+            }
+            else
+            {
+                enemy.stateMachine.ChangeState(enemy.moveState);
+            }
         }
         else if (isDetectWall || !isDetectLedge)
         {
-            enemy.idleState.SetFlipAfterIdle(true);
             enemy.stateMachine.ChangeState(enemy.idleState);
         }
-        else if (isPlayerInRangeAttackRange)
-        {
-            stateMachine.ChangeState(enemy.rangeAttackState);
-        }
-    }      
+    }
 
     public override void PhysicsUpdate()
     {
