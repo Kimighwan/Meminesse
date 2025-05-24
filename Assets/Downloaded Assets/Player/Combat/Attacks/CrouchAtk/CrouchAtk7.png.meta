@@ -106,12 +106,12 @@ TextureImporter:
       name: CrouchAtk7_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 11
-        width: 56
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 27
+        y: 12
+        width: 68
+        height: 26
+      alignment: 9
+      pivot: {x: 0.20588236, y: 0.80769235}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -128,12 +128,12 @@ TextureImporter:
       name: CrouchAtk7_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 16
-        width: 32
-        height: 11
+        x: 65
+        y: 17
+        width: 30
+        height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -150,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 54854b5f2f8e1a5469096f37caca4a77
     internalID: 0
     vertices: []
     indices: 

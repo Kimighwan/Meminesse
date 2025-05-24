@@ -103,12 +103,12 @@ TextureImporter:
       name: Dash(NoFX)7_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 12
-        width: 54
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4
+        y: 13
+        width: 52
+        height: 34
+      alignment: 9
+      pivot: {x: 0.6730769, y: 0.61764705}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d52a418a84089744693dcb3eafbe35c9
     internalID: 0
     vertices: []
     indices: 
