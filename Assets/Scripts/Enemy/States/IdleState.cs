@@ -21,6 +21,7 @@ public class IdleState : State
         base.DoCheck();
 
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
+        isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
         isDetectedPlayer = entity.CheckPlayerDectedRange();
     }
 
@@ -31,8 +32,6 @@ public class IdleState : State
         entity.SetVelocity(0f);
         isIdleTimeOver = false;
         isDetectedPlayer = false;
-        isPlayerInRangeAttackRange = false;
-        isPlayerInMeleeAttackRange = false;
         SetRandomIdleTIme();
     }
 

@@ -36,7 +36,7 @@ public class Archer_StunState : StunState
             }
             else
             {
-                stateMachine.ChangeState(enemy.idleState);
+                stateMachine.ChangeState(enemy.moveState);
             }
         }
     }

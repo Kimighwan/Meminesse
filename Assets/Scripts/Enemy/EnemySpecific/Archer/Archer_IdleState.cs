@@ -28,18 +28,18 @@ public class Archer_IdleState : IdleState
         base.LogicalUpdate();
 
         // TODO : transition to dodgeState and attackState
-
-        if(isPlayerInMeleeAttackRange)
+        if (isPlayerInMeleeAttackRange)
         {
             stateMachine.ChangeState(enemy.detectState);
+        }
+        else if (isPlayerInRangeAttackRange && entity.CanRangeAttackPlayer())
+        {
+            enemy.idleState.SetFlipAfterIdle(false);
+            stateMachine.ChangeState(enemy.rangeAttackState);
         }
         else if (isIdleTimeOver)
         {
             stateMachine.ChangeState(enemy.moveState);
-        }
-        else if (isPlayerInRangeAttackRange)
-        {
-            stateMachine.ChangeState(enemy.rangeAttackState);
         }
     }
 
