@@ -132,7 +132,7 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckPlayerInRangeAttackRange()     // 플레이어가 몬스터의 원거리 공격 범위에서 탐지되는지
     {
-        return Physics2D.OverlapCircle(playerCheck.position, entityData.playerInRangeAttackRadius);
+        return Physics2D.OverlapCircle(playerCheck.position, entityData.playerInRangeAttackRadius, entityData.whatIsPlayer);
         //return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInRangeAttackRange, entityData.whatIsPlayer);
     }
 

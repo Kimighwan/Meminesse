@@ -33,14 +33,14 @@ public class Archer_MoveState : MoveState
         {
             enemy.stateMachine.ChangeState(enemy.detectState);
         }
+        else if (isPlayerInRangeAttackRange)
+        {
+            stateMachine.ChangeState(enemy.rangeAttackState);
+        }
         else if (isDetectWall || !isDetectLedge)
         {
             enemy.idleState.SetFlipAfterIdle(true);
             enemy.stateMachine.ChangeState(enemy.idleState);
-        }
-        else if (isPlayerInRangeAttackRange)
-        {
-            stateMachine.ChangeState(enemy.rangeAttackState);
         }
     }      
 

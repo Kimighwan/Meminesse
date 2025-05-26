@@ -37,7 +37,7 @@ public class Archer_RangeAttackState : RangeAttackState
         {
             if(isPlayerInMeleeAttackRange)
             {
-                stateMachine.ChangeState(enemy.deadState);
+                stateMachine.ChangeState(enemy.detectState);
             }
             else
             {

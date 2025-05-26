@@ -55,8 +55,7 @@ public class Projectile : MonoBehaviour
 
             if (damageHit)
             {
-                Debug.Log("플레이어 공격!");
-                // 플레이어의 Damaged() 호출...
+                Debug.Log("발사체 피격!");
             }
 
             if (groundHit)

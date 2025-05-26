@@ -32,8 +32,6 @@ public class MoveState : State
 
         entity.SetVelocity(stateData.moveSpeed);
         isDetectedPlayer = false;
-        isPlayerInRangeAttackRange = false;
-        isPlayerInMeleeAttackRange = false;
     }
 
     public override void Exit()
