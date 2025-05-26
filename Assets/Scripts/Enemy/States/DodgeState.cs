@@ -9,7 +9,7 @@ public class DodgeState : State
     protected bool isDetectWall;                // 벽을 감지했는가?
     protected bool isDetectLedge;               // Platform을 감지하고 있는가? 아니라면 빈 공간,즉 낭떨어지
     protected bool isDodgeTimeOver;
-    protected bool isGround;
+    //protected bool isGround;
 
     public DodgeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DodgeState stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -24,7 +24,7 @@ public class DodgeState : State
         isDetectedPlayer = entity.CheckPlayerDectedRange();
         isDetectWall = entity.CheckWall();
         isDetectLedge = entity.CheckLedge();
-        isGround = entity.CheckGround();
+        //isGround = entity.CheckGround();
     }
 
     public override void Enter()
@@ -32,19 +32,21 @@ public class DodgeState : State
         base.Enter();
 
         isDodgeTimeOver = false;
-        entity.SetVelocity(stateData.dodgeSpeed, stateData.dodgeAngle, -entity.facingDirection);
+        entity.Flip();
+        entity.SetVelocity(stateData.dodgeSpeed);
     }
 
     public override void Exit()
     {
         base.Exit();
+        entity.Flip();
     }
 
     public override void LogicalUpdate()
     {
         base.LogicalUpdate();
 
-        if (Time.time >= startTIme + stateData.dodgeDuration && isGround)
+        if (Time.time >= startTIme + stateData.dodgeDuration)
         {
             isDodgeTimeOver = true;
         }

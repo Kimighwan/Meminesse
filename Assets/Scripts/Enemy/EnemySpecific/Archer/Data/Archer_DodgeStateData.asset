@@ -15,4 +15,4 @@ MonoBehaviour:
   dodgeDuration: 2
   dodgeSpeed: 7
   dodgeCooldown: 2
-  dodgeAngle: {x: 10, y: 5}
+  dodgeAngle: {x: 3, y: 500}
