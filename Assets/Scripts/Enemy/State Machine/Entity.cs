@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -5,6 +6,7 @@ public class Entity : MonoBehaviour
     public FiniteStateMachine stateMachine;
 
     public D_Entity entityData;
+
 
     public int facingDirection { get; private set; }
     public Animator anim { get; private set; }
@@ -21,7 +23,7 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private Transform ledgeCheck;   // 낭떨어지 체크
     [SerializeField]
-    private Transform playerCheck;  // 플레이어 체크
+    protected Transform playerCheck;  // 플레이어 체크
     [SerializeField]
     private Transform groundCheck;
     private Vector2 entityVelocity;
@@ -148,6 +150,23 @@ public class Entity : MonoBehaviour
         if (hit &&  hit.collider.name == "TempPlayer")
             return true;
         else 
+            return false;
+    }
+
+    public Transform PlayerTransformForRangeAttack()
+    {
+        Collider2D collider2D = Physics2D.OverlapCircle(playerCheck.position, entityData.playerInRangeAttackRadius, entityData.whatIsPlayer);
+        return collider2D ? collider2D.transform : transform;
+    }
+
+    public bool CanRangeAttackPlayer()
+    {
+        Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
+        RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerDetectRange, ~(1 << 8));
+
+        if (hitCheck && hitCheck.collider.name == "TempPlayer")
+            return true;
+        else
             return false;
     }
 

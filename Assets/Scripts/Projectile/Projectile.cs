@@ -14,6 +14,9 @@ public class Projectile : MonoBehaviour
     private bool isGravityOn;
     private bool isHitGround;
 
+    private Vector2 targetPos;
+    private Vector2 fireDir;
+
     private Rigidbody2D rigid;
     [SerializeField]
     private LayerMask whatIsPlayer;
@@ -27,7 +30,11 @@ public class Projectile : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
 
         rigid.gravityScale = 0f;
-        rigid.linearVelocity = transform.right * speed;
+
+        fireDir = targetPos - new Vector2(transform.position.x, transform.position.y);
+        fireDir.Normalize();
+
+        rigid.linearVelocity = fireDir * speed;
 
         xStartPos = transform.position.x;
         isGravityOn = false;
@@ -73,11 +80,12 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void InitProjectile(float speed, float travelDistance, float damage)
+    public void InitProjectile(float speed, float travelDistance, float damage, Vector2 targetPos)
     {
         this.speed = speed;
         this.travelDistance = travelDistance;
         this.damage = damage;
+        this.targetPos = targetPos;
     }
 
     private void OnDrawGizmos()

@@ -41,7 +41,7 @@ public class Archer_RangeAttackState : RangeAttackState
             }
             else
             {
-                stateMachine.ChangeState(enemy.idleState);
+                stateMachine.ChangeState(enemy.moveState);
             }
         }
     }

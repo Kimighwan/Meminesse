@@ -30,7 +30,7 @@ public class Archer_DamagedState : DamagedState
 
         if (isAnimationDone)
         {
-            stateMachine.ChangeState(enemy.idleState);
+            stateMachine.ChangeState(enemy.moveState);
         }
     }
 

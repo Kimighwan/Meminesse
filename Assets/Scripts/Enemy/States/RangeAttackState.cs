@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class RangeAttackState : AttackState
 {
@@ -6,6 +7,7 @@ public class RangeAttackState : AttackState
 
     protected GameObject projectileGameObject;
     protected Projectile projectileScript;
+    protected Transform tartgetPos;
 
     public RangeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_RangeAttackState stateData) : base(entity, stateMachine, animBoolName, attackPosition)
     {
@@ -20,6 +22,8 @@ public class RangeAttackState : AttackState
     public override void Enter()
     {
         base.Enter();
+
+        tartgetPos = entity.PlayerTransformForRangeAttack();
     }
 
     public override void Exit()
@@ -48,6 +52,6 @@ public class RangeAttackState : AttackState
 
         projectileGameObject = GameObject.Instantiate(stateData.projectileGameObject, attackPosition.position, attackPosition.rotation);
         projectileScript = projectileGameObject.GetComponent<Projectile>();
-        projectileScript.InitProjectile(stateData.projectileSpeed, stateData.projectiletravelDistance, stateData.projectileDamage);
+        projectileScript.InitProjectile(stateData.projectileSpeed, stateData.projectiletravelDistance, stateData.projectileDamage, tartgetPos.position);
     }
 }

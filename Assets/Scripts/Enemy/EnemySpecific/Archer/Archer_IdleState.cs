@@ -32,8 +32,9 @@ public class Archer_IdleState : IdleState
         {
             stateMachine.ChangeState(enemy.detectState);
         }
-        else if (isPlayerInRangeAttackRange)
+        else if (isPlayerInRangeAttackRange && entity.CanRangeAttackPlayer())
         {
+            enemy.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemy.rangeAttackState);
         }
         else if (isIdleTimeOver)

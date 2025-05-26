@@ -5,9 +5,9 @@ public class DetectState : State
     protected D_DetectState stateData;
 
     protected bool isPlayerInMeleeAttackRange;
+    protected bool isPlayerInRangeAttackRange;
     protected bool isDetectedPlayer;
     protected bool isDetectLedge;
-
 
     public DetectState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DetectState stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -20,6 +20,7 @@ public class DetectState : State
 
         isDetectedPlayer = entity.CheckPlayerDectedRange();
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
+        isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
         isDetectLedge = entity.CheckLedge();
     }
 
