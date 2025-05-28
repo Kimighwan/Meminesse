@@ -24,6 +24,7 @@ public class RangeAttackState : AttackState
         base.Enter();
 
         tartgetPos = entity.PlayerTransformForRangeAttack();
+        AttackDirectionFlip();
     }
 
     public override void Exit()
@@ -50,8 +51,21 @@ public class RangeAttackState : AttackState
     {
         base.TriggerAttack();
 
+        AttackDirectionFlip();
         projectileGameObject = GameObject.Instantiate(stateData.projectileGameObject, attackPosition.position, attackPosition.rotation);
         projectileScript = projectileGameObject.GetComponent<Projectile>();
         projectileScript.InitProjectile(stateData.projectileSpeed, stateData.projectiletravelDistance, stateData.projectileDamage, tartgetPos.position);
+    }
+
+    private void AttackDirectionFlip()
+    {
+        if(tartgetPos.position.x > entity.transform.position.x && entity.facingDirection == -1)
+        {
+            entity.Flip();
+        }
+        else if(tartgetPos.position.x < entity.transform.position.x && entity.facingDirection == 1)
+        {
+            entity.Flip();
+        }
     }
 }

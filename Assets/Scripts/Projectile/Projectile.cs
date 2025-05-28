@@ -2,28 +2,28 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private float speed;
-    private float damage;
-    private float travelDistance;
-    private float xStartPos;
+    protected float speed;
+    protected float damage;
+    protected float travelDistance;
+    protected float xStartPos;
     [SerializeField]
-    private float gravity;
+    protected float gravity;
     [SerializeField]
-    private float damageRadius;
+    protected float damageRadius;
 
-    private bool isGravityOn;
-    private bool isHitGround;
+    protected bool isGravityOn;
+    protected bool isHitGround;
 
-    private Vector2 targetPos;
-    private Vector2 fireDir;
+    protected Vector2 targetPos;
+    protected Vector2 fireDir;
 
-    private Rigidbody2D rigid;
+    protected Rigidbody2D rigid;
     [SerializeField]
-    private LayerMask whatIsPlayer;
+    protected LayerMask whatIsPlayer;
     [SerializeField]
-    private LayerMask whatIsGround;
+    protected LayerMask whatIsGround;
     [SerializeField]
-    private Transform damagePos;
+    protected Transform damagePos;
 
     public virtual void Start()
     {
@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
 
         fireDir = targetPos - new Vector2(transform.position.x, transform.position.y);
         fireDir.Normalize();
-
+        Debug.Log($"fireDir: {fireDir}");
         rigid.linearVelocity = fireDir * speed;
 
         xStartPos = transform.position.x;
