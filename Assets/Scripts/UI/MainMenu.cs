@@ -5,17 +5,33 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject firstButton;
+    public static bool isKeyboardMode = false;       //키보드만 사용하는 모드, 커서 없어짐, 전역변수로 선언 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Cursor.visible = true;   // Default -> mouse cursor visible
+        Cursor.lockState = CursorLockMode.None;
+
         EventSystem.current.SetSelectedGameObject(firstButton);   // Default -> first button is selected
     }
 
     // Update is called once per frame 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))    //UpArrow, DownArrow -> cursor invisible
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         
+        else if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
     }
 
     public void OnClickNewGame()
