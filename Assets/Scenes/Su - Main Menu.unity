@@ -998,7 +998,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstButton: {fileID: 1582722012}
-  customCursor: {fileID: 0}
 --- !u!1 &502077770
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,7 +2398,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstButton: {fileID: 0}
-  customCursor: {fileID: 0}
 --- !u!4 &1425037187
 Transform:
   m_ObjectHideFlags: 0

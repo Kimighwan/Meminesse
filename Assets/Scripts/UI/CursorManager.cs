@@ -9,6 +9,6 @@ public class CursorManager : MonoBehaviour
 
     void Start()
     {
-        Cursor.SetCursor(customCursor, hotspot, CursorMode.Auto);
+        Cursor.SetCursor(customCursor, hotspot, CursorMode.Auto);   //커스텀 이미지사용, 커서 이미지 안에서 실제로 클릭되는 지점, 기본 모드
     }
 }
