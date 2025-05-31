@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4655bcfa2a9965e468396dbd11a5e4f9, type: 3}
   m_Name: Archer_DodgeStateData
   m_EditorClassIdentifier: 
-  dodgeDuration: 2
+  dodgeDuration: 1
   dodgeSpeed: 7
   dodgeCooldown: 2
-  dodgeAngle: {x: 3, y: 500}
+  dodgeAngle: {x: 1, y: 2}

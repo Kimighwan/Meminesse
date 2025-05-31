@@ -8,7 +8,7 @@ public class Entity : MonoBehaviour
     public D_Entity entityData;
 
 
-    public int facingDirection { get; private set; }
+    public int facingDirection { get; protected set; }
     public Animator anim { get; private set; }
     public Rigidbody2D rigid { get; private set; }
     public AnimationToStatemachine animationToStatemachine { get; private set; }
@@ -54,8 +54,6 @@ public class Entity : MonoBehaviour
     public virtual void Update()
     {
         stateMachine.currentState.LogicalUpdate();
-
-        anim.SetFloat("yVelocity", rigid.linearVelocityY);
 
         if (!IsStun)    // 스턴 불가능시 다시 회복하기 위함
         {
