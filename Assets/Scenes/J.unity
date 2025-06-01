@@ -449,7 +449,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.03125, y: 1.375}
+    oldSize: {x: 0.96875, y: 1.3125}
     newSize: {x: 1.03125, y: 1.375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -521,7 +521,7 @@ Transform:
   m_GameObject: {fileID: 1443255743}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -570,9 +570,12 @@ MonoBehaviour:
   maxJumpHoldTime: 1
   baseJumpForce: 7
   holdJumpForce: 12
+  fallGravityScale: 3.5
+  jumpGravityScale: 2.2
+  normalGravityScale: 2.5
   dashSpeed: 12
   backDashSpeed: 9
-  dashDuration: 0.2
+  dashDuration: 0.3
   dashCooldown: 0.5
   attackCoolDown: 0
   maxAttackInterval: 0.3
@@ -580,6 +583,12 @@ MonoBehaviour:
   - 5
   - 5
   - 7
+  damage_CrouchAttack: 0
+  damage_AirAttack: 0
+  damage_AirHeavyAttack: 0
+  minHeightForAirHeavyAttack: 2
+  groundCheckDistance: 1
+  groundCheckWidth: 0.4
 --- !u!95 &1443255750
 Animator:
   serializedVersion: 7

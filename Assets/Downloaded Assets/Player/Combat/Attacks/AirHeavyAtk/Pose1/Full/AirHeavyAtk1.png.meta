@@ -103,12 +103,12 @@ TextureImporter:
       name: AirHeavyAtk1_0
       rect:
         serializedVersion: 2
-        x: 36
-        y: 6
-        width: 30
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 37
+        y: 7
+        width: 28
+        height: 42
+      alignment: 9
+      pivot: {x: 0.5, y: 0.54761904}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b291d92e9b314104d92a631a7782b399
     internalID: 0
     vertices: []
     indices: 

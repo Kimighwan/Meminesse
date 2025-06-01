@@ -103,12 +103,12 @@ TextureImporter:
       name: JumpAndFall8_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 10
-        width: 39
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 15
+        y: 11
+        width: 37
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5945946, y: 0.47727272}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 67e0181b5e20303438a6ba7b6434b896
     internalID: 0
     vertices: []
     indices: 

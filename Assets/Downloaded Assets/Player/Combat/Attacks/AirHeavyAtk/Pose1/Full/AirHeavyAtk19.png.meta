@@ -106,12 +106,12 @@ TextureImporter:
       name: AirHeavyAtk19_0
       rect:
         serializedVersion: 2
-        x: 35
+        x: 36
         y: 0
-        width: 66
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 64
+        height: 31
+      alignment: 9
+      pivot: {x: 0.28125, y: 0.83870965}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -128,12 +128,12 @@ TextureImporter:
       name: AirHeavyAtk19_1
       rect:
         serializedVersion: 2
-        x: 92
-        y: 15
-        width: 11
-        height: 9
+        x: 93
+        y: 16
+        width: 9
+        height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -150,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: dd58a033215f19b498302b655e522889
     internalID: 0
     vertices: []
     indices: 

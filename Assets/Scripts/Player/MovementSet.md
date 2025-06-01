@@ -3,7 +3,7 @@ Attacks
     - Air           -> To be implemented
     - Air Heavy     -> To be implemented (skill)
     - Combo         -> Implemented
-    - Crouch        -> To be implemented
+    - Crouch        -> Implemented
     - Front Heavy   -> Included in combo
     - Front Light   -> Maybe (if counter is not implemented, then skill) / Cool motion
     - Guarded (3 combo) -> Maybe
@@ -26,7 +26,7 @@ Combat
 
 Movements
     - Back Dash     -> Implemented
-    - Crouch        -> To be implemented
+    - Crouch        -> Implemented
     - Dash          -> Implemented
     - Edge Grab     
     - Idle          -> Implemented
