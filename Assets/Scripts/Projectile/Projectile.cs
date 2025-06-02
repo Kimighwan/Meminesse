@@ -33,7 +33,6 @@ public class Projectile : MonoBehaviour
 
         fireDir = targetPos - new Vector2(transform.position.x, transform.position.y);
         fireDir.Normalize();
-        Debug.Log($"fireDir: {fireDir}");
         rigid.linearVelocity = fireDir * speed;
 
         xStartPos = transform.position.x;

@@ -17,6 +17,11 @@ public class RangeAttackState : AttackState
     public override void DoCheck()
     {
         base.DoCheck();
+        if(entity.CheckPlayerDectedRange())
+        {
+            Vector2 dir = new Vector2(tartgetPos.position.x, tartgetPos.position.y) - new Vector2(entity.transform.position.x, entity.transform.position.y);
+            Debug.DrawRay(entity.transform.position, dir, Color.red);
+        }
     }
 
     public override void Enter()

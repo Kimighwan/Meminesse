@@ -138,12 +138,14 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckPlayerInChargeRange()     // 플레이어가 몬스터의 돌진 패턴 범위에서 탐지되는지
     {
-        return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInChargeRange, entityData.whatIsPlayer);
+        return Physics2D.OverlapCircle(playerCheck.position, entityData.playerInChargeRadius, entityData.whatIsPlayer);
+        //return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInChargeRange, entityData.whatIsPlayer);
     }
 
     public virtual bool CheckPlayerDectedRange()
     {
         hit = Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerDetectRange, ~(1<<8));
+        Debug.DrawRay(playerCheck.position, transform.right * entityData.playerDetectRange, Color.blue);
         
         if (hit &&  hit.collider.name == "TempPlayer")
             return true;
