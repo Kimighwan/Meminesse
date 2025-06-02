@@ -21,7 +21,7 @@ public class StunState : State
 
         isGround = entity.CheckGround();
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
-        isDetectedPlayer = entity.CheckPlayerDectedRange();
+        isDetectedPlayer = entity.CheckPlayerInDetectRange();
     }
 
     public override void Enter()

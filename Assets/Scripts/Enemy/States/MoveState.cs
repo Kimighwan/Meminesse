@@ -23,7 +23,7 @@ public class MoveState : State
         isDetectLedge = entity.CheckLedge();
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
-        isDetectedPlayer = entity.CheckPlayerDectedRange();
+        isDetectedPlayer = entity.CheckPlayerInDetectRange();
     }
 
     public override void Enter()

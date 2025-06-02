@@ -33,7 +33,7 @@ public class TestEnemy_DetectState : DetectState
             stateMachine.ChangeState(enemy.meleeAttackState);
         else if(isDetectLedge)
         {
-            entity.Flip();
+            enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);
         }
     }

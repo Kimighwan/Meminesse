@@ -18,7 +18,7 @@ public class DetectState : State
     {
         base.DoCheck();
 
-        isDetectedPlayer = entity.CheckPlayerDectedRange();
+        isDetectedPlayer = entity.CheckPlayerInDetectRange();
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
         isDetectLedge = entity.CheckLedge();
@@ -30,6 +30,9 @@ public class DetectState : State
 
         entity.SetVelocity(stateData.detectSpeed);
         isPlayerInMeleeAttackRange = false;
+        isPlayerInRangeAttackRange = false;
+        isDetectedPlayer = false;
+        isDetectLedge = false;
     }
 
     public override void Exit()

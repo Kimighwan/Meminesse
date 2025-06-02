@@ -39,7 +39,7 @@ public class Entity : MonoBehaviour
 
     public virtual void Start()
     {
-        facingDirection = 1; // 기본 Entity의 방향이 오른쪽임 // 만약 스프라이트 기본 방향이 왼쪽이라면 sprite flip 해줘야 함
+        facingDirection = 1; // 기본 Entity의 방향이 오른쪽임
         currentHp = entityData.maxHp;
         IsStun = true;
         isDead = false;
@@ -125,14 +125,16 @@ public class Entity : MonoBehaviour
     // 현재는 모든 몬스터가 어느 한 위치에서 일직선으로 탐지 한다(2025-05-01)
     // 몬스터 종류가 많아지면서 탐지 방법이 달라진다면 변경하기
 
-    public virtual bool CheckPlayerInMeleeAttackRange()     // 플레이어가 몬스터의 근접 공격 범위에서 탐지되는지
+    public virtual bool CheckPlayerInMeleeAttackRange() // 플레이어가 몬스터의 근접 공격 범위에서 탐지되는지
     {
         return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInMeleeAttackRange, entityData.whatIsPlayer);
     }
 
-    public virtual bool CheckPlayerInRangeAttackRange()     // 플레이어가 몬스터의 원거리 공격 범위에서 탐지되는지
+    public virtual bool CheckPlayerInRangeAttackRange() // 플레이어가 몬스터의 원거리 공격 범위에서 탐지되는지
     {
-        return Physics2D.OverlapCircle(playerCheck.position, entityData.playerInRangeAttackRadius, entityData.whatIsPlayer);
+        if(CanRangeAttackPlayer())
+            return Physics2D.OverlapCircle(playerCheck.position, entityData.playerInRangeAttackRadius, entityData.whatIsPlayer);
+        else return false;
         //return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInRangeAttackRange, entityData.whatIsPlayer);
     }
 
@@ -142,10 +144,9 @@ public class Entity : MonoBehaviour
         //return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInChargeRange, entityData.whatIsPlayer);
     }
 
-    public virtual bool CheckPlayerDectedRange()
+    public virtual bool CheckPlayerInDetectRange()      // Checking playeris detected at the detectRange
     {
         hit = Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerDetectRange, ~(1<<8));
-        Debug.DrawRay(playerCheck.position, transform.right * entityData.playerDetectRange, Color.blue);
         
         if (hit &&  hit.collider.name == "TempPlayer")
             return true;
@@ -153,16 +154,17 @@ public class Entity : MonoBehaviour
             return false;
     }
 
-    public Transform PlayerTransformForRangeAttack()
+    public Transform PlayerTransformForRangeAttack()    // Getting player 'transform' for rangeAttack
     {
         Collider2D collider2D = Physics2D.OverlapCircle(playerCheck.position, entityData.playerInRangeAttackRadius, entityData.whatIsPlayer);
         return collider2D ? collider2D.transform : transform;
     }
 
-    public bool CanRangeAttackPlayer()
+    private bool CanRangeAttackPlayer()                 // Checking obstacles for rangeAttack           
     {
         Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
         RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerDetectRange, ~(1 << 8));
+        Debug.DrawRay(playerCheck.position, dirV * entityData.playerDetectRange, Color.green);
 
         if (hitCheck && hitCheck.collider.name == "TempPlayer")
             return true;
@@ -203,7 +205,6 @@ public class Entity : MonoBehaviour
         //Gizmos.DrawWireSphere(ledgeCheck.position, 0.14f);
 
         // 플레이어 탐지 거리 표시
-        Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerDetectRange), 0.14f);
 
         // 근접 공격 발동될 조건 거리 표시
         Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerInMeleeAttackRange), 0.14f);

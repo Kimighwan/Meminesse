@@ -3916,7 +3916,7 @@ Transform:
   m_GameObject: {fileID: 1304030809}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.56, y: 16.15, z: 0}
+  m_LocalPosition: {x: 12.25, y: -9.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4933,6 +4933,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer
       objectReference: {fileID: 0}
+    - target: {fileID: 6833748883036154993, guid: 6b8037477258d2540a5c82ca059a2b04, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1304030814}
     - target: {fileID: 8539013449675987265, guid: 6b8037477258d2540a5c82ca059a2b04, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.51
