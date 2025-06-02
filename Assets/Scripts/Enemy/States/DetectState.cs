@@ -29,10 +29,6 @@ public class DetectState : State
         base.Enter();
 
         entity.SetVelocity(stateData.detectSpeed);
-        isPlayerInMeleeAttackRange = false;
-        isPlayerInRangeAttackRange = false;
-        isDetectedPlayer = false;
-        isDetectLedge = false;
     }
 
     public override void Exit()

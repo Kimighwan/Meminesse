@@ -17,11 +17,6 @@ public class RangeAttackState : AttackState
     public override void DoCheck()
     {
         base.DoCheck();
-        if(entity.CheckPlayerInDetectRange())
-        {
-            Vector2 dir = new Vector2(tartgetPos.position.x, tartgetPos.position.y) - new Vector2(entity.transform.position.x, entity.transform.position.y);
-            Debug.DrawRay(entity.transform.position, dir, Color.red);
-        }
     }
 
     public override void Enter()
@@ -30,6 +25,7 @@ public class RangeAttackState : AttackState
 
         tartgetPos = entity.PlayerTransformForRangeAttack();
         AttackDirectionFlip();
+        InstantiateProjectile();
     }
 
     public override void Exit()
@@ -57,9 +53,15 @@ public class RangeAttackState : AttackState
         base.TriggerAttack();
 
         AttackDirectionFlip();
+        projectileGameObject.SetActive(true);
+    }
+
+    private void InstantiateProjectile()
+    {
         projectileGameObject = GameObject.Instantiate(stateData.projectileGameObject, attackPosition.position, attackPosition.rotation);
         projectileScript = projectileGameObject.GetComponent<Projectile>();
         projectileScript.InitProjectile(stateData.projectileSpeed, stateData.projectiletravelDistance, stateData.projectileDamage, tartgetPos.position);
+        projectileGameObject.SetActive(false);
     }
 
     private void AttackDirectionFlip()

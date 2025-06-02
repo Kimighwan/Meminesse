@@ -4912,6 +4912,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6594207872560659750, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9205034243287621478, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
       propertyPath: m_Name
       value: TestEnemy
@@ -4990,6 +4994,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1006807364712357364, guid: f88707e4e437fd846901db7f20ede5d4, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4494734818818692062, guid: f88707e4e437fd846901db7f20ede5d4, type: 3}
       propertyPath: m_Name
       value: Slime
