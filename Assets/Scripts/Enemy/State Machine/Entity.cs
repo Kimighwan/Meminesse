@@ -1,5 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
+
 
 public class Entity : MonoBehaviour
 {
@@ -31,6 +33,7 @@ public class Entity : MonoBehaviour
     private float currentHp;
 
     private RaycastHit2D hit;
+    private Transform playerTF;
 
 
     protected float lastStunTime;
@@ -69,9 +72,15 @@ public class Entity : MonoBehaviour
         stateMachine.currentState.PhysicsUpdate();
     }
 
-    public virtual void SetVelocity(float velocity)     // 속도 설정
+    public virtual void SetVelocityX(float velocity)     // 속도 설정
     {
         entityVelocity = new Vector2(facingDirection * velocity, rigid.linearVelocityY);
+        rigid.linearVelocity = entityVelocity;
+    }
+
+    public virtual void SetVelocityY(float velocity)     // 속도 설정
+    {
+        entityVelocity = new Vector2(rigid.linearVelocityX, facingDirection * velocity);
         rigid.linearVelocity = entityVelocity;
     }
 
@@ -82,10 +91,31 @@ public class Entity : MonoBehaviour
         rigid.linearVelocity = entityVelocity;
     }
 
+    public Vector2 GetEnemyPosition()
+    {
+        return transform.position;
+    }
+
+    public Vector2 GetDirectionToPlayer()
+    {
+        playerTF = PlayerTransformForRangeAttack();
+        return (new Vector2(playerTF.position.x, playerTF.position.y) - GetEnemyPosition());
+    }
+
     public virtual void Flip()                          // 방향 뒤집기
     {
         facingDirection *= -1;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    public virtual void CheckXPositionForFlip()         // Checking X position between Player and Enemy and Flip
+    {
+        float playerX = PlayerTransformForRangeAttack().position.x;
+
+        if (playerX > transform.position.x && facingDirection == -1)
+            Flip();
+        else if(playerX < transform.position.x && facingDirection == 1)
+            Flip();
     }
 
     public virtual void Knockback(float velocity, Vector2 angle, int direction)
@@ -144,7 +174,7 @@ public class Entity : MonoBehaviour
         //return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInChargeRange, entityData.whatIsPlayer);
     }
 
-    public virtual bool CheckPlayerInDetectRange()      // Checking playeris detected at the detectRange
+    public virtual bool CheckPlayerInDetectRangeTpyeLine()      // Checking playeris detected at the detectRange
     {
         hit = Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerDetectRange, ~(1<<8));
         
@@ -154,16 +184,33 @@ public class Entity : MonoBehaviour
             return false;
     }
 
-    public Transform PlayerTransformForRangeAttack()    // Getting player 'transform' for rangeAttack
+    public virtual bool CheckPlayerInDetectRangeTpyeCircle()
+    {
+        return Physics2D.OverlapCircle(playerCheck.position, entityData.playerDetectRange, entityData.whatIsPlayer);
+    }
+
+    public Transform PlayerTransformForRangeAttack()    // Getting player 'transform' when in rangeAttackRadius
     {
         Collider2D collider2D = Physics2D.OverlapCircle(playerCheck.position, entityData.playerInRangeAttackRadius, entityData.whatIsPlayer);
         return collider2D ? collider2D.transform : transform;
     }
 
-    private bool CanRangeAttackPlayer()                 // Checking obstacles for rangeAttack           
+    public bool CanDetectPlayer()                 // Checking obstacles for Player detect           
     {
         Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
         RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerDetectRange, ~(1 << 8));
+        Debug.DrawRay(playerCheck.position, dirV * entityData.playerDetectRange, Color.red);
+
+        if (hitCheck && hitCheck.collider.name == "TempPlayer")
+            return true;
+        else
+            return false;
+    }
+
+    private bool CanRangeAttackPlayer()                 // Checking obstacles for rangeAttack           
+    {
+        Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
+        RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerInRangeAttackRadius, ~(1 << 8));
         Debug.DrawRay(playerCheck.position, dirV * entityData.playerDetectRange, Color.green);
 
         if (hitCheck && hitCheck.collider.name == "TempPlayer")
@@ -210,8 +257,6 @@ public class Entity : MonoBehaviour
         Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerInMeleeAttackRange), 0.14f);
 
         // 돌진 거리 표시
-
-        
 
         // 원거리 공격 범위 표시
         Gizmos.DrawWireSphere(playerCheck.position, entityData.playerInRangeAttackRadius);

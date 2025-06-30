@@ -22,14 +22,14 @@ public class IdleState : State
 
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
-        isDetectedPlayer = entity.CheckPlayerInDetectRange();
+        isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        entity.SetVelocity(0f);
+        entity.SetVelocityX(0f);
         isIdleTimeOver = false;
         isDetectedPlayer = false;
         SetRandomIdleTIme();

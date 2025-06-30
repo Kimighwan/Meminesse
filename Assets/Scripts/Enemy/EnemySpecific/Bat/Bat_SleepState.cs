@@ -24,6 +24,8 @@ public class Bat_SleepState : SleepState
     public override void Exit()
     {
         base.Exit();
+
+        entity.CheckXPositionForFlip();
     }
 
     public override void LogicalUpdate()

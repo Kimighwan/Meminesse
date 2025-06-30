@@ -25,7 +25,7 @@ public class AttackState : State
 
         entity.animationToStatemachine.attackState = this;
         isAttackAnimationFinished = false;
-        entity.SetVelocity(0f);
+        entity.SetVelocityX(0f);
     } 
 
     public override void Exit()

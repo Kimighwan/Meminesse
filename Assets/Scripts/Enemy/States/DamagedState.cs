@@ -22,7 +22,7 @@ public class DamagedState : State
         base.Enter();
 
         entity.animationToStatemachine.damageState = this;
-        entity.SetVelocity(0f);
+        entity.SetVelocityX(0f);
         isAnimationDone = false;
         entity.Knockback(stateData.knocbackSpeed, stateData.knocbackAngle, entity.LastDamagedDirection);
     }

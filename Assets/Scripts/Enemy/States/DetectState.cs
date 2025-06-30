@@ -6,6 +6,7 @@ public class DetectState : State
 
     protected bool isPlayerInMeleeAttackRange;
     protected bool isPlayerInRangeAttackRange;
+    protected bool isPlayerInChargeRange;
     protected bool isDetectedPlayer;
     protected bool isDetectLedge;
 
@@ -18,17 +19,18 @@ public class DetectState : State
     {
         base.DoCheck();
 
-        isDetectedPlayer = entity.CheckPlayerInDetectRange();
+        isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
         isDetectLedge = entity.CheckLedge();
+        isPlayerInChargeRange = entity.CheckPlayerInChargeRange();
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        entity.SetVelocity(stateData.detectSpeed);
+        entity.SetVelocityX(stateData.detectSpeed);
     }
 
     public override void Exit()

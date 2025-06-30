@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class DeadState : State
+public class Bat_DeadState : DeadState
 {
-    protected D_DeadState stateData;
+    private Bat enemy;
 
-    public DeadState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DeadState stateData) : base(entity, stateMachine, animBoolName)
+    public Bat_DeadState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DeadState stateData, Bat enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
-        this.stateData = stateData;
+        this.enemy = enemy;
     }
 
     public override void DoCheck()
@@ -18,8 +18,8 @@ public class DeadState : State
     {
         base.Enter();
 
-        entity.SetVelocityX(0f);
-        // 죽을 때 생성될 파티클이 있다면 인스턴스화 하기
+        entity.SetVelocityX(0);
+        entity.SetVelocityY(-2);
     }
 
     public override void Exit()
