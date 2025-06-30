@@ -35,17 +35,15 @@ public class Archer_DetectState : DetectState
             {
                 stateMachine.ChangeState(enemy.dodgeState);
             }
-            else if(isPlayerInRangeAttackRange && entity.CanRangeAttackPlayer())
+            else if(isPlayerInRangeAttackRange)
             {
                 stateMachine.ChangeState(enemy.rangeAttackState);
             }
         }
         else if (!isDetectedPlayer)
         {
-            stateMachine.ChangeState(enemy.moveState);
+            stateMachine.ChangeState(enemy.idleState);
         }
-
-        // transition to 도망가는State -> When 거리가 가까울 때
     }
 
     public override void PhysicsUpdate()

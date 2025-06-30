@@ -21,7 +21,7 @@ public class DodgeState : State
         base.DoCheck();
 
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
-        isDetectedPlayer = entity.CheckPlayerDectedRange();
+        isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
         isDetectWall = entity.CheckWall();
         isDetectLedge = entity.CheckLedge();
         //isGround = entity.CheckGround();
@@ -33,7 +33,7 @@ public class DodgeState : State
 
         isDodgeTimeOver = false;
         entity.Flip();
-        entity.SetVelocity(stateData.dodgeSpeed);
+        entity.SetVelocityX(stateData.dodgeSpeed);
     }
 
     public override void Exit()

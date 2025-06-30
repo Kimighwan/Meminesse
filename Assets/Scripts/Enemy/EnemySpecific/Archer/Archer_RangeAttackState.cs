@@ -35,13 +35,13 @@ public class Archer_RangeAttackState : RangeAttackState
 
         if(isAttackAnimationFinished)
         {
-            if(isPlayerInMeleeAttackRange)
+            if(isPlayerInMeleeAttackRange)  // 원거리 공격 쿨타임을 줄까? 고민 중
             {
                 stateMachine.ChangeState(enemy.detectState);
             }
             else
             {
-                stateMachine.ChangeState(enemy.moveState);
+                stateMachine.ChangeState(enemy.idleState);
             }
         }
     }

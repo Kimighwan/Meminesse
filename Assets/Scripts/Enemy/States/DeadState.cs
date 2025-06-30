@@ -18,7 +18,7 @@ public class DeadState : State
     {
         base.Enter();
 
-        entity.SetVelocity(0f);
+        entity.SetVelocityX(0f);
         // 죽을 때 생성될 파티클이 있다면 인스턴스화 하기
     }
 

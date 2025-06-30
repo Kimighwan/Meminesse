@@ -7,6 +7,9 @@ public class ChargeState : State
     protected bool isDetectWall;        // 벽을 감지했는가?
     protected bool isDetectLedge;       // 절벽을 감지했는가?
     protected bool isChargeTimeOver;    // 돌진 시간을 초과했는가?
+    protected bool isDetectedPlayer;
+    protected bool isPlayerInChargeRange;
+    protected bool isChargeAnimationFinished;
 
     public ChargeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_ChargeState stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -19,14 +22,18 @@ public class ChargeState : State
 
         isDetectWall = entity.CheckWall();
         isDetectLedge = entity.CheckLedge();
+        isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
+        isPlayerInChargeRange = entity.CheckPlayerInChargeRange();
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        entity.SetVelocity(stateData.chargeSpeed);
+        entity.animationToStatemachine.chargeState = this;
+        entity.SetVelocityX(stateData.chargeSpeed);
         isChargeTimeOver = false;
+        isChargeAnimationFinished = false;
     }
 
     public override void Exit()
@@ -38,8 +45,6 @@ public class ChargeState : State
     {
         base.LogicalUpdate();
 
-
-
         if (Time.time >= startTIme + stateData.chargeTime)
             isChargeTimeOver = true;
     }
@@ -47,5 +52,10 @@ public class ChargeState : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    public virtual void FinishCharge()
+    {
+        isChargeAnimationFinished = true;
     }
 }

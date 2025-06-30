@@ -30,13 +30,13 @@ public class Archer_DodgeState : DodgeState
 
         if (isDodgeTimeOver)
         {
-            if (isPlayerInRangeAttackRange && entity.CanRangeAttackPlayer())
+            if (isPlayerInRangeAttackRange)
             {
                 enemy.stateMachine.ChangeState(enemy.rangeAttackState);
             }
             else
             {
-                enemy.stateMachine.ChangeState(enemy.moveState);
+                enemy.stateMachine.ChangeState(enemy.idleState);
             }
         }
         else if (isDetectWall || !isDetectLedge)

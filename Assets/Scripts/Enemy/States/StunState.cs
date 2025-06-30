@@ -21,7 +21,7 @@ public class StunState : State
 
         isGround = entity.CheckGround();
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
-        isDetectedPlayer = entity.CheckPlayerDectedRange();
+        isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
     }
 
     public override void Enter()
@@ -30,7 +30,7 @@ public class StunState : State
 
         isStunTimeOver = false;
         isMoveStopped = false;
-        entity.SetVelocity(0f);
+        entity.SetVelocityX(0f);
         entity.Knockback(stateData.stunKnocbackSpeed, stateData.stunKnocbackAngle, entity.LastDamagedDirection);
     }
 
@@ -53,7 +53,7 @@ public class StunState : State
         if(isGround && Time.time >= startTIme + stateData.stunKnocbackTime && !isMoveStopped)
         {
             isMoveStopped = true;   // 해당 if문 한 번만 실행
-            entity.SetVelocity(0f);
+            entity.SetVelocityX(0f);
         }
     }
 

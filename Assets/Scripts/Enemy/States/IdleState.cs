@@ -8,7 +8,7 @@ public class IdleState : State
     protected bool isIdleTimeOver;                  // Idle 상태 지속 시간을 초과 했는가?
     protected bool isDetectedPlayer;                // 플레이어를 탐지했는가?
     protected bool isPlayerInMeleeAttackRange;      // 플레이어 근접 공격 범위에 들어왔는가?
-    protected bool isPlayerInRangeAttackRange;
+    protected bool isPlayerInRangeAttackRange;      
     protected float idleTime;                       // Idle 상태 지속 시간
 
     public IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData) : base(entity, stateMachine, animBoolName)
@@ -22,14 +22,14 @@ public class IdleState : State
 
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
-        isDetectedPlayer = entity.CheckPlayerDectedRange();
+        isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        entity.SetVelocity(0f);
+        entity.SetVelocityX(0f);
         isIdleTimeOver = false;
         isDetectedPlayer = false;
         SetRandomIdleTIme();
