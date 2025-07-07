@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SettingsPopup : MonoBehaviour
+public class SettingsPopup : UIBase
 {
-    public GameObject firstButton;
-
     public GameObject audioPopup;
     public GameObject graphicPopup;
     public GameObject controlPopup;
