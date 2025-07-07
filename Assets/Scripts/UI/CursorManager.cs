@@ -1,6 +1,6 @@
 using UnityEngine;       
 
-//커서 이미지 바꾸는 
+//커서 이미지 바꾸는 클래스 
 
 public class CursorManager : MonoBehaviour
 {
