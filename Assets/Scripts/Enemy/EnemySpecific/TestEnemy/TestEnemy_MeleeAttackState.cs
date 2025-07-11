@@ -34,10 +34,11 @@ public class TestEnemy_MeleeAttackState : MeleeAttackState
 
         if (isAttackAnimationFinished)
         {
-            if (isPlayerInMeleeAttackRange)
-                stateMachine.ChangeState(enemy.meleeAttackState);
-            else
-                stateMachine.ChangeState(enemy.idleState);
+            //if (isPlayerInMeleeAttackRange)
+            //    stateMachine.ChangeState(enemy.meleeAttackState);
+            //else
+            enemy.idleState.SetFlipAfterIdle(false);
+            stateMachine.ChangeState(enemy.idleState);
         }
     }
 
