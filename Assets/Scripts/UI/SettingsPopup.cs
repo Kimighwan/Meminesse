@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class SettingsPopup : UIBase
 {
@@ -29,6 +30,7 @@ public class SettingsPopup : UIBase
 
     public void OnClickAudioButton()
     {
+        audioPopup.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         audioPopup.SetActive(true);          //audio tab active, others inactive
         graphicPopup.SetActive(false);
         controlPopup.SetActive(false);
@@ -36,7 +38,7 @@ public class SettingsPopup : UIBase
 
     public void OnClickGraphicButton()
     {
-        
+        graphicPopup.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         graphicPopup.SetActive(true);       //graphic tab active, others inactive
         audioPopup.SetActive(false);
         controlPopup.SetActive(false);
@@ -44,6 +46,7 @@ public class SettingsPopup : UIBase
 
     public void OnClickControlButton()
     {
+        controlPopup.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         controlPopup.SetActive(true);       //control tab active, others inactive
         graphicPopup.SetActive(false);
         audioPopup.SetActive(false);
