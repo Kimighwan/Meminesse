@@ -90,7 +90,7 @@ public class Bat : Entity
     {
         base.OnDrawGizmos();
 
-        Gizmos.DrawWireSphere(transform.position, entityData.playerDetectRange);
+        
         Gizmos.DrawWireSphere(transform.position, entityData.playerInChargeRadius);
     }
 }

@@ -35,6 +35,7 @@ public class Entity : MonoBehaviour
     private RaycastHit2D hit;
     private Transform playerTF;
 
+    protected int defaultDirection;
 
     protected float lastStunTime;
 
@@ -43,6 +44,7 @@ public class Entity : MonoBehaviour
     public virtual void Start()
     {
         facingDirection = 1; // 기본 Entity의 방향이 오른쪽임
+        defaultDirection = 1; // 스프라이트 기본 방향 // 오른쪽
         currentHp = entityData.maxHp;
         IsStun = true;
         isDead = false;
@@ -157,7 +159,7 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckPlayerInMeleeAttackRange() // 플레이어가 몬스터의 근접 공격 범위에서 탐지되는지
     {
-        return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInMeleeAttackRange, entityData.whatIsPlayer);
+        return Physics2D.Raycast(playerCheck.position, transform.right * defaultDirection, entityData.playerInMeleeAttackRange, entityData.whatIsPlayer);
     }
 
     public virtual bool CheckPlayerInRangeAttackRange() // 플레이어가 몬스터의 원거리 공격 범위에서 탐지되는지
@@ -176,7 +178,7 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckPlayerInDetectRangeTpyeLine()      // Checking playeris detected at the detectRange
     {
-        hit = Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerDetectRange, ~(1<<8));
+        hit = Physics2D.Raycast(playerCheck.position, transform.right * defaultDirection, entityData.playerDetectRange, ~(1<<8));
         
         if (hit &&  hit.collider.name == "TempPlayer")
             return true;
@@ -252,6 +254,7 @@ public class Entity : MonoBehaviour
         //Gizmos.DrawWireSphere(ledgeCheck.position, 0.14f);
 
         // 플레이어 탐지 거리 표시
+        Gizmos.DrawWireSphere(transform.position, entityData.playerDetectRange);
 
         // 근접 공격 발동될 조건 거리 표시
         Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerInMeleeAttackRange), 0.14f);
