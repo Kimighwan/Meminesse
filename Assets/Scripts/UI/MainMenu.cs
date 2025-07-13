@@ -10,14 +10,14 @@ public class MainMenu : UIBase
         base.Start();
 
         // 커서 기본 설정
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
 
         // 포커스를 명시적으로 줘야 UI가 키보드 입력을 받음
-        EventSystem.current.SetSelectedGameObject(firstButton);
+        //EventSystem.current.SetSelectedGameObject(invisibleDummyButton);
 
         // 또한 currentButton도 초기화 필요
-        SetCurrentButton(firstButton);
+        //SetCurrentButton(invisibleDummyButton);
     }
 
     protected override void Update()
