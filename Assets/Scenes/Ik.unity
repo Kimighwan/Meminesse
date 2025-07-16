@@ -6585,6 +6585,7 @@ MonoBehaviour:
   idleStateData: {fileID: 11400000, guid: 5980109a89b1ffb46ac5a2aa60a3300d, type: 2}
   moveStateData: {fileID: 11400000, guid: eaafc0878685d26429ce92eee7c44e06, type: 2}
   detectStateData: {fileID: 11400000, guid: 8342a3093c870884a887f0395c9978ad, type: 2}
+  chargeStateData: {fileID: 11400000, guid: 5234b9e77e279bb43bc4dfd8b871c507, type: 2}
   meleeAttackStateData: {fileID: 11400000, guid: 396fce730c9fd454287203a580438398, type: 2}
   dmagedStateData: {fileID: 11400000, guid: aeed389c33ae71441a19137c4d8db7cb, type: 2}
   deadStateData: {fileID: 11400000, guid: 3bb781ef22cc69d4d874d8f4b4683385, type: 2}

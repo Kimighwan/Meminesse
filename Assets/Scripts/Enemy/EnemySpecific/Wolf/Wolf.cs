@@ -7,6 +7,7 @@ public class Wolf : Entity
     public Wolf_IdleState idleState { get; private set; }
     public Wolf_MoveState moveState { get; private set; }
     public Wolf_DetectState detectState { get; private set; }
+    public Wolf_ChargeState chargeState { get; private set; }
     public Wolf_MeleeAttackState meleeAttackState { get; private set; }
     public Wolf_DamagedState damagedState { get; private set; }
     public Wolf_DeadState deadState { get; private set; }
@@ -19,6 +20,8 @@ public class Wolf : Entity
     [SerializeField]
     private D_DetectState detectStateData;
     [SerializeField]
+    private D_ChargeState chargeStateData;
+    [SerializeField]
     private D_MeleeAttackState meleeAttackStateData;
     [SerializeField]
     private D_DamagedState dmagedStateData;
@@ -30,6 +33,11 @@ public class Wolf : Entity
     [SerializeField]
     private Transform meleeAttackPosition;
 
+    public float AttackCoolTime { get; set; } = 2f;
+    public float ChargeCoolTime { get; set; } = 3f;
+    public float LastAttackTime { get; set; }
+    public float LastChargeTime { get; set; }
+
     public override void Start()
     {
         base.Start();
@@ -40,6 +48,7 @@ public class Wolf : Entity
         idleState = new Wolf_IdleState(this, stateMachine, "idle", idleStateData, this);
         moveState = new Wolf_MoveState(this, stateMachine, "move", moveStateData, this);
         detectState = new Wolf_DetectState(this, stateMachine, "detect", detectStateData, this);
+        chargeState = new Wolf_ChargeState(this, stateMachine, "detect", chargeStateData, this);
         meleeAttackState = new Wolf_MeleeAttackState(this, stateMachine, "attack", meleeAttackPosition, meleeAttackStateData, this);
         damagedState = new Wolf_DamagedState(this, stateMachine, "damaged", dmagedStateData, this);
         deadState = new Wolf_DeadState(this, stateMachine, "dead", deadStateData, this);

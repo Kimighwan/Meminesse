@@ -260,8 +260,9 @@ public class Entity : MonoBehaviour
         Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.playerInMeleeAttackRange), 0.14f);
 
         // 돌진 거리 표시
+        Gizmos.DrawWireSphere(playerCheck.position, entityData.playerInChargeRadius);
 
         // 원거리 공격 범위 표시
-        Gizmos.DrawWireSphere(playerCheck.position, entityData.playerInRangeAttackRadius);
+        Gizmos.DrawWireSphere(playerCheck.position, entityData.playerInRangeAttackRadius);        
     }
 }
