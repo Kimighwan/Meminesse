@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99c7e1302c23e84e8e9c203e5278b39, type: 3}
   m_Name: Wolf_ChargeStateData
   m_EditorClassIdentifier: 
-  chargeSpeed: 6
+  chargeSpeed: 11
   chargeTime: 2

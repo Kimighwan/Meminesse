@@ -17,8 +17,8 @@ MonoBehaviour:
   knockbackAngle: {x: 0, y: 0}
   playerInMeleeAttackRange: 2.3
   playerInRangeAttackRadius: 0
-  playerInChargeRadius: 0
-  playerDetectRange: 7
+  playerInChargeRadius: 10
+  playerDetectRange: 15
   wallCheckDistance: 0.2
   ledgeCheckDistance: 0.4
   groundCheckRadius: 0.3
