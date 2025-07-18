@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SettingsPopup : UIBase
 {
-    public GameObject settingsBackGround;
+    public GameObject popUp;
     public GameObject audioPopup;
     public GameObject graphicPopup;
     public GameObject controlPopup;
@@ -13,8 +13,10 @@ public class SettingsPopup : UIBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
+        base.Start(); //UIBase꺼 그대로 사용 
+        currentButton = invisibleDummyButton; // 현재 선택된 버튼을 더미버튼으로 초기화
+
         //EventSystem.current.SetSelectedGameObject(firstButton);   // Default -> first button is selected (audio button)
-        settingsBackGround.SetActive(true); 
         audioPopup.SetActive(true);          //audio tab active, others inactive
         graphicPopup.SetActive(false);
         controlPopup.SetActive(false);
@@ -23,33 +25,44 @@ public class SettingsPopup : UIBase
     // Update is called once per frame
     protected override void Update()
     {
-        //_popup.SetActive(false); // 팝업은 처음에 꺼져있어야함
+        base.Update();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("설정 팝업 닫힘");
+            this.popUp.SetActive(false); // 팝업 꺼짐
+        }
         DontDestroyOnLoad(this); // 씬이 넘어가도 이 스크립트는 파괴되면 안됨
     }
 
 
     public void OnClickAudioButton()
     {
-        audioPopup.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         audioPopup.SetActive(true);          //audio tab active, others inactive
         graphicPopup.SetActive(false);
         controlPopup.SetActive(false);
+        Debug.Log("오디오 설정창 활성화");
     }
 
     public void OnClickGraphicButton()
     {
-        graphicPopup.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        //graphicPopup.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         graphicPopup.SetActive(true);       //graphic tab active, others inactive
         audioPopup.SetActive(false);
         controlPopup.SetActive(false);
+        Debug.Log("그래픽 설정창 활성화");
     }
 
     public void OnClickControlButton()
     {
-        controlPopup.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         controlPopup.SetActive(true);       //control tab active, others inactive
         graphicPopup.SetActive(false);
         audioPopup.SetActive(false);
+        Debug.Log("조작법 설정창 활성화");
+    }
+
+    protected override void SetCurrentButton(GameObject gb)
+    {
+        base.SetCurrentButton(gb);
     }
 
 }
