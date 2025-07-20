@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559631f258122524c925a308b3c482b2, type: 3}
   m_Name: EvilWizard_MoveStateData
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 4
