@@ -6,7 +6,7 @@ public class UIBase : MonoBehaviour
     public GameObject invisibleDummyButton;
     public static bool isKeyboardMode = false;       //키보드만 사용하는 모드, 커서 없어짐, 전역변수로 선언 , 플래그 변수임, 처음에는 마우스모드
 
-    private GameObject currentButton;
+    public GameObject currentButton;
 
 
     protected virtual void Start()
@@ -57,7 +57,7 @@ public class UIBase : MonoBehaviour
 
     }
 
-    public void SetCurrentButton(GameObject gb)
+    protected virtual void SetCurrentButton(GameObject gb)
     {
         currentButton = gb;
         if (gb == invisibleDummyButton)

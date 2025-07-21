@@ -20,7 +20,7 @@ public class AudioManager : SingletonBehaviour<AudioManager>
     [SerializeField] Transform SFXTrs;
 
     const string AUDIO_PATH = "Audio";
-    
+
     Dictionary<BGM, AudioSource> BGMPlayer = new Dictionary<BGM, AudioSource>();
     AudioSource currentBGMSource;       // Current Playing AudioSource
 
@@ -37,7 +37,7 @@ public class AudioManager : SingletonBehaviour<AudioManager>
     // Load BGM Audio File
     private void LoadBGMPlayer()
     {
-        for(int i = 0; i < (int)BGM.COUNT; i++)
+        for (int i = 0; i < (int)BGM.COUNT; i++)
         {
             string audioName = ((BGM)i).ToString();
             string audioPath = $"{AUDIO_PATH}/{audioName}";
@@ -61,7 +61,7 @@ public class AudioManager : SingletonBehaviour<AudioManager>
     // Load SFX Audio File
     private void LoadSFXPlayer()
     {
-        for(int i = 0; i < (int)SFX.COUNT; i++)
+        for (int i = 0; i < (int)SFX.COUNT; i++)
         {
             string audioName = ((SFX)i).ToString();
             string audioPath = $"{AUDIO_PATH}/{audioName}";
@@ -91,7 +91,7 @@ public class AudioManager : SingletonBehaviour<AudioManager>
             return;
         }
 
-        if(currentBGMSource)
+        if (currentBGMSource)
         {
             currentBGMSource.Stop();
             currentBGMSource = null;
@@ -103,12 +103,12 @@ public class AudioManager : SingletonBehaviour<AudioManager>
 
     public void PauseBGM()
     {
-        if(currentBGMSource) currentBGMSource.Pause();
+        if (currentBGMSource) currentBGMSource.Pause();
     }
 
     public void ResumeBGM()
     {
-        if(currentBGMSource) currentBGMSource.UnPause();
+        if (currentBGMSource) currentBGMSource.UnPause();
     }
 
     public void StopBGM()
@@ -118,7 +118,7 @@ public class AudioManager : SingletonBehaviour<AudioManager>
 
     public void PlaySFX(SFX sfx)
     {
-        if(!SFXPlayer.ContainsKey(sfx))
+        if (!SFXPlayer.ContainsKey(sfx))
         {
             Debug.Log($"Doesn't exist {sfx}");
             return;
@@ -129,7 +129,7 @@ public class AudioManager : SingletonBehaviour<AudioManager>
 
     public void Mute()
     {
-        foreach(var audioSourceItem in BGMPlayer)
+        foreach (var audioSourceItem in BGMPlayer)
         {
             audioSourceItem.Value.volume = 0f;
         }
