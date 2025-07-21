@@ -1,4 +1,6 @@
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,6 +12,20 @@ public class SettingsPopup : UIBase
     public GameObject graphicPopup;
     public GameObject controlPopup;
 
+    //오디오 슬라이더 관리
+    [SerializeField]
+    private Slider BGMslider;
+    [SerializeField]
+    private Slider SFXslider;
+    [SerializeField]
+    private TextMeshProUGUI BGMText;
+    [SerializeField]
+    private TextMeshProUGUI SFXText;
+
+    private void Awake()
+    {
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
@@ -20,6 +36,9 @@ public class SettingsPopup : UIBase
         audioPopup.SetActive(true);          //audio tab active, others inactive
         graphicPopup.SetActive(false);
         controlPopup.SetActive(false);
+
+        BGMslider.onValueChanged.AddListener(OnBGMSliderEvent);
+        SFXslider.onValueChanged.AddListener(OnSFXSliderEvent);
     }
 
     // Update is called once per frame
@@ -41,6 +60,8 @@ public class SettingsPopup : UIBase
         graphicPopup.SetActive(false);
         controlPopup.SetActive(false);
         Debug.Log("오디오 설정창 활성화");
+
+
     }
 
     public void OnClickGraphicButton()
@@ -63,6 +84,17 @@ public class SettingsPopup : UIBase
     protected override void SetCurrentButton(GameObject gb)
     {
         base.SetCurrentButton(gb);
+    }
+
+    //오디오 슬라이더 관리
+    public void OnBGMSliderEvent(float value)
+    {
+        BGMText.text = $"{(value * 100):F1}%";
+    }
+
+    public void OnSFXSliderEvent(float value)
+    {
+        SFXText.text = $"{(value * 100):F1}%";
     }
 
 }
