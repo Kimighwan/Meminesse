@@ -30,7 +30,7 @@ public class Wolf_StunState : StunState
 
         if (isStunTimeOver)
         {
-            if (isPlayerInMeleeAttackRange)
+            if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
             {
                 stateMachine.ChangeState(enemy.meleeAttackState);
             }

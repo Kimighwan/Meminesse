@@ -10,6 +10,7 @@ public class ChargeState : State
     protected bool isDetectedPlayer;
     protected bool isPlayerInChargeRange;
     protected bool isChargeAnimationFinished;
+    protected bool isPlayerInMeleeAttackRange;
 
     public ChargeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_ChargeState stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -24,6 +25,7 @@ public class ChargeState : State
         isDetectLedge = entity.CheckLedge();
         isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
         isPlayerInChargeRange = entity.CheckPlayerInChargeRange();
+        isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
     }
 
     public override void Enter()

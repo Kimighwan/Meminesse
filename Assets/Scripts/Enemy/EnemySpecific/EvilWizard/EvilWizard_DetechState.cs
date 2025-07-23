@@ -30,7 +30,7 @@ public class EvilWizard_DetechState : DetectState
 
         if (!isDetectedPlayer)
             stateMachine.ChangeState(enemy.idleState);
-        else if (isPlayerInMeleeAttackRange)
+        else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
         {
             int randomValue = RandomAttack();
 

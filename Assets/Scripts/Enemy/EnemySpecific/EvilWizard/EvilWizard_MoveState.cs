@@ -35,7 +35,7 @@ public class EvilWizard_MoveState : MoveState
             enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);
         }
-        else if (isPlayerInMeleeAttackRange)
+        else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
         {
             int randomValue = RandomAttack();
 

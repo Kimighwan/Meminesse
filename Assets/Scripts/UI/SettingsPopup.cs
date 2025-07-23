@@ -81,7 +81,7 @@ public class SettingsPopup : UIBase
         Debug.Log("조작법 설정창 활성화");
     }
 
-    protected override void SetCurrentButton(GameObject gb)
+    public override void SetCurrentButton(GameObject gb)
     {
         base.SetCurrentButton(gb);
     }

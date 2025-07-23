@@ -22,6 +22,10 @@ public class EvilWizard : Entity
     [SerializeField] private Transform meleeAttack1Position;
     [SerializeField] private Transform meleeAttack2Position;
 
+    public float AttackCoolTime { get; set; } = 1.5f;
+    public float LastAttackTime { get; set; }
+
+
     public override void Start()
     {
         base.Start();
