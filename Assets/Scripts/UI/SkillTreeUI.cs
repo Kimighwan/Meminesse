@@ -1,16 +1,24 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SkillTreeUI : MonoBehaviour
+public class SkillTreeUI : UIBase
 {
     [SerializeField]
     private RectTransform descUIRectTransform;
     [SerializeField]
     private TextMeshProUGUI descUIText;
+    [SerializeField]
+    private RectTransform contentRectTransform;
 
-    // position
+    [Header("Skill descUI Position")]
     private Vector2 upPosition = Vector2.zero;
     private Vector2 downPosition = new Vector2(0f, -310f);
+
+    [Header("Scroll position to move")]
+    private Vector2 rightPosition = new Vector2(-1400f, 292f);    // Scroll Right Position to move right
+    private Vector2 leftPosition = new Vector2(-0f, 292f);     // Scroll Left Position to move right
 
     private float elapsedTime;
     private float clampT;
@@ -21,8 +29,15 @@ public class SkillTreeUI : MonoBehaviour
     public bool up = false;
     public bool down = false;
 
-    void Update()
+    protected override void Start()
     {
+        base.Start();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
         if (up)
         {
             elapsedTime += Time.deltaTime;
@@ -52,6 +67,7 @@ public class SkillTreeUI : MonoBehaviour
                 elapsedTime = 0;
             }
         }
+
     }
 
     public void OnClickSkillNode(int nodeID)
@@ -76,4 +92,18 @@ public class SkillTreeUI : MonoBehaviour
         down = true;
     }
 
+    public override void SetCurrentButton(GameObject gb)
+    {
+        base.SetCurrentButton(gb);
+    }
+
+    public void MoveRightScroll()
+    {
+        contentRectTransform.anchoredPosition = rightPosition;
+    }
+
+    public void MoveLeftScroll()
+    {
+        contentRectTransform.anchoredPosition = leftPosition;
+    }
 }

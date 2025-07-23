@@ -278,12 +278,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 376690085}
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
+          m_MethodName: SetCurrentButton
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 3918886}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 376690085}
-          m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
           m_MethodName: SetCurrentButton
           m_Mode: 2
           m_Arguments:
@@ -1232,12 +1248,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 376690085}
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
+          m_MethodName: SetCurrentButton
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 117716828}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 376690085}
-          m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
           m_MethodName: SetCurrentButton
           m_Mode: 2
           m_Arguments:
@@ -6621,12 +6653,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 376690085}
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
+          m_MethodName: SetCurrentButton
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 975021976}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 376690085}
-          m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
           m_MethodName: SetCurrentButton
           m_Mode: 2
           m_Arguments:
@@ -9862,12 +9910,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 376690085}
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
+          m_MethodName: SetCurrentButton
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1582722012}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 376690085}
-          m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
           m_MethodName: SetCurrentButton
           m_Mode: 2
           m_Arguments:
