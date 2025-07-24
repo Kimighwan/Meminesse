@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : UIBase
 {
+    [SerializeField]
+    private GameObject settingUI;
+
     protected override void Start()
     {
         base.Start();
@@ -22,6 +25,7 @@ public class MainMenu : UIBase
 
     protected override void Update()
     {
+        if (settingUI.activeSelf) return;
         base.Update();
         // UIBase에서 키보드 모드와 마우스 모드를 전환하는 로직이 있으므로, 여기서는 추가적인 로직이 필요하지 않음
     }
