@@ -41,6 +41,7 @@ public class SettingsPopup : UIBase
         SFXslider.onValueChanged.AddListener(OnSFXSliderEvent);
     }
 
+
     // Update is called once per frame
     protected override void Update()
     {
