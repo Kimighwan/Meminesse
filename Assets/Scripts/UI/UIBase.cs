@@ -43,6 +43,7 @@ public class UIBase : MonoBehaviour
             Debug.Log("키보드 모드 진입");
 
             EventSystem.current.SetSelectedGameObject(currentButton); //다시 선택
+            SetCurrentButton(currentButton);
 
             isKeyboardMode = true;
             Cursor.visible = false;
