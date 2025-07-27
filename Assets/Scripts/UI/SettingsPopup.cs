@@ -46,6 +46,7 @@ public class SettingsPopup : UIBase
     protected override void Update()
     {
         base.Update();
+        // esc버튼 - 종료
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("설정 팝업 닫힘");
