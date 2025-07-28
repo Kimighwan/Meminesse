@@ -51,20 +51,13 @@ public class PlayerData
 
 public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
 {
-    // 임시 테스트용
-    private PlayerData playerData = new PlayerData();
+    private PlayerData playerData;
 
     private const string KEY = "Ikhwan@@ZZang!!";
     private string PATH;
     protected override void Init() // Awake
     {
         base.Init();
-
-        //if(플레이어 데이터 파일이 없다면 새로 생성)
-        //{
-        //}
-        //else // 파일이 있으므로 불러와서 적용하기
-        //{ }
 
         // 경로는 임시로 dataPath로 지정 - 테스터 용이, 추후 아래 주석으로 적용하기
         PATH = Path.Combine(Application.dataPath, "playerData.json");
@@ -160,12 +153,10 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
 
     #region Save-Load
 
-    //[ContextMenu("To Json Data")]
     public void Save()
     {
         string jsonData = JsonUtility.ToJson(playerData);
         Debug.Log(jsonData);
-        //File.WriteAllText(PATH, jsonData);
         File.WriteAllText(PATH, Encrypt(jsonData, KEY));
     }
     public void Load()
@@ -173,13 +164,13 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
         if(!File.Exists(PATH)) // Create
         {
             Debug.Log("파일 없어서 새로 저장");
+            playerData = new PlayerData();
             Save();
         }
         else // Load
         {
             Debug.Log("파일 존재해서 로드");
             string loadJson = File.ReadAllText(PATH);
-            //playerData = JsonUtility.FromJson<PlayerData>(loadJson);
             playerData = JsonUtility.FromJson<PlayerData>(Decrypt(loadJson, KEY));
         }
     }
