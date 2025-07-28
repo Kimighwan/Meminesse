@@ -86,10 +86,16 @@ public class SkillTreeUI : UIBase
         descUIActiveCheck = true;
         // 활성화 버튼 이벤트 전부 삭제
         skillActiveButton.onClick.RemoveAllListeners();
-        skillActiveButton.onClick.AddListener(() => BActive[nodeID] = true);
-        skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false));
+        skillActiveButton.onClick.AddListener(() => BActive[nodeID] = true);    // 해당 노드 스킬 찍었음을 확인하는 조건 변수
+        skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false)); // 스킬 활성화 버튼 비활성화
+        skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save()); // 변경된 데이터 저장
+
+
+        
 
         // 노드에 맞게 설명과 버튼 이벤트 할당
+        // 1) 노드에 맞는 기능들 버튼에 부여
+        // 2) 모든 능력치 보는 UI에 능력치 업데이트
         switch (nodeID)
         {
             case 1:
@@ -219,7 +225,6 @@ public class SkillTreeUI : UIBase
                 break;
 
         }
-        PlayerDataManager.Instance.Save();
     }
 
     public void DownDescUIAnmation()
