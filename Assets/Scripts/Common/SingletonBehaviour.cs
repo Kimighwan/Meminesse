@@ -5,11 +5,11 @@ public class SingletonBehaviour<T> : MonoBehaviour where T : SingletonBehaviour<
     // 씬 전환 시 삭제 여부
     protected bool isDestoryOnLoad = false;     // 디폴트 : 유지
 
-    protected T instance;
+    protected static T instance;
 
     public static T Instance
     {
-        get { return Instance; }
+        get { return instance; }
     }
 
     private void Awake()

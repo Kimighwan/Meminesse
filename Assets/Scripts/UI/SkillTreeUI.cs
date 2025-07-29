@@ -11,6 +11,11 @@ public class SkillTreeUI : UIBase
     private TextMeshProUGUI descUIText;
     [SerializeField]
     private RectTransform contentRectTransform;
+    [SerializeField]
+    private AllSkillDescUI allSkillDescUI;
+    [SerializeField]
+    private Button skillActiveButton;
+    private bool[] BActive = new bool[20];
 
     [Header("Skill descUI Position")]
     private Vector2 upPosition = Vector2.zero;
@@ -79,8 +84,147 @@ public class SkillTreeUI : UIBase
             up = true;
 
         descUIActiveCheck = true;
+        // 활성화 버튼 이벤트 전부 삭제
+        skillActiveButton.onClick.RemoveAllListeners();
+        skillActiveButton.onClick.AddListener(() => BActive[nodeID] = true);    // 해당 노드 스킬 찍었음을 확인하는 조건 변수
+        skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false)); // 스킬 활성화 버튼 비활성화
+        skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save()); // 변경된 데이터 저장
 
-        descUIText.text = nodeID.ToString();
+
+        
+
+        // 노드에 맞게 설명과 버튼 이벤트 할당
+        // 1) 노드에 맞는 기능들 버튼에 부여
+        // 2) 모든 능력치 보는 UI에 능력치 업데이트
+        switch (nodeID)
+        {
+            case 1:
+                descUIText.text = "체력 +1";
+                if (!BActive[nodeID])
+                {
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.AddHP);
+                    skillActiveButton.onClick.AddListener(allSkillDescUI.AddHP);
+                    skillActiveButton.gameObject.SetActive(true);
+                }
+                else
+                    skillActiveButton.gameObject.SetActive(false);
+                //PlayerDataManager.Instance.AddHP();
+                //allSkillDescUI.AddHP();
+                break;
+            case 2:
+            case 4:
+            case 11:
+                descUIText.text = "대쉬 쿨타임 감소 -0.5초";
+                if (!BActive[nodeID])
+                {
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.DashCoolTimeDecrease);
+                    skillActiveButton.onClick.AddListener(allSkillDescUI.DashCoolTimeDecrease);
+                    skillActiveButton.gameObject.SetActive(true);
+                }
+                else
+                    skillActiveButton.gameObject.SetActive(false);
+                //PlayerDataManager.Instance.DashCoolTimeDecrease();
+                //allSkillDescUI.DashCoolTimeDecrease();
+                break;
+            case 3:
+            case 10:
+                descUIText.text = "아이템 드랍률 상승 +25%";
+                if (!BActive[nodeID])
+                {
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.ItemDropRate);
+                    skillActiveButton.onClick.AddListener(allSkillDescUI.ItemDropRate);
+                    skillActiveButton.gameObject.SetActive(true);
+                }
+                else
+                    skillActiveButton.gameObject.SetActive(false);
+                //PlayerDataManager.Instance.ItemDropRate();
+                //allSkillDescUI.ItemDropRate();
+                break;
+            case 5:
+            case 13:
+                descUIText.text = "재화 드랍률 상승 +25%";
+                if (!BActive[nodeID])
+                {
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.GoldDropRate);
+                    skillActiveButton.onClick.AddListener(allSkillDescUI.GoldDropRate);
+                    skillActiveButton.gameObject.SetActive(true);
+                }
+                else
+                    skillActiveButton.gameObject.SetActive(false);
+                //PlayerDataManager.Instance.GoldDropRate();
+                //allSkillDescUI.GoldDropRate();
+                break;
+            case 6:
+            case 14:
+                descUIText.text = "방어력 무시 증가 +50%";
+                if (!BActive[nodeID])
+                {
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.DefenseIgnoreIncrease);
+                    skillActiveButton.onClick.AddListener(allSkillDescUI.DefenseIgnoreIncrease);
+                    skillActiveButton.gameObject.SetActive(true);
+                }
+                else
+                    skillActiveButton.gameObject.SetActive(false);
+                //PlayerDataManager.Instance.DefenseIgnoreIncrease();
+                //allSkillDescUI.DefenseIgnoreIncrease();
+                break;
+            case 7:
+            case 17:
+            case 20:
+                descUIText.text = "공격력 상승 +10%";
+                if (!BActive[nodeID])
+                {
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.DamageIncrease);
+                    skillActiveButton.onClick.AddListener(allSkillDescUI.DamageIncrease);
+                    skillActiveButton.gameObject.SetActive(true);
+                }
+                else
+                    skillActiveButton.gameObject.SetActive(false);
+                //PlayerDataManager.Instance.DamageIncrease();
+                //allSkillDescUI.DamageIncrease();
+                break;
+            case 8:
+            case 15:
+            case 18:
+                descUIText.text = "스킬 쿨타임 감소 -10%";
+                if (!BActive[nodeID])
+                {
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.SkillCoolTimeDecrease);
+                    skillActiveButton.onClick.AddListener(allSkillDescUI.SkillCoolTimeDecrease);
+                    skillActiveButton.gameObject.SetActive(true);
+                }
+                else
+                    skillActiveButton.gameObject.SetActive(false);
+                //PlayerDataManager.Instance.SkillCoolTimeDecrease();
+                //allSkillDescUI.SkillCoolTimeDecrease();
+                break;
+            case 9:
+            case 12:
+            case 16:
+            case 19:
+                descUIText.text = "체력 회복량 증가 +25%";
+                if (!BActive[nodeID])
+                {
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.HealingAmountIncrease);
+                    skillActiveButton.onClick.AddListener(allSkillDescUI.HealingAmount);
+                    skillActiveButton.gameObject.SetActive(true);
+                }
+                else
+                    skillActiveButton.gameObject.SetActive(false);
+                //PlayerDataManager.Instance.HealingAmountIncrease();
+                //allSkillDescUI.HealingAmount();
+                break;
+            case 21:
+                descUIText.text = "첫 번째 상위 패시브";
+                break;
+            case 22:
+                descUIText.text = "두 번째 상위 패시브";
+                break;
+            case 23:
+                descUIText.text = "세 번째 상위 패시브";
+                break;
+
+        }
     }
 
     public void DownDescUIAnmation()
@@ -99,11 +243,90 @@ public class SkillTreeUI : UIBase
 
     public void MoveRightScroll()
     {
-        contentRectTransform.anchoredPosition = rightPosition;
+        if (contentRectTransform.anchoredPosition == rightPosition)
+            return;
+
+        StopAllCoroutines();
+        StartCoroutine(MoveRight(contentRectTransform.anchoredPosition));
     }
 
     public void MoveLeftScroll()
     {
+        if (contentRectTransform.anchoredPosition == leftPosition)
+            return;
+
+        StopAllCoroutines();
+        StartCoroutine(MoveLeft(contentRectTransform.anchoredPosition));
+    }
+
+    private IEnumerator MoveRight(Vector2 startPos)
+    {
+        var startTime = Time.time;
+
+        while(Time.time - startTime < 1)
+        {
+            contentRectTransform.anchoredPosition = Vector2.Lerp(startPos, rightPosition, (Time.time - startTime));
+            yield return null;
+        }
+
+        contentRectTransform.anchoredPosition = rightPosition;
+    }
+
+    private IEnumerator MoveLeft(Vector2 startPos)
+    {
+        var startTime = Time.time;
+
+        while (Time.time - startTime < 1)
+        {
+            contentRectTransform.anchoredPosition = Vector2.Lerp(startPos, leftPosition, (Time.time - startTime));
+            yield return null;
+        }
+
         contentRectTransform.anchoredPosition = leftPosition;
     }
+
+
+    /*--------------------
+     * apply skill data
+     -------------------*/
+
+    //public void AddHP()
+    //{
+    //    PlayerDataManager.Instance.AddHP();
+    //}
+
+    //public void HealingAmount()
+    //{
+    //    PlayerDataManager.Instance.HealingAmountIncrease();
+    //}
+
+    //public void DashCoolTimeDecrease()
+    //{
+    //    PlayerDataManager.Instance.DashCoolTimeDecrease();
+    //}
+
+    //public void SkillCoolTimeDecrease()
+    //{
+    //    PlayerDataManager.Instance.SkillCoolTimeDecrease();
+    //}
+
+    //public void ItemDropRate()
+    //{
+    //    PlayerDataManager.Instance.ItemDropRate();
+    //}
+
+    //public void GoldDropRate()
+    //{
+    //    PlayerDataManager.Instance.GoldDropRate();
+    //}
+
+    //public void DefenseIgnoreIncrease()
+    //{
+    //    PlayerDataManager.Instance.DefenseIgnoreIncrease();
+    //}
+
+    //public void DamageIncrease()
+    //{
+    //    PlayerDataManager.Instance.DamageIncrease();
+    //}
 }
