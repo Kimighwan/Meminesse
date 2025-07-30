@@ -68,7 +68,6 @@ public class SettingsPopup : UIBase
 
     public void OnClickGraphicButton()
     {
-        //graphicPopup.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         graphicPopup.SetActive(true);       //graphic tab active, others inactive
         audioPopup.SetActive(false);
         controlPopup.SetActive(false);
