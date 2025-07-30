@@ -1801,7 +1801,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 817558460}
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 488016254}
     m_SelectOnLeft: {fileID: 974408859}
     m_SelectOnRight: {fileID: 1760848745}
@@ -2217,7 +2217,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 80149911}
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 618311227}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 1929832713}
@@ -7446,7 +7446,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 817558460}
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 752101249}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 146189256}
@@ -8905,6 +8905,11 @@ MonoBehaviour:
   audioPopup: {fileID: 1259673148}
   graphicPopup: {fileID: 1546822868}
   controlPopup: {fileID: 773932995}
+  currentBtnText: {fileID: 1417387260}
+  topButtonTexts:
+  - {fileID: 1417387260}
+  - {fileID: 540318637}
+  - {fileID: 1305852183}
   BGMslider: {fileID: 1929832713}
   SFXslider: {fileID: 1435524137}
   BGMText: {fileID: 26615974}
@@ -11217,10 +11222,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 221497545}
+    m_SelectOnDown: {fileID: 221497545}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -13416,7 +13421,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 817558460}
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 204287146}
     m_SelectOnLeft: {fileID: 146189256}
     m_SelectOnRight: {fileID: 0}
@@ -13537,7 +13542,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 502077772}
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 2125517041}
@@ -14804,10 +14809,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 618311227}
+    m_SelectOnDown: {fileID: 618311227}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
