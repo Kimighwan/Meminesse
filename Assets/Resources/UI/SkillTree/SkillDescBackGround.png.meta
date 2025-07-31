@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f66381568aa84284a9152736dd1c4a52
+guid: b7ed5608bdf965e42975286eddb13b96
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1138733447863083444
-    second: "diagonal unlocked node\u2198_0"
+      213: 6501338675160245116
+    second: SkillDescBackGround_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "diagonal unlocked node\u2198_0"
+      name: SkillDescBackGround_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 108
-        height: 68
+        x: 4
+        y: 29
+        width: 1866
+        height: 484
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c4ed34266f76230f0800000000000000
-      internalID: -1138733447863083444
+      spriteID: c736f695415693a50800000000000000
+      internalID: 6501338675160245116
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      "diagonal unlocked node\u2198_0": -1138733447863083444
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,14 @@
 fileFormatVersion: 2
-guid: af6d1b783b94c6646ab3af4acb58e67d
+guid: e762ff39efe5c35449652eeaf89f2663
+AssetOrigin:
+  serializedVersion: 1
+  productId: 186427
+  packageName: 4416 RPG Icons Pixel Art
+  packageVersion: 1.7
+  assetPath: Assets/RPG Icons Pixel Art/Runes/PNG/Background/runes+bricks+effects/Icon40.png
+  uploadId: 644653
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 5324305011367075605
-    second: pressed outline_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +50,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -68,7 +72,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
@@ -98,34 +102,12 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: pressed outline_0
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 3
-        width: 138
-        height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 51fdd5ec23bb3e940800000000000000
-      internalID: 5324305011367075605
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -134,8 +116,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      pressed outline_0: 5324305011367075605
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

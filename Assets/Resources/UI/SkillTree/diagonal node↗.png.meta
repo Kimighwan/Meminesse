@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1d38aeb02cb29934c8cd3d3a8db0a7b7
+guid: 7441057cb9e5e644ab9755c2fae196bc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6101788372141420306
-    second: "diagonal unlocked node\u2199_0"
+      213: 8164804134289020172
+    second: "diagonal node\u2197_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "diagonal unlocked node\u2199_0"
+      name: "diagonal node\u2197_0"
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 21f29102238eda450800000000000000
-      internalID: 6101788372141420306
+      spriteID: c0510f4e9163f4170800000000000000
+      internalID: 8164804134289020172
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "diagonal unlocked node\u2199_0": 6101788372141420306
+      "diagonal node\u2197_0": 8164804134289020172
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

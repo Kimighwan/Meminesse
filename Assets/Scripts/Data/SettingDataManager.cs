@@ -104,22 +104,21 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
         keyDataList.Add(new KeyData("ESC", KeyCode.Escape));
 
         keyDataList.Add(new KeyData("Up", KeyCode.UpArrow));
-        keyDataList.Add(new KeyData("Dwon", KeyCode.DownArrow));
+        keyDataList.Add(new KeyData("Down", KeyCode.DownArrow));
         keyDataList.Add(new KeyData("Right", KeyCode.RightArrow));
         keyDataList.Add(new KeyData("Left", KeyCode.LeftArrow));
         keyDataList.Add(new KeyData("Jump", KeyCode.Space));
 
-        keyDataList.Add(new KeyData("BasicAttack", KeyCode.S));
+        keyDataList.Add(new KeyData("BasicAttack", KeyCode.A));
     }
     public bool ChangeKey(string tartgetKeyName, KeyCode newKeyCode)    // 변경 성공시 True 실패시 False 반환
     {
-        if (false)
-        {
-            // 예외 처리, 조건 검사는 추후에 추가한다.
-            // 1) 설정되면 안 되는 Key인지 검사
-            // 2) 이미 설정된 키가 있는지 검사
-            return false;
-        }
+        // 예외 처리, 조건 검사는 추후에 추가한다.
+        // 1) 설정되면 안 되는 Key인지 검사 - 일단 존재하지 않음
+        // 2) 이미 설정된 키가 있는지 검사
+        foreach (var keyData in keyDataList)
+            if (keyData.keyCode == newKeyCode)
+                return false;
 
         foreach (var keyData in keyDataList)
         {
