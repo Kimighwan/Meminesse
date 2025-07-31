@@ -1,14 +1,10 @@
 fileFormatVersion: 2
-guid: e33499a4a213dbd43a03b7f76493a656
-AssetOrigin:
-  serializedVersion: 1
-  productId: 186427
-  packageName: 4416 RPG Icons Pixel Art
-  packageVersion: 1.7
-  assetPath: Assets/RPG Icons Pixel Art/Runes/PNG/Transperent/runes+bricks+effects/Icon41.png
-  uploadId: 644653
+guid: b129e5faf83f38b4ebb1fead445dac1c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2508929564588607594
+    second: unlocked outline_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -41,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,14 +68,14 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -102,7 +98,29 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: unlocked outline_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 14
+        width: 116
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6887c7652281d220800000000000000
+      internalID: 2508929564588607594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -116,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      unlocked outline_0: 2508929564588607594
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

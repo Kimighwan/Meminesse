@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3823ffa134c1e13459a4c8fec7db18ca
+guid: 611f8ecccda862b4faafc542c452ca8d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8656887783973182198
-    second: "diagonal node\u2198_0"
+      213: 3795403112150518743
+    second: big outline_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "diagonal node\u2198_0"
+      name: big outline_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 108
-        height: 68
+        width: 276
+        height: 276
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6fad328c291732870800000000000000
-      internalID: 8656887783973182198
+      spriteID: 7dbc427850bfba430800000000000000
+      internalID: 3795403112150518743
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "diagonal node\u2198_0": 8656887783973182198
+      big outline_0: 3795403112150518743
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
