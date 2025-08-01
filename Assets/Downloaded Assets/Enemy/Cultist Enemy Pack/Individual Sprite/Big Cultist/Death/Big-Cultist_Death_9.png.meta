@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Big-Cultist_Death_9_0: -3789584029472199555
+      Big-Cultist_Death_9_1: -5808590552121140421
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

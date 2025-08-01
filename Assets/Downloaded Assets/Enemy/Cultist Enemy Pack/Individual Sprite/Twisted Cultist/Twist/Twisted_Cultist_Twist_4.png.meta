@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Twisted_Cultist_Twist_4_0: -2689566635598364875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

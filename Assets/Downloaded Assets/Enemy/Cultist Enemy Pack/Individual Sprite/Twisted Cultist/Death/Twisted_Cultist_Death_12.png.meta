@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Twisted_Cultist_Death_12_0: 6480379824801142173
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

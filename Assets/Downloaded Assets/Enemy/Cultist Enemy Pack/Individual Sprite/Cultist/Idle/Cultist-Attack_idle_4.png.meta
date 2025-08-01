@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cultist-Attack_idle_4_0: 5316621888188874571
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

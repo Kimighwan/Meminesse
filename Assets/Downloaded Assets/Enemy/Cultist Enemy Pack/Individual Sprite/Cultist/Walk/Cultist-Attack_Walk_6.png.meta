@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cultist-Attack_Walk_6_0: 845977356792040562
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

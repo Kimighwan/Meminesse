@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Twisted_Cultist_Attack_1_0: -3441269352621954740
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Big-Cultist_Attack_6_0: 4340255308446344401
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

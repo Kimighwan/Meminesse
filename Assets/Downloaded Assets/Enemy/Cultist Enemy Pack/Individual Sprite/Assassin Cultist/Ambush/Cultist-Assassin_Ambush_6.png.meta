@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cultist-Assassin_Ambush_6_0: -7057581908248605
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

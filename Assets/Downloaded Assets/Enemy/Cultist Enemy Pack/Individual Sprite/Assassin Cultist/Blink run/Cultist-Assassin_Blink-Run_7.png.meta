@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cultist-Assassin_Blink-Run_7_0: -8954356241041074848
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

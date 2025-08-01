@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cultist-Assassin_Vanish_6_0: 7122405146581790126
+      Cultist-Assassin_Vanish_6_1: -1807166899016382330
+      Cultist-Assassin_Vanish_6_2: -6643481580612602275
+      Cultist-Assassin_Vanish_6_3: -2062577708726259160
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

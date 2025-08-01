@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Big-Cultist_Jump_2_0: -2815734214277969851
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

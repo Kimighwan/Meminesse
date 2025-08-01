@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Twisted_Cultist_Walk_4_0: 3387748001311275381
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

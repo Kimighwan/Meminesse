@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cultist-Assassin_Arise_5_0: 1256054504384586660
+      Cultist-Assassin_Arise_5_1: -6842533029059263991
+      Cultist-Assassin_Arise_5_2: -8942502041448280127
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

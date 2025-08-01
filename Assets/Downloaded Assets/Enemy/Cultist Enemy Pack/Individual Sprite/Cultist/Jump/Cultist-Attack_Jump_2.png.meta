@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cultist-Attack_Jump_2_0: -8323380749049128031
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

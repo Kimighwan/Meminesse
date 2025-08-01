@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cultist-Assassin_Attack_8_0: -2073226070243508440
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

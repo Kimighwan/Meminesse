@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cultist-Attack_FireBall_2_0: 2326550596547612121
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
