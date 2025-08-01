@@ -92,7 +92,6 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
     {
         foreach (var keyData in keyDataList)
         {
-            if (keyData.keyName == keyName)
                 return keyData.keyCode;
         }
         return KeyCode.None;

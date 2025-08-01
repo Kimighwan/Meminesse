@@ -1,0 +1,1720 @@
+fileFormatVersion: 2
+guid: cb0113cbeb245f44286e7fd9b667eb52
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7675299668515684634
+    second: Cultist-SS_0
+  - first:
+      213: -3553516263182161013
+    second: Cultist-SS_1
+  - first:
+      213: -294143715294941229
+    second: Cultist-SS_2
+  - first:
+      213: 5672144080261111068
+    second: Cultist-SS_3
+  - first:
+      213: 4067010005708299292
+    second: Cultist-SS_4
+  - first:
+      213: -3084080855252078851
+    second: Cultist-SS_5
+  - first:
+      213: -1849732194650053272
+    second: Cultist-SS_6
+  - first:
+      213: -2105795492242881242
+    second: Cultist-SS_7
+  - first:
+      213: -39160185333345348
+    second: Cultist-SS_8
+  - first:
+      213: 4335953485240281852
+    second: Cultist-SS_9
+  - first:
+      213: -3171056074690515881
+    second: Cultist-SS_10
+  - first:
+      213: -8940763916595530043
+    second: Cultist-SS_11
+  - first:
+      213: 3799968229038520865
+    second: Cultist-SS_12
+  - first:
+      213: -4867333484995617842
+    second: Cultist-SS_13
+  - first:
+      213: -8286339856180847730
+    second: Cultist-SS_14
+  - first:
+      213: 4765445594102584048
+    second: Cultist-SS_15
+  - first:
+      213: -7329837930831409614
+    second: Cultist-SS_16
+  - first:
+      213: -9055263484392243674
+    second: Cultist-SS_17
+  - first:
+      213: 1191548601925466799
+    second: Cultist-SS_18
+  - first:
+      213: 7465356487019130454
+    second: Cultist-SS_19
+  - first:
+      213: 4644758641824383209
+    second: Cultist-SS_20
+  - first:
+      213: -4036391830999299542
+    second: Cultist-SS_21
+  - first:
+      213: 5355146970896421566
+    second: Cultist-SS_22
+  - first:
+      213: 8485662208914707035
+    second: Cultist-SS_23
+  - first:
+      213: -1154813515629565541
+    second: Cultist-SS_24
+  - first:
+      213: -6501729737418987747
+    second: Cultist-SS_25
+  - first:
+      213: -1943317664417525656
+    second: Cultist-SS_26
+  - first:
+      213: -4158180939063266421
+    second: Cultist-SS_27
+  - first:
+      213: -4691942057574048036
+    second: Cultist-SS_28
+  - first:
+      213: -5389998270213661697
+    second: Cultist-SS_29
+  - first:
+      213: -817278678162183881
+    second: Cultist-SS_30
+  - first:
+      213: -3379979517293615899
+    second: Cultist-SS_31
+  - first:
+      213: 703103456603117278
+    second: Cultist-SS_32
+  - first:
+      213: -2911003236552656978
+    second: Cultist-SS_33
+  - first:
+      213: -8310650266686844174
+    second: Cultist-SS_34
+  - first:
+      213: 1079943909948122967
+    second: Cultist-SS_35
+  - first:
+      213: -8562267524618141779
+    second: Cultist-SS_36
+  - first:
+      213: 3274950319801119919
+    second: Cultist-SS_37
+  - first:
+      213: 2495952845876371629
+    second: Cultist-SS_38
+  - first:
+      213: -5323962214662977824
+    second: Cultist-SS_39
+  - first:
+      213: -2287488106458898240
+    second: Cultist-SS_40
+  - first:
+      213: -3143591785583461013
+    second: Cultist-SS_41
+  - first:
+      213: -6381713907224404581
+    second: Cultist-SS_42
+  - first:
+      213: -3512076698534468087
+    second: Cultist-SS_43
+  - first:
+      213: -2914028720186883662
+    second: Cultist-SS_44
+  - first:
+      213: -4185944911232597789
+    second: Cultist-SS_45
+  - first:
+      213: -3886391916122210900
+    second: Cultist-SS_46
+  - first:
+      213: 4721467686547910693
+    second: Cultist-SS_47
+  - first:
+      213: 5354732780399353745
+    second: Cultist-SS_48
+  - first:
+      213: 6051168647330833405
+    second: Cultist-SS_49
+  - first:
+      213: -3962436661794915010
+    second: Cultist-SS_50
+  - first:
+      213: -4328368436936552886
+    second: Cultist-SS_51
+  - first:
+      213: -6305580916945789883
+    second: Cultist-SS_52
+  - first:
+      213: 1479359559860381280
+    second: Cultist-SS_53
+  - first:
+      213: -3883701289651965619
+    second: Cultist-SS_54
+  - first:
+      213: 6684336548699341318
+    second: Cultist-SS_55
+  - first:
+      213: 1858675019809995375
+    second: Cultist-SS_56
+  - first:
+      213: 2654322884369459044
+    second: Cultist-SS_57
+  - first:
+      213: -7275563821493583581
+    second: Cultist-SS_58
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Nomal_Cultist_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 378
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 032507c9369f08d49932537d4254b386
+      internalID: -1577593038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_1
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 378
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47adc8943742ea149914cd26c541767d
+      internalID: -1001281962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 378
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7792c5bedee35ff41945e4f581482387
+      internalID: -1754443477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_3
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 378
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9c233c1000ee2140bfb9b7f13c1f513
+      internalID: 978629024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_4
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 378
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b68e2134263c8c54e8272f27f52cf6fe
+      internalID: 2088293412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_5
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 378
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02166d7158436ff45a72de65c9ed991b
+      internalID: -352705176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c9e55a6c4c6754c9656ef59c3a7391
+      internalID: -315931606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_7
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 336
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 115337627e18f94418cb23ec6009beab
+      internalID: -1838141743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_8
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 336
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a4f9ee4e60baab489bfc39cb2a60932
+      internalID: -431060606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_9
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 336
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f806c6cf2056f9439362eb89838ec57
+      internalID: 1870265663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_10
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 336
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26ded31e124a43b478a99a118fdead80
+      internalID: -994872384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_11
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 336
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e4e8b0703aff054d93fdc9658abc12e
+      internalID: 1791122513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_12
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 336
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a255dfd687985f54ca2ac243f26787f1
+      internalID: 407666185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_13
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 336
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 362104c4cf996b846acbb8df2a3ff7ab
+      internalID: 1828000103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 294
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81bcdfa2ff4bfb04fa79568f40174cfc
+      internalID: 1311057568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_15
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 294
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db74da5f3cab2064894c6ed716404e51
+      internalID: 1097044579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_16
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 294
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c65bfce40df77ac438a804df6b97c3af
+      internalID: 90168581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_17
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 294
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 506028c51005c584a84ad672116f5001
+      internalID: -644702509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_18
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 294
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01dcaa5d80769b14c8df6c170402720b
+      internalID: -1612324700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_19
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 294
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: becbe1dadf2cebd4cb10859d7cb5e95b
+      internalID: -905459943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_20
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 294
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fac79a44167740244aed176c0e8538dc
+      internalID: 1534217030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_21
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 294
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a24019a2c5864f44a1e56277d83f142
+      internalID: -1520937098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_22
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 294
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee5d4a61ed52404e96e02aff82cd8ec
+      internalID: -1428229770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_23
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 294
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d759307d984ed439928e14d4bb739c
+      internalID: 1273822233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 252
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d7d04e5c697b74ab24a862c21f38ed
+      internalID: -788317397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_25
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 252
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29cfcd84cac07e0489935f4d85719c3d
+      internalID: -1577239610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_26
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 252
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bef3834845ffac468989c98eab54a82
+      internalID: 57691062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_27
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 252
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c77ce8cfc7aa024458a4997527ed421d
+      internalID: 1962949251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 210
+        width: 45
+        height: 42
+      alignment: 9
+      pivot: {x: 0.55, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d617ab9f3b54f3c489059f1466d91d54
+      internalID: -1415665532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_29
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 210
+        width: 45
+        height: 42
+      alignment: 9
+      pivot: {x: 0.55, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1042680f920c5974d9601a7ffd2255c2
+      internalID: 1076924010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_30
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 210
+        width: 45
+        height: 42
+      alignment: 9
+      pivot: {x: 0.55, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4034064e90539da4da05aa07a3521e75
+      internalID: -476202082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_31
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 210
+        width: 45
+        height: 42
+      alignment: 9
+      pivot: {x: 0.55, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee323952af612174a9d940ec7e010b6c
+      internalID: -1445202743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_32
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 210
+        width: 45
+        height: 42
+      alignment: 9
+      pivot: {x: 0.55, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e5d686f5a84dc14e8d2500628586669
+      internalID: -228960662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 168
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f4727b8b34d4044eb43dc3718bbbe16
+      internalID: -1011230729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_34
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 168
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c935d066dec96a34a8cdba57a56107c8
+      internalID: -593053311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_35
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 168
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c5f25a7a06d4d849ada05048f8102b7
+      internalID: 1257636987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 126
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 054addeb46230da4a86ccc08fe64377e
+      internalID: -1372037255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_37
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 126
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c62493d0e91fa5748a23d71f5f57144e
+      internalID: 1157342303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_38
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 126
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 242ed5fc37b91ea47afc1f740380a5b2
+      internalID: -1024507206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_39
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 126
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 514ecac84e72f9e4b833292d9be0f750
+      internalID: -1786046453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_40
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 126
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc27bcba24f63674c8831cc87edb3b10
+      internalID: -1472973979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_41
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 126
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2ff1bbcde38d4c4984708a138a10ad1
+      internalID: 256668801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_42
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 126
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0eddfd7379b51740901e2be33269cc1
+      internalID: -472461062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_43
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 126
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd6cac13b70951048b655327bacf7157
+      internalID: -278308527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_44
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 126
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9276ba1d4f60299468bf8772ae366d9c
+      internalID: 820761221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_45
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 126
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2308916cf986c95448f8cf7e84fce3fb
+      internalID: 570005977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_46
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 126
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d08b2e6f1ef242f4a8de66939fd017fe
+      internalID: 1808934595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_47
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 126
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a57734a2d989a042a1f3a471f88010f
+      internalID: -2110799469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 84
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a00572dd1a4a37e408febbbfa3d2af75
+      internalID: -1566151775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_49
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 84
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6caa43cf425eca34a839a2c59eef7485
+      internalID: 1062355041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_50
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 84
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c54fb3d5bedefa54f988bb99c3ec5541
+      internalID: 2053771144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 42
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c05b1773107e7a4198dc27d94f0b088
+      internalID: -1138397322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_52
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 42
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb3f524e72aece24e8b8df7b7c01e52f
+      internalID: -872664214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7598ffc2b7dfd744a9c88f7ce090920e
+      internalID: -251138228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_54
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 0
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8357ce3b937bf4440baa90420fe3917c
+      internalID: -1896562487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_55
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30c6da8e02524674fa3ac826011a3455
+      internalID: 1790998132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_56
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 0
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bab101c384555442ba3cf32cf62df77
+      internalID: -2023120173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_57
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18b123f78fa49ff40b15f701b81f94ed
+      internalID: -248724410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_58
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 0
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6766f9275a0cfe744bfe6429af7bda24
+      internalID: 957909205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_59
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 0
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4e1ac97936c14a4a8fdbf03d8d513ba
+      internalID: -878403268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_60
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 0
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce694a0c1ffea9946a60b4957df7b167
+      internalID: 686803988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nomal_Cultist_61
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8e18dbeb670cdc41a7cd6c48639bf4c
+      internalID: -325329078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 67247a7d4eeeab646b6b4321058433fa
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Nomal_Cultist_0: -1577593038
+      Nomal_Cultist_1: -1001281962
+      Nomal_Cultist_10: -994872384
+      Nomal_Cultist_11: 1791122513
+      Nomal_Cultist_12: 407666185
+      Nomal_Cultist_13: 1828000103
+      Nomal_Cultist_14: 1311057568
+      Nomal_Cultist_15: 1097044579
+      Nomal_Cultist_16: 90168581
+      Nomal_Cultist_17: -644702509
+      Nomal_Cultist_18: -1612324700
+      Nomal_Cultist_19: -905459943
+      Nomal_Cultist_2: -1754443477
+      Nomal_Cultist_20: 1534217030
+      Nomal_Cultist_21: -1520937098
+      Nomal_Cultist_22: -1428229770
+      Nomal_Cultist_23: 1273822233
+      Nomal_Cultist_24: -788317397
+      Nomal_Cultist_25: -1577239610
+      Nomal_Cultist_26: 57691062
+      Nomal_Cultist_27: 1962949251
+      Nomal_Cultist_28: -1415665532
+      Nomal_Cultist_29: 1076924010
+      Nomal_Cultist_3: 978629024
+      Nomal_Cultist_30: -476202082
+      Nomal_Cultist_31: -1445202743
+      Nomal_Cultist_32: -228960662
+      Nomal_Cultist_33: -1011230729
+      Nomal_Cultist_34: -593053311
+      Nomal_Cultist_35: 1257636987
+      Nomal_Cultist_36: -1372037255
+      Nomal_Cultist_37: 1157342303
+      Nomal_Cultist_38: -1024507206
+      Nomal_Cultist_39: -1786046453
+      Nomal_Cultist_4: 2088293412
+      Nomal_Cultist_40: -1472973979
+      Nomal_Cultist_41: 256668801
+      Nomal_Cultist_42: -472461062
+      Nomal_Cultist_43: -278308527
+      Nomal_Cultist_44: 820761221
+      Nomal_Cultist_45: 570005977
+      Nomal_Cultist_46: 1808934595
+      Nomal_Cultist_47: -2110799469
+      Nomal_Cultist_48: -1566151775
+      Nomal_Cultist_49: 1062355041
+      Nomal_Cultist_5: -352705176
+      Nomal_Cultist_50: 2053771144
+      Nomal_Cultist_51: -1138397322
+      Nomal_Cultist_52: -872664214
+      Nomal_Cultist_53: -251138228
+      Nomal_Cultist_54: -1896562487
+      Nomal_Cultist_55: 1790998132
+      Nomal_Cultist_56: -2023120173
+      Nomal_Cultist_57: -248724410
+      Nomal_Cultist_58: 957909205
+      Nomal_Cultist_59: -878403268
+      Nomal_Cultist_6: -315931606
+      Nomal_Cultist_60: 686803988
+      Nomal_Cultist_61: -325329078
+      Nomal_Cultist_7: -1838141743
+      Nomal_Cultist_8: -431060606
+      Nomal_Cultist_9: 1870265663
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

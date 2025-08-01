@@ -2,6 +2,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -24,6 +25,7 @@ public class SettingsPopup : UIBase
     private Color32 selectedColor = Color.white;
 
     //오디오 슬라이더 관리
+    private AudioMixer audioMixer;
     [SerializeField]
     private Slider BGMslider;
     [SerializeField]
@@ -41,6 +43,9 @@ public class SettingsPopup : UIBase
     protected override void Start()
     {
         base.Start(); //UIBase꺼 그대로 사용 
+
+        audioMixer = Resources.Load<AudioMixer>("Audio/AudioMixer");
+
         currentButton = invisibleDummyButton; // 현재 선택된 버튼을 더미버튼으로 초기화
 
         audioPopup.SetActive(true);          //audio tab active, others inactive
@@ -141,4 +146,14 @@ public class SettingsPopup : UIBase
         SFXText.text = $"{(value * 100):F1}%";
     }
 
+    // 오디오 슬라이더 조절시 음량 조절
+    public void SetBGMSlider(float value)
+    {
+        audioMixer.SetFloat("BGM", Mathf.Log10(value) * 20);
+    }
+
+    public void SetSFXSlider(float value)
+    { 
+        audioMixer.SetFloat("SFX", Mathf.Log10(value) * 20);
+    }
 }
