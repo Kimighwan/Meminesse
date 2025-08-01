@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public enum BGM
 {
+    ForestCradle,
     lobby,
     COUNT
 }
@@ -21,6 +23,9 @@ public class AudioManager : SingletonBehaviour<AudioManager>
 
     const string AUDIO_PATH = "Audio";
 
+    [SerializeField]
+    private AudioMixer audioMixer;
+
     Dictionary<BGM, AudioSource> BGMPlayer = new Dictionary<BGM, AudioSource>();
     AudioSource currentBGMSource;       // Current Playing AudioSource
 
@@ -30,8 +35,12 @@ public class AudioManager : SingletonBehaviour<AudioManager>
     {
         base.Init();
 
+        audioMixer = Resources.Load<AudioMixer>("Audio/AudioMixer");
+
         LoadBGMPlayer();
         LoadSFXPlayer();
+
+        PlayBGM(BGM.ForestCradle);
     }
 
     // Load BGM Audio File
@@ -51,6 +60,7 @@ public class AudioManager : SingletonBehaviour<AudioManager>
             newAudioSource.clip = audioClip;
             newAudioSource.loop = true;
             newAudioSource.playOnAwake = false;
+            newAudioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("BGM")[0];
 
             newObj.transform.parent = BGMTrs;
 
@@ -75,6 +85,7 @@ public class AudioManager : SingletonBehaviour<AudioManager>
             newAudioSource.clip = audioClip;
             newAudioSource.loop = false;
             newAudioSource.playOnAwake = false;
+            newAudioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("SFX")[0];
 
             newObj.transform.parent = SFXTrs;
 
