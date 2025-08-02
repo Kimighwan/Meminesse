@@ -7,29 +7,21 @@ public class MainMenu : UIBase
 {
     [SerializeField]
     private GameObject settingUI;
-    //[SerializeField]
-    //private GameObject exitConfirmationUI;
+    [SerializeField]
+    private GameObject exitConfirmationPopupUI;
+
     public GameObject exitConfirmationPopup;
 
     protected override void Start()
     {
         base.Start();
-
-        // 커서 기본 설정
-        //Cursor.visible = true;
-        //Cursor.lockState = CursorLockMode.None;
-
-        // 포커스를 명시적으로 줘야 UI가 키보드 입력을 받음
-        //EventSystem.current.SetSelectedGameObject(invisibleDummyButton);
-
-        // 또한 currentButton도 초기화 필요
-        //SetCurrentButton(invisibleDummyButton);
     }
 
     protected override void Update()
     {
+        // 창이 넘어갔을 때 포커스에 메인에 그대로 있는 문제 해결
         if (settingUI.activeSelf) return;
-        if (exitConfirmationPopup.activeSelf) return;
+        if (exitConfirmationPopupUI.activeSelf) return;
         base.Update();
         // UIBase에서 키보드 모드와 마우스 모드를 전환하는 로직이 있으므로, 여기서는 추가적인 로직이 필요하지 않음
     }
@@ -51,8 +43,8 @@ public class MainMenu : UIBase
     public void OnClickQuit()     //Quit button
     {
         // 종료 재확인 팝업 창
-        exitConfirmationPopup.SetActive(true);
-        SetCurrentButton(exitConfirmationPopup.transform.Find("Yes").gameObject); // 팝업의 Yes 버튼에 포커스 설정
+        exitConfirmationPopupUI.SetActive(true);
+        SetCurrentButton(exitConfirmationPopupUI.transform.Find("Yes").gameObject); // 팝업의 Yes 버튼에 포커스 설정
 
     }
 
@@ -71,7 +63,7 @@ public class MainMenu : UIBase
     public void OnCancelQuit()
     {
         // 팝업 닫기
-        exitConfirmationPopup.SetActive(false);
+        exitConfirmationPopupUI.SetActive(false);
     }
 
 
