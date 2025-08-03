@@ -32,7 +32,7 @@ public class FireWizard_DetectState : DetectState
             stateMachine.ChangeState(enemy.idleState);
         else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
             stateMachine.ChangeState(enemy.meleeAttackState);
-        else if (isDetectLedge)
+        else if (!isDetectLedge)
         {
             stateMachine.ChangeState(enemy.moveState);
         }

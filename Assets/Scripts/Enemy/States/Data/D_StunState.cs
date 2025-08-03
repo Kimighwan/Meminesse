@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newStunState", menuName = "Data/State Data/Stun State Data")]
+[CreateAssetMenu(fileName = "newStunStateData", menuName = "Data/State Data/Stun State")]
 public class D_StunState : ScriptableObject
 {
     public float stunTime = 3f;             // 스턴 지속 시간

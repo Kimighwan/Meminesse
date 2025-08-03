@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newRangeAttackState", menuName = "Data/State Data/Range Attack State")]
+[CreateAssetMenu(fileName = "newRangeAttackStateData", menuName = "Data/State Data/Range Attack State")]
 public class D_RangeAttackState : ScriptableObject
 {
     public GameObject projectileGameObject;

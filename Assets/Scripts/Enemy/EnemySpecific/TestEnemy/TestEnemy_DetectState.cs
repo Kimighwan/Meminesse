@@ -31,7 +31,7 @@ public class TestEnemy_DetectState : DetectState
             stateMachine.ChangeState(enemy.idleState);
         else if(isPlayerInMeleeAttackRange)
             stateMachine.ChangeState(enemy.meleeAttackState);
-        else if(isDetectLedge)
+        else if(!isDetectLedge)
         {
             stateMachine.ChangeState(enemy.moveState);
         }

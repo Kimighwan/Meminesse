@@ -39,7 +39,7 @@ public class EvilWizard_DetechState : DetectState
             else
                 stateMachine.ChangeState(enemy.meleeAttack2State);
         }
-        else if (isDetectLedge)
+        else if (!isDetectLedge)
         {
             stateMachine.ChangeState(enemy.moveState);
         }
