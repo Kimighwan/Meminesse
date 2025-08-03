@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -112,12 +112,12 @@ TextureImporter:
       name: 20250421manaSoulButtonC-Sheet_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 95
-        height: 20
+        x: 2
+        y: 2
+        width: 93
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: 20250421manaSoulButtonC-Sheet_1
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 97
-        height: 22
+        x: 97
+        y: 1
+        width: 95
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -156,12 +156,12 @@ TextureImporter:
       name: 20250421manaSoulButtonC-Sheet_2
       rect:
         serializedVersion: 2
-        x: 194
-        y: 1
-        width: 93
-        height: 20
+        x: 195
+        y: 2
+        width: 91
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -178,12 +178,12 @@ TextureImporter:
       name: 20250421manaSoulButtonC-Sheet_3
       rect:
         serializedVersion: 2
-        x: 291
-        y: 2
-        width: 91
-        height: 18
+        x: 292
+        y: 3
+        width: 89
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -200,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fb279c6388a5ea2469c3d0394e2e0193
     internalID: 0
     vertices: []
     indices: 
