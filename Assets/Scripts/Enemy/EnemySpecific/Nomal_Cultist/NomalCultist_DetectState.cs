@@ -31,7 +31,7 @@ public class NomalCultist_DetectState : DetectState
             stateMachine.ChangeState(enemy.idleState);
         else if (isPlayerInRangeAttackRange && enemy.AttackCoolTime + enemy.LastAttackTime <= Time.time)
             stateMachine.ChangeState(enemy.rangeAttackState);
-        else if (isDetectLedge)
+        else if (!isDetectLedge)
         {
             stateMachine.ChangeState(enemy.moveState);
         }
