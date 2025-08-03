@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      20250422mouseBig-Sheet_0: -7693690178073535227
+      20250422mouseBig-Sheet_1: -6608180492590624492
+      20250422mouseBig-Sheet_2: -1306875452561874658
+      20250422mouseBig-Sheet_3: 3465484892467309696
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

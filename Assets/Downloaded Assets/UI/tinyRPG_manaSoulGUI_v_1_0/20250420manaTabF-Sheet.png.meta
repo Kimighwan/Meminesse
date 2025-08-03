@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      20250420manaTabF-Sheet_0: -5826750987743954140
+      20250420manaTabF-Sheet_1: 7391979145981125491
+      20250420manaTabF-Sheet_2: -289949624980348056
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
