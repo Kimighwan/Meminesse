@@ -234,7 +234,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      20250421horizontalCursorB-Sheet_0: 4885387258178524843
+      20250421horizontalCursorB-Sheet_1: -5405540209848093961
+      20250421horizontalCursorB-Sheet_2: -9219626523023158871
+      20250421horizontalCursorB-Sheet_3: 7670500316907984714
+      20250421horizontalCursorB-Sheet_4: 4237490326538445706
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
