@@ -109,8 +109,10 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
         keyDataList.Add(new KeyData("Jump", KeyCode.Space));
 
         keyDataList.Add(new KeyData("BasicAttack", KeyCode.A));
+
+        KeyDataSave();
     }
-    public bool ChangeKey(string tartgetKeyName, KeyCode newKeyCode)    // 변경 성공시 True 실패시 False 반환
+    public bool ChangeKey(string targetKeyName, KeyCode newKeyCode)    // 변경 성공시 True 실패시 False 반환
     {
         // 예외 처리, 조건 검사는 추후에 추가한다.
         // 1) 설정되면 안 되는 Key인지 검사 - 일단 존재하지 않음
@@ -121,7 +123,7 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
 
         foreach (var keyData in keyDataList)
         {
-            if (keyData.keyName == tartgetKeyName)
+            if (keyData.keyName == targetKeyName)
             {
                 keyData.keyCode = newKeyCode;
                 KeyDataSave();
@@ -149,14 +151,17 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
     public void SetBGMValue(float value)
     {
         settingData.BGMValue = value;
+        SettingDataSave();
     }
     public void SetSFXValue(float value)
     {
         settingData.SFXValue = value;
+        SettingDataSave();
     }
     public void SetScreenMode(ScreenModeOptions mode)
     {
         settingData.screenMode = mode;
+        SettingDataSave();
     }
     #endregion
     #region Save - Load
