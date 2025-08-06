@@ -101,7 +101,7 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
         keyDataList.Clear();
 
         // Button Number
-        // 0:up , 1:down, 2:right, 3:left, 4:attack, 5:jump, 6:dash, 7:skill1, 8:skill2, 9:skill3, 10:map, 11:inventory, 12:skilltree, 13:interect
+        // 0:up , 1:down, 2:right, 3:left, 4:attack, 5:jump, 6:dash, 7:skill1, 8:skill2, 9:skill3, 10:map, 11:inventory, 12:skilltree, 13:interact
         keyDataList.Add(new KeyData("Up", KeyCode.UpArrow));
         keyDataList.Add(new KeyData("Down", KeyCode.DownArrow));
         keyDataList.Add(new KeyData("Right", KeyCode.RightArrow));
@@ -117,6 +117,8 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
         keyDataList.Add(new KeyData("Inventory", KeyCode.Tab));
         keyDataList.Add(new KeyData("SkillTree", KeyCode.B));
         keyDataList.Add(new KeyData("Interact", KeyCode.F));
+
+        KeyDataSave();
 
     }
     public bool ChangeKey(string targetKeyName, KeyCode newKeyCode)    // 변경 성공시 True 실패시 False 반환
@@ -158,14 +160,17 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
     public void SetBGMValue(float value)
     {
         settingData.BGMValue = value;
+        SettingDataSave();
     }
     public void SetSFXValue(float value)
     {
         settingData.SFXValue = value;
+        SettingDataSave();
     }
     public void SetScreenMode(ScreenModeOptions mode)
     {
         settingData.screenMode = mode;
+        SettingDataSave();
     }
     #endregion
     #region Save - Load
