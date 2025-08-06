@@ -19,7 +19,7 @@ public class SettingsPopup : UIBase
     [SerializeField]
     public TextMeshProUGUI currentBtnText;
     [SerializeField] 
-    private TextMeshProUGUI[] topButtonTexts;
+    private TextMeshProUGUI[] topButtonTexts;  // 설정창 상위 버튼 텍스트들
 
     private Color32 defaultColor = new Color32(170, 131, 167, 255);
     private Color32 selectedColor = Color.white;
@@ -34,6 +34,10 @@ public class SettingsPopup : UIBase
     private TextMeshProUGUI BGMText;
     [SerializeField]
     private TextMeshProUGUI SFXText;
+
+    //조작법 관리
+    [SerializeField]
+    private TextMeshProUGUI ControlText;
 
     private void Awake()
     {
