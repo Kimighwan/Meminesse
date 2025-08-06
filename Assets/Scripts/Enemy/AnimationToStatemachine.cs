@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class AnimationToStatemachine : MonoBehaviour
 {
+    public IdleState idleState;
     public AttackState attackState;
     public DamagedState damageState;
     public ChargeState chargeState;
@@ -26,5 +27,10 @@ public class AnimationToStatemachine : MonoBehaviour
     {
         chargeState.FinishCharge();
         Debug.Log("Bat_Charge Done!!");
+    }
+
+    private void FinishTransition()
+    {
+        idleState.FinishTransition();
     }
 }

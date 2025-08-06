@@ -118,6 +118,7 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
         keyDataList.Add(new KeyData("SkillTree", KeyCode.B));
         keyDataList.Add(new KeyData("Interact", KeyCode.F));
 
+        KeyDataSave();
     }
     public bool ChangeKey(string targetKeyName, KeyCode newKeyCode)    // 변경 성공시 True 실패시 False 반환
     {
@@ -158,14 +159,17 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
     public void SetBGMValue(float value)
     {
         settingData.BGMValue = value;
+        SettingDataSave();
     }
     public void SetSFXValue(float value)
     {
         settingData.SFXValue = value;
+        SettingDataSave();
     }
     public void SetScreenMode(ScreenModeOptions mode)
     {
         settingData.screenMode = mode;
+        SettingDataSave();
     }
     #endregion
     #region Save - Load
