@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 5443691}
   - component: {fileID: 5443690}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: skill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3076,7 +3076,7 @@ GameObject:
   - component: {fileID: 366236320}
   - component: {fileID: 366236319}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: skill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3822,7 +3822,7 @@ GameObject:
   - component: {fileID: 414684561}
   - component: {fileID: 414684560}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6085,13 +6085,14 @@ GameObject:
   - component: {fileID: 773932996}
   - component: {fileID: 773932998}
   - component: {fileID: 773932997}
+  - component: {fileID: 773932999}
   m_Layer: 5
   m_Name: 'ControlPopup  '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &773932996
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6164,6 +6165,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773932995}
   m_CullTransparentMesh: 1
+--- !u!114 &773932999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773932995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e545c60a4f5709446af4b020a82c0ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 974408857}
+  - {fileID: 752101247}
+  - {fileID: 611546681}
+  - {fileID: 1386088171}
+  - {fileID: 146189254}
+  - {fileID: 488016252}
+  - {fileID: 1233039713}
+  - {fileID: 628459738}
+  - {fileID: 703996399}
+  - {fileID: 1627874197}
+  - {fileID: 1760848743}
+  - {fileID: 204287144}
+  - {fileID: 1054351393}
+  - {fileID: 1492675639}
+  - {fileID: 1111033392}
+  texts:
+  - {fileID: 1821176258}
+  - {fileID: 1217618993}
+  - {fileID: 1345006128}
+  - {fileID: 1388515776}
+  - {fileID: 1846516205}
+  - {fileID: 1385356184}
+  - {fileID: 1921210462}
+  - {fileID: 5443690}
+  - {fileID: 366236319}
+  - {fileID: 1103541514}
+  - {fileID: 1830960514}
+  - {fileID: 1193539049}
+  - {fileID: 1803368109}
+  - {fileID: 414684560}
+  - {fileID: 862349579}
 --- !u!1 &805309156
 GameObject:
   m_ObjectHideFlags: 0
@@ -6633,7 +6678,7 @@ GameObject:
   - component: {fileID: 862349580}
   - component: {fileID: 862349579}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: reset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6839,7 +6884,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 879420181}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 773932999}
+        m_TargetAssemblyTypeName: KeyController, Assembly-CSharp
+        m_MethodName: OnKeyPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &879420181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8062,7 +8119,7 @@ GameObject:
   - component: {fileID: 1103541515}
   - component: {fileID: 1103541514}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: skill3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8268,7 +8325,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1111033395}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 773932999}
+        m_TargetAssemblyTypeName: KeyController, Assembly-CSharp
+        m_MethodName: ResetKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1111033395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8741,7 +8810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1192258775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8860,6 +8929,7 @@ MonoBehaviour:
   SFXslider: {fileID: 1435524137}
   BGMText: {fileID: 26615974}
   SFXText: {fileID: 760846668}
+  ControlText: {fileID: 0}
 --- !u!1 &1193539047
 GameObject:
   m_ObjectHideFlags: 0
@@ -8872,7 +8942,7 @@ GameObject:
   - component: {fileID: 1193539050}
   - component: {fileID: 1193539049}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9129,7 +9199,7 @@ GameObject:
   - component: {fileID: 1217618994}
   - component: {fileID: 1217618993}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9649,7 +9719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1259673149
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10068,7 +10138,7 @@ GameObject:
   - component: {fileID: 1345006129}
   - component: {fileID: 1345006128}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10476,7 +10546,7 @@ GameObject:
   - component: {fileID: 1385356185}
   - component: {fileID: 1385356184}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10734,7 +10804,7 @@ GameObject:
   - component: {fileID: 1388515777}
   - component: {fileID: 1388515776}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13567,7 +13637,7 @@ GameObject:
   - component: {fileID: 1803368110}
   - component: {fileID: 1803368109}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: skilltree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13703,7 +13773,7 @@ GameObject:
   - component: {fileID: 1821176259}
   - component: {fileID: 1821176258}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13839,7 +13909,7 @@ GameObject:
   - component: {fileID: 1830960515}
   - component: {fileID: 1830960514}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14246,7 +14316,7 @@ GameObject:
   - component: {fileID: 1846516206}
   - component: {fileID: 1846516205}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14578,7 +14648,7 @@ GameObject:
   - component: {fileID: 1921210463}
   - component: {fileID: 1921210462}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
