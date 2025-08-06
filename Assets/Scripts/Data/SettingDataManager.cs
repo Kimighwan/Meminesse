@@ -118,6 +118,8 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
         keyDataList.Add(new KeyData("SkillTree", KeyCode.B));
         keyDataList.Add(new KeyData("Interact", KeyCode.F));
 
+        //escape 키 지웠음 여기
+
         KeyDataSave();
     }
     public bool ChangeKey(string targetKeyName, KeyCode newKeyCode)    // 변경 성공시 True 실패시 False 반환
