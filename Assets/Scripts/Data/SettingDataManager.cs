@@ -101,7 +101,7 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
         keyDataList.Clear();
 
         // Button Number
-        // 0:up , 1:down, 2:right, 3:left, 4:attack, 5:jump, 6:dash, 7:skill1, 8:skill2, 9:skill3, 10:map, 11:inventory, 12:skilltree, 13:interact
+        // 0:up , 1:down, 2:right, 3:left, 4:attack, 5:jump, 6:dash, 7:skill1, 8:skill2, 9:skill3, 10:map, 11:inventory, 12:skilltree, 13:interact, 14:heal
         keyDataList.Add(new KeyData("Up", KeyCode.UpArrow));
         keyDataList.Add(new KeyData("Down", KeyCode.DownArrow));
         keyDataList.Add(new KeyData("Right", KeyCode.RightArrow));
@@ -110,13 +110,14 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
         keyDataList.Add(new KeyData("BasicAttack", KeyCode.Z));
         keyDataList.Add(new KeyData("Jump", KeyCode.X));
         keyDataList.Add(new KeyData("Dash", KeyCode.LeftShift));
-        keyDataList.Add(new KeyData("Skill1", KeyCode.Q));
-        keyDataList.Add(new KeyData("Skill2", KeyCode.W));
-        keyDataList.Add(new KeyData("Skill3", KeyCode.E));
-        keyDataList.Add(new KeyData("Map", KeyCode.M));
-        keyDataList.Add(new KeyData("Inventory", KeyCode.Tab));
-        keyDataList.Add(new KeyData("SkillTree", KeyCode.B));
+        keyDataList.Add(new KeyData("Skill1", KeyCode.A));
+        keyDataList.Add(new KeyData("Skill2", KeyCode.S));
+        keyDataList.Add(new KeyData("Skill3", KeyCode.D));
+        keyDataList.Add(new KeyData("Map", KeyCode.Tab));
+        keyDataList.Add(new KeyData("Inventory", KeyCode.E));
+        keyDataList.Add(new KeyData("SkillTree", KeyCode.K));
         keyDataList.Add(new KeyData("Interact", KeyCode.F));
+        keyDataList.Add(new KeyData("Heal", KeyCode.C)); 
 
         //escape 키 지웠음 여기
 

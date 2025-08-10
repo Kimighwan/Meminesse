@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class KeyController : MonoBehaviour
 {
     // Button Number
-    // 0:up , 1:down, 2:right, 3:left, 4:attack, 5:jump, 6:dash, 7:skill1, 8:skill2, 9:skill3, 10:map, 11:inventory, 12:skilltree, 13:interact
+    // 0:up , 1:down, 2:right, 3:left, 4:attack, 5:jump, 6:dash, 7:skill1, 8:skill2, 9:skill3, 10:map, 11:inventory, 12:skilltree, 13:interact, 14:heal
 
     [SerializeField]
     private GameObject[] buttons; // UI 버튼
@@ -81,7 +81,15 @@ public class KeyController : MonoBehaviour
                     if (settingDataManager.ChangeKey(keyName, key))
                     {
                         Debug.Log($"{keyName} → {key} 로 변경됨");
-                        ShowConfirmMessage($"{keyName} 키가 {key}로 변경되었습니다");
+                        if (keyDisplayNames.ContainsKey(key))  // keyDisplayNames라는 딕셔너리에 key가 들어있는지 확인
+                        {
+                            ShowConfirmMessage($"{keyName} 키가 {keyDisplayNames[key]}(으)로 변경되었습니다");
+                        }
+                        else
+                        {
+                            ShowConfirmMessage($"{keyName} 키가 {key}(으)로 변경되었습니다");
+                        }
+                     
                     }
                     else
                     {
