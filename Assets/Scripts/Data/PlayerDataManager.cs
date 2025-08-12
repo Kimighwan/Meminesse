@@ -78,7 +78,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     }
     public void AddHP()
     {
-        playerData.hp += 1;
+        playerData.maxHp += 1;
     }
     public void SetHp(int value)
     {
