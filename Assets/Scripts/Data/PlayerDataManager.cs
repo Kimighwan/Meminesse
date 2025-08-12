@@ -10,7 +10,7 @@ public class PlayerData
 {
     public int hp;
     public int maxHp;
-    public float healingAmount;
+    public int healingAmount;
 
     public float damage;
     public float addDamage;
@@ -26,13 +26,13 @@ public class PlayerData
 
     public PlayerData()
     {
-        hp = 5;
-        maxHp = 5;
+        hp = 10;
+        maxHp = 10;
         damage = 10f;
         addDamage = 0f;
         itemDropRate = 0f;
         goldDropRate = 0f;
-        healingAmount = 0f;
+        healingAmount = 0;
         defenseIgnoreIncrease = 0f;
         dashCoolTimeDecrease = 0f;
         skillCoolTimeDecrease = 0f;
@@ -76,13 +76,13 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     {
         playerData.weaponStep += 1;
     }
-    public void AddHP()
+    public void AddHP()  // 무시하셈 스킬 트리에서 사용하는 이벤트 등록용 함수다
     {
         playerData.hp += 1;
     }
     public void SetHp(int value)
     {
-        playerData.hp += value;
+        playerData.hp = Mathf.Clamp(playerData.hp + value, 0, playerData.maxHp);
     }
     public void AddMaxHp(int value)
     {
@@ -91,7 +91,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
 
     public void HealingAmountIncrease()
     {
-        playerData.healingAmount += 0.25f;
+        playerData.healingAmount += 1;
     }
 
     public void DashCoolTimeDecrease()
@@ -130,7 +130,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     {
         return playerData.weaponStep;
     }
-    public int GetAddHp()
+    public int GetHp()
     {
         return playerData.hp;
     }
@@ -138,7 +138,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     {
         return playerData.maxHp;
     }
-    public float GetHealingAmount()
+    public int GetHealingAmount()
     {
         return playerData.healingAmount;
     }
