@@ -47,6 +47,7 @@ public class AssassinCultist_IdleState : IdleState
         }
         else if (isPlayerInMeleeAttackRange && (enemy.firstAttack || enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time))
         {
+            enemy.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemy.meleeAttackState);
         }
         else if (isDetectedPlayer)

@@ -21,6 +21,8 @@ public class PlayerData
     public float itemDropRate;
     public float goldDropRate;
 
+    public int weaponStep;
+
     public PlayerData()
     {
         hp = 100f;
@@ -32,6 +34,7 @@ public class PlayerData
         defenseIgnoreIncrease = 0f;
         dashCoolTimeDecrease = 0f;
         skillCoolTimeDecrease = 0f;
+        weaponStep = 1;
         Debug.Log("디폴트 생성자 호출!");
     }
     public PlayerData(PlayerData data)
@@ -66,6 +69,10 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     }
 
     #region Set Value
+    public void UpgradeWeaponStep()
+    {
+        playerData.weaponStep += 1;
+    }
     public void AddHP()
     {
         playerData.hp += 1;
@@ -108,6 +115,10 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     #endregion
 
     #region Get Value
+    public int GetWeaponSetp()
+    {
+        return playerData.weaponStep;
+    }
     public float GetAddHp()
     {
         return playerData.hp;
