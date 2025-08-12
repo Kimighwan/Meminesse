@@ -68,17 +68,19 @@ public class SaveFileDataManager : SingletonBehaviour<SaveFileDataManager>
     }
     public void AddVisitedMapId(int addId)
     {
+        if (saveFileData.mapId.Contains(addId)) return;
+
         saveFileData.mapId.Add(addId);
         Save();
     }
-
     #endregion
     #region Save-Load
 
     public void Save()
     {
         string jsonData = JsonUtility.ToJson(saveFileData);
-        File.WriteAllText(PATH, Encrypt(jsonData, KEY));
+        File.WriteAllText(PATH, jsonData);
+        //File.WriteAllText(PATH, Encrypt(jsonData, KEY));
     }
     public void Load()
     {
@@ -86,13 +88,15 @@ public class SaveFileDataManager : SingletonBehaviour<SaveFileDataManager>
         {
             Debug.Log("파일 없어서 새로 저장");
             saveFileData = new SaveFileData();
+            saveFileData.mapId.Add(1);
             Save();
         }
         else // Load
         {
             Debug.Log("파일 존재해서 로드");
             string loadJson = File.ReadAllText(PATH);
-            saveFileData = JsonUtility.FromJson<SaveFileData>(Decrypt(loadJson, KEY));
+            saveFileData = JsonUtility.FromJson<SaveFileData>(loadJson);
+            //saveFileData = JsonUtility.FromJson<SaveFileData>(Decrypt(loadJson, KEY));
         }
     }
     #endregion
