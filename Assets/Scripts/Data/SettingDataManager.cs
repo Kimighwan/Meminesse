@@ -34,11 +34,6 @@ public class KeyData
     public string keyName;      // 버튼 이름 또는 버튼 사용처
     public KeyCode keyCode;     // KeyCode
     
-    public KeyData()
-    {
-        keyName = "";
-        keyCode = KeyCode.None;
-    }
     public KeyData(KeyData data)
     {
         keyName = data.keyName;
