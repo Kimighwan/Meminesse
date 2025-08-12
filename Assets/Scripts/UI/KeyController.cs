@@ -17,8 +17,6 @@ public class KeyController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI confirmText; // 위에 뜨는 확인 문구
 
-    private SettingDataManager settingDataManager;
-
     private int waitingIndex = -1;    // 현재 리바인딩 중인 키 인덱스. 아무것도 선택되지 않음 : -1
     private bool isRebinding = false; // 지금 입력 대기 중인지
 
@@ -54,10 +52,6 @@ public class KeyController : MonoBehaviour
     };
 
 
-    private void Awake()
-    {
-        settingDataManager = SettingDataManager.Instance; //연결
-    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -75,10 +69,10 @@ public class KeyController : MonoBehaviour
             {
                 if (Input.GetKeyDown(key))
                 {
-                    string keyName = settingDataManager.keyDataList[waitingIndex].keyName;   //waitingindex에 값이 들어감(StartRebinding 함수에서 설정됨)
+                    string keyName = SettingDataManager.Instance.keyDataList[waitingIndex].keyName;   //waitingindex에 값이 들어감(StartRebinding 함수에서 설정됨)
 
                     // SettingDataManager 통해 키 변경 시도(true일 때만)
-                    if (settingDataManager.ChangeKey(keyName, key))
+                    if (SettingDataManager.Instance.ChangeKey(keyName, key))
                     {
                         Debug.Log($"{keyName} → {key} 로 변경됨");
                         if (keyDisplayNames.ContainsKey(key))  // keyDisplayNames라는 딕셔너리에 key가 들어있는지 확인
@@ -119,7 +113,7 @@ public class KeyController : MonoBehaviour
     {
         for (int i = 0; i < texts.Length; i++)
         {
-            KeyCode key = settingDataManager.keyDataList[i].keyCode; // KeyCode 순서대로 가져오기
+            KeyCode key = SettingDataManager.Instance.keyDataList[i].keyCode; // KeyCode 순서대로 가져오기
 
             if (keyDisplayNames.ContainsKey(key))  // keyDisplayNames라는 딕셔너리에 key가 들어있는지 확인
             {
@@ -135,7 +129,7 @@ public class KeyController : MonoBehaviour
     //초기화
     public void ResetKey()
     {
-        settingDataManager.ResetKeyData();
+        SettingDataManager.Instance.ResetKeyData();
         ShowConfirmMessage("모든 키가 기본값으로 초기화되었습니다");
         RefreshUI();
     }
