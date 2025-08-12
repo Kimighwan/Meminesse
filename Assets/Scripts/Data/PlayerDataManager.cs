@@ -8,7 +8,8 @@ using System.Text;
 [Serializable]
 public class PlayerData
 {
-    public float hp;
+    public int hp;
+    public int maxHp;
     public float healingAmount;
 
     public float damage;
@@ -25,7 +26,8 @@ public class PlayerData
 
     public PlayerData()
     {
-        hp = 100f;
+        hp = 5;
+        maxHp = 5;
         damage = 10f;
         addDamage = 0f;
         itemDropRate = 0f;
@@ -40,6 +42,7 @@ public class PlayerData
     public PlayerData(PlayerData data)
     {
         hp = data.hp;
+        maxHp = data.maxHp;
         damage = data.damage;
         addDamage = data.addDamage;
         itemDropRate = data.itemDropRate;
@@ -76,6 +79,14 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     public void AddHP()
     {
         playerData.hp += 1;
+    }
+    public void SetHp(int value)
+    {
+        playerData.hp += value;
+    }
+    public void AddMaxHp(int value)
+    {
+        playerData.maxHp += value;
     }
 
     public void HealingAmountIncrease()
@@ -119,9 +130,13 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     {
         return playerData.weaponStep;
     }
-    public float GetAddHp()
+    public int GetAddHp()
     {
         return playerData.hp;
+    }
+    public int GetMaxHp()
+    {
+        return playerData.maxHp;
     }
     public float GetHealingAmount()
     {
