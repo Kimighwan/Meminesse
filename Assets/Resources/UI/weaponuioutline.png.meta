@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: e5a223972c2f42542bf3da9f4750f59d
+guid: 93fe065bd3ca5c1469fa11550f920a69
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5216961189936626888
-    second: Inventory_Slot_1_0
+      213: 6952358870334676954
+    second: weaponuioutline_0
+  - first:
+      213: -4421547121264662873
+    second: weaponuioutline_1
+  - first:
+      213: -6560749789249039513
+    second: weaponuioutline_2
+  - first:
+      213: -1684051497258746913
+    second: weaponuioutline_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Inventory_Slot_1_0
+      name: weaponuioutline_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 13
-        width: 70
-        height: 70
+        x: 0
+        y: 0
+        width: 640
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8ccfb25cf8e566840800000000000000
-      internalID: 5216961189936626888
+      spriteID: adf9551be8dbb7060800000000000000
+      internalID: 6952358870334676954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponuioutline_1
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 107
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a66e5fc15283a2c0800000000000000
+      internalID: -4421547121264662873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponuioutline_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7639797b3d883f4a0800000000000000
+      internalID: -6560749789249039513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponuioutline_3
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 0
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdb7d62f51c01a8e0800000000000000
+      internalID: -1684051497258746913
       vertices: []
       indices: 
       edges: []
@@ -125,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 95e998823f6f2944c8e082717d8f99c3
+    spriteID: b6c911fde2e80584cb4ccf2ffc3d2a79
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Inventory_Slot_1_0: 5216961189936626888
+      weaponuioutline_0: 6952358870334676954
+      weaponuioutline_1: -4421547121264662873
+      weaponuioutline_2: -6560749789249039513
+      weaponuioutline_3: -1684051497258746913
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e5a223972c2f42542bf3da9f4750f59d
+guid: 44535c9fe5234a34db3d7d20340e613f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5216961189936626888
-    second: Inventory_Slot_1_0
+      213: -5281388025588438094
+    second: lv4 sword_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Inventory_Slot_1_0
+      name: lv4 sword_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 13
-        width: 70
-        height: 70
+        x: 0
+        y: 0
+        width: 692
+        height: 692
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8ccfb25cf8e566840800000000000000
-      internalID: 5216961189936626888
+      spriteID: 2bbaccd929db4b6b0800000000000000
+      internalID: -5281388025588438094
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 95e998823f6f2944c8e082717d8f99c3
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Inventory_Slot_1_0: 5216961189936626888
+      lv4 sword_0: -5281388025588438094
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

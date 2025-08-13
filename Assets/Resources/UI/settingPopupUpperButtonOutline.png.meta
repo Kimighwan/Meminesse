@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: e5a223972c2f42542bf3da9f4750f59d
+guid: 99419f8e3ec860843b40a707fa1a2866
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5216961189936626888
-    second: Inventory_Slot_1_0
+      213: -7193704991024801351
+    second: settingPopupUpperButtonOutline_0
+  - first:
+      213: 945339164261941888
+    second: settingPopupUpperButtonOutline_1
+  - first:
+      213: -7991853558271162009
+    second: settingPopupUpperButtonOutline_2
+  - first:
+      213: 8900610938341928236
+    second: settingPopupUpperButtonOutline_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Inventory_Slot_1_0
+      name: settingPopupUpperButtonOutline_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 13
-        width: 70
-        height: 70
+        x: 0
+        y: 0
+        width: 248
+        height: 72
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8ccfb25cf8e566840800000000000000
-      internalID: 5216961189936626888
+      spriteID: 9b9130fac63da2c90800000000000000
+      internalID: -7193704991024801351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: settingPopupUpperButtonOutline_1
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 51
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 082091616f48e1d00800000000000000
+      internalID: 945339164261941888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: settingPopupUpperButtonOutline_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7694e4a088b371190800000000000000
+      internalID: -7991853558271162009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: settingPopupUpperButtonOutline_3
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 0
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2da3dfad72558b70800000000000000
+      internalID: 8900610938341928236
       vertices: []
       indices: 
       edges: []
@@ -125,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 95e998823f6f2944c8e082717d8f99c3
+    spriteID: c03b572df14cd4a498628c2da6a14676
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Inventory_Slot_1_0: 5216961189936626888
+      settingPopupUpperButtonOutline_0: -7193704991024801351
+      settingPopupUpperButtonOutline_1: 945339164261941888
+      settingPopupUpperButtonOutline_2: -7991853558271162009
+      settingPopupUpperButtonOutline_3: 8900610938341928236
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
