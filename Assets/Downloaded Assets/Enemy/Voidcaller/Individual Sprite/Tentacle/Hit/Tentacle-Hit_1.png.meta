@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tentacle-Hit_1_0: 3954725232479277156
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

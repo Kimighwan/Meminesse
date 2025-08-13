@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tentacle-Attack_5_0: -3058060402821832162
+      Tentacle-Attack_5_1: 9018631613901788631
+      Tentacle-Attack_5_2: -2221785647383920230
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

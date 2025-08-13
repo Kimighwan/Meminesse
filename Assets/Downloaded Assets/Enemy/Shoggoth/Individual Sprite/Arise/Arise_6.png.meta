@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Arise_6_0: 704977294851642659
+      Arise_6_1: -644308832453754864
+      Arise_6_2: -8196776227728066312
+      Arise_6_3: -2783687325908436822
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

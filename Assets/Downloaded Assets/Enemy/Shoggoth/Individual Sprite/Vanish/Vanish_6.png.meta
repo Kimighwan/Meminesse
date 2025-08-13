@@ -384,7 +384,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Vanish_6_0: -4134725397178348621
+      Vanish_6_1: 5654594339653651738
+      Vanish_6_10: -7593672737416135379
+      Vanish_6_2: 5355090535066759424
+      Vanish_6_3: -4446255630881606163
+      Vanish_6_4: 8334961615606647916
+      Vanish_6_5: -1424089395337546577
+      Vanish_6_6: 7074179991358199131
+      Vanish_6_7: 1335160050852006198
+      Vanish_6_8: 1487609977296354449
+      Vanish_6_9: -2273747163196513829
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

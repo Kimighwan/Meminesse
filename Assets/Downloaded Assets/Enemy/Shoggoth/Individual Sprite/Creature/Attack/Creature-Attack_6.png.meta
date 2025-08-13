@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Creature-Attack_6_0: -423296237454891781
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

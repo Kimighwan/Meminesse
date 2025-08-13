@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Creature-run_4_0: -6656616077673042858
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

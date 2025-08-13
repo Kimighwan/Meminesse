@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Arise_5_0: 2385076445378730275
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

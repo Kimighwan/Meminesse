@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Spell-2-Port_3_0: -2573794879986111915
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

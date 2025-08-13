@@ -234,7 +234,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Despawn_4_0: 7759721492675491145
+      Despawn_4_1: 883786245228661044
+      Despawn_4_2: -7347440888605061548
+      Despawn_4_3: 1703002513461038175
+      Despawn_4_4: -6299676394813434915
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

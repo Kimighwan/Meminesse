@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Spell-2_15_0: -8824841056979329169
+      Spell-2_15_1: -963504642461768081
+      Spell-2_15_2: -6637842032037481393
+      Spell-2_15_3: -771319006205516541
+      Spell-2_15_4: -7566957639952553257
+      Spell-2_15_5: 7651946910964236828
+      Spell-2_15_6: 1359034188600829994
+      Spell-2_15_7: 361895278819918737
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
