@@ -45,11 +45,12 @@ public class HpManager : MonoBehaviour
     public void Heal(int healingAmout)
     {
         int currentHp = PlayerDataManager.Instance.GetHp(); // 현재 체력 가져오기
-        int additionalHealingRate = PlayerDataManager.Instance.GetAdditionalHealingAmount(); // 추가 회복율 가져오기 //////////////보류
+        //float additionalHealingRate = PlayerDataManager.Instance.GetAdditionalHealingProbability(); // 회복 확률 가져오기 //////////////보류
 
-        PlayerDataManager.Instance.SetHp(healingAmout + additionalHealingRate); // 체력을 1 * (1+추가회복비율) 증가  ////////////////보류
-        UpdateHearts(PlayerDataManager.Instance.GetHp());
-        Debug.Log($"HP +{healingAmout * (1 + additionalHealingRate)}"); 
+        //float randomValue = Random.Range(1f, 100f);
+        //PlayerDataManager.Instance.SetHp(healingAmout + additionalHealingRate); // 체력을 1 * (1+추가회복비율) 증가  ////////////////보류
+        //UpdateHearts(PlayerDataManager.Instance.GetHp());
+        //Debug.Log($"HP +{healingAmout * (1 + additionalHealingRate)}");
     }
 
     // 체력 최대로 회복 함수(특정 지점에 가면)

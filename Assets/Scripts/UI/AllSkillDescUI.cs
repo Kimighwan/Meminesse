@@ -33,7 +33,7 @@ public class AllSkillDescUI : MonoBehaviour
 
         // 능력치 수치만큼 더 추가 하기
         addHealingAmountValue.color = new Color(addHealingAmountTxt.color.r, addHealingAmountTxt.color.g, addHealingAmountTxt.color.b, 1);
-        addHealingAmountValue.text = "+" + (PlayerDataManager.Instance.GetAdditionalHealingAmount() / 10).ToString();
+        addHealingAmountValue.text = (PlayerDataManager.Instance.GetAdditionalHealingProbability() * 100).ToString() + "%";
     }
 
     public void DashCoolTimeDecrease()
