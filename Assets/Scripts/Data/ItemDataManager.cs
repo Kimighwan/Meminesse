@@ -10,6 +10,8 @@ public class ItemData
 {
     public int itemId;
     public int count;
+
+
     public ItemData(int itemId, int count)
     {
         this.itemId = itemId;
@@ -82,7 +84,7 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
     }
     public bool AddItem(int id, int count)
     {
-        if (ExistItem(id)) return false;
+        if (ExistItem(id)) return false; //이미 존재하면 개수 증가 해야되는거 아님?
 
         itemDataList.Add(new ItemData(id, count));
         return true;

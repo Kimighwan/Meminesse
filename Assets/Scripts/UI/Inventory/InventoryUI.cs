@@ -18,7 +18,7 @@ public class InventoryUI : MonoBehaviour
 
         inven = Inventory.instance; // 인벤토리 인스턴스 가져오기
         slots = slotHolder.GetComponentsInChildren<Slot>();
-        inven.onSlotCountChange += SlotChange; // 슬롯 개수가 바뀌면
+        inven.onSlotCountChange += SlotChange; // 슬롯 개수가 바뀌면 나중에 onSlotCountChange(val)가 실행될 때 SlotChange(val)가 자동으로 불림
     }
     
     // Update is called once per frame
@@ -43,9 +43,12 @@ public class InventoryUI : MonoBehaviour
             }
         }
     }
-    public void AddSlot()
+
+    //슬롯에 아이템 추가하는 함수
+    public void AddSlot(int id, int count)
     {
         inven.SlotCnt++; // 슬롯 개수 증가
+        ItemDataManager.Instance.AddItem(id, count);
     }
 
 }

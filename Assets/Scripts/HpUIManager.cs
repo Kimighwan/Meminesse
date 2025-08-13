@@ -45,11 +45,11 @@ public class HpUIManager : MonoBehaviour
     public void Heal(int healingAmout)
     {
         int currentHp = PlayerDataManager.Instance.GetHp(); // 현재 체력 가져오기
-        int additionalHealingRate = PlayerDataManager.Instance.GetAdditionalHealingAmount(); // 추가 회복율 가져오기 //////////////보류
+        int additionalHealingRate = PlayerDataManager.Instance.GetAdditionalHealingAmount(); // 추가 회복 확률 가져오기 //////////////보류
         PlayerDataManager.Instance.SetHp(healingAmout); // 체력을 한칸 증가
 
-        if (UnityEngine.Random.value < 0.3f)        // 30% 확률로 한칸 추가 회복
-            PlayerDataManager.Instance.SetHp(1);
+        if (UnityEngine.Random.value < additionalHealingRate)        // 일정 확률로 한칸 추가 회복
+            PlayerDataManager.Instance.SetHp(20);
 
         Debug.Log($"HP +{healingAmout * (1 + additionalHealingRate)}");
         UpdateHearts(PlayerDataManager.Instance.GetHp());
@@ -77,7 +77,7 @@ public class HpUIManager : MonoBehaviour
     // 최대 체력 증가
     public void IncreaseMaxHp()
     {
-        PlayerDataManager.Instance.AddMaxHp(1); 
+        PlayerDataManager.Instance.AddMaxHp(20); 
         UpdateHearts(PlayerDataManager.Instance.GetHp()); // UI 업데이트
         // 실제로 하트 칸 수가 늘어나게 개발 예정
     }
