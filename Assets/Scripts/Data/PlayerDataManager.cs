@@ -10,7 +10,7 @@ public class PlayerData
 {
     public int hp;
     public int maxHp;
-    public int additionalHealingAmount;
+    public float additionalHealingProbability;
 
     public float damage;
     public float addDamage;
@@ -32,7 +32,7 @@ public class PlayerData
         addDamage = 0f;
         itemDropRate = 1f;
         goldDropRate = 1f;
-        additionalHealingAmount = 0;
+        additionalHealingProbability = 0;
         defenseIgnoreIncrease = 0f;
         dashCoolTimeDecrease = 0f;
         skillCoolTimeDecrease = 0f;
@@ -46,7 +46,7 @@ public class PlayerData
         addDamage = data.addDamage;
         itemDropRate = data.itemDropRate;
         goldDropRate = data.goldDropRate;
-        additionalHealingAmount = data.additionalHealingAmount;
+        additionalHealingProbability = data.additionalHealingProbability;
         defenseIgnoreIncrease = data.defenseIgnoreIncrease;
         dashCoolTimeDecrease = data.dashCoolTimeDecrease;
         skillCoolTimeDecrease = data.skillCoolTimeDecrease;
@@ -88,9 +88,9 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
         playerData.maxHp += value;
     }
 
-    public void HealingRateIncrease()
+    public void HealingProbabilityIncrease()
     {
-        playerData.additionalHealingAmount += 5;
+        playerData.additionalHealingProbability += 0.25f;
     }
 
     public void DashCoolTimeDecrease()
@@ -137,9 +137,9 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     {
         return playerData.maxHp;
     }
-    public int GetAdditionalHealingAmount()
+    public float GetAdditionalHealingProbability()
     {
-        return playerData.additionalHealingAmount;
+        return playerData.additionalHealingProbability;
     }
     public float GetDashCoolTime()
     {
