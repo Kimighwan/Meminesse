@@ -45,9 +45,9 @@ public class HpManager : MonoBehaviour
     public void Heal(int healingAmout)
     {
         int currentHp = PlayerDataManager.Instance.GetHp(); // 현재 체력 가져오기
-        int additionalHealingRate = PlayerDataManager.Instance.GetHealingAmount(); // 추가 회복율 가져오기 //////////////보류
+        int additionalHealingRate = PlayerDataManager.Instance.GetAdditionalHealingAmount(); // 추가 회복율 가져오기 //////////////보류
 
-        PlayerDataManager.Instance.SetHp(healingAmout * (1 + additionalHealingRate)); // 체력을 1 * (1+추가회복비율) 증가  ////////////////보류
+        PlayerDataManager.Instance.SetHp(healingAmout + additionalHealingRate); // 체력을 1 * (1+추가회복비율) 증가  ////////////////보류
         UpdateHearts(PlayerDataManager.Instance.GetHp());
         Debug.Log($"HP +{healingAmout * (1 + additionalHealingRate)}"); 
     }
