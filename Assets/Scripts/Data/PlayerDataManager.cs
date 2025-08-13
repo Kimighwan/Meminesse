@@ -26,8 +26,8 @@ public class PlayerData
 
     public PlayerData()
     {
-        hp = 10;
-        maxHp = 10;
+        hp = 100;  //한칸이 20 반칸이 10 풀피가 100
+        maxHp = 100;
         damage = 10f;
         addDamage = 0f;
         itemDropRate = 1f;
