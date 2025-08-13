@@ -10,7 +10,7 @@ public class PlayerData
 {
     public int hp;
     public int maxHp;
-    public int healingAmount;
+    public int additionalHealingAmount;
 
     public float damage;
     public float addDamage;
@@ -30,14 +30,13 @@ public class PlayerData
         maxHp = 10;
         damage = 10f;
         addDamage = 0f;
-        itemDropRate = 0f;
-        goldDropRate = 0f;
-        healingAmount = 0;
+        itemDropRate = 1f;
+        goldDropRate = 1f;
+        additionalHealingAmount = 0;
         defenseIgnoreIncrease = 0f;
         dashCoolTimeDecrease = 0f;
         skillCoolTimeDecrease = 0f;
         weaponStep = 1;
-        Debug.Log("디폴트 생성자 호출!");
     }
     public PlayerData(PlayerData data)
     {
@@ -47,11 +46,11 @@ public class PlayerData
         addDamage = data.addDamage;
         itemDropRate = data.itemDropRate;
         goldDropRate = data.goldDropRate;
-        healingAmount = data.healingAmount;
+        additionalHealingAmount = data.additionalHealingAmount;
         defenseIgnoreIncrease = data.defenseIgnoreIncrease;
         dashCoolTimeDecrease = data.dashCoolTimeDecrease;
         skillCoolTimeDecrease = data.skillCoolTimeDecrease;
-        Debug.Log("복사 생성자 호출!");
+        weaponStep = data.weaponStep;
     }
 }
 
@@ -78,7 +77,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     }
     public void AddHP()  // 무시하셈 스킬 트리에서 사용하는 이벤트 등록용 함수다
     {
-        playerData.hp += 1;
+        playerData.maxHp += 1;
     }
     public void SetHp(int value)
     {
@@ -89,9 +88,9 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
         playerData.maxHp += value;
     }
 
-    public void HealingAmountIncrease()
+    public void HealingRateIncrease()
     {
-        playerData.healingAmount += 1;
+        playerData.additionalHealingAmount += 5;
     }
 
     public void DashCoolTimeDecrease()
@@ -106,12 +105,12 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
 
     public void ItemDropRate()
     {
-        playerData.itemDropRate += 0.25f;
+        playerData.itemDropRate += 1.25f;
     }
 
     public void GoldDropRate()
     {
-        playerData.goldDropRate += 0.25f;
+        playerData.goldDropRate += 1.25f;
     }
 
     public void DefenseIgnoreIncrease()
@@ -138,9 +137,9 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     {
         return playerData.maxHp;
     }
-    public int GetHealingAmount()
+    public int GetAdditionalHealingAmount()
     {
-        return playerData.healingAmount;
+        return playerData.additionalHealingAmount;
     }
     public float GetDashCoolTime()
     {

@@ -282,7 +282,7 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "회복량 증가";
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.HealingAmountIncrease);
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.HealingRateIncrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.HealingAmount);
                     skillActiveButton.gameObject.SetActive(true);
                     skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
