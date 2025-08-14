@@ -1,7 +1,7 @@
 
 Attacks
-    - Air           -> To be implemented
-    - Air Heavy     -> To be implemented (skill)
+    - Air           -> Implemented
+    - Air Heavy     -> Implemented (skill)
     - Combo         -> Implemented
     - Crouch        -> Implemented
     - Front Heavy   -> Included in combo
