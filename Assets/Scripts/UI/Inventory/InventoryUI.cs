@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
 
+// 인벤토리창 아이템 슬롯창 관리
 public class InventoryUI : MonoBehaviour
 {
     Inventory inven;

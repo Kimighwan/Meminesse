@@ -2,6 +2,7 @@ using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
 
+// 인벤토리창 모든 UI 관리
 public class Inventory : MonoBehaviour
 {
     // 데이터베이스

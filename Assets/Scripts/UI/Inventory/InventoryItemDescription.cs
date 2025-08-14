@@ -1,12 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using UnityEngine.UI;
 using TMPro;
 
+// 인벤토리창 아이템 설명칸 관리
 public class InventoryItemDescription : MonoBehaviour
 {
-    public ItemDatabase itemDatabase; // 인스펙터에서 연결
+    public ItemDatabase itemDatabase;
 
+    [SerializeField]
+    private Image itemImage;
     [SerializeField]
     private TextMeshProUGUI itemNameText;
     [SerializeField]
@@ -37,8 +41,10 @@ public class InventoryItemDescription : MonoBehaviour
         Item item = GetItemById(itemId);
         if (item != null)
         {
+            itemImage.gameObject.SetActive(true);
             itemNameText.gameObject.SetActive(true);
             itemDescText.gameObject.SetActive(true);
+            itemImage.sprite = item.itemImage; // 아이템 이미지 설정
             itemNameText.text = item.itemName;
             itemDescText.text = item.desc;
         }
