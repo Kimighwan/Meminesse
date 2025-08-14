@@ -45,7 +45,7 @@ public class HpUIManager : MonoBehaviour
     public void Heal(int healingAmout)
     {
         int currentHp = PlayerDataManager.Instance.GetHp(); // 현재 체력 가져오기
-        int additionalHealingRate = PlayerDataManager.Instance.GetAdditionalHealingAmount(); // 추가 회복 확률 가져오기 //////////////보류
+        float additionalHealingRate = PlayerDataManager.Instance.GetAdditionalHealingProbability(); // 추가 회복 확률 가져오기 //////////////보류
         PlayerDataManager.Instance.SetHp(healingAmout); // 체력을 한칸 증가
 
         if (UnityEngine.Random.value < additionalHealingRate)        // 일정 확률로 한칸 추가 회복

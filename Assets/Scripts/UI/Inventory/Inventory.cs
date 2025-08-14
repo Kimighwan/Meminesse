@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    // 데이터베이스
+    public ItemDatabase itemDatabase;
+
     // 돈 두종류 임시 이름
     [SerializeField]
     private TextMeshProUGUI mintMoney;
@@ -47,6 +50,13 @@ public class Inventory : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // 돈 초기화
+        Item dia, ma;
+        dia = itemDatabase.itemDB.Find(item => item.itemId == 21);
+        ma = itemDatabase.itemDB.Find(item => item.itemId == 22);
+        mintMoney.text = dia.count.ToString();
+        redMoney.text = ma.count.ToString();
+
         // 무기 레벨 UI 초기화
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep()); 
 

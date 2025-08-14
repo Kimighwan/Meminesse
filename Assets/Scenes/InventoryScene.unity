@@ -352,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &29667743
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1566,21 +1566,26 @@ MonoBehaviour:
       \uC5F4\uB9B0\uB2E4. \uAC01 \uC778\uC7A5\uC740 \uC11C\uB85C \uB2E4\uB978 \uC18D\uC131\uC744
       \uC9C0\uB2C8\uACE0 \uC788\uC73C\uBA70, \uBAA8\uC744\uC218\uB85D \uAC15\uB825\uD55C
       \uD798\uC774 \uAE68\uC5B4\uB09C\uB2E4. "
-  - itemName: "/\uB354\uBE14 \uC810\uD504 \uC544\uC774\uD15C"
-    itemImage: {fileID: 0}
+  - itemName: "\uB3C4\uC57D\uC758 \uBD80\uCE20"
+    itemImage: {fileID: 7068313832627337150, guid: bcf9829ed5aacc44288776126bf3bf86, type: 3}
     itemId: 51
     count: 0
-    desc: "\uB354\uBE14\uC810\uD504\uB41C\uB2E4."
-  - itemName: "/\uB3C5 \uBC29\uC9C0 \uC544\uC774\uD15C"
+    desc: "\uACE0\uB300 \uBAA8\uD5D8\uAC00\uC758 \uBD80\uCE20. \uC2E0\uC73C\uBA74
+      \uBAB8\uC774 \uAC00\uBCBC\uC6CC\uC838 \uACF5\uC911\uC5D0\uC11C \uD55C \uBC88
+      \uB354 \uB3C4\uC57D\uD560 \uC218 \uC788\uB2E4."
+  - itemName: "\uC815\uD654\uC758 \uACE0\uB9AC"
     itemImage: {fileID: 21300000, guid: 9e6336aacb9a9f447a30857b7a663813, type: 3}
     itemId: 52
     count: 0
-    desc: "\uB3C5 \uBC29\uC9C0\uB41C\uB2E4."
-  - itemName: "/\uBE5B\uC758 \uBC18\uC9C0"
+    desc: "\uC2E0\uC131\uD55C \uD798\uC774 \uAE43\uB4E0 \uBAA9\uAC78\uC774. \uB3C5\uACFC
+      \uC0B0\uC131\uC758 \uD53C\uD574\uB97C \uC644\uC804\uD788 \uBB34\uD6A8\uD654\uD55C\uB2E4."
+  - itemName: "\uB2EC\uBE5B \uBC18\uC9C0"
     itemImage: {fileID: 21300000, guid: c2cebeffaa486a7489c79fa6d2438975, type: 3}
     itemId: 53
     count: 0
-    desc: "\uC5B4\uB460\uC744 \uBC1D\uD600\uC900\uB2E4."
+    desc: "\uB2EC\uC758 \uCD95\uBCF5\uC744 \uBC1B\uC740 \uC740\uBE5B \uBC18\uC9C0.
+      \uC8FC\uBCC0\uC744 \uC740\uC740\uD558\uAC8C \uBC1D\uD600 \uC5B4\uB460 \uC18D\uC5D0\uC11C\uB3C4
+      \uAE38\uC744 \uC783\uC9C0 \uC54A\uAC8C \uD55C\uB2E4."
 --- !u!114 &410054651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3039,7 +3044,7 @@ GameObject:
   m_Component:
   - component: {fileID: 727880693}
   m_Layer: 5
-  m_Name: item description
+  m_Name: "***item description \uC0AD\uC81C \uC608\uC815"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4051,7 +4056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &881714778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4640,7 +4645,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 922326937}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1577676527}
+        m_TargetAssemblyTypeName: InventoryItemDescription, Assembly-CSharp
+        m_MethodName: ShowWeaponDescription
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 11
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &922326940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6520,6 +6537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402cac1c8fd86204990102ca37c94b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDatabase: {fileID: 410054650}
   mintMoney: {fileID: 654026323}
   redMoney: {fileID: 746180715}
   weaponImages:
@@ -7634,6 +7652,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1577676526}
+  - component: {fileID: 1577676527}
   m_Layer: 5
   m_Name: 5. Description
   m_TagString: Untagged
@@ -7663,6 +7682,21 @@ RectTransform:
   m_AnchoredPosition: {x: 542, y: -25.526978}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1577676527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577676525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e365542293096c41a9c025a9bcd0cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDatabase: {fileID: 410054650}
+  itemNameText: {fileID: 881714779}
+  itemDescText: {fileID: 29667744}
 --- !u!1 &1600142331
 GameObject:
   m_ObjectHideFlags: 0
