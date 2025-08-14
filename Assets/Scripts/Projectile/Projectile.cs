@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
 
     protected bool isGravityOn;
     protected bool isHitGround;
+    protected bool isHitPlayer;
 
     protected Vector2 targetPos;
     protected Vector2 fireDir;
@@ -38,6 +39,7 @@ public class Projectile : MonoBehaviour
         xStartPos = transform.position.x;
         isGravityOn = false;
         isHitGround = false;
+        isHitPlayer = false;
     }
 
     public virtual void Update()
@@ -54,7 +56,7 @@ public class Projectile : MonoBehaviour
 
     public virtual void FixedUpdate()
     {
-        if (!isHitGround)
+        if (!isHitGround && !isHitPlayer)
         {
             Collider2D damageHit = Physics2D.OverlapCircle(damagePos.position, damageRadius, whatIsPlayer);
             Collider2D groundHit = Physics2D.OverlapCircle(damagePos.position, damageRadius, whatIsGround);
@@ -62,6 +64,7 @@ public class Projectile : MonoBehaviour
             if (damageHit)
             {
                 Debug.Log("발사체 피격!");
+                isHitPlayer = true;
             }
 
             if (groundHit)

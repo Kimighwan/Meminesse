@@ -12,6 +12,9 @@ public class IdleState : State
     protected bool isPlayerInChargeRange;
     protected float idleTime;                       // Idle 상태 지속 시간
 
+    // For Transition State
+    protected bool doneTransition;
+
     public IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
@@ -25,6 +28,7 @@ public class IdleState : State
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
         isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
         isPlayerInChargeRange = entity.CheckPlayerInChargeRange();
+        entity.animationToStatemachine.idleState = this;
     }
 
     public override void Enter()
@@ -34,6 +38,7 @@ public class IdleState : State
         entity.SetVelocityX(0f);
         isIdleTimeOver = false;
         isDetectedPlayer = false;
+        doneTransition = false;
         SetRandomIdleTIme();
     }
 
@@ -66,5 +71,11 @@ public class IdleState : State
     private void SetRandomIdleTIme()        // 랜덤 Idle 시간 정하기
     {
         idleTime = Random.Range(stateData.minIdleTime, stateData.maxIdleTime);
+    }
+
+
+    public virtual void FinishTransition()
+    {
+        doneTransition = true;
     }
 }

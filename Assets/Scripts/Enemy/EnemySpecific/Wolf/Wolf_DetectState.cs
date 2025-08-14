@@ -32,7 +32,7 @@ public class Wolf_DetectState : DetectState
             stateMachine.ChangeState(enemy.meleeAttackState);
         else if(!isDetectedPlayer)
             stateMachine.ChangeState(enemy.idleState);
-        else if(isDetectLedge)
+        else if(!isDetectLedge)
         {
             enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);

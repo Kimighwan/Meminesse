@@ -16,6 +16,7 @@ public class Entity : MonoBehaviour
     public AnimationToStatemachine animationToStatemachine { get; private set; }
     public int LastDamagedDirection { get; private set; }
     public bool IsStun { get; private set; }        // 스턴 상태에 돌입이 가능한가?
+    public bool firstAttack { get; set; }
     protected void SetIsStun(bool value) { IsStun = value; }
 
     //public GameObject aliveGO { get; private set; }
@@ -48,6 +49,7 @@ public class Entity : MonoBehaviour
         currentHp = entityData.maxHp;
         IsStun = true;
         isDead = false;
+        firstAttack = true;
 
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();

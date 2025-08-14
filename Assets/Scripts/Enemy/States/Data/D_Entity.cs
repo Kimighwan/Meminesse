@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newEntityData", menuName = "Data/Entity Data/Base Data")]
+[CreateAssetMenu(fileName = "newEntityData", menuName = "Data/Entity Data/Entity Data")]
 public class D_Entity : ScriptableObject
 {
     public float maxHp = 50f;                       // 최대 Hp
