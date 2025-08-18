@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
 using Slax.InventorySystem.Runtime.Core;
+using TMPro;
 
 // 인벤토리창 아이템 슬롯창 관리
 public class InventoryUI : MonoBehaviour
@@ -11,6 +12,9 @@ public class InventoryUI : MonoBehaviour
 
     public Slot[] slots; // 인벤토리 슬롯 배열
     public Transform slotHolder; // 슬롯을 담고 있는 부모 오브젝트
+
+    [SerializeField]
+    private TextMeshProUGUI noItemMessage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,7 +44,7 @@ public class InventoryUI : MonoBehaviour
     {
         // itemDataList를 가져와 인벤토리 UI 업데이트
         List<ItemData> itemDataList = ItemDataManager.Instance.GetItemDataList();
-
+        
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < itemDataList.Count)
@@ -56,6 +60,18 @@ public class InventoryUI : MonoBehaviour
                 slots[i].gameObject.SetActive(false);
             }
         }
+
+        // 인벤토리가 비어있으면
+        if (itemDataList.Count == 0)
+        {
+            noItemMessage.gameObject.SetActive(true);
+        }
+        else
+        {
+            noItemMessage.gameObject.SetActive(false);
+        }
+
+
     }
 
     // 디버그용 - 랜덤 아이템 추가(무기, 돈 제외) ------------ 나중에 삭제함
