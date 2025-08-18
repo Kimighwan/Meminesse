@@ -11,4 +11,10 @@ public class ItemDatabase : MonoBehaviour
         instance = this;
     }
     public List<Item>itemDB = new List<Item>();
+
+    public Item GetItemById(int id)
+    {
+        return itemDB.Find(item => item.itemId == id);
+    }
+
 }
