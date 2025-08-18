@@ -34,14 +34,14 @@ public class Inventory : MonoBehaviour
     #endregion
 
 
-    public delegate void OnSlotCountChange(int val);
-    public OnSlotCountChange onSlotCountChange;
+    public delegate void OnSlotCountChange(int val);  // 델리게이트 타입 정의
+    public OnSlotCountChange onSlotCountChange;  // 델리게이트 변수 선언
 
     private int slotCnt;
-    public int SlotCnt
+    public int SlotCnt 
     {
-        get { return slotCnt; }
-        set
+        get { return slotCnt; } // 읽기
+        set // 쓰기
         {
             slotCnt = value;
             onSlotCountChange.Invoke(slotCnt);
@@ -62,7 +62,7 @@ public class Inventory : MonoBehaviour
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep()); 
 
         // 지금 활성화된 슬롯 개수
-        SlotCnt = 0;
+        SlotCnt = 1;
     }
 
     // Update is called once per frame

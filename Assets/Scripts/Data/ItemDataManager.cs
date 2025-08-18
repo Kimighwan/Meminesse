@@ -39,6 +39,9 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
         // 경로는 임시로 dataPath로 지정 - 테스터 용이, 추후 아래 주석으로 적용하기
         PATH = Path.Combine(Application.dataPath, "itemData.json");
         //PATH = Path.Combine(Application.persistentDataPath, "itemData.json");
+
+        
+
         Load();
         Save();
     }

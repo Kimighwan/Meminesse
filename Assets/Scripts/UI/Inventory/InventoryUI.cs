@@ -7,7 +7,6 @@ using UnityEngine.Rendering;
 // 인벤토리창 아이템 슬롯창 관리
 public class InventoryUI : MonoBehaviour
 {
-    Inventory inven;
 
     public Slot[] slots; // 인벤토리 슬롯 배열
     public Transform slotHolder; // 슬롯을 담고 있는 부모 오브젝트
@@ -17,9 +16,8 @@ public class InventoryUI : MonoBehaviour
     {
         
 
-        inven = Inventory.instance; // 인벤토리 인스턴스 가져오기
-        slots = slotHolder.GetComponentsInChildren<Slot>();
-        inven.onSlotCountChange += SlotChange; // 슬롯 개수가 바뀌면 나중에 onSlotCountChange(val)가 실행될 때 SlotChange(val)가 자동으로 불림
+        slots = slotHolder.GetComponentsInChildren<Slot>(); // 자식 오브젝트 가져오기
+        Inventory.instance.onSlotCountChange += SlotChange; // 슬롯 개수가 바뀌면 나중에 onSlotCountChange(val)가 실행될 때 SlotChange(val)가 자동으로 불림
     }
     
     // Update is called once per frame
@@ -34,22 +32,24 @@ public class InventoryUI : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i < inven.SlotCnt)
+            if (i < Inventory.instance.SlotCnt) //SlotCnt수만큼만 slot ui 활성화
             {
-                slots[i].GetComponent<Button>().interactable = true; // 슬롯 활성화
+                slots[i].gameObject.SetActive(true);  // 슬롯 오브젝트 보이기
+                //Debug.Log("ui 활성화"); // 확인용
             }
             else
             {
-                slots[i].GetComponent<Button>().interactable = false; // 슬롯 비활성화
+                slots[i].gameObject.SetActive(false); // 슬롯 오브젝트 숨기기
             }
         }
     }
 
     //슬롯에 아이템 추가하는 함수
-    public void AddSlot(int id, int count)
+    public void AddSlot(int id)
     {
-        inven.SlotCnt++; // 슬롯 개수 증가
-        ItemDataManager.Instance.AddItem(id, count);
+        Inventory.instance.SlotCnt++; // 슬롯 개수 증가
+        ItemDataManager.Instance.AddItem(id, 1);
+        Debug.Log($"슬롯 수 : {Inventory.instance.SlotCnt}");
     }
 
 }
