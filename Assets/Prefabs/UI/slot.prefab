@@ -348,6 +348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2088c5b1bdb743c4e8c0e3f951dd072f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 4369927069849601277}
+  countText: {fileID: 4242995910531185282}
 --- !u!114 &592129881440403606
 MonoBehaviour:
   m_ObjectHideFlags: 0

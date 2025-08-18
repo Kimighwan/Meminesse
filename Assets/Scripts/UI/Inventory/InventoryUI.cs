@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
+using Slax.InventorySystem.Runtime.Core;
 
 // 인벤토리창 아이템 슬롯창 관리
 public class InventoryUI : MonoBehaviour
@@ -14,10 +15,10 @@ public class InventoryUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-
         slots = slotHolder.GetComponentsInChildren<Slot>(); // 자식 오브젝트 가져오기
-        Inventory.instance.onSlotCountChange += SlotChange; // 슬롯 개수가 바뀌면 나중에 onSlotCountChange(val)가 실행될 때 SlotChange(val)가 자동으로 불림
+        UpdateInventory();
+
+
     }
     
     // Update is called once per frame
@@ -26,30 +27,48 @@ public class InventoryUI : MonoBehaviour
         
     }
 
-    
+ 
 
-    private void SlotChange(int val)
+    //슬롯에 아이템 추가하는 함수      <<  플레이어가 아이템 먹을 때 사용
+    public void AddItemToInventory(int id)
     {
+        ItemDataManager.Instance.AddItem(id, 1);
+        UpdateInventory();
+    }
+
+    public void UpdateInventory()
+    {
+        // itemDataList를 가져와 인벤토리 UI 업데이트
+        List<ItemData> itemDataList = ItemDataManager.Instance.GetItemDataList();
+
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i < Inventory.instance.SlotCnt) //SlotCnt수만큼만 slot ui 활성화
+            if (i < itemDataList.Count)
             {
-                slots[i].gameObject.SetActive(true);  // 슬롯 오브젝트 보이기
-                //Debug.Log("ui 활성화"); // 확인용
+                ItemData data = itemDataList[i];
+                Item itemInfo = Inventory.instance.itemDatabase.GetItemById(data.itemId);
+                slots[i].gameObject.SetActive(true);
+                slots[i].SetSlot(itemInfo, data.count);
             }
             else
             {
-                slots[i].gameObject.SetActive(false); // 슬롯 오브젝트 숨기기
+                slots[i].ClearSlot();
+                slots[i].gameObject.SetActive(false);
             }
         }
     }
 
-    //슬롯에 아이템 추가하는 함수
-    public void AddSlot(int id)
+    // 디버그용 - 랜덤 아이템 추가(무기, 돈 제외) ------------ 나중에 삭제함
+    public void DebugAddRandomItem()
     {
-        Inventory.instance.SlotCnt++; // 슬롯 개수 증가
-        ItemDataManager.Instance.AddItem(id, 1);
-        Debug.Log($"슬롯 수 : {Inventory.instance.SlotCnt}");
+        int[] possibleItems = { 23, 31, 32, 33, 34, 35, 36, 37, 41, 42, 43, 44, 51, 52, 53 };
+
+        int randomIndex = Random.Range(0, possibleItems.Length);
+        int randomId = possibleItems[randomIndex];
+
+        ItemDataManager.Instance.AddItem(randomId, 1);
+        UpdateInventory();
     }
+
 
 }

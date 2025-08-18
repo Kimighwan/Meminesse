@@ -1555,7 +1555,7 @@ MonoBehaviour:
       \uD798\uC774 \uAE68\uC5B4\uB09C\uB2E4. "
   - itemName: "\uB300\uC9C0\uC758 \uC778\uC7A5"
     itemImage: {fileID: 21300000, guid: d7a7f558822cbec4fbb00faa100589ab, type: 3}
-    itemId: 53
+    itemId: 43
     count: 0
     desc: "\uC5B4\uB460\uC744 \uBC1D\uD600\uC900\uB2E4."
   - itemName: "\uC5B4\uB460\uC758 \uC778\uC7A5"
@@ -8655,8 +8655,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1255613123}
         m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
-        m_MethodName: AddSlot
-        m_Mode: 3
+        m_MethodName: DebugAddRandomItem
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8987,10 +8987,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: add item
+  m_text: "\uB79C\uB364 \uC544\uC774\uD15C \uCD94\uAC00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 66e4f76165130e24b93a499e3f48978c, type: 2}
+  m_sharedMaterial: {fileID: 5704961405246759924, guid: 66e4f76165130e24b93a499e3f48978c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9911,7 +9911,7 @@ PrefabInstance:
     - target: {fileID: 4369927069849601277, guid: 1b9e1fdd963503d49b4cdb37036625e6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e3a0c3970363f2348a2defb4f4276a7e, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5707970207397258314, guid: 1b9e1fdd963503d49b4cdb37036625e6, type: 3}
       propertyPath: m_Name
       value: slot

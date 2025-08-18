@@ -45,7 +45,10 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
         Load();
         Save();
     }
-
+    public List<ItemData> GetItemDataList()
+    {
+        return itemDataList;
+    }
     public bool ExistItem(int id)
     {
         foreach(var item in itemDataList)
@@ -87,11 +90,19 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
     }
     public bool AddItem(int id, int count)
     {
-        if (ExistItem(id)) return false; //이미 존재하면 개수 증가 해야되는거 아님?
+        foreach (var item in itemDataList)
+        {
+            if (item.itemId == id)
+            {
+                item.count += count;  
+                return true;
+            }
+        }
 
         itemDataList.Add(new ItemData(id, count));
         return true;
     }
+    /*
     public bool ItemCountIncrease(int id, int count)
     {
         if (!ExistItem(id))
@@ -111,6 +122,7 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
 
         return false;
     }
+    */
 
     #region Save-Load
 
