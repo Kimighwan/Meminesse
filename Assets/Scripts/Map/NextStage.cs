@@ -11,6 +11,7 @@ public class NextStage : MonoBehaviour
         {
             collision.transform.position = DestinationPoint.position;
             DestinationMap.gameObject.SetActive(true);
+            DestinationMap.CheckMapVisited();
             transform.parent.gameObject.SetActive(false);
         }
     }
