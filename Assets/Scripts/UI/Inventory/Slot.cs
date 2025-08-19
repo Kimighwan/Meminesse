@@ -1,16 +1,38 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Image icon;
+    [SerializeField] private TextMeshProUGUI countText;
+
+    private Item itemInfo;
+    private int itemCount;
+
+    public void SetSlot(Item newItem, int count)
     {
-        
+        itemInfo = newItem;
+        itemCount = count;
+
+        if (itemInfo != null)
+        {
+            icon.sprite = itemInfo.itemImage;
+            icon.enabled = true;
+            countText.text = count > 1 ? count.ToString() : "";
+        }
+        else
+        {
+            ClearSlot();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ClearSlot()
     {
-        
+        itemInfo = null;
+        itemCount = 0;
+        icon.sprite = null;
+        icon.enabled = false;
+        countText.text = "";
     }
 }

@@ -34,20 +34,6 @@ public class Inventory : MonoBehaviour
     #endregion
 
 
-    public delegate void OnSlotCountChange(int val);
-    public OnSlotCountChange onSlotCountChange;
-
-    private int slotCnt;
-    public int SlotCnt
-    {
-        get { return slotCnt; }
-        set
-        {
-            slotCnt = value;
-            onSlotCountChange.Invoke(slotCnt);
-        }
-    }
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -61,8 +47,7 @@ public class Inventory : MonoBehaviour
         // 무기 레벨 UI 초기화
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep()); 
 
-        // 지금 활성화된 슬롯 개수
-        SlotCnt = 0;
+
     }
 
     // Update is called once per frame
