@@ -76,5 +76,6 @@ public class Inventory : MonoBehaviour
     {
         PlayerDataManager.Instance.UpgradeWeaponStep();
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
+        InventoryItemDescription.instance.ShowWeaponDescription(); // 무기 업그레이드 후 설명창 업데이트
     }
 }
