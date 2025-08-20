@@ -2,11 +2,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using Unity.VisualScripting;
 
 // 선택된 버튼이 깜빡이는 효과를 위한 스크립트.
-public class ButtonOutlineController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
+public class ButtonOutlineController : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     public Image outline; // Outline 이미지 (SpriteRenderer가 아님!)
+
+    private bool isClicked = false; // 클릭 상태를 저장하기 위한 변수
+    private static ButtonOutlineController currentButton = null;
 
     private Coroutine blinkCoroutine;
 
@@ -18,22 +22,35 @@ public class ButtonOutlineController : MonoBehaviour, IPointerEnterHandler, IPoi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        ShowOutline(true);
+        if (!isClicked) ShowOutline(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        ShowOutline(false);
+        if (!isClicked) ShowOutline(false);
     }
 
     public void OnSelect(BaseEventData eventData)
     {
-        ShowOutline(true);
+        if (!isClicked) ShowOutline(true);
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
-        ShowOutline(false);
+        if (!isClicked) ShowOutline(false);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        // 이전에 선택된 버튼은 해제
+        if(currentButton != null && currentButton != this)
+        {
+            currentButton.isClicked = false;
+            currentButton.ShowOutline(false);
+        }
+        isClicked = true;
+        ShowOutline(true);
+        currentButton = this;
     }
 
     private void ShowOutline(bool isShow)

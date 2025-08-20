@@ -73,6 +73,7 @@ public class InventoryItemDescription : MonoBehaviour
         
         if (item != null)
         {
+            UseButton.SetActive(false);
             upgradeButton.SetActive(true);
             itemImage.gameObject.SetActive(true);
             itemNameText.gameObject.SetActive(true);
@@ -95,9 +96,12 @@ public class InventoryItemDescription : MonoBehaviour
         Item item = GetItemById(itemId);
         if (item != null)
         {
+            upgradeButton.SetActive(false);
             UseButton.SetActive(true);
+            itemImage.gameObject.SetActive(true);
             itemNameText.gameObject.SetActive(true);
             itemDescText.gameObject.SetActive(true);
+            itemImage.sprite = item.itemImage;
             itemNameText.text = item.itemName;
             itemDescText.text = item.desc;
         }

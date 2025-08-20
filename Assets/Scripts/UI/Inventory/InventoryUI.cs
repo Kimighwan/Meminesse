@@ -21,8 +21,6 @@ public class InventoryUI : MonoBehaviour
     {
         slots = slotHolder.GetComponentsInChildren<Slot>(); // 자식 오브젝트 가져오기
         UpdateInventory();
-
-
     }
     
     // Update is called once per frame

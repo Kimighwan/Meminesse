@@ -40,9 +40,11 @@ public class Slot : MonoBehaviour
 
     public void OnClick()
     {
-        if (itemInfo != null)
+        if (itemInfo == null)
         {
-            InventoryItemDescription.instance.ShowItemDescription(itemInfo.itemId);
+            Debug.LogWarning("슬롯에 아이템 정보가 없음!");
+            return;
         }
+        InventoryItemDescription.instance.ShowItemDescription(itemInfo.itemId);
     }
 }
