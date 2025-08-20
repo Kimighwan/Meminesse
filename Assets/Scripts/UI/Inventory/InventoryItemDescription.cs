@@ -130,13 +130,18 @@ public class InventoryItemDescription : MonoBehaviour
         UseButton.SetActive(false);
     }
 
+    // 이 스크립트에 이 함수를 넣는게 맞나...? 검토 요망 
     // 아이템 id에 따른 아이템 효과 발동
     public void ItemUseButton()
     {
-        int id = currentItemId;
-        ItemDataManager.Instance.ItemCountReduce(id, ItemDatabase.instance.GetItemById(id).count);
 
-        switch(id)
+        int id = currentItemId;
+        ItemDataManager.Instance.ItemCountReduce(id, 1);
+
+        //PrintAllItems();
+       
+        InventoryUI.Instance.UpdateInventory();
+        switch (id)
         {
             // 좋은 물약
             case 31:
@@ -149,4 +154,21 @@ public class InventoryItemDescription : MonoBehaviour
                 HpUIManager.Instance.FullHeal(); break;
         }
     }
+
+    //디버그용
+    public void PrintAllItems()
+    {
+        if (ItemDataManager.Instance.itemDataList == null || ItemDataManager.Instance.itemDataList.Count == 0)
+        {
+            Debug.Log("인벤토리가 비어있습니다.");
+            return;
+        }
+
+        Debug.Log("==== 현재 인벤토리 목록 ====");
+        foreach (var item in ItemDataManager.Instance.itemDataList)
+        {
+            Debug.Log($"아이템 ID: {item.itemId}, 개수: {item.count}");
+        }
+    }
+
 }

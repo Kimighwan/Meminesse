@@ -16,6 +16,14 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI noItemMessage;
 
+    #region Singleton
+    public static InventoryUI Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
+    #endregion
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
