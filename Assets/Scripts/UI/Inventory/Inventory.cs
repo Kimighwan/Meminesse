@@ -74,6 +74,7 @@ public class Inventory : MonoBehaviour
     // 무기 업그레이드
     public void UpgradeWeaponStep()
     {
+        // 마연석 개수에 따라 조건문 걸 부분
         PlayerDataManager.Instance.UpgradeWeaponStep();
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
         InventoryItemDescription.Instance.ShowWeaponDescription(); // 무기 업그레이드 후 설명창 업데이트

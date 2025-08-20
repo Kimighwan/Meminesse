@@ -26,6 +26,10 @@ public class InventoryItemDescription : MonoBehaviour
     private TextMeshProUGUI itemNameText;
     [SerializeField]
     private TextMeshProUGUI itemDescText;
+    [SerializeField]
+    private TextMeshProUGUI noItemNotice;
+    [SerializeField]
+    private TextMeshProUGUI upgradeCost;
 
     [SerializeField]
     private GameObject upgradeButton;
@@ -59,15 +63,19 @@ public class InventoryItemDescription : MonoBehaviour
         {
             case 1:
                 item = GetItemById(11);
+                upgradeCost.text = "200 필요";
                 break;
             case 2:
                 item = GetItemById(12);
+                upgradeCost.text = "500 필요";
                 break;
             case 3:
                 item = GetItemById(13);
+                upgradeCost.text = "1000 필요";
                 break;
             case 4:
                 item = GetItemById(14);
+                upgradeCost.text = "5000 필요";
                 break;
             case 5:
                 item = GetItemById(15);
