@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 03e0c50dbe76e4449a6d1dc1049940fc
+guid: a18961b999d3aea4d8860ff8f7e1f1de
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3524636064939669494
-    second: "Icon37 - \uBCF5\uC0AC\uBCF8_0"
+      213: 1210651806151862213
+    second: upgradeButtonOutline_0
   - first:
-      213: -6243497322153857156
-    second: "Icon37 - \uBCF5\uC0AC\uBCF8_1"
+      213: 8237588790570875282
+    second: upgradeButtonOutline_1
+  - first:
+      213: -4796966383123344737
+    second: upgradeButtonOutline_2
+  - first:
+      213: -6897064574914628375
+    second: upgradeButtonOutline_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,45 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Icon37 - \uBCF5\uC0AC\uBCF8_0"
+      name: upgradeButtonOutline_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 2
-        width: 24
-        height: 27
+        x: 0
+        y: 0
+        width: 240
+        height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a088dba5c2af51fc0800000000000000
-      internalID: -3524636064939669494
+      spriteID: 5c7ed5447691dc010800000000000000
+      internalID: 1210651806151862213
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Icon37 - \uBCF5\uC0AC\uBCF8_1"
+      name: upgradeButtonOutline_1
       rect:
         serializedVersion: 2
-        x: 24
-        y: 21
-        width: 8
-        height: 11
+        x: 223
+        y: 83
+        width: 17
+        height: 17
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c7faae4d344aa59a0800000000000000
-      internalID: -6243497322153857156
+      spriteID: 29977b34c5bc15270800000000000000
+      internalID: 8237588790570875282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: upgradeButtonOutline_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f92517e6d70cd6db0800000000000000
+      internalID: -4796966383123344737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: upgradeButtonOutline_3
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 0
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e47843bf44b840a0800000000000000
+      internalID: -6897064574914628375
       vertices: []
       indices: 
       edges: []
@@ -150,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 06620144cba5ee84594c870a1a4504b5
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Icon37 - \uBCF5\uC0AC\uBCF8_0": -3524636064939669494
-      "Icon37 - \uBCF5\uC0AC\uBCF8_1": -6243497322153857156
+      upgradeButtonOutline_0: 1210651806151862213
+      upgradeButtonOutline_1: 8237588790570875282
+      upgradeButtonOutline_2: -4796966383123344737
+      upgradeButtonOutline_3: -6897064574914628375
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

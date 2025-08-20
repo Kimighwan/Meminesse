@@ -16,19 +16,25 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI noItemMessage;
 
+    #region Singleton
+    public static InventoryUI Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
+    #endregion
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         slots = slotHolder.GetComponentsInChildren<Slot>(); // 자식 오브젝트 가져오기
         UpdateInventory();
-
-
     }
     
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
  
@@ -50,7 +56,7 @@ public class InventoryUI : MonoBehaviour
             if (i < itemDataList.Count)
             {
                 ItemData data = itemDataList[i];
-                Item itemInfo = Inventory.instance.itemDatabase.GetItemById(data.itemId);
+                Item itemInfo = Inventory.Instance.itemDatabase.GetItemById(data.itemId);
                 slots[i].gameObject.SetActive(true);
                 slots[i].SetSlot(itemInfo, data.count);
             }

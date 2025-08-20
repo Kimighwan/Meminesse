@@ -18,12 +18,12 @@ public class Inventory : MonoBehaviour
     public GameObject[] weaponImages; 
 
     #region Singleton
-    public static Inventory instance;
+    public static Inventory Instance;
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
@@ -59,11 +59,11 @@ public class Inventory : MonoBehaviour
     //현재 무기레벨을 ui에 단계별 표시
     public void UpdateWeaponUI(int weaponStep)
     {
-        int hp = weaponStep;
+        int yyy = weaponStep;
 
         for (int i = 0; i < weaponImages.Length; i++)
         {
-            if (i < hp)
+            if (i < yyy)
                 weaponImages[i].SetActive(true); // 보이기
             else
                 weaponImages[i].SetActive(false); // 숨기기
@@ -74,7 +74,9 @@ public class Inventory : MonoBehaviour
     // 무기 업그레이드
     public void UpgradeWeaponStep()
     {
+        // 마연석 개수에 따라 조건문 걸 부분
         PlayerDataManager.Instance.UpgradeWeaponStep();
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
+        InventoryItemDescription.Instance.ShowWeaponDescription(); // 무기 업그레이드 후 설명창 업데이트
     }
 }

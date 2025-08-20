@@ -12,6 +12,14 @@ public class HpUIManager : MonoBehaviour
     public GameObject[] hearts; // 채워진 하트 이미지들
     private int maxHp;
 
+    #region Singleton
+    public static HpUIManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
+    #endregion
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
