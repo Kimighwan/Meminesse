@@ -26,7 +26,7 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
  
@@ -48,7 +48,7 @@ public class InventoryUI : MonoBehaviour
             if (i < itemDataList.Count)
             {
                 ItemData data = itemDataList[i];
-                Item itemInfo = Inventory.instance.itemDatabase.GetItemById(data.itemId);
+                Item itemInfo = Inventory.Instance.itemDatabase.GetItemById(data.itemId);
                 slots[i].gameObject.SetActive(true);
                 slots[i].SetSlot(itemInfo, data.count);
             }

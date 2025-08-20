@@ -45,6 +45,6 @@ public class Slot : MonoBehaviour
             Debug.LogWarning("슬롯에 아이템 정보가 없음!");
             return;
         }
-        InventoryItemDescription.instance.ShowItemDescription(itemInfo.itemId);
+        InventoryItemDescription.Instance.ShowItemDescription(itemInfo.itemId);
     }
 }

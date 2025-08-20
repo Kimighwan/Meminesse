@@ -7408,9 +7408,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1255613124}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: UpgradeWeaponStep
+      - m_Target: {fileID: 1577676527}
+        m_TargetAssemblyTypeName: InventoryItemDescription, Assembly-CSharp
+        m_MethodName: ItemUseButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -18,12 +18,12 @@ public class Inventory : MonoBehaviour
     public GameObject[] weaponImages; 
 
     #region Singleton
-    public static Inventory instance;
+    public static Inventory Instance;
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
@@ -76,6 +76,6 @@ public class Inventory : MonoBehaviour
     {
         PlayerDataManager.Instance.UpgradeWeaponStep();
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
-        InventoryItemDescription.instance.ShowWeaponDescription(); // 무기 업그레이드 후 설명창 업데이트
+        InventoryItemDescription.Instance.ShowWeaponDescription(); // 무기 업그레이드 후 설명창 업데이트
     }
 }
