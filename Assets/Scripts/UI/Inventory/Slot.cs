@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System;
 
 public class Slot : MonoBehaviour
 {
@@ -34,5 +36,13 @@ public class Slot : MonoBehaviour
         icon.sprite = null;
         icon.enabled = false;
         countText.text = "";
+    }
+
+    public void OnClick()
+    {
+        if (itemInfo != null)
+        {
+            InventoryItemDescription.instance.ShowItemDescription(itemInfo.itemId);
+        }
     }
 }

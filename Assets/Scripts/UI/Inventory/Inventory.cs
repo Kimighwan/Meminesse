@@ -59,11 +59,11 @@ public class Inventory : MonoBehaviour
     //현재 무기레벨을 ui에 단계별 표시
     public void UpdateWeaponUI(int weaponStep)
     {
-        int hp = weaponStep;
+        int yyy = weaponStep;
 
         for (int i = 0; i < weaponImages.Length; i++)
         {
-            if (i < hp)
+            if (i < yyy)
                 weaponImages[i].SetActive(true); // 보이기
             else
                 weaponImages[i].SetActive(false); // 숨기기

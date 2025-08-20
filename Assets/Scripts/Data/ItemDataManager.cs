@@ -49,6 +49,11 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
     {
         return itemDataList;
     }
+    public List<ItemData> SortItem()
+    {
+        itemDataList.Sort((x, y) => x.itemId.CompareTo(y.itemId));
+        return itemDataList;
+    }
     public bool ExistItem(int id)
     {
         foreach(var item in itemDataList)
