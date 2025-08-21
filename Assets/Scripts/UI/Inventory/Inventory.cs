@@ -2,12 +2,15 @@ using System.Xml.Serialization;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections.Generic;
+using NUnit.Framework;
 
 // 인벤토리창 모든 UI 관리
 public class Inventory : MonoBehaviour
 {
     // 데이터베이스
     public ItemDatabase itemDatabase;
+    public List<ItemData> itemDataList;
 
     // 돈 두종류 임시 이름
     [SerializeField]
@@ -41,12 +44,33 @@ public class Inventory : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // 돈 초기화
-        Item dia, ma;
-        dia = itemDatabase.itemDB.Find(item => item.itemId == 21);
-        ma = itemDatabase.itemDB.Find(item => item.itemId == 22);
-        mintMoney.text = dia.count.ToString();
-        redMoney.text = ma.count.ToString();
+        // 데이터 가져오기
+        itemDataList = ItemDataManager.Instance.GetItemDataList();
+
+        // 처음에 다이아 500개 주고 시작....................................
+        ItemDataManager.Instance.AddItem(21, 500);
+
+        // 돈 초기화         
+        ItemData dia, ma;
+        if (ItemDataManager.Instance.ExistItem(21) != false)
+        {
+            dia = itemDataList.Find(item => item.itemId == 21);
+            mintMoney.text = dia.count.ToString();
+        }
+        else
+            mintMoney.text = "0";
+
+        if (ItemDataManager.Instance.ExistItem(22) != false)
+        {
+            ma = itemDataList.Find(item => item.itemId == 22);
+            redMoney.text = ma.count.ToString();
+        }
+        else
+        {
+            //Debug.Log("마연석 아이템이 존재하지 않음");
+            redMoney.text = "0";
+        }
+        
 
         // 무기 레벨 UI 초기화
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep()); 

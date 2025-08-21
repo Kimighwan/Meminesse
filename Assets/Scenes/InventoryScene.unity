@@ -1539,7 +1539,7 @@ MonoBehaviour:
   - itemName: "\uB2E4\uC774\uC544"
     itemImage: {fileID: 21300000, guid: fc7322cfef9b314409a85dfc195b6a0a, type: 3}
     itemId: 21
-    count: 500
+    count: 0
     desc: 
   - itemName: "\uB9C8\uC5F0\uC11D"
     itemImage: {fileID: 21300000, guid: 37971c73fc562a642a7373fe7bd6f471, type: 3}
@@ -1562,23 +1562,23 @@ MonoBehaviour:
     count: 0
     desc: "\uC5F0\uAE08\uC220\uC0AC\uAC00 \uB300\uB7C9 \uC0DD\uC0B0\uD55C \uBCF4\uAE09\uD615
       \uD68C\uBCF5\uC57D\uC774\uB2E4. \uC801\uB2F9\uD55C \uAC00\uACA9\uC5D0 \uC801\uB2F9\uD788
-      \uD68C\uBCF5\uC2DC\uCF1C\uC900\uB2E4. \uCCB4\uB825 \uBC18\uCE78 \uD68C\uBCF5"
+      \uD68C\uBCF5\uC2DC\uCF1C\uC900\uB2E4. \uCCB4\uB825\uC774 \uBC18\uCE78 \uD68C\uBCF5\uB41C\uB2E4."
   - itemName: "\uCC38 \uC88B\uC740 \uBB3C\uC57D"
     itemImage: {fileID: 21300000, guid: ba42bafdeeb1e404984fa90a2cb9be8f, type: 3}
     itemId: 32
     count: 0
     desc: "\uC5F0\uAE08\uC220\uC0AC\uAC00 \uC815\uC131\uAECF \uB9CC\uB4E0 \uD2B9\uC81C
       \uD68C\uBCF5\uC57D\uC774\uB2E4. \uBCF4\uAE09\uD615\uBCF4\uB2E4 \uD6E8\uC52C
-      \uB354 \uC0C1\uCF8C\uD558\uAC8C \uD68C\uBCF5\uB41C\uB2E4. \uCCB4\uB825 \uB450\uCE78
-      \uD68C\uBCF5"
+      \uB354 \uC0C1\uCF8C\uD558\uAC8C \uD68C\uBCF5\uB41C\uB2E4. \uCCB4\uB825 \uB450\uCE78\uC744
+      \uD68C\uBCF5\uC2DC\uCF1C\uC900\uB2E4."
   - itemName: "\uC5C4\uCCAD \uC88B\uC740 \uBB3C\uC57D"
     itemImage: {fileID: 21300000, guid: 0d3da6f991a27ed4daff33675bd8f466, type: 3}
     itemId: 33
     count: 0
     desc: "\uC5F0\uAE08\uC220\uC0AC\uC758 \uBE44\uBC00 \uC870\uD569\uBC95\uC774 \uB4E4\uC5B4\uAC04
       \uC804\uC124\uC758 \uD68C\uBCF5\uC57D\uC774\uB2E4. \uB9C8\uC2DC\uBA74 \uC88B\uC740
-      \uC77C\uC774 \uC77C\uC5B4\uB0A0\uC9C0\uB3C4 \uBAA8\uB978\uB2E4. \uCCB4\uB825
-      \uD480\uD53C"
+      \uC77C\uC774 \uC77C\uC5B4\uB0A0\uC9C0\uB3C4 \uBAA8\uB978\uB2E4. \uCCB4\uB825\uC774
+      \uCD5C\uB300\uB85C \uD68C\uBCF5\uB41C\uB2E4."
   - itemName: "\uC0C1\uC810 \uC704\uCE58 \uD45C\uC2DD\uC11C"
     itemImage: {fileID: 21300000, guid: ba28f10ad662c314ca3a6548cc3f0e7f, type: 3}
     itemId: 34
@@ -6513,6 +6513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDatabase: {fileID: 410054650}
+  itemDataList: []
   mintMoney: {fileID: 654026323}
   redMoney: {fileID: 746180715}
   weaponImages:
