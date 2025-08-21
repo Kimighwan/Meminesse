@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class NomalCultistProjectile : Projectile
 {
+    public override void Start()
+    {
+        base.Start();
+
+        rigid.linearVelocity = transform.right * -1 * speed;
+    }
+
     public override void FixedUpdate()
     {
         base.FixedUpdate();
