@@ -27,7 +27,7 @@ public class WrapperItemDataList
 
 public class ItemDataManager : SingletonBehaviour<ItemDataManager>
 {
-    public List<ItemData> itemDataList = new List<ItemData>();
+    private List<ItemData> itemDataList = new List<ItemData>();
 
     private const string KEY = "Ikhwan@@ZZang!!";
     private string PATH;

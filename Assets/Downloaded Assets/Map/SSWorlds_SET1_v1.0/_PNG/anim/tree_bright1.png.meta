@@ -84,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 320
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -136,10 +136,10 @@ TextureImporter:
       name: tree_bright1_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 639
-        width: 240
-        height: 313
+        x: 0
+        y: 640
+        width: 256
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,10 +158,10 @@ TextureImporter:
       name: tree_bright1_1
       rect:
         serializedVersion: 2
-        x: 264
-        y: 639
-        width: 240
-        height: 313
+        x: 256
+        y: 640
+        width: 256
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,10 +180,10 @@ TextureImporter:
       name: tree_bright1_2
       rect:
         serializedVersion: 2
-        x: 519
-        y: 639
-        width: 240
-        height: 313
+        x: 512
+        y: 640
+        width: 256
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,10 +202,10 @@ TextureImporter:
       name: tree_bright1_3
       rect:
         serializedVersion: 2
-        x: 775
-        y: 639
-        width: 240
-        height: 313
+        x: 768
+        y: 640
+        width: 256
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,10 +224,10 @@ TextureImporter:
       name: tree_bright1_4
       rect:
         serializedVersion: 2
-        x: 7
-        y: 319
-        width: 240
-        height: 313
+        x: 0
+        y: 320
+        width: 256
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,10 +246,10 @@ TextureImporter:
       name: tree_bright1_5
       rect:
         serializedVersion: 2
-        x: 263
-        y: 319
-        width: 240
-        height: 313
+        x: 256
+        y: 320
+        width: 256
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,10 +268,10 @@ TextureImporter:
       name: tree_bright1_6
       rect:
         serializedVersion: 2
-        x: 519
-        y: 319
-        width: 240
-        height: 313
+        x: 512
+        y: 320
+        width: 256
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,10 +290,10 @@ TextureImporter:
       name: tree_bright1_7
       rect:
         serializedVersion: 2
-        x: 776
-        y: 319
-        width: 239
-        height: 312
+        x: 768
+        y: 320
+        width: 256
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -312,10 +312,10 @@ TextureImporter:
       name: tree_bright1_8
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 0
-        width: 239
-        height: 311
+        width: 256
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,10 +334,10 @@ TextureImporter:
       name: tree_bright1_9
       rect:
         serializedVersion: 2
-        x: 264
+        x: 256
         y: 0
-        width: 239
-        height: 311
+        width: 256
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -356,10 +356,10 @@ TextureImporter:
       name: tree_bright1_10
       rect:
         serializedVersion: 2
-        x: 520
+        x: 512
         y: 0
-        width: 240
-        height: 312
+        width: 256
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -378,10 +378,10 @@ TextureImporter:
       name: tree_bright1_11
       rect:
         serializedVersion: 2
-        x: 776
+        x: 768
         y: 0
-        width: 240
-        height: 312
+        width: 256
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -400,7 +400,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e6769482e02c5a409cdbea37c790103
     internalID: 0
     vertices: []
     indices: 

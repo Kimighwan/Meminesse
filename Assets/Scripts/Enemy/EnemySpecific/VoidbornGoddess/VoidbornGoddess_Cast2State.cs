@@ -43,7 +43,7 @@ public class VoidbornGoddess_Cast2State : IdleState
             {
                 check = true;
                 int randomPosition = Random.Range(0, 5);
-                GameObject.Instantiate(Resources.Load("Prefabs/Projectile/VoidbornGoddess_Spell1"), enemy.spellPositions[randomPosition].transform);
+                GameObject.Instantiate(Resources.Load("Enemy/VoidbornGoddess_Spell1"), enemy.spellPositions[randomPosition].transform);
                 Debug.Log($"손 소환 / 위치 : {randomPosition}");
                 time = Time.time;
             }
