@@ -61,22 +61,27 @@ public class InventoryItemDescription : MonoBehaviour
 
         switch(weaponStep)
         {
+            // 낡은 검
             case 1:
                 item = GetItemById(11);
                 upgradeCost.text = "200 필요";
                 break;
+            // 평범한 검
             case 2:
                 item = GetItemById(12);
                 upgradeCost.text = "500 필요";
                 break;
+            // 단련된 검
             case 3:
                 item = GetItemById(13);
                 upgradeCost.text = "1000 필요";
                 break;
+            // 불멸의 검
             case 4:
                 item = GetItemById(14);
                 upgradeCost.text = "5000 필요";
                 break;
+            // 만계황혼의 심연룡섬검
             case 5:
                 item = GetItemById(15);
                 break;  
@@ -85,7 +90,11 @@ public class InventoryItemDescription : MonoBehaviour
         if (item != null)
         {
             UseButton.SetActive(false);
-            upgradeButton.SetActive(true);
+            if(item.itemId != 15) 
+                upgradeButton.SetActive(true); //최고 레벨이라서 업그레이드 불가
+            else
+                upgradeButton.SetActive(false);
+
             itemImage.gameObject.SetActive(true);
             itemNameText.gameObject.SetActive(true);
             itemDescText.gameObject.SetActive(true);
