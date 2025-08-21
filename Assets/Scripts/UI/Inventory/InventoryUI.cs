@@ -56,9 +56,18 @@ public class InventoryUI : MonoBehaviour
             if (i < itemDataList.Count)
             {
                 ItemData data = itemDataList[i];
-                Item itemInfo = Inventory.Instance.itemDatabase.GetItemById(data.itemId);
-                slots[i].gameObject.SetActive(true);
-                slots[i].SetSlot(itemInfo, data.count);
+                if (data.itemId == 21 || data.itemId == 22) // 돈 아이템은 인벤토리에 표시x
+                {
+                    slots[i].ClearSlot();
+                    slots[i].gameObject.SetActive(false);
+                    continue;
+                }
+                else
+                {
+                    Item itemInfo = Inventory.Instance.itemDatabase.GetItemById(data.itemId);
+                    slots[i].gameObject.SetActive(true);
+                    slots[i].SetSlot(itemInfo, data.count);
+                }
             }
             else
             {
