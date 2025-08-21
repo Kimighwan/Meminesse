@@ -1,5 +1,6 @@
 using System.Xml.Serialization;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 // 인벤토리창 모든 UI 관리
@@ -14,8 +15,11 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI redMoney;
 
+    // 플레이어가 들고있는 무기 이미지
+    public Image[] weaponImages;
+
     // 무기 레벨 UI
-    public GameObject[] weaponImages; 
+    public GameObject[] weaponLevels; 
 
     #region Singleton
     public static Inventory Instance;
@@ -61,14 +65,22 @@ public class Inventory : MonoBehaviour
     {
         int yyy = weaponStep;
 
-        for (int i = 0; i < weaponImages.Length; i++)
+        for (int i = 0; i < weaponLevels.Length; i++)
         {
+            // 무기 레벨 칸 UI 업데이트
             if (i < yyy)
-                weaponImages[i].SetActive(true); // 보이기
+                weaponLevels[i].SetActive(true);
             else
-                weaponImages[i].SetActive(false); // 숨기기
+                weaponLevels[i].SetActive(false); 
+
+            // 사용자 초상화의 검 이미지 업데이트
+            if (i == yyy - 1)
+                weaponImages[i].gameObject.SetActive(true);
+            else
+                weaponImages[i].gameObject.SetActive(false);
+            
         }
-        // Debug.Log("현재 무기 레벨 : " + weaponStep); //임시 확인용
+        
     }
 
     // 무기 업그레이드
