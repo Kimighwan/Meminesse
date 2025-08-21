@@ -9,7 +9,10 @@ using UnityEngine.Rendering;
 
 public class HpUIManager : MonoBehaviour
 {
-    public GameObject[] hearts; // 채워진 하트 이미지들
+    public GameObject heartPrefab;       // 하트 프리팹 (Empty/Half/Full 포함)
+    public Transform heartParent;        // 하트들이 붙을 부모 오브젝트 (UI Panel 같은거)
+    private List<Heart> hearts = new List<Heart>();
+
     private int maxHp;
 
     #region Singleton
@@ -25,42 +28,70 @@ public class HpUIManager : MonoBehaviour
     {
         maxHp = PlayerDataManager.Instance.GetMaxHp(); // 저장된 최대 체력 불러오기. 총 하트칸 수
         // hp 불러오기
-        UpdateHearts(PlayerDataManager.Instance.GetHp());
+        UpdateHearts();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    //현재 hp를 ui에 하트로 표시
-    public void UpdateHearts(int currentHp)
+    private void InitHearts(int newMaxHp)
     {
-        int hp = currentHp/10; 
+        int heartCount = newMaxHp / 20;
 
-        for (int i = 0; i < hearts.Length; i++)
+        // 하트 가져오기
+        hearts.Clear();
+        foreach (Transform child in heartParent)
         {
-            if (i < hp)
-                hearts[i].SetActive(true); // 하트 보이기
-            else
-                hearts[i].SetActive(false); // 하트 숨기기
+            Heart h = child.GetComponent<Heart>();
+            if (h != null) hearts.Add(h);
         }
-        Debug.Log("현재 HP = " + hp*10); //임시 확인용
+
+        // 부족하면 새로 생성
+        while (hearts.Count < heartCount)
+        {
+            GameObject heartObj = Instantiate(heartPrefab, heartParent);
+            hearts.Add(heartObj.GetComponent<Heart>());
+        }
     }
 
-    // 체력 회복 함수(물약 사용)
-    public void Heal(int healingAmout)
+    // HP를 UI에 반영
+    public void UpdateHearts()
+    {
+        InitHearts(maxHp);
+        int hp = PlayerDataManager.Instance.GetHp();
+
+        for (int i = 0; i < hearts.Count; i++)
+        {
+            int heartHp = hp - (i * 20);
+
+            if (heartHp >= 20)
+            {
+                hearts[i].SetState(2); // 풀칸
+            }
+            else if (heartHp >= 10)
+                hearts[i].SetState(1); // 반칸
+            else
+                hearts[i].SetState(0); // 빈칸
+        }
+
+        Debug.Log("현재 HP = " + hp);
+    }
+
+    // 체력 회복 함수(물약 사용) - 추가회복량 포함 힐
+    public void Heal(int healingAmount)
     {
         int currentHp = PlayerDataManager.Instance.GetHp(); // 현재 체력 가져오기
         float additionalHealingRate = PlayerDataManager.Instance.GetAdditionalHealingProbability(); // 추가 회복 확률 가져오기 //////////////보류
-        PlayerDataManager.Instance.SetHp(healingAmout); // 체력을 한칸 증가
+        PlayerDataManager.Instance.SetHp(healingAmount); // 체력을 한칸 증가
 
         if (UnityEngine.Random.value < additionalHealingRate)        // 일정 확률로 한칸 추가 회복
             PlayerDataManager.Instance.SetHp(20);
 
-        Debug.Log($"HP +{healingAmout * (1 + additionalHealingRate)}");
-        UpdateHearts(PlayerDataManager.Instance.GetHp());
+        Debug.Log($"HP +{healingAmount * (1 + additionalHealingRate)}");
+        UpdateHearts();
     }
 
     // 체력 최대로 회복 함수(특정 지점에 가면)
@@ -69,24 +100,25 @@ public class HpUIManager : MonoBehaviour
         int currentHp = maxHp; // 최대 체력으로 설정
         PlayerDataManager.Instance.SetHp(currentHp); // maxHp를 현재 체력에 더해서 max로 만듦
         Debug.Log("HP Full");
-        UpdateHearts(PlayerDataManager.Instance.GetHp()); 
+        UpdateHearts(); 
     }
 
 
-    // 체력 감소 함수(몬스터 피격)
+    // 체력 감소 함수(디버그용)     //// player 부분에서 함
     public void TakeDamage(int damage)
     {
         int currentHp = PlayerDataManager.Instance.GetHp(); // 현재 체력 가져오기
         PlayerDataManager.Instance.SetHp(-damage); // 현재 체력에 damage를 뺌
         Debug.Log($"HP -{damage}");
-        UpdateHearts(PlayerDataManager.Instance.GetHp());
+        UpdateHearts();
     }
 
     // 최대 체력 증가
     public void IncreaseMaxHp()
     {
         PlayerDataManager.Instance.AddMaxHp(20); 
-        UpdateHearts(PlayerDataManager.Instance.GetHp()); // UI 업데이트
+        InitHearts(PlayerDataManager.Instance.GetMaxHp()); 
+        UpdateHearts(); // UI 업데이트
         // 실제로 하트 칸 수가 늘어나게 개발 예정
     }
 }

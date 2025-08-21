@@ -47,9 +47,6 @@ public class Inventory : MonoBehaviour
         // 데이터 가져오기
         itemDataList = ItemDataManager.Instance.GetItemDataList();
 
-        // 처음에 다이아 500개 주고 시작....................................
-        ItemDataManager.Instance.AddItem(21, 500);
-
         // 돈 초기화         
         ItemData dia, ma;
         if (ItemDataManager.Instance.ExistItem(21) != false)

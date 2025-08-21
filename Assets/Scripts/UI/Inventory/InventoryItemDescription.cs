@@ -170,6 +170,9 @@ public class InventoryItemDescription : MonoBehaviour
             case 33:
                 HpUIManager.Instance.FullHeal(); break;
         }
+        if (ItemDataManager.Instance.GetItemCountById(id) == 0)
+            HideItemDescription(id);
+
     }
 
     //디버그용
