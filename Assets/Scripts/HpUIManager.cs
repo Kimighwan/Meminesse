@@ -119,6 +119,5 @@ public class HpUIManager : MonoBehaviour
         PlayerDataManager.Instance.AddMaxHp(20); 
         InitHearts(PlayerDataManager.Instance.GetMaxHp()); 
         UpdateHearts(); // UI 업데이트
-        // 실제로 하트 칸 수가 늘어나게 개발 예정
     }
 }
