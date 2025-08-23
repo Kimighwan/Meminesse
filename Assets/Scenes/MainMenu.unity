@@ -530,8 +530,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 376690085}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 668330162}
+        m_TargetAssemblyTypeName: ExitConfirm, Assembly-CSharp
         m_MethodName: OnCancelQuit
         m_Mode: 1
         m_Arguments:
@@ -3743,8 +3743,7 @@ MonoBehaviour:
   invisibleDummyButton: {fileID: 1503213638}
   currentButton: {fileID: 975021976}
   settingUI: {fileID: 1192258774}
-  exitConfirmationPopupUI: {fileID: 668330157}
-  exitConfirmationPopup: {fileID: 668330157}
+  exitConfirmationPopupUI: {fileID: 0}
 --- !u!1 &386117459
 GameObject:
   m_ObjectHideFlags: 0
@@ -6122,8 +6121,9 @@ GameObject:
   - component: {fileID: 668330161}
   - component: {fileID: 668330160}
   - component: {fileID: 668330159}
+  - component: {fileID: 668330162}
   m_Layer: 5
-  m_Name: Exit Confirmation Canvas
+  m_Name: Exit Confirmation Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6216,6 +6216,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &668330162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668330157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db956c5828e2c1a4582f7e8fb22af550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitConfirmationPopupUI: {fileID: 668330157}
+  exitConfirmationPopup: {fileID: 668330157}
 --- !u!1 &679737303
 GameObject:
   m_ObjectHideFlags: 0
@@ -9503,8 +9517,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 376690085}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 668330162}
+        m_TargetAssemblyTypeName: ExitConfirm, Assembly-CSharp
         m_MethodName: OnConfirmQuit
         m_Mode: 1
         m_Arguments:
