@@ -6,6 +6,8 @@ public class HUDManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject pauseMenuPopUp;
+    [SerializeField]
+    private GameObject settingPopUp;
 
     [SerializeField]
     private GameObject GoToMainConfirmationPopupUI; // 진행중인 게임을 종료하고 메인 메뉴로 나가시겠습니까?
@@ -24,8 +26,24 @@ public class HUDManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             bool isActive = pauseMenuPopUp.activeSelf;
-            pauseMenuPopUp.SetActive(!isActive);
-
+            if (settingPopUp.activeSelf)
+            {
+                settingPopUp.SetActive(false);
+                pauseMenuPopUp.SetActive(true);
+            }
+            else if(GoToMainConfirmationPopupUI.activeSelf)
+            {
+                GoToMainConfirmationPopupUI.SetActive(false);
+                pauseMenuPopUp.SetActive(true);
+            }
+            else if (exitConfirmationPopupUI.activeSelf)
+            {
+                exitConfirmationPopupUI.SetActive(false);
+                pauseMenuPopUp.SetActive(true);
+            }
+            else
+                pauseMenuPopUp.SetActive(!isActive);
+            
             if (!isActive)
             {
                 // 메뉴를 켤 때
@@ -45,7 +63,7 @@ public class HUDManager : MonoBehaviour
     }
     public void OnClickSetting()
     {
-        // SceneManager.LoadScene("");
+        settingPopUp.SetActive(true);
     }
     public void OnClickMainMenu()
     {
