@@ -166,14 +166,14 @@ public class InventoryItemDescription : MonoBehaviour
     //디버그용
     public void PrintAllItems()
     {
-        if (ItemDataManager.Instance.itemDataList == null || ItemDataManager.Instance.itemDataList.Count == 0)
+        if (ItemDataManager.Instance.GetItemDataList() == null || ItemDataManager.Instance.GetItemDataList().Count == 0)
         {
             Debug.Log("인벤토리가 비어있습니다.");
             return;
         }
 
         Debug.Log("==== 현재 인벤토리 목록 ====");
-        foreach (var item in ItemDataManager.Instance.itemDataList)
+        foreach (var item in ItemDataManager.Instance.GetItemDataList())
         {
             Debug.Log($"아이템 ID: {item.itemId}, 개수: {item.count}");
         }

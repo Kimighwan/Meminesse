@@ -21,6 +21,7 @@ public class VoidbornGoddess_MeleeAttackState : MeleeAttackState
     public override void Exit()
     {
         base.Exit();
+        enemy.LastAttackTime = Time.time;
     }
 
     public override void FinishAttack()
@@ -31,6 +32,9 @@ public class VoidbornGoddess_MeleeAttackState : MeleeAttackState
     public override void LogicalUpdate()
     {
         base.LogicalUpdate();
+
+        if(isAttackAnimationFinished)
+            stateMachine.ChangeState(enemy.idleState);
     }
 
     public override void PhysicsUpdate()

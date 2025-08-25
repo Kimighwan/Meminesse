@@ -14,10 +14,12 @@ public class VoidbornGoddess : Entity
     public VoidbornGoddess_Cast2State cast2State { get; private set; }
     public VoidbornGoddess_MoveState moveState { get; private set; }
     public VoidbornGoddess_MeleeAttackState meleeAttackState { get; private set; }
-    public VoidbornGoddess_Cast1State cast1State { get; private set; }
+    public VoidbornGoddess_Cast1State rangeAttackState { get; private set; }
     public VoidbornGoddess_DamagedState damagedState { get; private set; }
     public VoidbornGoddess_StunState stunState { get; private set; }
     public VoidbornGoddess_DeadState deadState { get; private set; }
+    public VoidbornGoddess_ChargeReadyState chargeReadyState { get; private set; }
+    public VoidbornGoddess_ChargeState chargeState { get; private set; }
 
     [SerializeField] private D_IdleState idleStateData;
     [SerializeField] private D_IdleState smallSpawnStateData;
@@ -27,15 +29,25 @@ public class VoidbornGoddess : Entity
     [SerializeField] private D_IdleState cast2StateData;
     [SerializeField] private D_MoveState moveStateData;
     [SerializeField] private D_MeleeAttackState meleeAttackStateData;
-    [SerializeField] private D_RangeAttackState cast1StateData;
+    [SerializeField] private D_IdleState rangeAttackStateData;
     [SerializeField] private D_DamagedState dmagedStateData;
     [SerializeField] private D_StunState stunStateData;
     [SerializeField] private D_DeadState deadStateData;
+    [SerializeField] private D_IdleState chargeReadyStateData;
+    [SerializeField] private D_ChargeState chargeStateData;
 
     [SerializeField] private Transform meleeAttackPosition;
-    [SerializeField] private Transform rangeAttackPosition;
+    public Transform rangeAttackPosition;
 
     public List<GameObject> spellPositions;
+
+    public float LastAttackTime;
+    public float AttackCoolTime { get; private set; }
+
+    public bool firstHandPattern { get; private set; }
+    public bool secondHandPattern { get; private set; }
+    public bool firstHandPatternStart;
+    public bool secondHandPatternStart;
 
     public override void Start()
     {
@@ -43,6 +55,12 @@ public class VoidbornGoddess : Entity
 
         facingDirection = -1;
         defaultDirection = -1;
+        AttackCoolTime = 1f;
+
+        firstHandPattern = false;
+        secondHandPattern = false;
+        firstHandPatternStart = false;
+        secondHandPatternStart = false;
 
         idleState = new VoidbornGoddess_IdleState(this, stateMachine, "idle", idleStateData, this);
         smallSpawnState = new VoidbornGoddess_SmallSpawnState(this, stateMachine, "smallSpawn", smallSpawnStateData, this);
@@ -52,12 +70,14 @@ public class VoidbornGoddess : Entity
         cast2State = new VoidbornGoddess_Cast2State(this, stateMachine, "cast2", cast2StateData, this);
         moveState = new VoidbornGoddess_MoveState(this, stateMachine, "move", moveStateData, this);
         meleeAttackState = new VoidbornGoddess_MeleeAttackState(this, stateMachine, "meleeAttack", meleeAttackPosition, meleeAttackStateData, this);
-        cast1State = new VoidbornGoddess_Cast1State(this, stateMachine, "cast1", rangeAttackPosition, cast1StateData, this);
+        rangeAttackState = new VoidbornGoddess_Cast1State(this, stateMachine, "cast1", rangeAttackStateData, this);
         damagedState = new VoidbornGoddess_DamagedState(this, stateMachine, "damaged", dmagedStateData, this);
         stunState = new VoidbornGoddess_StunState(this, stateMachine, "stun", stunStateData, this);
         deadState = new VoidbornGoddess_DeadState(this, stateMachine, "dead", deadStateData, this);
+        chargeReadyState = new VoidbornGoddess_ChargeReadyState(this, stateMachine, "chargeReady", chargeReadyStateData, this);
+        chargeState = new VoidbornGoddess_ChargeState(this, stateMachine, "charge", chargeStateData, this);
 
-        stateMachine.Init(smallDespawnState);
+        stateMachine.Init(cast2State);
     }
 
     public override void OnDrawGizmos()
@@ -70,6 +90,17 @@ public class VoidbornGoddess : Entity
     public override void Damaged(float damage, Vector2 position, bool isStun)
     {
         base.Damaged(damage, position, isStun);
+
+        if (currentHp < 70 && !firstHandPattern)
+        {
+            firstHandPattern = true;
+            firstHandPatternStart = true;
+        }
+        else if (currentHp < 30 && !secondHandPattern)
+        {
+            secondHandPattern = true;
+            secondHandPatternStart = true;
+        }
 
         if (isDead)
         {
@@ -87,5 +118,10 @@ public class VoidbornGoddess : Entity
         {
             stateMachine.ChangeState(damagedState);
         }
+    }
+
+    public void OnClickDamaged()
+    {
+        Damaged(10, new Vector2(0, 0), false);
     }
 }

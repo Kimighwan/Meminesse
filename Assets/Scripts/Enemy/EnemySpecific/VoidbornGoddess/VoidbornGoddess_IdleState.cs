@@ -33,13 +33,23 @@ public class VoidbornGoddess_IdleState : IdleState
         base.LogicalUpdate();
 
         if (isIdleTimeOver)
-            stateMachine.ChangeState(enemy.moveState);
-        else if(isPlayerInRangeAttackRange)
-            stateMachine.ChangeState(enemy.cast1State);
-        //else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
-        //    stateMachine.ChangeState(enemy.meleeAttackState);
-        //else if (isDetectedPlayer)
-        //    stateMachine.ChangeState(enemy.detectState);
+        {
+            int randomValue = Random.Range(1, 11);
+            if (randomValue < 7) stateMachine.ChangeState(enemy.rangeAttackState);
+            else stateMachine.ChangeState(enemy.chargeState);
+        }
+        else if(isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
+            stateMachine.ChangeState(enemy.meleeAttackState);
+        else if(enemy.firstHandPatternStart)
+        {
+            enemy.firstHandPatternStart = false;
+            stateMachine.ChangeState(enemy.cast2State);
+        }
+        else if(enemy.secondHandPatternStart)
+        {
+            enemy.secondHandPatternStart = false;
+            stateMachine.ChangeState(enemy.cast2State);
+        }
     }
 
     public override void PhysicsUpdate()
