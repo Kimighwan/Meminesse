@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.06666667, g: 0.05882353, b: 0.12156863, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -952,7 +952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7bad89ad73ec04798517b0404b08bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemDatabase: []
+  itemDataList: []
   mintMoney: {fileID: 1142893043}
   redMoney: {fileID: 2020921870}
 --- !u!1 &1455620194

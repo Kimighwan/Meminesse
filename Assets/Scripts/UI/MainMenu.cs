@@ -7,10 +7,10 @@ public class MainMenu : UIBase
 {
     [SerializeField]
     private GameObject settingUI;
+
+
     [SerializeField]
     private GameObject exitConfirmationPopupUI;
-
-    public GameObject exitConfirmationPopup;
 
     protected override void Start()
     {
@@ -21,7 +21,7 @@ public class MainMenu : UIBase
     {
         // 창이 넘어갔을 때 포커스에 메인에 그대로 있는 문제 해결
         if (settingUI.activeSelf) return;
-        if (exitConfirmationPopupUI.activeSelf) return;
+        
         base.Update();
         // UIBase에서 키보드 모드와 마우스 모드를 전환하는 로직이 있으므로, 여기서는 추가적인 로직이 필요하지 않음
     }
@@ -33,18 +33,17 @@ public class MainMenu : UIBase
 
     public void OnClickLoadGame()
     {
-        SceneManager.LoadScene("ReloadScene");   // 세이브 파일 불러오기 씬으로 이동
+        SceneManager.LoadScene("ReloadScene");  
     }
 
     public void OnClickSetting()
     {
     }
 
-    public void OnClickQuit()     //Quit button
+    public void OnClickQuit()   
     {
-        // 종료 재확인 팝업 창
         exitConfirmationPopupUI.SetActive(true);
-        SetCurrentButton(exitConfirmationPopupUI.transform.Find("Yes").gameObject); // 팝업의 Yes 버튼에 포커스 설정
+        //SetCurrentButton(exitConfirmationPopupUI.transform.Find("Yes").gameObject); // 팝업의 Yes 버튼에 포커스 설정
 
     }
 
@@ -64,7 +63,9 @@ public class MainMenu : UIBase
     {
         // 팝업 닫기
         exitConfirmationPopupUI.SetActive(false);
-    }
 
+        // 창이 넘어갔을 때 포커스에 메인에 그대로 있는 문제 해결
+        if (exitConfirmationPopupUI.activeSelf) return;
+    }
 
 }
