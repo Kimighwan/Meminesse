@@ -4,6 +4,8 @@ public class DeadState : State
 {
     protected D_DeadState stateData;
 
+    protected bool isDoneAnimation;
+
     public DeadState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DeadState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
@@ -19,6 +21,8 @@ public class DeadState : State
         base.Enter();
 
         entity.SetVelocityX(0f);
+        isDoneAnimation = false;
+        entity.animationToStatemachine.deadState = this;
         // 죽을 때 생성될 파티클이 있다면 인스턴스화 하기
     }
 
@@ -35,5 +39,10 @@ public class DeadState : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    public virtual void FinishDeadAnimation()
+    {
+        isDoneAnimation = true;
     }
 }

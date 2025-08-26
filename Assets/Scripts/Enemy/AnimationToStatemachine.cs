@@ -6,6 +6,7 @@ public class AnimationToStatemachine : MonoBehaviour
     public AttackState attackState;
     public DamagedState damageState;
     public ChargeState chargeState;
+    public DeadState deadState;
 
     private void TriggerAttack()
     {
@@ -32,5 +33,10 @@ public class AnimationToStatemachine : MonoBehaviour
     private void FinishTransition()
     {
         idleState.FinishTransition();
+    }
+
+    private void FinishDead()
+    {
+        deadState.FinishDeadAnimation();
     }
 }

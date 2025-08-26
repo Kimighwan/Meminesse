@@ -42,9 +42,23 @@ public class VoidbornGoddess_Cast2State : IdleState
             if(!check)
             {
                 check = true;
-                int randomPosition = Random.Range(0, 5);
-                GameObject.Instantiate(Resources.Load("Enemy/VoidbornGoddess_Spell1"), enemy.spellPositions[randomPosition].transform);
-                Debug.Log($"손 소환 / 위치 : {randomPosition}");
+                int randomPosition1 = Random.Range(0, 7);
+                int randomPosition2 = Random.Range(0, 7);
+                int randomPosition3 = Random.Range(0, 7);
+
+                if(randomPosition1 == randomPosition2)
+                {
+                    randomPosition2++;
+                    randomPosition2 %= 7;
+                }
+                if((randomPosition2 == randomPosition3) || (randomPosition1 == randomPosition3))
+                {
+                    randomPosition3++;
+                    randomPosition3 %= 7;
+                }
+                GameObject.Instantiate(Resources.Load("Enemy/VoidbornGoddess_Spell1"), enemy.spellPositions[randomPosition1].transform);
+                GameObject.Instantiate(Resources.Load("Enemy/VoidbornGoddess_Spell1"), enemy.spellPositions[randomPosition2].transform);
+                GameObject.Instantiate(Resources.Load("Enemy/VoidbornGoddess_Spell1"), enemy.spellPositions[randomPosition3].transform);
                 time = Time.time;
             }
 

@@ -26,6 +26,9 @@ public class VoidbornGoddess_DeadState : DeadState
     public override void LogicalUpdate()
     {
         base.LogicalUpdate();
+
+        if(isDoneAnimation)
+            GameObject.Destroy(entity.gameObject);
     }
 
     public override void PhysicsUpdate()
