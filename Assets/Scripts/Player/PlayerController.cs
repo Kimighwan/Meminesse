@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using NUnit.Framework.Constraints;
+using UnityEditor.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float moveSpeed = 5f;
 
-    // Jump parameters
+    // Jump parameters - Not to be messsed
     [SerializeField] float maxJumpHoldTime = 1f;
     [SerializeField] float baseJumpForce = 7f;
     [SerializeField] float holdJumpForce = 12f;
@@ -37,6 +38,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float damage_CrouchAttack;
     [SerializeField] float damage_AirAttack;
     [SerializeField] float damage_AirHeavyAttack;
+    [SerializeField] float damage_HolySlash;
+    [SerializeField] float damage_LightCut;
+
 
     // Hitboxes for combat
     private GameObject currentHitbox = null;
@@ -45,12 +49,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject crouchAttackHitbox;
     [SerializeField] GameObject airAttackHitbox;
     [SerializeField] GameObject[] airHeavyAttackHitbox = new GameObject[3];
+    [SerializeField] GameObject holySlashAttackHitbox;
+    [SerializeField] GameObject lightCutAttackHitbox;
+
     // TBA
 
     // Player damage related
     [SerializeField] float playerHealth = 0;
     private Vector2 attackerPosition;
     private bool isStunned;
+    [SerializeField] float invincibleTimeAfterHit = 1.5f;
+    private bool isInvincible;
+    private bool isHurt;
+    private bool isDead;
 
     // Minimum height required above ground for AirHeavyAttack
     [SerializeField] float minHeightForAirHeavyAttack = 2f;
@@ -62,24 +73,35 @@ public class PlayerController : MonoBehaviour
 
     public enum PlayerState
     {
+        // Movements
         Idle,
-        Dead,
         Running,
         Jumping,
         Falling,
         Dashing,
         BackDashing,
         enterCrouching, Crouching, exitCrouching,
+
+        // Combats
+        Hurt,
+        Dead,
+        Healing,
+
+        // Basic Attacks
         Attacking,
         GroundedComboAttack1, GroundedComboAttack2, GroundedComboAttack3,
         CrouchAttack,
         AirAttack,
-        AirHeavyAttack_Swing, AirHeavyAttack_Fall, AirHeavyAttack_Hit
+        AirHeavyAttack_Swing, AirHeavyAttack_Fall, AirHeavyAttack_Hit,
+
+        // Skills
+        HolySlash,
+        LightCut,
     }
 
     private PlayerState currentState;
 
-    // Locks
+    // Movement locks
     private bool canDash = true;
     private bool canAttack = true;
     private bool canMove = true;
@@ -93,28 +115,29 @@ public class PlayerController : MonoBehaviour
     private bool isCrouching;
     private bool isAttacking;
     private bool isJumping;
+    private Coroutine activeCoroutine;
+    private Coroutine activeComboCoroutine;
+
     // For GroundedComboAttack
     private int comboCounter = 0;
 
     // Used to flip sprites
     private float previousDirection = 1f;
+
     // Combo count
     private float maxGroundedComboAttack = 3;
-
-    private Coroutine activeAttackCoroutine;
 
     private Rigidbody2D rigid;
     private SpriteRenderer playerSpriteRenderer;
     private Animator animator;
 
-    // Cache commonly used vectors
+    // Cache components
     private static readonly Vector2 VectorUp = Vector2.up;
     private static readonly Vector2 VectorZero = Vector2.zero;
-    private static readonly ContactPoint2D[] ContactPoints = new ContactPoint2D[4];
-
-    // Cache components
     private Transform cachedTransform;
     private Vector2 currentVelocity;
+
+    // Layers
     private int groundLayerMask;
 
     #endregion
@@ -180,117 +203,128 @@ public class PlayerController : MonoBehaviour
 
     private void ManageInputs()
     {
-        if (IsDead())
+        // Uncontrollable
+        if (lockInput)
         {
-            //Debug.Log("ya dead lol");
-            ChangeState(PlayerState.Dead);
             return;
         }
-        
-        if (!lockInput)
+
+        // Changing orientation -> Always happens (except while attacking)
+        float moveInput = Input.GetAxisRaw("Horizontal");
+        if ((moveInput != 0) && !isAttacking)
+            if (Mathf.Sign(moveInput) != previousDirection)
+            {
+                playerSpriteRenderer.flipX = !playerSpriteRenderer.flipX;
+                previousDirection = Mathf.Sign(moveInput);
+            }
+
+        // Priorities
+        // Skills > Dashing/Backdashing > CrouchAttack > AirHeavyAttack > AirAttack > GroundAttack > Jumping > Falling > Crouching > Idle
+
+        // HolySlash
+        if (Input.GetKeyDown(KeyCode.A) && isGrounded && canMove && canAttack)
         {
-            float moveInput = Input.GetAxisRaw("Horizontal");
-
-            // Change orientation -> Always happens (except while attacking)
-            if ((moveInput != 0) && !isAttacking)
-                if (Mathf.Sign(moveInput) != previousDirection)
-                {
-                    playerSpriteRenderer.flipX = !playerSpriteRenderer.flipX;
-                    previousDirection = Mathf.Sign(moveInput);
-                }
-
-            // Priorities
-            // Dashing/Backdashing > CrouchAttack > AirHeavyAttack > AirAttack > GroundAttack > Jumping > Falling > Crouching > Idle
-
-            // Dash
-            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
-            {
-                lockInput = true;
-                ChangeState(PlayerState.Dashing);
-                StartCoroutine(DashCharacter());
-            }
-            // Backdash
-            else if (Input.GetKeyDown(KeyCode.LeftControl) && canDash && isGrounded)
-            {
-                lockInput = true;
-                ChangeState(PlayerState.BackDashing);
-                StartCoroutine(BackDashCharacter());
-            }
-            // Air Heavy Attack -> Requires certain height to perform
-            else if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.DownArrow) && canAttack && !isGrounded && IsHighEnoughForAirHeavyAttack())
-            {
-                canMove = false;
-                ChangeState(PlayerState.AirHeavyAttack_Swing);
-                StartCoroutine(AirHeavyAttack());
-            }
-            // Crouch Attack -> Check isCrouching and current state
-            else if (Input.GetKeyDown(KeyCode.Z) && canAttack && (isCrouching || currentState == PlayerState.Crouching))
-            {
-                canMove = false;
-                ChangeState(PlayerState.CrouchAttack);
-                StartCoroutine(CrouchAttack());
-            }
-            // Air Attack
-            else if (Input.GetKeyDown(KeyCode.Z) && canAttack && !isGrounded)
-            {
-                canMove = false;
-                ChangeState(PlayerState.AirAttack);
-                StartCoroutine(AirAttack());
-            }
-            // Grounded Combo Attack -> Can be cancelled by dashing
-            else if (Input.GetKeyDown(KeyCode.Z) && canAttack && isGrounded && !isCrouching && currentState != PlayerState.Crouching)
-            {
-                canMove = false;
-                ChangeState(PlayerState.Attacking);
-                StartCoroutine(GroundedComboAttack());
-            }
-            // Jump
-            else if (Input.GetKeyDown(KeyCode.Space) && canMove && isGrounded)
-            {
-                ChangeState(PlayerState.Jumping);
-                StartCoroutine(JumpCharacter());
-            }
-            // Fall
-            else if (!isGrounded && rigid.linearVelocity.y < 0 && !isAttacking && !isDashing && !isBackDashing)
-            {
-                ChangeState(PlayerState.Falling);
-            }
-            // Crouch
-            else if (Input.GetKeyDown(KeyCode.DownArrow) && isGrounded && canCrouch)
-            {
-                // Enter Crouch
-                isCrouching = true;
-                canMove = false;
-                canDash = false;
-                ChangeState(PlayerState.enterCrouching);
-            }
-            else if (Input.GetKey(KeyCode.DownArrow) && isGrounded && canCrouch)
-            {
-                // Crouch
-                canMove = false;
-                ChangeState(PlayerState.Crouching);
-            }
-            else if (Input.GetKeyUp(KeyCode.DownArrow) && isGrounded)
-            {
-                // Exit Crouch
-                isCrouching = false;
-                canMove = true;
-                canDash = true;
-                ChangeState(PlayerState.exitCrouching);
-            }
-            // Idle
-            else if (rigid.linearVelocity.x == 0 && rigid.linearVelocity.y == 0 && isGrounded)
-            {
-                ChangeState(PlayerState.Idle);
-            }
-
-            // Move
-            if (moveInput != 0)
-                if (!(isDashing || isBackDashing || isCrouching || isJumping) && canMove && isGrounded)
-                    ChangeState(PlayerState.Running);
-
-            animator.SetBool("isGrounded", isGrounded);
+            lockInput = true;
+            ChangeState(PlayerState.HolySlash);
+            StartCoroutine(HolySlash());
         }
+        // LightCut
+        else if (Input.GetKeyDown(KeyCode.S) && isGrounded && canMove && canAttack)
+        {
+            lockInput = true;
+            ChangeState(PlayerState.LightCut);
+            StartCoroutine(LightCut());
+        }
+        // Dash
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            lockInput = true;
+            ChangeState(PlayerState.Dashing);
+            StartCoroutine(DashCharacter());
+        }
+        // Backdash
+        else if (Input.GetKeyDown(KeyCode.LeftControl) && canDash && isGrounded)
+        {
+            lockInput = true;
+            ChangeState(PlayerState.BackDashing);
+            StartCoroutine(BackDashCharacter());
+        }
+        // Air Heavy Attack -> Requires certain height to perform
+        else if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.DownArrow) && canAttack && !isGrounded && IsHighEnoughForAirHeavyAttack())
+        {
+            canMove = false;
+            ChangeState(PlayerState.AirHeavyAttack_Swing);
+            StartCoroutine(AirHeavyAttack());
+        }
+        // Crouch Attack -> Check isCrouching and current state
+        else if (Input.GetKeyDown(KeyCode.Z) && canAttack && (isCrouching || currentState == PlayerState.Crouching))
+        {
+            canMove = false;
+            ChangeState(PlayerState.CrouchAttack);
+            StartCoroutine(CrouchAttack());
+        }
+        // Air Attack
+        else if (Input.GetKeyDown(KeyCode.Z) && canAttack && !isGrounded)
+        {
+            canMove = false;
+            ChangeState(PlayerState.AirAttack);
+            StartCoroutine(AirAttack());
+        }
+        // Grounded Combo Attack -> Can be cancelled by dashing
+        else if (Input.GetKeyDown(KeyCode.Z) && canAttack && isGrounded && !isCrouching && currentState != PlayerState.Crouching)
+        {
+            canMove = false;
+            ChangeState(PlayerState.Attacking);
+            StartCoroutine(GroundedComboAttack());
+        }
+        // Jump
+        else if (Input.GetKeyDown(KeyCode.Space) && canMove && isGrounded)
+        {
+            ChangeState(PlayerState.Jumping);
+            StartCoroutine(JumpCharacter());
+        }
+        // Fall
+        else if (!isGrounded && rigid.linearVelocity.y < 0 && !isAttacking && !isDashing && !isBackDashing)
+        {
+            ChangeState(PlayerState.Falling);
+        }
+        // Crouch
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && isGrounded && canCrouch)
+        {
+            // Enter Crouch
+            isCrouching = true;
+            canMove = false;
+            canDash = false;
+            ChangeState(PlayerState.enterCrouching);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow) && isGrounded && canCrouch)
+        {
+            // Crouch
+            canMove = false;
+            ChangeState(PlayerState.Crouching);
+        }
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && isGrounded)
+        {
+            // Exit Crouch
+            isCrouching = false;
+            canMove = true;
+            canDash = true;
+            ChangeState(PlayerState.exitCrouching);
+        }
+        // Idle
+        else if (rigid.linearVelocity.x == 0 && rigid.linearVelocity.y == 0 && isGrounded)
+        {
+            ChangeState(PlayerState.Idle);
+        }
+
+        // Move
+        if (moveInput != 0)
+        {
+            if (!(isDashing || isBackDashing || isCrouching || isJumping) && canMove && isGrounded)
+                ChangeState(PlayerState.Running);
+        }
+
+        animator.SetBool("isGrounded", isGrounded);
     }
 
     private void UpdateAnimation()
@@ -308,6 +342,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isFalling", currentState == PlayerState.Falling);
         animator.SetBool("isDashing", currentState == PlayerState.Dashing);
         animator.SetBool("isBackDashing", currentState == PlayerState.BackDashing);
+        animator.SetBool("isHurt", currentState == PlayerState.Hurt);
         animator.SetBool("isDead", currentState == PlayerState.Dead);
 
         // Update crouch states - ensure these are mutually exclusive
@@ -335,6 +370,10 @@ public class PlayerController : MonoBehaviour
             animator.SetInteger("GroundedComboAttack", 2);
         else if (currentState == PlayerState.GroundedComboAttack3)
             animator.SetInteger("GroundedComboAttack", 3);
+
+        // Update skill states
+        animator.SetBool("isHolySlash", currentState == PlayerState.HolySlash);
+        animator.SetBool("isLightCut", currentState == PlayerState.LightCut);
     }
 
     private void ApplyStateEffects()
@@ -412,21 +451,9 @@ public class PlayerController : MonoBehaviour
                state == PlayerState.Dashing;
     }
 
-    private bool IsDead()
-    {
-        if (playerHealth <= 0)
-        {
-            //TODO: Add more
-            return true;
-        }
-        else
-            return false;
-    }
-
     #endregion
 
-    #region Basic Character Movements
-
+    #region Basic Character Behaviour
     private IEnumerator DashCharacter()
     {
         isDashing = true;
@@ -489,22 +516,25 @@ public class PlayerController : MonoBehaviour
 
     private void MoveCharacter()
     {
+        if (lockInput)
+            return;
+
         if (canMove)
-        {
-            float moveInput = Input.GetAxisRaw("Horizontal");
-            if (moveInput != 0)
             {
-                currentVelocity.x = moveInput * moveSpeed;
-                currentVelocity.y = rigid.linearVelocity.y;
-                rigid.linearVelocity = currentVelocity;
+                float moveInput = Input.GetAxisRaw("Horizontal");
+                if (moveInput != 0)
+                {
+                    currentVelocity.x = moveInput * moveSpeed;
+                    currentVelocity.y = rigid.linearVelocity.y;
+                    rigid.linearVelocity = currentVelocity;
+                }
+                else if (rigid.linearVelocity.x != 0)
+                {
+                    currentVelocity.x = 0;
+                    currentVelocity.y = rigid.linearVelocity.y;
+                    rigid.linearVelocity = currentVelocity;
+                }
             }
-            else if (rigid.linearVelocity.x != 0)
-            {
-                currentVelocity.x = 0;
-                currentVelocity.y = rigid.linearVelocity.y;
-                rigid.linearVelocity = currentVelocity;
-            }
-        }
     }
 
     private IEnumerator JumpCharacter()
@@ -534,6 +564,32 @@ public class PlayerController : MonoBehaviour
         isJumping = false;
     }
 
+    private IEnumerator Hurt()
+    {
+        ChangeState(PlayerState.Hurt);
+        isHurt = true;
+        isInvincible = true;
+        lockInput = true;
+        float animationTime = 0.153f;
+
+        yield return new WaitForSeconds(animationTime);
+        lockInput = false;
+        Debug.Log("lockinput: " + lockInput);
+
+        yield return new WaitForSeconds(invincibleTimeAfterHit - animationTime);
+        isInvincible = false;
+        Debug.Log("isinvincible: "+isInvincible);
+    }
+
+    private IEnumerator Dead()
+    {
+        ChangeState(PlayerState.Dead);
+        isInvincible = true;
+        isDead = true;
+        lockInput = true;
+        yield return new WaitForSeconds(10f);
+    }
+
     #endregion
 
     #region Attack
@@ -546,6 +602,9 @@ public class PlayerController : MonoBehaviour
         CrouchAttack,
         AirAttack,
         AirHeavyAttack,
+        HolySlash,
+        LightCut,
+
         // TODO: Add another attack type for the hit animation
     }
 
@@ -557,13 +616,13 @@ public class PlayerController : MonoBehaviour
         rigid.linearVelocity = VectorZero;
 
         // Stop previous attack coroutine before starting a new one as to prevent overlapping
-        if (activeAttackCoroutine != null)
+        if (activeComboCoroutine != null)
         {
-            StopCoroutine(activeAttackCoroutine);
+            StopCoroutine(activeComboCoroutine);
             currentHitbox.SetActive(false);
         }
 
-        activeAttackCoroutine = StartCoroutine(ComboAttackSequence());
+        activeComboCoroutine = StartCoroutine(ComboAttackSequence());
         yield return null;
     }
 
@@ -579,15 +638,15 @@ public class PlayerController : MonoBehaviour
         {
             case 1:
                 ChangeState(PlayerState.GroundedComboAttack1);
-                activeAttackCoroutine = StartCoroutine(Attack(AttackType.GroundedComboAttack1));
+                activeComboCoroutine = StartCoroutine(Attack(AttackType.GroundedComboAttack1));
                 break;
             case 2:
                 ChangeState(PlayerState.GroundedComboAttack2);
-                activeAttackCoroutine = StartCoroutine(Attack(AttackType.GroundedComboAttack2));
+                activeComboCoroutine = StartCoroutine(Attack(AttackType.GroundedComboAttack2));
                 break;
             case 3:
                 ChangeState(PlayerState.GroundedComboAttack3);
-                activeAttackCoroutine = StartCoroutine(Attack(AttackType.GroundedComboAttack3));
+                activeComboCoroutine = StartCoroutine(Attack(AttackType.GroundedComboAttack3));
                 break;
         }
 
@@ -656,13 +715,13 @@ public class PlayerController : MonoBehaviour
     private void StartNewComboAttack()
     {
         // Stop previous coroutine before restarting attack
-        if (activeAttackCoroutine != null)
+        if (activeComboCoroutine != null)
         {
-            StopCoroutine(activeAttackCoroutine);
+            StopCoroutine(activeComboCoroutine);
             currentHitbox.SetActive(false);
         }
 
-        activeAttackCoroutine = StartCoroutine(GroundedComboAttack());
+        activeComboCoroutine = StartCoroutine(GroundedComboAttack());
     }
 
     private IEnumerator CrouchAttack()
@@ -670,9 +729,11 @@ public class PlayerController : MonoBehaviour
         isAttacking = true;
         canAttack = false;
 
+        float attackDuration = 0.2f;
+
         StartCoroutine(Attack(AttackType.CrouchAttack));
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(attackDuration);
 
         isAttacking = false;
         canAttack = true;
@@ -795,13 +856,72 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private IEnumerator HolySlash()
+    {
+        isAttacking = true;
+        canAttack = false;
+        canDash = false;
+        canMove = false;
+
+        float chargeDuration = 1.2f;
+        yield return new WaitForSeconds(chargeDuration);
+
+        StartCoroutine(Attack(AttackType.HolySlash));
+
+        // Remaining time until the animation ends
+        yield return new WaitForSeconds(0.2f);
+        isAttacking = false;
+        canAttack = true;
+        canMove = true;
+        canDash = true;
+        lockInput = false;
+    }
+
+    private IEnumerator LightCut()
+    {
+        isAttacking = true;
+        canAttack = false;
+        canDash = false;
+        canMove = false;
+
+        float chargeDuration = 0.63f;
+        yield return new WaitForSeconds(chargeDuration);
+
+        StartCoroutine(Attack(AttackType.LightCut));
+
+        // Dash across the screen while attacking
+        float attackDuration = 0.04f;
+        float attackTimer = 0f;
+
+        // Movement direction is based upon the facing direction of the player
+        float dashDirection = playerSpriteRenderer.flipX ? -1 : 1;
+        isInvincible = true;
+
+        // Actual movement (invincible while dashing)
+        while (attackTimer < attackDuration)
+        {
+            rigid.linearVelocity = new Vector2(dashDirection * dashSpeed * 10, 0);
+            attackTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        isInvincible = false;
+        // Immediate stop
+        rigid.linearVelocity = new Vector2(0, 0);
+        yield return new WaitForSeconds(0.06f);
+        isAttacking = false;
+        canAttack = true;
+        canMove = true;
+        canDash = true;
+        lockInput = false;
+    }
+
     #endregion
 
     #region Interactions
 
     private IEnumerator Attack(AttackType type)
     {
-        //float attackTimer = 0;
         float maxScanTime = 0;
         float attackMultiplier = 0;
 
@@ -837,6 +957,16 @@ public class PlayerController : MonoBehaviour
                 currentHitbox = airHeavyAttackHitbox[0];
                 maxScanTime = 0.15f;
                 attackMultiplier = damage_AirHeavyAttack;
+                break;
+            case AttackType.HolySlash:
+                currentHitbox = holySlashAttackHitbox;
+                maxScanTime = 0.06f;
+                attackMultiplier = damage_HolySlash;
+                break;
+            case AttackType.LightCut:
+                currentHitbox = lightCutAttackHitbox;
+                maxScanTime = 0.06f;
+                attackMultiplier = damage_LightCut;
                 break;
             default:
                 Debug.Log("What's this?\nHow did we get here?: " + type);
@@ -891,7 +1021,7 @@ public class PlayerController : MonoBehaviour
                 currentHitbox.SetActive(true);
                 yield return new WaitForSeconds(maxScanTime);
                 break;
-            // Ground Combo, Crouch -> Basic hit scan
+            // Ground Combo, Crouch, Skill -> Basic hit scan
             default:
                 // Perform hit scan for a given time
                 yield return new WaitForSeconds(maxScanTime);
@@ -906,7 +1036,25 @@ public class PlayerController : MonoBehaviour
 
     public void Damaged(float damage, Vector2 position, bool isStun = false)
     {
+        if (isInvincible)
+        {
+            Debug.Log("Damage Nullified");
+            return;
+        }
+
         playerHealth -= damage;
+
+        Debug.Log(damage + " " + playerHealth);
+
+        if (playerHealth <= 0)
+        {
+            StartCoroutine(Dead());
+        }
+        else
+        {
+            StartCoroutine(Hurt());
+        }
+
         attackerPosition = position;
         isStunned = isStun;
     }

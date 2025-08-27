@@ -35,6 +35,12 @@ NOTES:
 TODO:
     Implement method: Attack()                                              - Implemented 08/14
     Create individual hitbox objects for every kind of attack motions       - Implemented 07/31
+    Implement skills
+        - HolySlash                                                         - Implemented 08/21
+        - LightCut                                                          - Implemented 08/21
+        - Buff
+    Camera Movement                                                         - Implemented 08/26
+        - Used cinemachine
 
 BUGS:
     Attack hitboxes not disappearing even when coroutine is terminated      - Fixed 07/24
@@ -47,6 +53,14 @@ BUGS:
         - Removed rigidbody components from hitboxes
     Attack types not updating correctly on PlayerAttackHitbox.cs            - Fixed 08/14
         - Pushed the values instead of pulling from PAH.cs
+    Animations and attacks not aligning                                     - Fixed 08/21
+        - Fixed by changing decimals to sexagesimals
+    Hitboxes occasionally not appearing while using skills                  - Fixed 08/21
+        - Seems like a visual issue? Increased hitbox lifetime for prevention
+    Animation bug when exiting from crouch                                  - Fixed 08/26
+        - Changed transition conditions
+    Animation / invincibility / movement input bug when player is hurt/dead - Fixed 08/26
+        - Modified conditions on flow control
 
 MISC:
     Fixed an awkward animation transition which happens when entering running from comboattack1 and comboattack2 (07/31)
