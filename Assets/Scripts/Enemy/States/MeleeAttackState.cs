@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 public class MeleeAttackState : AttackState
@@ -43,9 +44,10 @@ public class MeleeAttackState : AttackState
 
         foreach (Collider2D obj in detectedObjects)
         {
-            Debug.Log("플레이어 공격!");
+            //Debug.Log("플레이어 공격!");
 
-            // 플레이어의 Damaged() 호출...
+            var player = obj.gameObject.GetComponent<PlayerController>();
+            player.Damaged(1, entity.gameObject.transform.position);
         }
     }
 
