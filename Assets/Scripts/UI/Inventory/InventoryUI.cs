@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
-using Slax.InventorySystem.Runtime.Core;
 using TMPro;
 
 // 인벤토리창 아이템 슬롯창 관리
