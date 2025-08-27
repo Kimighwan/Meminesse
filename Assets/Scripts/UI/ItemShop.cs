@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
-using Slax.InventorySystem.Runtime.Core;
 
 public class ItemShop : MonoBehaviour
 {
