@@ -6,7 +6,7 @@ public class VoidbornGoddess_Spell2 : Projectile
     {
         base.Start();
 
-        rigid.linearVelocity = transform.right * -1 * speed;
+        InitProjectile(10f, 100f, 1f, Vector2.right);
     }
 
     public override void FixedUpdate()

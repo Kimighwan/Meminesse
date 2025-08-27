@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: VoidbornGoddess_IdleStateData
   m_EditorClassIdentifier: 
   minIdleTime: 1
-  maxIdleTime: 2
+  maxIdleTime: 3

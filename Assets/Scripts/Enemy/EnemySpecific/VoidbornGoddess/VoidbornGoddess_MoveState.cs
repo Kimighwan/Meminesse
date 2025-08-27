@@ -33,7 +33,7 @@ public class VoidbornGoddess_MoveState : MoveState
             stateMachine.ChangeState(enemy.idleState);
         }
         else if (isPlayerInRangeAttackRange)
-            stateMachine.ChangeState(enemy.cast1State);
+            stateMachine.ChangeState(enemy.rangeAttackState);
         //else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
         //    stateMachine.ChangeState(enemy.meleeAttackState);
         //else if (isDetectedPlayer)

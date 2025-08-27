@@ -77,7 +77,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     }
     public void AddHP()  // 무시하셈 스킬 트리에서 사용하는 이벤트 등록용 함수다
     {
-        playerData.maxHp += 1;
+        playerData.maxHp += 20;
     }
     public void SetHp(int value)
     {

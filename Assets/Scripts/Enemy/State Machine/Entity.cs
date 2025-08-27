@@ -11,6 +11,7 @@ public class Entity : MonoBehaviour
 
 
     public int facingDirection { get; protected set; }
+    public int defaultDirection { get; protected set; }
     public Animator anim { get; private set; }
     public Rigidbody2D rigid { get; private set; }
     public AnimationToStatemachine animationToStatemachine { get; private set; }
@@ -31,12 +32,10 @@ public class Entity : MonoBehaviour
     private Transform groundCheck;
     private Vector2 entityVelocity;
 
-    private float currentHp;
+    public float currentHp { get; protected set; }
 
     private RaycastHit2D hit;
     private Transform playerTF;
-
-    protected int defaultDirection;
 
     protected float lastStunTime;
 
@@ -265,6 +264,6 @@ public class Entity : MonoBehaviour
         Gizmos.DrawWireSphere(playerCheck.position, entityData.playerInChargeRadius);
 
         // 원거리 공격 범위 표시
-        Gizmos.DrawWireSphere(playerCheck.position, entityData.playerInRangeAttackRadius);        
+        Gizmos.DrawWireSphere(playerCheck.position, entityData.playerInRangeAttackRadius);
     }
 }
