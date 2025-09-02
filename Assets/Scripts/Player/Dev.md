@@ -58,9 +58,57 @@ BUGS:
     Hitboxes occasionally not appearing while using skills                  - Fixed 08/21
         - Seems like a visual issue? Increased hitbox lifetime for prevention
     Animation bug when exiting from crouch                                  - Fixed 08/26
+        - Happens when the transition is too fast
         - Changed transition conditions
     Animation / invincibility / movement input bug when player is hurt/dead - Fixed 08/26
         - Modified conditions on flow control
 
 MISC:
     Fixed an awkward animation transition which happens when entering running from comboattack1 and comboattack2 (07/31)
+
+----------------------------------
+개발 정리본:
+
+플레이어 동작:
+    개발 내용
+    - 서로 중복될 수 없는 state들을 사용하여 다양한 동작 정의
+    - 플레이어의 모든 동작은 coroutine을 사용 (사용자 입력을 계속 받을 수 있어야 함)
+    - 사용자 입력에 따라 state가 변화하며, state끼리의 전환은 boolean 변수들로 제한함
+        ex: 플레이어가 공중에 있을 때 웅크리기로 전환할 수 없음
+    - 일부 state에서는 사용자의 입력이 제한됨
+        ex: 적에게 피격 시 일정 시간 행동 불가
+    - State마다 할당된 애니메이션이 있으며, state가 변화할 때 Unity의 animator 변수도 업데이트되어 해당 상태에 맞는 애니메이션을 출력함
+
+    문제점
+    - State의 갯수가 많아지면서 발생하는 state 전환 간 문제
+        1. 사용자 입력 처리: 사용자의 입력이 동시에 여러 개 주어졌을 때의 문제
+            - 입력을 처리하던 조건문을 여러개로 분할함
+            - 조건문이 분할됨으로 인하여 state가 중복될 수 있으므로 state 전환 가능 여부를 판단하는 boolean 변수들을 사용
+        2. 애니메이션 전환: 애니메이션이 전환되지 않거나 어색하게 전환되는 문제
+            - State 변환 시 반드시 Unity의 animator 변수가 업데이트되게 함
+            - 길이가 길거나 유동성이 필요한 애니메이션의 경우 짧은 애니메이션을 이어붙인 형태로 parsing함 (한국말이 기억이안남;;)
+                ex: enterCrouch -> crouching -> exitCrouch로 웅크리기 애니메이션을 3분할하였음
+            - 사용자의 입력이 너무 짧은(1프레임: 1/60초 내 변화) 경우를 대비하여 연속되는 애니메이션의 경우 조건을 널널하게 설정함
+                ex: 1프레임 내에 웅크리기 키를 눌렀다 떼는 경우 enterCrouch -> crouching -> exitCrouch에서 crouching -> exitCrouch로 전환 감지가 불가능, crouching -> exitCrouch의 조건을 완화함(기존: 웅크리기 키가 떼지는 시점에 exitCrouch 진입, 완화: 웅크리기 키가 눌러져 있지 않을 때 exitCrouch 진입)
+        3. 의도하지 않은 효과: 해당 state에서 가능/불가능해야 할 동작들이 블가능/가능한 문제
+            ex: 적에게 피격 시 일정 시간 행동 불가 상태에 빠져야 하지만 이동이 가능
+            - 클린 코드가 가장 중요함
+            - 상태 전환을 담당하는 boolean 변수들을 한 곳에서 관리
+            - 사용자 입력을 조건문을 통해서만 처리하지 않고 각종 boolean 변수로 허용/금지 입력 관리
+
+    - 타 객체(지형, 적)와의 상호작용
+        1. 지형
+            - Unity의 Raycasting 기능을 사용하여 지형을 탐지 후 플레이어의 state를 업데이트함
+        2. 적
+            - 타 조원과의 협동이 필요, 서로 상호작용시 필요한 메소드들의 형식을 정의한 후 그에 맞추어 개발 진행
+            - 플레이어의 다양한 공격 동작에 맞춰 적 탐지 범위를 변경, 해당 범위 내에 적 감지 시 적 객체의 정보를 불러와 대미지를 입히며, 대미지 누적 시 사망 이벤트(적 객체 비활성화) 발생
+            - 적의 공격 범위 내 플레이어가 존재 시 플레이어는 대미지를 입으며, 대미지 누적 시 사망 이벤트(플레이어 객체 비활성화) 발생
+
+스킬 기획:
+    - 유저가 다양한 게임 플레이 방식 중 하나를 채택할 수 있도록 설계함
+    - 쉽게 획득할 수 있는 일반 패시브 스킬들과 어느정도 게임 진행 시 얻을 수 있는 상위 패시브 스킬로 구별
+    - 일반 패시브 스킬들은 탐험을 통하여 얻을 수 있으며, 단순히 각종 수치(체력, 공격력)들만을 늘려주는 역할을 함
+    - 상위 패시브 스킬은 고위험/높은 보상, 적당한 위험/적당한 보상, 저위험/낮은 보상 셋 중에 하나를 선택 가능, 선택 시 게임 플레이 방식이 변화함
+
+게임 카메라(사용자 시점):
+    - Cinemachine을 활용하여 다양한 카메라 움직임을 구현 가능
