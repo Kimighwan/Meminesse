@@ -4284,6 +4284,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 924786651}
+  - component: {fileID: 924786653}
+  - component: {fileID: 924786652}
   m_Layer: 5
   m_Name: InventoryUI
   m_TagString: Untagged
@@ -4317,6 +4319,49 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &924786652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924786650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 402cac1c8fd86204990102ca37c94b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDatabase: {fileID: 410054650}
+  itemDataList: []
+  mintMoney: {fileID: 654026323}
+  redMoney: {fileID: 746180715}
+  weaponImages:
+  - {fileID: 241514168}
+  - {fileID: 559905989}
+  - {fileID: 622130751}
+  - {fileID: 1949051664}
+  - {fileID: 1611264903}
+  weaponLevels:
+  - {fileID: 1789555324}
+  - {fileID: 1040834541}
+  - {fileID: 1420358027}
+  - {fileID: 563216410}
+  - {fileID: 1548101998}
+--- !u!114 &924786653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924786650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d4af16070c12749b2dfa415346ed05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots: []
+  slotHolder: {fileID: 1692562612}
+  noItemMessage: {fileID: 1523646895}
 --- !u!1 &945002725
 GameObject:
   m_ObjectHideFlags: 0
@@ -5028,7 +5073,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1255613124}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
         m_MethodName: UpgradeWeaponStep
         m_Mode: 1
@@ -5741,8 +5786,6 @@ GameObject:
   - component: {fileID: 1255613121}
   - component: {fileID: 1255613120}
   - component: {fileID: 1255613119}
-  - component: {fileID: 1255613123}
-  - component: {fileID: 1255613124}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5834,49 +5877,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1255613123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255613118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d4af16070c12749b2dfa415346ed05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slots: []
-  slotHolder: {fileID: 1692562612}
-  noItemMessage: {fileID: 1523646895}
---- !u!114 &1255613124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255613118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 402cac1c8fd86204990102ca37c94b77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDatabase: {fileID: 410054650}
-  itemDataList: []
-  mintMoney: {fileID: 654026323}
-  redMoney: {fileID: 746180715}
-  weaponImages:
-  - {fileID: 241514168}
-  - {fileID: 559905989}
-  - {fileID: 622130751}
-  - {fileID: 1949051664}
-  - {fileID: 1611264903}
-  weaponLevels:
-  - {fileID: 1789555324}
-  - {fileID: 1040834541}
-  - {fileID: 1420358027}
-  - {fileID: 563216410}
-  - {fileID: 1548101998}
 --- !u!1 &1265435972
 GameObject:
   m_ObjectHideFlags: 0
@@ -9322,7 +9322,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1255613123}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
         m_MethodName: DebugAddRandomItem
         m_Mode: 1
