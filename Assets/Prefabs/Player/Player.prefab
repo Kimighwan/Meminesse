@@ -926,8 +926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   maxJumpHoldTime: 1
-  baseJumpForce: 7
-  holdJumpForce: 12
+  baseJumpForce: 12
+  holdJumpForce: 7
   fallGravityScale: 3.5
   jumpGravityScale: 2.2
   normalGravityScale: 2.5
@@ -962,7 +962,7 @@ MonoBehaviour:
   holySlashAttackHitbox: {fileID: 4043574755532172727}
   lightCutAttackHitbox: {fileID: 4266524566150522156}
   playerHealth: 3
-  invincibleTimeAfterHit: 0.3
+  invincibleTimeAfterHit: 10
   minHeightForAirHeavyAttack: 2
   groundCheckDistance: 1
   groundCheckWidth: 0.4

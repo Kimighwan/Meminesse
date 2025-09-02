@@ -369,67 +369,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &972794487
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4485924053772279470, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 4485924053772279470, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 4485924053772279470, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4485924053772279470, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4485924053772279470, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4485924053772279470, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4485924053772279470, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4485924053772279470, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4485924053772279470, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4485924053772279470, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9205034243287621478, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
-      propertyPath: m_Name
-      value: TestEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 9205034243287621478, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 671ed75b901374a408d2a558b88e6363, type: 3}
 --- !u!1 &1188123423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1017,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7770274658885052061, guid: c82fdd65093df134fbc2bc2e7365aad7, type: 3}
+      propertyPath: baseJumpForce
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770274658885052061, guid: c82fdd65093df134fbc2bc2e7365aad7, type: 3}
+      propertyPath: holdJumpForce
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770274658885052061, guid: c82fdd65093df134fbc2bc2e7365aad7, type: 3}
       propertyPath: invincibleTimeAfterHit
       value: 10
       objectReference: {fileID: 0}
@@ -1093,7 +1040,6 @@ SceneRoots:
   - {fileID: 1188123426}
   - {fileID: 98188734}
   - {fileID: 1300110272}
-  - {fileID: 972794487}
   - {fileID: 5605891496668386459}
   - {fileID: 1206220136}
   - {fileID: 1777592544}

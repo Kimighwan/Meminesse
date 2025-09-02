@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float minHeightForAirHeavyAttack = 2f;
 
     // Distance to check for ground
-    [SerializeField] float groundCheckDistance = 0.1f;
+    [SerializeField] float groundCheckDistance = 0.05f;
     // Width between ground check points
     [SerializeField] float groundCheckWidth = 0.4f;
 
@@ -140,6 +140,9 @@ public class PlayerController : MonoBehaviour
     // Layers
     private int groundLayerMask;
 
+    // Imports
+    SettingDataManager settingDataManager;
+
     #endregion
 
     #region Awake/Update
@@ -148,6 +151,7 @@ public class PlayerController : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        settingDataManager = GetComponent<SettingDataManager>();
         cachedTransform = transform;
 
         rigid.freezeRotation = true;
@@ -203,7 +207,7 @@ public class PlayerController : MonoBehaviour
 
     private void ManageInputs()
     {
-        // Uncontrollable
+        // Uncontrollable state
         if (lockInput)
         {
             return;
@@ -1076,10 +1080,21 @@ public class PlayerController : MonoBehaviour
         // Cast rays from bottom edges of the player
         Vector2 rayStartLeft = centerPosition + (Vector2.left * groundCheckWidth * 0.5f);
         Vector2 rayStartRight = centerPosition + (Vector2.right * groundCheckWidth * 0.5f);
+        rayStartLeft.y -= 0.8f;
+        rayStartRight.y -= 0.8f;
 
         // Check both bottom corners
         RaycastHit2D hitLeft = Physics2D.Raycast(rayStartLeft, Vector2.down, groundCheckDistance, groundLayerMask);
         RaycastHit2D hitRight = Physics2D.Raycast(rayStartRight, Vector2.down, groundCheckDistance, groundLayerMask);
+        if (hitLeft && hitRight)
+        {
+            Vector2 leftVector = rayStartLeft;
+            Vector2 rightVector = rayStartRight;
+            leftVector.y -= hitLeft.distance;
+            rightVector.y -= hitRight.distance;
+            Debug.DrawLine(rayStartLeft, leftVector, Color.red);
+            Debug.DrawLine(rayStartRight, rightVector, Color.red);
+        }
 
         // Update grounded state
         isGrounded = (hitLeft.collider != null || hitRight.collider != null) && rigid.linearVelocity.y <= 0;
