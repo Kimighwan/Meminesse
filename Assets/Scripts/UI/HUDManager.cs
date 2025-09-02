@@ -17,6 +17,8 @@ public class HUDManager : MonoBehaviour
 
     [SerializeField]
     private GameObject skillTreeUI;
+    [SerializeField]
+    private GameObject inventoryUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,6 +51,10 @@ public class HUDManager : MonoBehaviour
             {
                 skillTreeUI.SetActive(false);
             }
+            else if(inventoryUI.activeSelf)
+            {
+                inventoryUI.SetActive(false);
+            }
             else
                 pauseMenuPopUp.SetActive(!isActive);
             
@@ -66,14 +72,12 @@ public class HUDManager : MonoBehaviour
 
         if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))   //SettingDataManager스크립트를 씬에 넣어줘야함
         {
-            SceneManager.LoadScene("InventoryScene");
-            Debug.Log("인벤토리 열기!");
+            inventoryUI.SetActive(true);
         }
 
         if(Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
         {
             skillTreeUI.SetActive(true);
-            Debug.Log("스킬 UI 열기");
         }
     }
     public void OnClickResume()
