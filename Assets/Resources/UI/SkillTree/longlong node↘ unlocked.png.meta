@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d9c80f3bc71d17f42aa906e80ee58f9e
+guid: 778f3caaa0462934eae81ea4ad053db3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7967500492130673806
-    second: longlong node_0
+      213: -481211349719541202
+    second: "longlong node\u2198 unlocked_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: longlong node_0
+      name: "longlong node\u2198 unlocked_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
+        width: 136
         height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 27b1dca1480cd6190800000000000000
-      internalID: -7967500492130673806
+      spriteID: e2a9416b3d46259f0800000000000000
+      internalID: -481211349719541202
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      longlong node_0: -7967500492130673806
+      "longlong node\u2198 unlocked_0": -481211349719541202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
