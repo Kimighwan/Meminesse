@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// HUD만 관리하는게 아니므로 스크립트 이름을 수정해야 합니다
 public class HUDManager : MonoBehaviour
 {
     [SerializeField]
@@ -54,6 +55,11 @@ public class HUDManager : MonoBehaviour
                 // 메뉴를 끌 때
                 // 게임 재개 로직 작성 부분
             }
+        }
+
+        if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))   //SettingDataManager스크립트를 씬에 넣어줘야함
+        {
+            SceneManager.LoadScene("InventoryScene");
         }
     }
     public void OnClickResume()
