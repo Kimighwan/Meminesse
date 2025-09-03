@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 920922088602550107}
   - component: {fileID: 4623261551367807180}
   - component: {fileID: 8837405816151875628}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: AirHeavyAttackHitbox_Swing
   m_TagString: PlayerAttackHitbox
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 7427685315701994763}
   - component: {fileID: 4380615728214607408}
   - component: {fileID: 6731740731272896780}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: HolySlashHitbox
   m_TagString: PlayerAttackHitbox
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 4921473776251372969}
   - component: {fileID: 238733127127732760}
   - component: {fileID: 490882016613190570}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: CrouchAttackHitbox
   m_TagString: PlayerAttackHitbox
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 7249683507627312611}
   - component: {fileID: 5254237343749851506}
   - component: {fileID: 2571626659793933338}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: LightCutHitbox
   m_TagString: PlayerAttackHitbox
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 8673682989365439163}
   - component: {fileID: 6437019317950415306}
   - component: {fileID: 214325598491451753}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: GroundAttackHitbox_1
   m_TagString: PlayerAttackHitbox
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 1688892288499030834}
   - component: {fileID: 2957837498542979773}
   - component: {fileID: 984383698336618830}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: AttackHitboxes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,8 +486,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6726313877897615449}
   - {fileID: 8673682989365439163}
+  - {fileID: 6726313877897615449}
   - {fileID: 2413568652897651401}
   - {fileID: 4921473776251372969}
   - {fileID: 4003962416326927833}
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 6726313877897615449}
   - component: {fileID: 5196212850545725425}
   - component: {fileID: 1589509972494437549}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: GroundAttackHitbox_2
   m_TagString: PlayerAttackHitbox
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 4003962416326927833}
   - component: {fileID: 572465255346541112}
   - component: {fileID: 8069275674328130546}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: AirAttackHitbox
   m_TagString: PlayerAttackHitbox
   m_Icon: {fileID: 0}
@@ -962,7 +962,7 @@ MonoBehaviour:
   holySlashAttackHitbox: {fileID: 4043574755532172727}
   lightCutAttackHitbox: {fileID: 4266524566150522156}
   playerHealth: 3
-  invincibleTimeAfterHit: 10
+  invincibleTimeAfterHit: 2
   minHeightForAirHeavyAttack: 2
   groundCheckDistance: 1
   groundCheckWidth: 0.4
@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 356599809873870929}
   - component: {fileID: 8825373545240334355}
   - component: {fileID: 1576878380826704877}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: AirHeavyAttackHitbox_Fall
   m_TagString: PlayerAttackHitbox
   m_Icon: {fileID: 0}
@@ -1090,7 +1090,7 @@ GameObject:
   - component: {fileID: 2413568652897651401}
   - component: {fileID: 3968930591861958985}
   - component: {fileID: 435060720926513825}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: GroundAttackHitbox_3
   m_TagString: PlayerAttackHitbox
   m_Icon: {fileID: 0}
@@ -1181,7 +1181,7 @@ GameObject:
   - component: {fileID: 568169433920449621}
   - component: {fileID: 3554912500874873815}
   - component: {fileID: 2708796652573259351}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: AirHeavyAttackHitbox_Hit
   m_TagString: PlayerAttackHitbox
   m_Icon: {fileID: 0}
