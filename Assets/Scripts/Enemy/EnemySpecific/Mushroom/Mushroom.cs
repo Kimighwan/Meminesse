@@ -52,4 +52,26 @@ public class Mushroom : Entity
         // 근접 공격 범위 표시
         Gizmos.DrawWireSphere(meleeAttackPosition.position, meleeAttackStateData.attackRadius);
     }
+
+    public override void Damaged(float damage, Vector2 position, bool isStun)
+    {
+        base.Damaged(damage, position, isStun);
+
+        if (isDead)
+        {
+            stateMachine.ChangeState(deadState);
+        }
+        else if (isStun && IsStun && stateMachine.currentState != stunState)
+        {
+            // 스턴 공격이 들어오면 // IsStun는 스턴 상태 전환 가능한지 체크
+
+            stateMachine.ChangeState(stunState);
+            SetIsStun(false);   // 스턴 불가 상태로 설정
+            lastStunTime = Time.time;
+        }
+        else
+        {
+            stateMachine.ChangeState(damagedState);
+        }
+    }
 }
