@@ -57,7 +57,7 @@ public class SkillTreeUI : UIBase
 
         UpdateEdgeImage();
 
-        if(Input.GetKeyDown(KeyCode.F))
+        if(Input.GetKeyDown(KeyCode.F)) // 스킬 활성화 버튼 클릭
         {
             skillActiveButton.onClick.Invoke();
         }
@@ -68,7 +68,7 @@ public class SkillTreeUI : UIBase
         descActiveGO.SetActive(false);
     }
 
-    public void OnClickSkillNode(int nodeID)
+    public void OnClickSkillNode(int nodeID)    // 스킬 활성화 버튼
     {
         descUIActiveCheck = true;
         descActiveGO.SetActive(true);

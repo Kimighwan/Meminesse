@@ -825,8 +825,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 423884445
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -3781910019033479378, guid: d1b064499f9e0294cba0e60d3f6626ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -926,8 +926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   maxJumpHoldTime: 1
-  baseJumpForce: 7
-  holdJumpForce: 12
+  baseJumpForce: 12
+  holdJumpForce: 7
   fallGravityScale: 3.5
   jumpGravityScale: 2.2
   normalGravityScale: 2.5
@@ -962,7 +962,7 @@ MonoBehaviour:
   holySlashAttackHitbox: {fileID: 4043574755532172727}
   lightCutAttackHitbox: {fileID: 4266524566150522156}
   playerHealth: 3
-  invincibleTimeAfterHit: 0.3
+  invincibleTimeAfterHit: 10
   minHeightForAirHeavyAttack: 2
   groundCheckDistance: 1
   groundCheckWidth: 0.4

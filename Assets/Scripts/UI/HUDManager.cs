@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// HUD만 관리하는게 아니므로 스크립트 이름을 수정해야 합니다
 public class HUDManager : MonoBehaviour
 {
     [SerializeField]
@@ -13,6 +14,11 @@ public class HUDManager : MonoBehaviour
     private GameObject GoToMainConfirmationPopupUI; // 진행중인 게임을 종료하고 메인 메뉴로 나가시겠습니까?
     [SerializeField]
     private GameObject exitConfirmationPopupUI;   // 종료하시겠습니까? 
+
+    [SerializeField]
+    private GameObject skillTreeUI;
+    [SerializeField]
+    private GameObject inventoryUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,6 +47,14 @@ public class HUDManager : MonoBehaviour
                 exitConfirmationPopupUI.SetActive(false);
                 pauseMenuPopUp.SetActive(true);
             }
+            else if(skillTreeUI.activeSelf)
+            {
+                skillTreeUI.SetActive(false);
+            }
+            else if(inventoryUI.activeSelf)
+            {
+                inventoryUI.SetActive(false);
+            }
             else
                 pauseMenuPopUp.SetActive(!isActive);
             
@@ -54,6 +68,16 @@ public class HUDManager : MonoBehaviour
                 // 메뉴를 끌 때
                 // 게임 재개 로직 작성 부분
             }
+        }
+
+        if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))   //SettingDataManager스크립트를 씬에 넣어줘야함
+        {
+            inventoryUI.SetActive(true);
+        }
+
+        if(Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
+        {
+            skillTreeUI.SetActive(true);
         }
     }
     public void OnClickResume()
