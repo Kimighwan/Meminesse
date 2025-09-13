@@ -4312,6 +4312,7 @@ RectTransform:
   - {fileID: 1289126431}
   - {fileID: 1577676526}
   - {fileID: 665434771}
+  - {fileID: 1425576901}
   m_Father: {fileID: 1255613122}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5073,7 +5074,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 924786652}
         m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
         m_MethodName: UpgradeWeaponStep
         m_Mode: 1
@@ -5869,7 +5870,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 924786651}
-  - {fileID: 1425576901}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7036,7 +7036,7 @@ GameObject:
   - component: {fileID: 1425576903}
   - component: {fileID: 1425576902}
   m_Layer: 5
-  m_Name: temp button
+  m_Name: debug button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7059,11 +7059,11 @@ RectTransform:
   - {fileID: 1695731952}
   - {fileID: 676989822}
   - {fileID: 1705083913}
-  m_Father: {fileID: 1255613122}
+  m_Father: {fileID: 924786651}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1280.5, y: 571.46}
+  m_AnchoredPosition: {x: 370.5, y: 81.46008}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1425576902
@@ -9322,7 +9322,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 924786653}
         m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
         m_MethodName: DebugAddRandomItem
         m_Mode: 1
