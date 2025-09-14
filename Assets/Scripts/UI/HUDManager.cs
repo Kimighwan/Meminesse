@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // HUD만 관리하는게 아니므로 스크립트 이름을 수정해야 합니다
+// 인게임 씬 관리 
 public class HUDManager : MonoBehaviour
 {
     [SerializeField]
@@ -56,34 +57,37 @@ public class HUDManager : MonoBehaviour
                 inventoryUI.SetActive(false);
             }
             else
-                pauseMenuPopUp.SetActive(!isActive);
+                pauseMenuPopUp.SetActive(!pauseMenuPopUp.activeSelf);
             
-            if (!isActive)
+            if (pauseMenuPopUp.activeSelf)
             {
                 // 메뉴를 켤 때
-                // 게임 멈춤 로직 작성 부분
+                Time.timeScale = 0f;
             }
             else
             {
                 // 메뉴를 끌 때
-                // 게임 재개 로직 작성 부분
+                Time.timeScale = 1f;
             }
         }
 
         if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))   //SettingDataManager스크립트를 씬에 넣어줘야함
         {
-            inventoryUI.SetActive(true);
+            inventoryUI.SetActive(!inventoryUI.activeSelf);
+            Time.timeScale = inventoryUI.activeSelf ? 0f : 1f;
+
         }
 
         if(Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
         {
-            skillTreeUI.SetActive(true);
+            skillTreeUI.SetActive(!skillTreeUI.activeSelf);
+            Time.timeScale = skillTreeUI.activeSelf ? 0f : 1f;
         }
     }
     public void OnClickResume()
     {
         pauseMenuPopUp.SetActive(false);
-        // 게임 재개 로직 작성 부분
+        Time.timeScale = 1f;
     }
     public void OnClickSetting()
     {

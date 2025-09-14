@@ -28,7 +28,7 @@ public class MainMenu : UIBase
 
     public void OnClickNewGame()
     {
-        
+        //SceneManager.LoadScene("Su");
     }
 
     public void OnClickLoadGame()
