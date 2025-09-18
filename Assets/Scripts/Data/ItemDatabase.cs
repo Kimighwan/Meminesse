@@ -18,13 +18,14 @@ public class ItemDatabase : MonoBehaviour
     [Space(20)]
     public GameObject fieldItemPrefab;
 
-    public Vector3[] dropPos; // 아이템 드랍 위치
+    private int dropItemCount = 3; // 드랍아이템수 -> 추후 값 수정 
 
-    private int dropItemCount = 3; // 추후 값 수정 
 
     private void Start()
     {
-        ItemDrop(); //debug
+        ItemDrop(new Vector3(-2,12,0)); //debug
+
+        ItemDrop(new Vector3(0,12,0)); //debug
     }
 
     public Item GetItemById(int id)
@@ -32,11 +33,13 @@ public class ItemDatabase : MonoBehaviour
         return itemDB.Find(item => item.itemId == id);
     }
 
-    public void ItemDrop()
+    public void ItemDrop(Vector3 monsterPos)
     {
-        for (int i = 0; i < dropItemCount + 1; i++)
+        for (int i = 0; i < dropItemCount; i++)
         {
-            GameObject go = Instantiate(fieldItemPrefab, dropPos[i], Quaternion.identity);
+            Vector3 dropPos = monsterPos + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 0.5f), 0);
+
+            GameObject go = Instantiate(fieldItemPrefab, dropPos, Quaternion.identity);
             if (UnityEngine.Random.value < 0.2f)
             {
                 go.GetComponent<FieldItems>().SetItem(GetItemById(22)); //마연석

@@ -24,12 +24,16 @@ public class HUDManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (pauseMenuPopUp.activeSelf || inventoryUI.activeSelf || skillTreeUI.activeSelf)
+        {
+            Cursor.visible = true;
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             bool isActive = pauseMenuPopUp.activeSelf;
@@ -51,10 +55,12 @@ public class HUDManager : MonoBehaviour
             else if(skillTreeUI.activeSelf)
             {
                 skillTreeUI.SetActive(false);
+                Cursor.visible = false;
             }
             else if(inventoryUI.activeSelf)
             {
                 inventoryUI.SetActive(false);
+                Cursor.visible = false;
             }
             else
                 pauseMenuPopUp.SetActive(!pauseMenuPopUp.activeSelf);
@@ -68,6 +74,7 @@ public class HUDManager : MonoBehaviour
             {
                 // 메뉴를 끌 때
                 Time.timeScale = 1f;
+                Cursor.visible = false;
             }
         }
 
