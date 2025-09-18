@@ -81,6 +81,7 @@ public class HUDManager : MonoBehaviour
         if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))   //SettingDataManager스크립트를 씬에 넣어줘야함
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
+            InventoryUI.Instance.UpdateInventory();
             Time.timeScale = inventoryUI.activeSelf ? 0f : 1f;
 
         }

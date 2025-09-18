@@ -5890,6 +5890,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -55
       objectReference: {fileID: 0}
+    - target: {fileID: 2100460588423754488, guid: 230bf647c7e0eef4fbe5e207b3b5c018, type: 3}
+      propertyPath: itemDatabase
+      value: 
+      objectReference: {fileID: 1421302721}
     - target: {fileID: 2701582711324262280, guid: 230bf647c7e0eef4fbe5e207b3b5c018, type: 3}
       propertyPath: m_Name
       value: InventoryUI
@@ -49428,7 +49432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuPopUp: {fileID: 1310745655}
   settingPopUp: {fileID: 119815108}
-  GoToMainConfirmationPopupUI: {fileID: 0}
+  GoToMainConfirmationPopupUI: {fileID: 1537777473}
   exitConfirmationPopupUI: {fileID: 5534604610750781045}
   skillTreeUI: {fileID: 1882223156}
   inventoryUI: {fileID: 1050055915}
