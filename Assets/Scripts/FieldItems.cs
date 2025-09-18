@@ -1,6 +1,7 @@
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class FieldItems : MonoBehaviour
 {
@@ -26,16 +27,20 @@ public class FieldItems : MonoBehaviour
     }
 
     private void Start()
-    { 
-        Destroy(gameObject, 30f);
+    {
+        Destroy(gameObject, 60f);
+        StartCoroutine(BlinkBeforeDestroy(55f, 5f));
     }
+
     public void SetItem(Item _item)
     {
-        item.itemName = _item.itemName;
-        item.itemId = _item.itemId;
-        item.itemImage = _item.itemImage;
-        item.desc = _item.desc;
-        item.itemImage = _item.itemImage;
+        item = new Item
+        {
+            itemId = _item.itemId,
+            itemName = _item.itemName,
+            itemImage = _item.itemImage,
+            desc = _item.desc
+        };
 
         if (spriteRenderer != null && item.itemImage != null)
         {
@@ -48,7 +53,7 @@ public class FieldItems : MonoBehaviour
     public Item GetItem()
     {
         return item;
-    }    
+    }
 
     public void DestroyItem()
     {
@@ -65,10 +70,27 @@ public class FieldItems : MonoBehaviour
 
     private void PickUpItem(GameObject player)
     {
-        //int itemId = item.itemId;
         InventoryUI.Instance.AddItemToInventory(item.itemId);
 
         Debug.Log($"플레이어가 {item.itemName} 획득!");
         Destroy(gameObject);
+    }
+
+    // 깜빡거리는 효과 
+    private IEnumerator BlinkBeforeDestroy(float delay, float duration)
+    {
+        yield return new WaitForSeconds(delay);
+
+        float endTime = Time.time + duration;
+        bool visible = true;
+
+        while (Time.time < endTime)
+        {
+            visible = !visible;
+            if (spriteRenderer != null)
+                spriteRenderer.enabled = visible;
+
+            yield return new WaitForSeconds(0.2f); 
+        }
     }
 }

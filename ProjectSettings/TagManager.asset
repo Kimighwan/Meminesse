@@ -22,7 +22,7 @@ TagManager:
   - Player
   - Camera
   - 
-  - 
+  - Item
   - 
   - 
   - 
@@ -61,6 +61,9 @@ TagManager:
     locked: 0
   - name: Forground Decoration
     uniqueID: 253415725
+    locked: 0
+  - name: Item
+    uniqueID: 4005806691
     locked: 0
   m_RenderingLayers:
   - Default
