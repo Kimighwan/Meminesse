@@ -25,7 +25,7 @@ public class ItemDatabase : MonoBehaviour
     {
         ItemDrop(new Vector3(-2,13,0)); //debug
 
-        ItemDrop(new Vector3(0,13,0)); //debug
+        ItemDrop(new Vector3(-6,13,0)); //debug
     }
 
     public Item GetItemById(int id)
@@ -33,6 +33,7 @@ public class ItemDatabase : MonoBehaviour
         return itemDB.Find(item => item.itemId == id);
     }
 
+    // 나중에 다른 곳으로 옮기면 좋겠는 메서드
     public void ItemDrop(Vector3 monsterPos)
     {
         for (int i = 0; i < dropItemCount; i++)
@@ -43,17 +44,11 @@ public class ItemDatabase : MonoBehaviour
             if (UnityEngine.Random.value < 0.2f)
             {
                 go.GetComponent<FieldItems>().SetItem(GetItemById(22)); //마연석
-                // 마연석 10개 추가 - 일단 바로 추가
-                
-                Debug.Log("+ 마연석 10개");
             }
             else
             {
                 go.GetComponent<FieldItems>().SetItem(GetItemById(21)); //다이아
-                 // 다이아 100개 추가 - 일단 바로 추가 
-                Debug.Log("+ 다이아 100개");
             }
-            Debug.Log("아이템드랍");
         }
     }
 

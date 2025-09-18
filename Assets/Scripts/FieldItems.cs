@@ -62,18 +62,26 @@ public class FieldItems : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //fieldItem이 플레이어와 충돌했을 때 
         if (collision.CompareTag("Player"))
         {
-            PickUpItem(collision.gameObject);
+            PickUpItem();
         }
     }
 
-    private void PickUpItem(GameObject player)
+    private void PickUpItem()
     {
+        if (item == null)
+        {
+            return;
+        }
+
+        Destroy(this.gameObject);
+
         InventoryUI.Instance.AddItemToInventory(item.itemId);
 
         Debug.Log($"플레이어가 {item.itemName} 획득!");
-        Destroy(gameObject);
+        
     }
 
     // 깜빡거리는 효과 
