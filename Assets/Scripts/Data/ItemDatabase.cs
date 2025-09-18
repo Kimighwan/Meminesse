@@ -23,9 +23,9 @@ public class ItemDatabase : MonoBehaviour
 
     private void Start()
     {
-        ItemDrop(new Vector3(-2,12,0)); //debug
+        ItemDrop(new Vector3(-2,13,0)); //debug
 
-        ItemDrop(new Vector3(0,12,0)); //debug
+        ItemDrop(new Vector3(0,13,0)); //debug
     }
 
     public Item GetItemById(int id)
@@ -37,19 +37,20 @@ public class ItemDatabase : MonoBehaviour
     {
         for (int i = 0; i < dropItemCount; i++)
         {
-            Vector3 dropPos = monsterPos + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 0.5f), 0);
+            Vector3 dropPos = monsterPos + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 1f), 0);
 
             GameObject go = Instantiate(fieldItemPrefab, dropPos, Quaternion.identity);
             if (UnityEngine.Random.value < 0.2f)
             {
                 go.GetComponent<FieldItems>().SetItem(GetItemById(22)); //마연석
-                ItemDataManager.Instance.AddItem(22, 10); // 마연석 10개 추가 - 일단 바로 추가
+                // 마연석 10개 추가 - 일단 바로 추가
+                
                 Debug.Log("+ 마연석 10개");
             }
             else
             {
                 go.GetComponent<FieldItems>().SetItem(GetItemById(21)); //다이아
-                ItemDataManager.Instance.AddItem(21, 100); // 다이아 100개 추가 - 일단 바로 추가 
+                 // 다이아 100개 추가 - 일단 바로 추가 
                 Debug.Log("+ 다이아 100개");
             }
             Debug.Log("아이템드랍");
