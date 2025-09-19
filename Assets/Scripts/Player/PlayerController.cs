@@ -71,6 +71,8 @@ public class PlayerController : MonoBehaviour
     // Width between ground check points
     [SerializeField] float groundCheckWidth = 0.4f;
 
+    [SerializeField] MapController mapController;
+
     public enum PlayerState
     {
         // Movements
@@ -524,21 +526,22 @@ public class PlayerController : MonoBehaviour
             return;
 
         if (canMove)
+        {
+            float moveInput = Input.GetAxisRaw("Horizontal");
+
+            if (moveInput != 0 && !IsTouchingWall())
             {
-                float moveInput = Input.GetAxisRaw("Horizontal");
-                if (moveInput != 0)
-                {
-                    currentVelocity.x = moveInput * moveSpeed;
-                    currentVelocity.y = rigid.linearVelocity.y;
-                    rigid.linearVelocity = currentVelocity;
-                }
-                else if (rigid.linearVelocity.x != 0)
-                {
-                    currentVelocity.x = 0;
-                    currentVelocity.y = rigid.linearVelocity.y;
-                    rigid.linearVelocity = currentVelocity;
-                }
+                Vector2 velocity = rigid.linearVelocity;
+                velocity.x = moveInput * moveSpeed;
+                rigid.linearVelocity = velocity;
             }
+            else if (rigid.linearVelocity.x != 0)
+            {
+                Vector2 velocity = rigid.linearVelocity;
+                velocity.x = 0;
+                rigid.linearVelocity = velocity;
+            }
+        }
     }
 
     private IEnumerator JumpCharacter()
@@ -591,7 +594,13 @@ public class PlayerController : MonoBehaviour
         isInvincible = true;
         isDead = true;
         lockInput = true;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(3f);
+
+        mapController.RespawnPlayer(this);
+        isDead = false;
+        isInvincible = false;
+        lockInput = false;
+        ChangeState(PlayerState.Idle);
     }
 
     #endregion
@@ -1068,6 +1077,31 @@ public class PlayerController : MonoBehaviour
         return !Physics2D.Raycast(cachedTransform.position, Vector2.down, minHeightForAirHeavyAttack, groundLayerMask);
     }
 
+    private bool IsTouchingWall()
+    {
+        float direction = playerSpriteRenderer.flipX ? -1f : 1f;
+        float rayLength = 0.8f; // Adjust as needed
+        int wallLayerMask = LayerMask.GetMask("Ground");
+
+        // Get collider bounds
+        Bounds bounds = GetComponent<Collider2D>().bounds;
+        Vector2 top = new Vector2(bounds.center.x, bounds.max.y - 0.05f);
+        Vector2 middle = new Vector2(bounds.center.x, bounds.center.y);
+        Vector2 bottom = new Vector2(bounds.center.x, bounds.min.y + 0.05f);
+
+        Vector2 rayDir = new Vector2(direction, 0);
+
+        RaycastHit2D hitTop = Physics2D.Raycast(top, rayDir, rayLength, wallLayerMask);
+        RaycastHit2D hitMiddle = Physics2D.Raycast(middle, rayDir, rayLength, wallLayerMask);
+        RaycastHit2D hitBottom = Physics2D.Raycast(bottom, rayDir, rayLength, wallLayerMask);
+
+        Debug.DrawRay(top, rayDir * rayLength, Color.blue);
+        Debug.DrawRay(middle, rayDir * rayLength, Color.cyan);
+        Debug.DrawRay(bottom, rayDir * rayLength, Color.magenta);
+
+        return (hitTop.collider != null || hitMiddle.collider != null || hitBottom.collider != null);
+    }
+
     private void CheckGrounded()
     {
         // Don't check during special states
@@ -1109,7 +1143,7 @@ public class PlayerController : MonoBehaviour
             ChangeState(PlayerState.Falling);
         }
 
-        this.animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isGrounded", isGrounded);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
