@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 
 // 인벤토리창 모든 UI 관리
-public class Inventory : MonoBehaviour
+public class Inventory : UIBase
 {
     // 데이터베이스
     public ItemDatabase itemDatabase;
@@ -44,6 +44,7 @@ public class Inventory : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        base.Start();
         // 데이터 가져오기
         itemDataList = ItemDataManager.Instance.GetItemDataList();
 
