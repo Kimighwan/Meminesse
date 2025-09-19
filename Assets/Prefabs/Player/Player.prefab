@@ -776,7 +776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7418917979669633661}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: -0.7}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
@@ -925,12 +925,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  maxJumpHoldTime: 1
-  baseJumpForce: 12
-  holdJumpForce: 7
-  fallGravityScale: 3.5
+  maxJumpHoldTime: 0.5
+  baseJumpForce: 18
+  holdJumpForce: 0
+  fallGravityScale: 7
   jumpGravityScale: 2.2
-  normalGravityScale: 2.5
+  normalGravityScale: 5
   dashSpeed: 12
   backDashSpeed: 9
   dashDuration: 0.3
@@ -938,7 +938,7 @@ MonoBehaviour:
   currentAttackType: 0
   attackCoolDown: 0
   maxAttackInterval: 0.3
-  baseAttack: 0.1
+  baseAttack: 1
   damage_GroundedComboAttack:
   - 1
   - 1
@@ -962,10 +962,11 @@ MonoBehaviour:
   holySlashAttackHitbox: {fileID: 4043574755532172727}
   lightCutAttackHitbox: {fileID: 4266524566150522156}
   playerHealth: 3
-  invincibleTimeAfterHit: 2
-  minHeightForAirHeavyAttack: 2
-  groundCheckDistance: 1
+  invincibleTimeAfterHit: 10
+  minHeightForAirHeavyAttack: 3
+  groundCheckDistance: 0.6
   groundCheckWidth: 0.4
+  mapController: {fileID: 0}
 --- !u!95 &2016939861136809588
 Animator:
   serializedVersion: 7

@@ -4,8 +4,6 @@ public class Map : MonoBehaviour
 {
     [SerializeField] private int mapId;
     [SerializeField] GameObject respawnPoint;
-    [SerializeField] GameObject[] portals;
-
 
     public void CheckMapVisited()
     {
