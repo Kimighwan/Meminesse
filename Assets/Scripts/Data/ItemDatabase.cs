@@ -26,6 +26,10 @@ public class ItemDatabase : MonoBehaviour
         ItemDrop(new Vector3(-2,13,0)); //debug
 
         ItemDrop(new Vector3(-6,13,0)); //debug
+        ItemDrop(new Vector3(-7, 13, 0)); //debug
+        ItemDrop(new Vector3(-5, 13, 0)); //debug
+        ItemDrop(new Vector3(-4, 13, 0)); //debug
+        ItemDrop(new Vector3(-3, 13, 0)); //debug
     }
 
     public Item GetItemById(int id)

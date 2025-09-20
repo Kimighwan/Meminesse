@@ -14,15 +14,16 @@ public class ButtonOutlineController : MonoBehaviour, IPointerClickHandler, IPoi
 
     private Coroutine blinkCoroutine;
 
-    void Start()
+    void OnEnable()
     {
         if (outline != null)
-            outline.gameObject.SetActive(false); // 시작 시 꺼두기
+            outline.gameObject.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!isClicked) ShowOutline(true);
+        Debug.Log(" / Alpha: " + outline.color.a);
     }
 
     public void OnPointerExit(PointerEventData eventData)
