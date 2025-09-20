@@ -4,35 +4,36 @@ using UnityEngine.SceneManagement;
 
 // HUD만 관리하는게 아니므로 스크립트 이름을 수정해야 합니다
 // 인게임 씬 관리 
-public class HUDManager : MonoBehaviour
+public class HUDManager : UIBase
 {
-    [SerializeField]
-    private GameObject pauseMenuPopUp;
-    [SerializeField]
-    private GameObject settingPopUp;
+    [SerializeField] private GameObject pauseMenuPopUp;
+    [SerializeField] private GameObject settingPopUp;
 
-    [SerializeField]
-    private GameObject GoToMainConfirmationPopupUI; // 진행중인 게임을 종료하고 메인 메뉴로 나가시겠습니까?
-    [SerializeField]
-    private GameObject exitConfirmationPopupUI;   // 종료하시겠습니까? 
+    [SerializeField] private GameObject GoToMainConfirmationPopupUI; // 진행중인 게임을 종료하고 메인 메뉴로 나가시겠습니까?
+    [SerializeField] private GameObject exitConfirmationPopupUI;   // 종료하시겠습니까? 
 
-    [SerializeField]
-    private GameObject skillTreeUI;
-    [SerializeField]
-    private GameObject inventoryUI;
+    [SerializeField] private GameObject skillTreeUI;
+    [SerializeField] private GameObject inventoryUI;
+
+    private bool isPopUpOpen = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    new void Start()
     {
         Cursor.visible = false;
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
+    {
+        HandlePopup();
+    }
+    public void HandlePopup()
     {
         if (pauseMenuPopUp.activeSelf || inventoryUI.activeSelf || skillTreeUI.activeSelf)
         {
             Cursor.visible = true;
+            isPopUpOpen = true;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -42,29 +43,31 @@ public class HUDManager : MonoBehaviour
                 settingPopUp.SetActive(false);
                 pauseMenuPopUp.SetActive(true);
             }
-            else if(GoToMainConfirmationPopupUI.activeSelf)
+            else if (GoToMainConfirmationPopupUI.activeSelf) // 진행중인 게임을 종료하고 메인 메뉴로 나가시겠습니까?
             {
                 GoToMainConfirmationPopupUI.SetActive(false);
                 pauseMenuPopUp.SetActive(true);
             }
-            else if (exitConfirmationPopupUI.activeSelf)
+            else if (exitConfirmationPopupUI.activeSelf) // 종료하시겠습니까? 
             {
                 exitConfirmationPopupUI.SetActive(false);
                 pauseMenuPopUp.SetActive(true);
             }
-            else if(skillTreeUI.activeSelf)
+            else if (skillTreeUI.activeSelf)
             {
                 skillTreeUI.SetActive(false);
+                isPopUpOpen = false;
                 Cursor.visible = false;
             }
-            else if(inventoryUI.activeSelf)
+            else if (inventoryUI.activeSelf)
             {
                 inventoryUI.SetActive(false);
+                isPopUpOpen = false;
                 Cursor.visible = false;
             }
             else
                 pauseMenuPopUp.SetActive(!pauseMenuPopUp.activeSelf);
-            
+
             if (pauseMenuPopUp.activeSelf)
             {
                 // 메뉴를 켤 때
@@ -82,14 +85,36 @@ public class HUDManager : MonoBehaviour
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             InventoryUI.Instance.UpdateInventory();
-            Time.timeScale = inventoryUI.activeSelf ? 0f : 1f;
+            if(inventoryUI.activeSelf)
+            {
+                Time.timeScale = 0f;
+                isPopUpOpen = true;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                isPopUpOpen = false;
+                Cursor.visible = false;
+            }
 
         }
 
-        if(Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
+        if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
         {
             skillTreeUI.SetActive(!skillTreeUI.activeSelf);
-            Time.timeScale = skillTreeUI.activeSelf ? 0f : 1f;
+            if (inventoryUI.activeSelf)
+            {
+                Time.timeScale = 0f;
+                isPopUpOpen = true;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                isPopUpOpen = false;
+                Cursor.visible = false;
+            }
         }
     }
     public void OnClickResume()
@@ -145,6 +170,11 @@ public class HUDManager : MonoBehaviour
         pauseMenuPopUp.SetActive(true);
         // 창이 넘어갔을 때 포커스에 메인에 그대로 있는 문제 해결
         if (exitConfirmationPopupUI.activeSelf) return;
+    }
+
+    public override void SetCurrentButton(GameObject gb)
+    {
+        base.SetCurrentButton(gb);
     }
 
 }

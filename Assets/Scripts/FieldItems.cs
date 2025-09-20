@@ -78,6 +78,7 @@ public class FieldItems : MonoBehaviour
 
         Destroy(this.gameObject);
         ItemDataManager.Instance.AddItem(item.itemId, 1);
+
         //InventoryUI.Instance.AddItemToInventory(item.itemId);
 
         Debug.Log($"플레이어가 {item.itemName} 획득!");

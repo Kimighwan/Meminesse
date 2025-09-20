@@ -77,9 +77,9 @@ public class Inventory : UIBase
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
     }
 
     //현재 무기레벨을 ui에 단계별 표시

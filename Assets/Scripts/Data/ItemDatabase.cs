@@ -40,7 +40,7 @@ public class ItemDatabase : MonoBehaviour
         {
             Vector3 dropPos = monsterPos + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 1f), 0);
 
-            GameObject go = Instantiate(fieldItemPrefab, dropPos, Quaternion.identity);
+            GameObject go = Instantiate(fieldItemPrefab, dropPos, Quaternion.identity); // 
             if (UnityEngine.Random.value < 0.2f)
             {
                 go.GetComponent<FieldItems>().SetItem(GetItemById(22)); //마연석
