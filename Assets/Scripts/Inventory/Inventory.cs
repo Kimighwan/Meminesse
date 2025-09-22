@@ -43,10 +43,28 @@ public class Inventory : UIBase
     new void Start()
     {
         base.Start();
+    }
+
+    void OnEnable()
+    {
         // 데이터 가져오기
         itemDataList = ItemDataManager.Instance.GetItemDataList();
 
         // 돈 초기화         
+        UpdateMoney();
+
+        // 무기 레벨 UI 초기화
+        UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
+    }
+
+    // Update is called once per frame
+    protected override void Update()
+    {
+        base.Update();
+    }
+
+    public void UpdateMoney()
+    {
         ItemData dia, ma;
         if (ItemDataManager.Instance.ExistItem(21) != false)
         {
@@ -66,18 +84,6 @@ public class Inventory : UIBase
             //Debug.Log("마연석 아이템이 존재하지 않음");
             redMoney.text = "0";
         }
-        
-
-        // 무기 레벨 UI 초기화
-        UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep()); 
-
-
-    }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
     }
 
     //현재 무기레벨을 ui에 단계별 표시
