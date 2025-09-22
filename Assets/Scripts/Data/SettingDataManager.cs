@@ -4,7 +4,7 @@ using System.Text;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
-using static ScreenMode;
+using static ScreenModeSetting;
 
 [Serializable]
 public class SettingData

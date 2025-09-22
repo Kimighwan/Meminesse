@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using System.Collections.Generic;
 
 // 키 조작법 관리
-public class KeyController : MonoBehaviour
+public class KeySetting : MonoBehaviour
 {
     // Button Number
     // 0:up , 1:down, 2:right, 3:left, 4:attack, 5:jump, 6:dash, 7:skill1, 8:skill2, 9:skill3, 10:map, 11:inventory, 12:skilltree, 13:interact, 14:heal

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ExitConfirm : MonoBehaviour
+public class ExitConfirmPopUp : MonoBehaviour
 {
 
     [SerializeField]
