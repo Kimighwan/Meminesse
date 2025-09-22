@@ -8,7 +8,6 @@ public class MainMenu : UIBase
     [SerializeField]
     private GameObject settingUI;
 
-
     [SerializeField]
     private GameObject exitConfirmationPopupUI;
 

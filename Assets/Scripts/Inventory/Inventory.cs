@@ -13,10 +13,8 @@ public class Inventory : UIBase
     public List<ItemData> itemDataList;
 
     // 돈 두종류 임시 이름
-    [SerializeField]
-    private TextMeshProUGUI mintMoney;
-    [SerializeField]
-    private TextMeshProUGUI redMoney;
+    [SerializeField] private TextMeshProUGUI mintMoney;
+    [SerializeField] private TextMeshProUGUI redMoney;
 
     // 플레이어가 들고있는 무기 이미지
     public Image[] weaponImages;
@@ -42,7 +40,7 @@ public class Inventory : UIBase
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    new void Start()
     {
         base.Start();
         // 데이터 가져오기
