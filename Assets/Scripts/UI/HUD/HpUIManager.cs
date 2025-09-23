@@ -90,6 +90,7 @@ public class HpUIManager : MonoBehaviour
 
         Debug.Log($"HP +{healingAmount * (1 + additionalHealingRate)}");
         UpdateHearts();
+        Canvas.ForceUpdateCanvases();
     }
 
     // 체력 최대로 회복 함수(특정 지점에 가면)
@@ -98,7 +99,8 @@ public class HpUIManager : MonoBehaviour
         int currentHp = maxHp; 
         PlayerDataManager.Instance.SetHp(currentHp); // maxHp를 현재 체력에 더해서 max로 만듦
         Debug.Log("HP Full");
-        UpdateHearts(); 
+        UpdateHearts();
+        Canvas.ForceUpdateCanvases();
     }
 
 
@@ -109,6 +111,7 @@ public class HpUIManager : MonoBehaviour
         PlayerDataManager.Instance.SetHp(-damage); 
         Debug.Log($"HP -{damage}");
         UpdateHearts();
+        Canvas.ForceUpdateCanvases();
     }
 
     // 최대 체력 증가
@@ -117,5 +120,6 @@ public class HpUIManager : MonoBehaviour
         PlayerDataManager.Instance.AddMaxHp(20); 
         InitHearts(PlayerDataManager.Instance.GetMaxHp()); 
         UpdateHearts();
+        Canvas.ForceUpdateCanvases();
     }
 }

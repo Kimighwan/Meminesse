@@ -23,13 +23,13 @@ public class ItemDatabase : MonoBehaviour
 
     private void Start()
     {
-        ItemDrop(new Vector3(-2,13,0)); //debug
+        DropMonsterItem(new Vector3(-2,13,0)); //debug
 
-        ItemDrop(new Vector3(-6,13,0)); //debug
-        ItemDrop(new Vector3(-7, 13, 0)); //debug
-        ItemDrop(new Vector3(-5, 13, 0)); //debug
-        ItemDrop(new Vector3(-4, 13, 0)); //debug
-        ItemDrop(new Vector3(-3, 13, 0)); //debug
+        DropMonsterItem(new Vector3(-6,13,0)); //debug
+        DropMonsterItem(new Vector3(-7, 13, 0)); //debug
+        DropMonsterItem(new Vector3(-5, 13, 0)); //debug
+        DropMonsterItem(new Vector3(-4, 13, 0)); //debug
+        DropMonsterItem(new Vector3(-3, 13, 0)); //debug
     }
 
     public Item GetItemById(int id)
@@ -37,14 +37,14 @@ public class ItemDatabase : MonoBehaviour
         return itemDB.Find(item => item.itemId == id);
     }
 
-    // 나중에 다른 곳으로 옮기면 좋겠는 메서드
-    public void ItemDrop(Vector3 monsterPos)
+    // 기본 몬스터 킬 아이템 드랍 
+    public void DropMonsterItem(Vector3 monsterPos)
     {
         for (int i = 0; i < dropItemCount; i++)
         {
             Vector3 dropPos = monsterPos + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 1f), 0);
 
-            GameObject go = Instantiate(fieldItemPrefab, dropPos, Quaternion.identity); // 
+            GameObject go = Instantiate(fieldItemPrefab, dropPos, Quaternion.identity); 
             if (UnityEngine.Random.value < 0.2f)
             {
                 go.GetComponent<FieldItems>().SetItem(GetItemById(22)); //마연석
@@ -53,6 +53,25 @@ public class ItemDatabase : MonoBehaviour
             {
                 go.GetComponent<FieldItems>().SetItem(GetItemById(21)); //다이아
             }
+        }
+    }
+
+    // 랜덤 아이템 드랍
+    public void DropRandomItem()
+    {
+        for (int i = 0; i < dropItemCount; i++)
+        {
+            Vector3 dropPos = new Vector3(-6, 13, 0) + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 1f), 0);
+
+            GameObject go = Instantiate(fieldItemPrefab, dropPos, Quaternion.identity);
+
+            int[] possibleItems = { 23, 31, 32, 33, 34, 35, 36, 37, 41, 42, 43, 44, 51, 52, 53 };
+
+            int randomIndex = UnityEngine.Random.Range(0, possibleItems.Length);
+            int randomId = possibleItems[randomIndex];
+
+            go.GetComponent<FieldItems>().SetItem(GetItemById(randomId));
+            
         }
     }
 

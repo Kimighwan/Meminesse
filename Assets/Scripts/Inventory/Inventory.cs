@@ -35,9 +35,20 @@ public class Inventory : UIBase
             Destroy(gameObject);
             return;
         }
-    }
-    #endregion
 
+        // 돈 초기화         
+        UpdateMoney();
+
+        // 무기 레벨 UI 갱신
+        UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
+
+        // 체력 UI 갱신
+        HpUIManager.Instance.UpdateHearts();
+
+        // 아이템 슬롯 갱신
+        InventoryUI.Instance.UpdateInventory();
+    }
+    #endregion   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     new void Start()
@@ -49,12 +60,12 @@ public class Inventory : UIBase
     {
         // 데이터 가져오기
         itemDataList = ItemDataManager.Instance.GetItemDataList();
+         
+        UpdateMoney();  // 돈 초기화  
+        UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());  // 무기 레벨 UI 갱신
+        HpUIManager.Instance.UpdateHearts();  // 체력 UI 갱신
+        InventoryUI.Instance.UpdateInventory(); // 아이템 슬롯 갱신
 
-        // 돈 초기화         
-        UpdateMoney();
-
-        // 무기 레벨 UI 초기화
-        UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
     }
 
     // Update is called once per frame

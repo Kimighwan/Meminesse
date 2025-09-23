@@ -15,13 +15,11 @@ public class FieldItems : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // Rigidbody2D가 없다면 자동 추가
         if (rb == null)
         {
             rb = gameObject.AddComponent<Rigidbody2D>();
         }
 
-        // 드랍 아이템은 중력 받도록 설정
         rb.gravityScale = 1f; // 중력 세기
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; // 회전은 막음
     }
@@ -80,7 +78,10 @@ public class FieldItems : MonoBehaviour
 
         InventoryUI.Instance.AddItemToInventory(item.itemId);
         if (InventoryUI.Instance != null)
+        {
             InventoryUI.Instance.UpdateInventory();
+            Inventory.Instance.UpdateMoney();
+        }
         Debug.Log($"플레이어가 {item.itemName} 획득!");
         
     }

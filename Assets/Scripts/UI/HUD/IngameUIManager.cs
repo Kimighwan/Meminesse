@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-// HUD만 관리하는게 아니므로 스크립트 이름을 수정해야 합니다
-// 인게임 씬 관리 
-public class HUDManager : UIBase
+public class IngameUIManager : UIBase
 {
     [SerializeField] private GameObject pauseMenuPopUp;
     [SerializeField] private GameObject settingPopUp;
@@ -37,6 +35,11 @@ public class HUDManager : UIBase
             { skillTreeUI,    skillTreeFirstButton },
             { inventoryUI,    inventoryFirstButton }
         };
+
+        Inventory.Instance.UpdateMoney();
+        Inventory.Instance.UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
+        InventoryUI.Instance.UpdateInventory();
+        HpUIManager.Instance.UpdateHearts();
     }
 
     // Update is called once per frame
@@ -67,6 +70,7 @@ public class HUDManager : UIBase
         if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))
         {
             ToggleUI(inventoryUI);
+            HpUIManager.Instance.UpdateHearts(); 
         }
 
         if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
@@ -107,6 +111,8 @@ public class HUDManager : UIBase
         settingPopUp.SetActive(false);
         GoToMainConfirmationPopupUI.SetActive(false);
         exitConfirmationPopupUI.SetActive(false);
+
+        HpUIManager.Instance.UpdateHearts();
     }
 
     public void OnClickResume()
