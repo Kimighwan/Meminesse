@@ -20,7 +20,6 @@ public class PlayerAttackHitbox : MonoBehaviour
         }
     }
     */
-
     
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -32,7 +31,6 @@ public class PlayerAttackHitbox : MonoBehaviour
             hit.Damaged(attackDamage, playerPosition, isStunAttack);
         }
     }
-    
 
     #region getters/setters
 
