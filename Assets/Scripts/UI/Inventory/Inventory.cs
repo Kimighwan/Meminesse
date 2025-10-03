@@ -45,11 +45,11 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         // 데이터 가져오기
-        itemDataList = ItemDataManager.Instance.GetItemDataList();
+        itemDataList = DataManager.Item.GetItemDataList();
 
         // 돈 초기화         
         ItemData dia, ma;
-        if (ItemDataManager.Instance.ExistItem(21) != false)
+        if (DataManager.Item.ExistItem(21) != false)
         {
             dia = itemDataList.Find(item => item.itemId == 21);
             mintMoney.text = dia.count.ToString();
@@ -57,7 +57,7 @@ public class Inventory : MonoBehaviour
         else
             mintMoney.text = "0";
 
-        if (ItemDataManager.Instance.ExistItem(22) != false)
+        if (DataManager.Item.ExistItem(22) != false)
         {
             ma = itemDataList.Find(item => item.itemId == 22);
             redMoney.text = ma.count.ToString();
@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
         
 
         // 무기 레벨 UI 초기화
-        UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep()); 
+        UpdateWeaponUI(DataManager.Player.GetWeaponStep()); 
 
 
     }
@@ -108,8 +108,8 @@ public class Inventory : MonoBehaviour
     public void UpgradeWeaponStep()
     {
         // 마연석 개수에 따라 조건문 걸 부분
-        PlayerDataManager.Instance.UpgradeWeaponStep();
-        UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
+        DataManager.Player.UpgradeWeaponStep();
+        UpdateWeaponUI(DataManager.Player.GetWeaponStep());
         InventoryItemDescription.Instance.ShowWeaponDescription(); // 무기 업그레이드 후 설명창 업데이트
     }
 }

@@ -26,7 +26,7 @@ public class HpUIManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        maxHp = PlayerDataManager.Instance.GetMaxHp(); // 저장된 최대 체력 불러오기. 총 하트칸 수
+        maxHp = DataManager.Player.GetMaxHp(); // 저장된 최대 체력 불러오기. 총 하트칸 수
         
         UpdateHearts();
     }
@@ -61,7 +61,7 @@ public class HpUIManager : MonoBehaviour
     public void UpdateHearts()
     {
         InitHearts(maxHp);
-        int hp = PlayerDataManager.Instance.GetHp();
+        int hp = DataManager.Player.GetHp();
 
         for (int i = 0; i < hearts.Count; i++)
         {
@@ -81,12 +81,12 @@ public class HpUIManager : MonoBehaviour
     // 체력 회복 함수(물약 사용) - 추가회복량 포함 힐
     public void Heal(int healingAmount)
     {
-        int currentHp = PlayerDataManager.Instance.GetHp(); 
-        float additionalHealingRate = PlayerDataManager.Instance.GetAdditionalHealingProbability(); // 추가 회복 확률 가져오기 //////////////보류
-        PlayerDataManager.Instance.SetHp(healingAmount); 
+        int currentHp = DataManager.Player.GetHp(); 
+        float additionalHealingRate = DataManager.Player.GetAdditionalHealingProbability(); // 추가 회복 확률 가져오기 //////////////보류
+        DataManager.Player.SetHp(healingAmount); 
 
         if (UnityEngine.Random.value < additionalHealingRate)        // 일정 확률로 추가 회복
-            PlayerDataManager.Instance.SetHp(20);
+            DataManager.Player.SetHp(20);
 
         Debug.Log($"HP +{healingAmount * (1 + additionalHealingRate)}");
         UpdateHearts();
@@ -95,8 +95,8 @@ public class HpUIManager : MonoBehaviour
     // 체력 최대로 회복 함수(특정 지점에 가면)
     public void FullHeal()
     {
-        int currentHp = maxHp; 
-        PlayerDataManager.Instance.SetHp(currentHp); // maxHp를 현재 체력에 더해서 max로 만듦
+        int currentHp = maxHp;
+        DataManager.Player.SetHp(currentHp); // maxHp를 현재 체력에 더해서 max로 만듦
         Debug.Log("HP Full");
         UpdateHearts(); 
     }
@@ -105,8 +105,8 @@ public class HpUIManager : MonoBehaviour
     // 체력 감소 함수(디버그용)     //// player 부분에서 함
     public void TakeDamage(int damage)
     {
-        int currentHp = PlayerDataManager.Instance.GetHp();
-        PlayerDataManager.Instance.SetHp(-damage); 
+        int currentHp = DataManager.Player.GetHp();
+        DataManager.Player.SetHp(-damage); 
         Debug.Log($"HP -{damage}");
         UpdateHearts();
     }
@@ -114,8 +114,8 @@ public class HpUIManager : MonoBehaviour
     // 최대 체력 증가
     public void IncreaseMaxHp()
     {
-        PlayerDataManager.Instance.AddMaxHp(20); 
-        InitHearts(PlayerDataManager.Instance.GetMaxHp()); 
+        DataManager.Player.AddMaxHp(20); 
+        InitHearts(DataManager.Player.GetMaxHp()); 
         UpdateHearts();
     }
 }
