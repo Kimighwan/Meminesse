@@ -71,14 +71,14 @@ public class HUDManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))   //SettingDataManager스크립트를 씬에 넣어줘야함
+        if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("Inventory")))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             Time.timeScale = inventoryUI.activeSelf ? 0f : 1f;
 
         }
 
-        if(Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
+        if(Input.GetKeyDown(DataManager.Setting.GetKeyCode("SkillTree")))
         {
             skillTreeUI.SetActive(!skillTreeUI.activeSelf);
             Time.timeScale = skillTreeUI.activeSelf ? 0f : 1f;
