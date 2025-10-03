@@ -49,6 +49,14 @@ public class DataManager : MonoBehaviour
         }
     }
 
+    public void AllLoad()
+    {
+        for (int i = 0; i < _instance.datas.Count; i++)
+        {
+            datas[i].Load();
+        }
+    }
+
     private void OnApplicationQuit()
     {
         AllSave();
