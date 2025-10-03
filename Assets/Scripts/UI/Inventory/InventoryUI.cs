@@ -47,14 +47,14 @@ public class InventoryUI : MonoBehaviour
     //슬롯에 아이템 추가하는 함수      <<  플레이어가 아이템 먹을 때 사용
     public void AddItemToInventory(int id)
     {
-        ItemDataManager.Instance.AddItem(id, 1);
+        DataManager.Item.AddItem(id, 1);
         UpdateInventory();
     }
 
     public void UpdateInventory()
     {
         // itemDataList를 가져와 인벤토리 UI 업데이트
-        List<ItemData> itemDataList = ItemDataManager.Instance.GetItemDataList();
+        List<ItemData> itemDataList = DataManager.Item.GetItemDataList();
         
         for (int i = 0; i < slots.Length; i++)
         {
@@ -102,7 +102,7 @@ public class InventoryUI : MonoBehaviour
         int randomIndex = Random.Range(0, possibleItems.Length);
         int randomId = possibleItems[randomIndex];
 
-        ItemDataManager.Instance.AddItem(randomId, 1);
+        DataManager.Item.AddItem(randomId, 1);
         UpdateInventory();
     }
 

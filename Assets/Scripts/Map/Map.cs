@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Map : MonoBehaviour
@@ -7,8 +8,8 @@ public class Map : MonoBehaviour
 
     public void CheckMapVisited()
     {
-        //SaveFileDataManager.Instance.AddVisitedMapId(mapId);
-        Debug.Log("CheckMapVisited() called for Map ID: " + mapId);
+        DataManager.SaveFile.AddVisitedMapId(mapId);
+        Debug.Log("CheckMapVisited() 호출");
     }
 
     public int GetMapId()

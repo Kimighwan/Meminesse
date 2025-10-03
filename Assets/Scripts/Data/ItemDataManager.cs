@@ -25,25 +25,17 @@ public class WrapperItemDataList
     public List<ItemData> itemDataList;
 }
 
-public class ItemDataManager : SingletonBehaviour<ItemDataManager>
+public class ItemDataManager : Security, ISaveAndLoad
 {
     private List<ItemData> itemDataList = new List<ItemData>();
 
     private const string KEY = "Ikhwan@@ZZang!!";
-    private string PATH;
+    private string PATH = Path.Combine(Application.dataPath, "itemData.json");
+    //private string PATH = Path.Combine(Application.persistentDataPath, "itemData.json");
 
-    protected override void Init()
+    public void Init()
     {
-        base.Init();
-
-        // 경로는 임시로 dataPath로 지정 - 테스터 용이, 추후 아래 주석으로 적용하기
-        PATH = Path.Combine(Application.dataPath, "itemData.json");
-        //PATH = Path.Combine(Application.persistentDataPath, "itemData.json");
-
-        
-
         Load();
-        Save();
     }
     public List<ItemData> GetItemDataList()
     {
@@ -111,27 +103,6 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
         itemDataList.Add(new ItemData(id, count));
         return true;
     }
-    /*
-    public bool ItemCountIncrease(int id, int count)
-    {
-        if (!ExistItem(id))
-        {
-            itemDataList.Add(new ItemData(id, count));
-            return false;
-        }
-
-        foreach (var item in itemDataList)
-        {
-            if (item.itemId == id)
-            {
-                item.count += count;
-                return true;
-            }
-        }
-
-        return false;
-    }
-    */
 
     #region Save-Load
 
@@ -140,8 +111,7 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
         WrapperItemDataList itemDataListWrapper = new WrapperItemDataList();
         itemDataListWrapper.itemDataList = itemDataList;
         string jsonItemDataListWrapper = JsonUtility.ToJson(itemDataListWrapper);
-        File.WriteAllText(PATH, jsonItemDataListWrapper);
-        //File.WriteAllText(PATH, Encrypt(jsonItemDataListWrapper, KEY));
+        File.WriteAllText(PATH, Encrypt(jsonItemDataListWrapper, KEY));
     }
     public void Load()
     {
@@ -151,67 +121,10 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
         }
         else // Load
         {
-            Debug.Log("파일 존재해서 로드");
             string jsonItemDataListWrapper = File.ReadAllText(PATH);
-            WrapperItemDataList itemDataListWrapper = JsonUtility.FromJson<WrapperItemDataList>(jsonItemDataListWrapper);
-            //WrapperItemDataList itemDataListWrapper = JsonUtility.FromJson<WrapperItemDataList>(Decrypt(jsonItemDataListWrapper, KEY));
+            WrapperItemDataList itemDataListWrapper = JsonUtility.FromJson<WrapperItemDataList>(Decrypt(jsonItemDataListWrapper, KEY));
             itemDataList = itemDataListWrapper.itemDataList;
-            Save();
         }
-    }
-    #endregion
-    #region Security
-    private static string Encrypt(string plainText, string key)
-    {
-        byte[] keyBytes = AdjustKeyLength(Encoding.UTF8.GetBytes(key));
-
-        using (Aes aes = Aes.Create())
-        {
-            aes.Key = keyBytes;
-            aes.GenerateIV();
-            byte[] iv = aes.IV;
-            using (var encryptor = aes.CreateEncryptor(aes.Key, iv))
-            using (var memoryStream = new MemoryStream())
-            {
-                memoryStream.Write(iv, 0, iv.Length);
-                using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
-                using (var streamWriter = new StreamWriter(cryptoStream))
-                {
-                    streamWriter.Write(plainText);
-                }
-                return Convert.ToBase64String(memoryStream.ToArray());
-            }
-        }
-    }
-
-    private static string Decrypt(string cipherText, string key)
-    {
-        byte[] fullCipher = Convert.FromBase64String(cipherText);
-        byte[] iv = new byte[16];
-        byte[] cipher = new byte[fullCipher.Length - iv.Length];
-
-        Array.Copy(fullCipher, iv, iv.Length);
-        Array.Copy(fullCipher, iv.Length, cipher, 0, cipher.Length);
-
-        byte[] keyBytes = AdjustKeyLength(Encoding.UTF8.GetBytes(key));
-        using (Aes aes = Aes.Create())
-        {
-            aes.Key = keyBytes;
-            using (var decryptor = aes.CreateDecryptor(aes.Key, iv))
-            using (var memoryStream = new MemoryStream(cipher))
-            using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
-            using (var streamReader = new StreamReader(cryptoStream))
-            {
-                return streamReader.ReadToEnd();
-            }
-        }
-    }
-
-    private static byte[] AdjustKeyLength(byte[] keyBytes)
-    {
-        byte[] adjustedKey = new byte[32];
-        Array.Copy(keyBytes, adjustedKey, Math.Min(keyBytes.Length, 32));
-        return adjustedKey;
     }
     #endregion
 }

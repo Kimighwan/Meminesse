@@ -18,8 +18,8 @@ public class Tutorial1 : MonoBehaviour
     // 파란포션 2개 노란포션 1개 추가
     void AddPotion()
     {
-        ItemDataManager.Instance.AddItem(31, 2);
-        ItemDataManager.Instance.AddItem(32, 1);
+        DataManager.Item.AddItem(31, 2);
+        DataManager.Item.AddItem(32, 1);
         InventoryUI.Instance.UpdateInventory();
     }
 }
