@@ -7,8 +7,8 @@ public class Map : MonoBehaviour
 
     public void CheckMapVisited()
     {
-        SaveFileDataManager.Instance.AddVisitedMapId(mapId);
-        Debug.Log("CheckMapVisited() 호출");
+        //SaveFileDataManager.Instance.AddVisitedMapId(mapId);
+        Debug.Log("CheckMapVisited() called for Map ID: " + mapId);
     }
 
     public int GetMapId()
@@ -21,4 +21,3 @@ public class Map : MonoBehaviour
         return respawnPoint;
     }
 }
-

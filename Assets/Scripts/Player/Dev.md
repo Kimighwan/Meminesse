@@ -67,7 +67,7 @@ MISC:
     Fixed an awkward animation transition which happens when entering running from comboattack1 and comboattack2 (07/31)
 
 ----------------------------------
-개발 정리본:
+방학 개발 정리본:
 
 플레이어 동작:
     개발 내용
@@ -112,3 +112,18 @@ MISC:
 
 게임 카메라(사용자 시점):
     - Cinemachine을 활용하여 다양한 카메라 움직임을 구현 가능
+
+----------------------------------
+
+09/19 ~
+
+TODO:
+    Implement MapController                                                 - Implemented 09/19
+    Implement Portals                                                       - Implemented 09/19
+    Implement PlayerDataControl
+
+BUGS:
+    Player not being teleported                                             - Fixed 09/28
+        - Code was not being executed properly because of bad import
+    Player can't exit out of jump when on tilemaps                          - Fixed 09/28
+        - Changed composite collider 'Geometry Type' to polygons

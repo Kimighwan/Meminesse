@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class Portal : MapController
+public class Portal : MonoBehaviour
 {
+    [SerializeField] MapController mapController;
     public Transform targetPoint;
     public Map targetMap;
 
@@ -9,7 +10,7 @@ public class Portal : MapController
     {
         if (collision.transform.CompareTag("Player"))
         {
-            TeleportPlayer(collision.GetComponent<PlayerController>(), targetMap, targetPoint);
+            mapController.TeleportPlayer(collision.GetComponent<PlayerController>(), targetMap, targetPoint);
         }
     }
 }

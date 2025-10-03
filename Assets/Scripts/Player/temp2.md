@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
 {
     #region Variables/References
 
-    [SerializeField] PlayerDataManager playerDataManager;
-
     [SerializeField] float moveSpeed = 5f;
 
     // Jump parameters - Not to be messsed
@@ -145,7 +143,11 @@ public class PlayerController : MonoBehaviour
     private int groundLayerMask;
 
     // Imports
-    SettingDataManager settingDataManager;
+    [SerializeField] SettingDataManager settingDataManager;
+    [SerializeField] PlayerDataManager playerDataManager;
+
+    // Imported Data from PlayerDataManager
+    private PlayerData playerData;
 
     #endregion
 
@@ -155,7 +157,6 @@ public class PlayerController : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        settingDataManager = GetComponent<SettingDataManager>();
         cachedTransform = transform;
 
         rigid.freezeRotation = true;
@@ -173,6 +174,13 @@ public class PlayerController : MonoBehaviour
 
         currentState = (isGrounded ? PlayerState.Idle : PlayerState.Falling);
         animator.SetBool("isGrounded", isGrounded);
+
+        // Load Data Managers
+        settingDataManager = SettingDataManager.Instance;
+        playerDataManager = PlayerDataManager.Instance;
+
+        // Load player data
+        playerData = new PlayerData();
     }
 
     private void Update()
@@ -1225,4 +1233,4 @@ public class PlayerController : MonoBehaviour
     #endregion
 }
 
-// PlayerController.cs - Most Recent
+// WIP
