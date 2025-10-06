@@ -48,10 +48,14 @@ public class ItemDatabase : MonoBehaviour
             if (UnityEngine.Random.value < 0.2f)
             {
                 go.GetComponent<FieldItems>().SetItem(GetItemById(22)); //마연석
+                DataManager.Item.AddItem(22, 10); // 마연석 10개 추가 - 일단 바로 추가
+                Debug.Log("+ 마연석 10개");
             }
             else
             {
                 go.GetComponent<FieldItems>().SetItem(GetItemById(21)); //다이아
+                DataManager.Item.AddItem(21, 100); // 다이아 100개 추가 - 일단 바로 추가 
+                Debug.Log("+ 다이아 100개");
             }
         }
     }

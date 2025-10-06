@@ -53,7 +53,7 @@ public class WrapperClassKeyDataList
     public List<KeyData> keyDataList;
 }
 
-public class SettingDataManager : SingletonBehaviour<SettingDataManager>
+public class SettingDataManager : Security, ISaveAndLoad
 {
     private SettingData settingData;
 
@@ -65,12 +65,9 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
     private string PATH_KEY = Path.Combine(Application.dataPath, "keyData.json");
     private const string KEY = "Ikhwan@@ZZang!!";
 
-    protected override void Init()
+    public void Init()
     {
-        base.Init();
-
         Load();
-        Save();
     }
 
     #region Key
@@ -114,8 +111,6 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
         keyDataList.Add(new KeyData("SkillTree", KeyCode.K));
         keyDataList.Add(new KeyData("Interact", KeyCode.F));
         keyDataList.Add(new KeyData("Heal", KeyCode.C)); 
-
-        //escape 키 지웠음 여기
 
         KeyDataSave();
     }
@@ -174,40 +169,6 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
     #region Save - Load
 
     /*-------------
-          LOAD
-     -------------*/
-    public void Load() // 2개의 Data를 load, 파일이 없다면 새로 생성, 있다면 load
-    {
-        // 저장된 세팅 Data 파일이 존재
-        if (File.Exists(PATH_SETTING))
-        {
-            Debug.Log("세팅 데이터 존재해서 불러오기");
-            var jsonData = File.ReadAllText(PATH_SETTING);
-            settingData = JsonUtility.FromJson<SettingData>(jsonData);
-            //settingData = JsonUtility.FromJson<SettingData>(Decrypt(jsonData, KEY));
-        }
-        else
-        {
-            InitSettingData();
-        }
-
-        // 저장된 키 Data 파일이 존재
-        if (File.Exists(PATH_KEY))
-        {
-            Debug.Log("키 데이터 존재해서 불러오기");
-            string jsonKeyDataListWrapper = File.ReadAllText(PATH_KEY);
-            WrapperClassKeyDataList keyDataListWrapper = JsonUtility.FromJson<WrapperClassKeyDataList>(jsonKeyDataListWrapper);
-            //WrapperClassKeyDataList keyDataListWrapper = JsonUtility.FromJson<WrapperClassKeyDataList>(Decrypt(jsonKeyDataListWrapper, KEY));
-            keyDataList = keyDataListWrapper.keyDataList;
-        }
-        else
-        {
-            Debug.Log("키 데이터 없어서 새로 만들어서 할당");
-            ResetKeyData();
-        }
-    }
-
-    /*-------------
           SAVE
      -------------*/
     public void Save()
@@ -217,87 +178,51 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
     }
     public void SettingDataSave()
     {
-        Debug.Log("세팅 데이터 저장");
         string jsonData = JsonUtility.ToJson(settingData);
-        File.WriteAllText(PATH_SETTING, jsonData);
-        //File.WriteAllText(PATH_SETTING, Encrypt(jsonData, KEY));
+        File.WriteAllText(PATH_SETTING, Encrypt(jsonData, KEY));
     }
     public void KeyDataSave()
     {
-        Debug.Log("키 데이터 저장");
-
         WrapperClassKeyDataList keyDataListWrapper = new WrapperClassKeyDataList();
         keyDataListWrapper.keyDataList = keyDataList;
         string jsonKeyDataListWrapper = JsonUtility.ToJson(keyDataListWrapper);
-        File.WriteAllText(PATH_KEY, jsonKeyDataListWrapper);
-        //File.WriteAllText(PATH_KEY, Encrypt(jsonKeyDataListWrapper, KEY));
+        File.WriteAllText(PATH_KEY, Encrypt(jsonKeyDataListWrapper, KEY));
     }
 
-
     /*-------------
-          INIT
+          LOAD
      -------------*/
+    public void Load() // 2개의 Data를 load, 파일이 없다면 새로 생성, 있다면 load
+    {
+        if (File.Exists(PATH_SETTING)) // 저장된 세팅 Data 파일이 존재
+        {
+            var jsonData = File.ReadAllText(PATH_SETTING);
+            settingData = JsonUtility.FromJson<SettingData>(Decrypt(jsonData, KEY));
+            SettingDataSave();
+        }
+        else
+        {
+            InitSettingData();
+        }
+
+        if (File.Exists(PATH_KEY)) // 저장된 키 Data 파일이 존재
+        {
+            string jsonKeyDataListWrapper = File.ReadAllText(PATH_KEY);
+            WrapperClassKeyDataList keyDataListWrapper = JsonUtility.FromJson<WrapperClassKeyDataList>(Decrypt(jsonKeyDataListWrapper, KEY));
+            keyDataList = keyDataListWrapper.keyDataList;
+            KeyDataSave();
+        }
+        else
+        {
+            ResetKeyData();
+        }
+    }
 
     private void InitSettingData()
     {
-        Debug.Log("세팅 데이터 없어서 새로 만들어서 할당");
         settingData = null;
         settingData = new SettingData();
     }
 
-    #endregion
-    #region Security
-    private static string Encrypt(string plainText, string key)
-    {
-        byte[] keyBytes = AdjustKeyLength(Encoding.UTF8.GetBytes(key));
-
-        using (Aes aes = Aes.Create())
-        {
-            aes.Key = keyBytes;
-            aes.GenerateIV();
-            byte[] iv = aes.IV;
-            using (var encryptor = aes.CreateEncryptor(aes.Key, iv))
-            using (var memoryStream = new MemoryStream())
-            {
-                memoryStream.Write(iv, 0, iv.Length);
-                using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
-                using (var streamWriter = new StreamWriter(cryptoStream))
-                {
-                    streamWriter.Write(plainText);
-                }
-                return Convert.ToBase64String(memoryStream.ToArray());
-            }
-        }
-    }
-
-    private static string Decrypt(string cipherText, string key)
-    {
-        byte[] fullCipher = Convert.FromBase64String(cipherText);
-        byte[] iv = new byte[16];
-        byte[] cipher = new byte[fullCipher.Length - iv.Length];
-
-        Array.Copy(fullCipher, iv, iv.Length);
-        Array.Copy(fullCipher, iv.Length, cipher, 0, cipher.Length);
-
-        byte[] keyBytes = AdjustKeyLength(Encoding.UTF8.GetBytes(key));
-        using (Aes aes = Aes.Create())
-        {
-            aes.Key = keyBytes;
-            using (var decryptor = aes.CreateDecryptor(aes.Key, iv))
-            using (var memoryStream = new MemoryStream(cipher))
-            using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
-            using (var streamReader = new StreamReader(cryptoStream))
-            {
-                return streamReader.ReadToEnd();
-            }
-        }
-    }
-
-    private static byte[] AdjustKeyLength(byte[] keyBytes)
-    {
-        byte[] adjustedKey = new byte[32];
-        Array.Copy(keyBytes, adjustedKey, Math.Min(keyBytes.Length, 32));
-        return adjustedKey;
-    }
     #endregion
 }

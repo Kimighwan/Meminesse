@@ -69,10 +69,10 @@ public class KeySetting : MonoBehaviour
             {
                 if (Input.GetKeyDown(key))
                 {
-                    string keyName = SettingDataManager.Instance.keyDataList[waitingIndex].keyName;   //waitingindex에 값이 들어감(StartRebinding 함수에서 설정됨)
+                    string keyName = DataManager.Setting.keyDataList[waitingIndex].keyName;   //waitingindex에 값이 들어감(StartRebinding 함수에서 설정됨)
 
                     // SettingDataManager 통해 키 변경 시도(true일 때만)
-                    if (SettingDataManager.Instance.ChangeKey(keyName, key))
+                    if (DataManager.Setting.ChangeKey(keyName, key))
                     {
                         Debug.Log($"{keyName} → {key} 로 변경됨");
                         if (keyDisplayNames.ContainsKey(key))  // keyDisplayNames라는 딕셔너리에 key가 들어있는지 확인
@@ -113,7 +113,7 @@ public class KeySetting : MonoBehaviour
     {
         for (int i = 0; i < texts.Length; i++)
         {
-            KeyCode key = SettingDataManager.Instance.keyDataList[i].keyCode; // KeyCode 순서대로 가져오기
+            KeyCode key = DataManager.Setting.keyDataList[i].keyCode; // KeyCode 순서대로 가져오기
 
             if (keyDisplayNames.ContainsKey(key))  // keyDisplayNames라는 딕셔너리에 key가 들어있는지 확인
             {
@@ -129,7 +129,7 @@ public class KeySetting : MonoBehaviour
     //초기화
     public void ResetKey()
     {
-        SettingDataManager.Instance.ResetKeyData();
+        DataManager.Setting.ResetKeyData();
         ShowConfirmMessage("모든 키가 기본값으로 초기화되었습니다");
         RefreshUI();
     }
