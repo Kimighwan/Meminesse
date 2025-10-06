@@ -76,12 +76,7 @@ public class FieldItems : MonoBehaviour
 
         Destroy(this.gameObject);
 
-        InventoryUI.Instance.AddItemToInventory(item.itemId);
-        if (InventoryUI.Instance != null)
-        {
-            InventoryUI.Instance.UpdateInventory();
-            Inventory.Instance.UpdateMoney();
-        }
+        DataManager.Item.AddItem(item.itemId, 1);
         Debug.Log($"플레이어가 {item.itemName} 획득!");
         
     }

@@ -22,10 +22,11 @@ public class Inventory : UIBase
     // 무기 레벨 UI
     public GameObject[] weaponLevels; 
 
-    #region Singleton
     public static Inventory Instance;
+
     private void Awake()
     {
+        #region Singleton
         if (Instance == null)
         {
             Instance = this;
@@ -35,20 +36,10 @@ public class Inventory : UIBase
             Destroy(gameObject);
             return;
         }
+        #endregion
 
-        // 돈 초기화         
-        UpdateMoney();
-
-        // 무기 레벨 UI 갱신
-        UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
-
-        // 체력 UI 갱신
-        HpUIManager.Instance.UpdateHearts();
-
-        // 아이템 슬롯 갱신
-        InventoryUI.Instance.UpdateInventory();
-    }
-    #endregion   
+        RefreshInventory();
+    }  
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     new void Start()
@@ -58,9 +49,8 @@ public class Inventory : UIBase
 
     void OnEnable()
     {
-        // 데이터 가져오기
-        itemDataList = DataManager.Item.GetItemDataList();
-
+        itemDataList = DataManager.Item.GetItemDataList(); // 아이템 데이터 가져오기 
+        RefreshInventory();
     }
 
     // Update is called once per frame
@@ -69,9 +59,18 @@ public class Inventory : UIBase
         base.Update();
     }
 
+    // 인벤토리 모든 부분 최신화 
+    public void RefreshInventory()
+    {   
+        UpdateMoney();
+        UpdateWeaponUI(DataManager.Player.GetWeaponStep());
+        HpUIManager.Instance.UpdateHearts();
+        InventoryUI.Instance.UpdateInventory();
+    }
+
     public void UpdateMoney()
     {
-        ItemData dia, ma;
+        ItemData dia, ma; // 다이아, 마연석 
         if (DataManager.Item.ExistItem(21) != false)
         {
             dia = itemDataList.Find(item => item.itemId == 21);
@@ -90,44 +89,32 @@ public class Inventory : UIBase
             //Debug.Log("마연석 아이템이 존재하지 않음");
             redMoney.text = "0";
         }
-        
-
-        // 무기 레벨 UI 초기화
-        UpdateWeaponUI(DataManager.Player.GetWeaponStep()); 
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     //현재 무기레벨을 ui에 단계별 표시
     public void UpdateWeaponUI(int weaponStep)
     {
-        int yyy = weaponStep;
+        int step = weaponStep;
 
         for (int i = 0; i < weaponLevels.Length; i++)
         {
             // 무기 레벨 칸 UI 업데이트
-            if (i < yyy)
+            if (i < step)
                 weaponLevels[i].SetActive(true);
             else
                 weaponLevels[i].SetActive(false); 
 
             // 사용자 초상화의 검 이미지 업데이트
-            if (i == yyy - 1)
+            if (i == step - 1)
                 weaponImages[i].gameObject.SetActive(true);
             else
                 weaponImages[i].gameObject.SetActive(false);
             
         }
-        
     }
 
-    // 무기 업그레이드
+
+    // 무기 업그레이드 - 다른 곳으로 이동시키자 
     public void UpgradeWeaponStep()
     {
         // 마연석 개수에 따라 조건문 걸 부분

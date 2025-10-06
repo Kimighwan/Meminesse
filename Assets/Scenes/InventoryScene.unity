@@ -384,7 +384,7 @@ MonoBehaviour:
       \uC9C0\uB2C8\uACE0 \uC788\uC73C\uBA70, \uBAA8\uC744\uC218\uB85D \uAC15\uB825\uD55C
       \uD798\uC774 \uAE68\uC5B4\uB09C\uB2E4. "
   - itemName: "\uB3C4\uC57D\uC758 \uBD80\uCE20"
-    itemImage: {fileID: 7068313832627337150, guid: bcf9829ed5aacc44288776126bf3bf86, type: 3}
+    itemImage: {fileID: 6130125059131533177, guid: 57d01fad75c9d0d4ea18f08f857e89a8, type: 3}
     itemId: 51
     count: 0
     desc: "\uACE0\uB300 \uBAA8\uD5D8\uAC00\uC758 \uBD80\uCE20. \uC2E0\uC73C\uBA74
@@ -404,7 +404,6 @@ MonoBehaviour:
       \uC8FC\uBCC0\uC744 \uC740\uC740\uD558\uAC8C \uBC1D\uD600 \uC5B4\uB460 \uC18D\uC5D0\uC11C\uB3C4
       \uAE38\uC744 \uC783\uC9C0 \uC54A\uAC8C \uD55C\uB2E4."
   fieldItemPrefab: {fileID: 0}
-  dropPos: []
 --- !u!114 &410054651
 MonoBehaviour:
   m_ObjectHideFlags: 0
