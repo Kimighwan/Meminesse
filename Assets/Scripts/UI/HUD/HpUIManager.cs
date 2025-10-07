@@ -28,13 +28,18 @@ public class HpUIManager : MonoBehaviour
     {
         maxHp = PlayerDataManager.Instance.GetMaxHp(); // 저장된 최대 체력 불러오기. 총 하트칸 수
         
-        UpdateHearts();
+        SyncAllHpUI();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+    private void OnEnable()
+    {
+        maxHp = PlayerDataManager.Instance.GetMaxHp();
+        SyncAllHpUI();
     }
 
     private void InitHearts(int newMaxHp)
@@ -78,6 +83,13 @@ public class HpUIManager : MonoBehaviour
         Debug.Log("현재 HP = " + hp);
     }
 
+    public void SyncAllHpUI()
+    {
+        HpUIManager[] allUIs = Object.FindObjectsByType<HpUIManager>(FindObjectsSortMode.None);
+        foreach (var ui in allUIs)
+            ui.UpdateHearts();
+    }
+
     // 체력 회복 함수(물약 사용) - 추가회복량 포함 힐
     public void Heal(int healingAmount)
     {
@@ -89,7 +101,7 @@ public class HpUIManager : MonoBehaviour
             PlayerDataManager.Instance.SetHp(20);
 
         Debug.Log($"HP +{healingAmount * (1 + additionalHealingRate)}");
-        UpdateHearts();
+        SyncAllHpUI();
         Canvas.ForceUpdateCanvases();
     }
 
@@ -99,7 +111,7 @@ public class HpUIManager : MonoBehaviour
         int currentHp = maxHp;
         PlayerDataManager.Instance.SetHp(currentHp); // maxHp를 현재 체력에 더해서 max로 만듦
         Debug.Log("HP Full");
-        UpdateHearts();
+        SyncAllHpUI();
         Canvas.ForceUpdateCanvases();
     }
 
@@ -110,7 +122,7 @@ public class HpUIManager : MonoBehaviour
         int currentHp = PlayerDataManager.Instance.GetHp();
         PlayerDataManager.Instance.SetHp(-damage); 
         Debug.Log($"HP -{damage}");
-        UpdateHearts();
+        SyncAllHpUI();
         Canvas.ForceUpdateCanvases();
     }
 
@@ -119,7 +131,7 @@ public class HpUIManager : MonoBehaviour
     {
         PlayerDataManager.Instance.AddMaxHp(20); 
         InitHearts(PlayerDataManager.Instance.GetMaxHp()); 
-        UpdateHearts();
+        SyncAllHpUI();
         Canvas.ForceUpdateCanvases();
     }
 }
