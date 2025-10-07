@@ -53,7 +53,7 @@ public class Mushroom : Entity
         Gizmos.DrawWireSphere(meleeAttackPosition.position, meleeAttackStateData.attackRadius);
     }
 
-    public override void Damaged(float damage, Vector2 position, bool isStun)
+    public override void Damaged(float damage, Vector2 position, bool isStun, float defIgnore = 0f)
     {
         base.Damaged(damage, position, isStun);
 

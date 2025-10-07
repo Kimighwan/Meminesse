@@ -134,7 +134,7 @@ public class Entity : MonoBehaviour
     /// <param name="damage"></param>
     /// <param name="position"></param>
     /// <param name="isStun"></param>
-    public virtual void Damaged(float damage, Vector2 position, bool isStun = false)
+    public virtual void Damaged(float damage, Vector2 position, bool isStun = false, float defIgnore = 0f)
     {
         currentHp -= damage;
 

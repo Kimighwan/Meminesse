@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -8,32 +7,37 @@ public class DataManager : MonoBehaviour
 
     private List<ISaveAndLoad> datas = new List<ISaveAndLoad>();
 
-    PlayerDataManager _player = new();
-    SaveFileDataManager _saveFile = new();
-    ItemDataManager _item = new ();
-    SettingDataManager _setting = new ();
+    PlayerDataManager _player;
+    SaveFileDataManager _saveFile;
+    ItemDataManager _item;
+    SettingDataManager _setting;
 
     public static DataManager Instance { get { return _instance; } }
     public static PlayerDataManager Player { get { return _instance._player; } }
     public static SaveFileDataManager SaveFile { get { return _instance._saveFile; } }
     public static ItemDataManager Item { get { return _instance._item; } }
-    public static SettingDataManager Setting { get { return _instance._setting; } }
+    public static SettingDataManager Setting { get { return Instance._setting; } }
 
-    public static void Init()
+    private void Awake()
     {
-        if(_instance == null)
+        if (_instance == null)
         {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            _player = new PlayerDataManager();
+            _saveFile = new SaveFileDataManager();
+            _item = new ItemDataManager();
+            _setting = new SettingDataManager();
+
             _instance.datas.Add(Player);
             _instance.datas.Add(Item);
             _instance.datas.Add(Setting);
             _instance.datas.Add(SaveFile);
-
-            GameObject go = GameObject.Find("DataManager");
-            if (go == null)
-                go = new GameObject("DataManager");
-
-            _instance = go.AddComponent<DataManager>();
-            DontDestroyOnLoad(go);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -42,6 +46,14 @@ public class DataManager : MonoBehaviour
         for(int i = 0; i < _instance.datas.Count; i++)
         {
             datas[i].Save();
+        }
+    }
+
+    public void AllLoad()
+    {
+        for (int i = 0; i < _instance.datas.Count; i++)
+        {
+            datas[i].Load();
         }
     }
 
