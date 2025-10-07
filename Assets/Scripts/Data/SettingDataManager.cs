@@ -53,20 +53,22 @@ public class WrapperClassKeyDataList
     public List<KeyData> keyDataList;
 }
 
-public class SettingDataManager : Security, ISaveAndLoad
+public class SettingDataManager : SingletonBehaviour<SettingDataManager>
 {
     private SettingData settingData;
 
     // 테스트로 인스펙터 창에서 학인을 위해 public 선언
-    public /*private*/ List<KeyData> keyDataList = new List<KeyData>();
+    public /*private*/ List<KeyData> keyDataList = new();
 
     // persistentDataPath로 변경 예정
     private string PATH_SETTING = Path.Combine(Application.dataPath, "settingData.json");
     private string PATH_KEY = Path.Combine(Application.dataPath, "keyData.json");
     private const string KEY = "Ikhwan@@ZZang!!";
 
-    public void Init()
+    protected override void Init()
     {
+        base.Init();
+
         Load();
     }
 
@@ -107,7 +109,7 @@ public class SettingDataManager : Security, ISaveAndLoad
         keyDataList.Add(new KeyData("Skill2", KeyCode.S));
         keyDataList.Add(new KeyData("Skill3", KeyCode.D));
         keyDataList.Add(new KeyData("Map", KeyCode.Tab));
-        keyDataList.Add(new KeyData("Inventory", KeyCode.E));
+        keyDataList.Add(new KeyData("Inventory", KeyCode.E)); 
         keyDataList.Add(new KeyData("SkillTree", KeyCode.K));
         keyDataList.Add(new KeyData("Interact", KeyCode.F));
         keyDataList.Add(new KeyData("Heal", KeyCode.C)); 
@@ -224,5 +226,59 @@ public class SettingDataManager : Security, ISaveAndLoad
         settingData = new SettingData();
     }
 
+    #endregion
+    #region Security
+    protected string Encrypt(string plainText, string key)
+    {
+        byte[] keyBytes = AdjustKeyLength(Encoding.UTF8.GetBytes(key));
+
+        using (Aes aes = Aes.Create())
+        {
+            aes.Key = keyBytes;
+            aes.GenerateIV();
+            byte[] iv = aes.IV;
+            using (var encryptor = aes.CreateEncryptor(aes.Key, iv))
+            using (var memoryStream = new MemoryStream())
+            {
+                memoryStream.Write(iv, 0, iv.Length);
+                using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                using (var streamWriter = new StreamWriter(cryptoStream))
+                {
+                    streamWriter.Write(plainText);
+                }
+                return Convert.ToBase64String(memoryStream.ToArray());
+            }
+        }
+    }
+
+    protected string Decrypt(string cipherText, string key)
+    {
+        byte[] fullCipher = Convert.FromBase64String(cipherText);
+        byte[] iv = new byte[16];
+        byte[] cipher = new byte[fullCipher.Length - iv.Length];
+
+        Array.Copy(fullCipher, iv, iv.Length);
+        Array.Copy(fullCipher, iv.Length, cipher, 0, cipher.Length);
+
+        byte[] keyBytes = AdjustKeyLength(Encoding.UTF8.GetBytes(key));
+        using (Aes aes = Aes.Create())
+        {
+            aes.Key = keyBytes;
+            using (var decryptor = aes.CreateDecryptor(aes.Key, iv))
+            using (var memoryStream = new MemoryStream(cipher))
+            using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+            using (var streamReader = new StreamReader(cryptoStream))
+            {
+                return streamReader.ReadToEnd();
+            }
+        }
+    }
+
+    protected byte[] AdjustKeyLength(byte[] keyBytes)
+    {
+        byte[] adjustedKey = new byte[32];
+        Array.Copy(keyBytes, adjustedKey, Math.Min(keyBytes.Length, 32));
+        return adjustedKey;
+    }
     #endregion
 }
