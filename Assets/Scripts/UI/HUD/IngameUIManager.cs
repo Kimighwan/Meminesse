@@ -65,14 +65,13 @@ public class IngameUIManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E)) //(Input.GetKeyDown(DataManager.Setting.GetKeyCode("Inventory")))
+        if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             Time.timeScale = inventoryUI.activeSelf ? 0f : 1f;
-
         }
 
-        if (Input.GetKeyDown(KeyCode.K))  //(Input.GetKeyDown(DataManager.Setting.GetKeyCode("SkillTree")))
+        if(Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
         {
             skillTreeUI.SetActive(!skillTreeUI.activeSelf);
             Time.timeScale = skillTreeUI.activeSelf ? 0f : 1f;

@@ -50,7 +50,7 @@ public class Inventory : UIBase
     void OnEnable()
     {
         Cursor.visible = true;
-        itemDataList = DataManager.Item.GetItemDataList(); // 아이템 데이터 가져오기 
+        itemDataList = ItemDataManager.Instance.GetItemDataList(); // 아이템 데이터 가져오기 
         RefreshInventory();
     }
 
@@ -69,7 +69,7 @@ public class Inventory : UIBase
     public void RefreshInventory()
     {   
         UpdateMoney();
-        UpdateWeaponUI(DataManager.Player.GetWeaponStep());
+        UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
         HpUIManager.Instance.UpdateHearts();
         InventoryUI.Instance.UpdateInventory();
         Debug.Log(">>>>>>>>>>>>>>> 인벤토리 갱신!");
@@ -78,7 +78,7 @@ public class Inventory : UIBase
     public void UpdateMoney()
     {
         ItemData dia, ma; // 다이아, 마연석 
-        if (DataManager.Item.ExistItem(21) != false)
+        if (ItemDataManager.Instance.ExistItem(21) != false)
         {
             dia = itemDataList.Find(item => item.itemId == 21);
             mintMoney.text = dia.count.ToString();
@@ -86,7 +86,7 @@ public class Inventory : UIBase
         else
             mintMoney.text = "0";
 
-        if (DataManager.Item.ExistItem(22) != false)
+        if (ItemDataManager.Instance.ExistItem(22) != false)
         {
             ma = itemDataList.Find(item => item.itemId == 22);
             redMoney.text = ma.count.ToString();
@@ -96,6 +96,12 @@ public class Inventory : UIBase
             //Debug.Log("마연석 아이템이 존재하지 않음");
             redMoney.text = "0";
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 
     //현재 무기레벨을 ui에 단계별 표시
@@ -125,8 +131,8 @@ public class Inventory : UIBase
     public void UpgradeWeaponStep()
     {
         // 마연석 개수에 따라 조건문 걸 부분
-        DataManager.Player.UpgradeWeaponStep();
-        UpdateWeaponUI(DataManager.Player.GetWeaponStep());
+        PlayerDataManager.Instance.UpgradeWeaponStep();
+        UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
         InventoryItemDescription.Instance.ShowWeaponDescription(); // 무기 업그레이드 후 설명창 업데이트
     }
 }

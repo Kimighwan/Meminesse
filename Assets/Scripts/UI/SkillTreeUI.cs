@@ -92,10 +92,10 @@ public class SkillTreeUI : UIBase
 
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(DataManager.Player.AddHP);
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.AddHP);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.AddHP);
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
+                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
                 else
                     skillActiveButton.gameObject.SetActive(false);
@@ -110,10 +110,10 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "대쉬 쿨타임 감소";
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(DataManager.Player.DashCoolTimeDecrease);
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.DashCoolTimeDecrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.DashCoolTimeDecrease);
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
+                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
                 else
                     skillActiveButton.gameObject.SetActive(false);
@@ -140,10 +140,10 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "아이템 트랍률 상승";
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(DataManager.Player.ItemDropRate);
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.ItemDropRate);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.ItemDropRate);
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
+                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
                 else
                     skillActiveButton.gameObject.SetActive(false);
@@ -166,10 +166,10 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "재화 드럅률 상승";
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(DataManager.Player.GoldDropRate);
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.GoldDropRate);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.GoldDropRate);
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
+                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
                 else
                     skillActiveButton.gameObject.SetActive(false);
@@ -192,10 +192,10 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "방어력 무시";
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(DataManager.Player.DefenseIgnoreIncrease);
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.DefenseIgnoreIncrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.DefenseIgnoreIncrease);
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
+                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
                 else
                     skillActiveButton.gameObject.SetActive(false);
@@ -219,10 +219,10 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "공격력 상승";
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(DataManager.Player.DamageIncrease);
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.DamageIncrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.DamageIncrease);
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
+                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
                 else
                     skillActiveButton.gameObject.SetActive(false);
@@ -250,10 +250,10 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "스킬 쿨타임 감소";
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(DataManager.Player.SkillCoolTimeDecrease);
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.SkillCoolTimeDecrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.SkillCoolTimeDecrease);
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
+                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
                 else
                     skillActiveButton.gameObject.SetActive(false);
@@ -282,10 +282,10 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "회복량 증가";
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(DataManager.Player.HealingProbabilityIncrease);
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.HealingProbabilityIncrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.HealingAmount);
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
+                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
                 else
                     skillActiveButton.gameObject.SetActive(false);
@@ -318,7 +318,7 @@ public class SkillTreeUI : UIBase
                     //skillActiveButton.onClick.AddListener();
                     //skillActiveButton.onClick.AddListener();
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
+                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
                 else
                     skillActiveButton.gameObject.SetActive(false);
@@ -337,7 +337,7 @@ public class SkillTreeUI : UIBase
                     //skillActiveButton.onClick.AddListener();
                     //skillActiveButton.onClick.AddListener();
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
+                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
                 else
                     skillActiveButton.gameObject.SetActive(false);
@@ -356,7 +356,7 @@ public class SkillTreeUI : UIBase
                     //skillActiveButton.onClick.AddListener();
                     //skillActiveButton.onClick.AddListener();
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
+                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
                 else
                     skillActiveButton.gameObject.SetActive(false);

@@ -17,11 +17,11 @@ public class ItemShop : MonoBehaviour
     void Start()
     {
         // 데이터 가져오기          <<<<<<<<<< 오류 재검토
-        itemDataList = DataManager.Item.GetItemDataList();
+        itemDataList = ItemDataManager.Instance.GetItemDataList();
 
         // 돈 초기화         
         ItemData dia, ma;
-        if (DataManager.Item.ExistItem(21) != false)
+        if (ItemDataManager.Instance.ExistItem(21) != false)
         {
             dia = itemDataList.Find(item => item.itemId == 21);
             mintMoney.text = dia.count.ToString();
@@ -29,7 +29,7 @@ public class ItemShop : MonoBehaviour
         else
             mintMoney.text = "0";
 
-        if (DataManager.Item.ExistItem(22) != false)
+        if (ItemDataManager.Instance.ExistItem(22) != false)
         {
             ma = itemDataList.Find(item => item.itemId == 22);
             redMoney.text = ma.count.ToString();
