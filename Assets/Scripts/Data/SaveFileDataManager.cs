@@ -28,7 +28,7 @@ public class SaveFileData
 
 public class SaveFileDataManager : Security, ISaveAndLoad
 {
-    public SaveFileData saveFileData;
+    private SaveFileData saveFileData;
 
     private const string KEY = "Ikhwan@@ZZang!!";
     private string PATH = Path.Combine(Application.dataPath, "saveFileData.json");

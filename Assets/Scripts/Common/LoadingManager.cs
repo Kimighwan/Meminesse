@@ -35,9 +35,8 @@ public class LoadingManager : MonoBehaviour
         //LogoAnim.gameObject.SetActive(false);
         Title.SetActive(true);
 
-        // 메인 메뉴로 비동기적 로딩 시작
-        _asyncOperation = SceneManager.LoadSceneAsync(1);
-        //_asyncOperation = SceneLoader.Instance.LoadSceneAsync(SceneType.MainMenu);
+        //_asyncOperation = SceneManager.LoadSceneAsync(1);
+        _asyncOperation = Manager.Scene.LoadSceneAsync(SceneType.GameScene);
 
         // 로딩이 안 되는 비정상 행동 예외 처리
         if (_asyncOperation == null)

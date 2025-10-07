@@ -14,6 +14,8 @@ public class MainMenu : UIBase
     protected override void Start()
     {
         base.Start();
+
+        AudioManager.Instance.PlayBGM(BGM.ForestCradle);
     }
 
     protected override void Update()
@@ -26,7 +28,7 @@ public class MainMenu : UIBase
 
     public void OnClickNewGame()
     {
-        //SceneManager.LoadScene("Su");
+        Instantiate(Resources.Load<GameObject>("UI/LoadingCanvas"));
     }
 
     public void OnClickLoadGame()
