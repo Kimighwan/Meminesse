@@ -49,8 +49,14 @@ public class Inventory : UIBase
 
     void OnEnable()
     {
+        Cursor.visible = true;
         itemDataList = DataManager.Item.GetItemDataList(); // 아이템 데이터 가져오기 
         RefreshInventory();
+    }
+
+    private void OnDisable()
+    {
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -66,6 +72,7 @@ public class Inventory : UIBase
         UpdateWeaponUI(DataManager.Player.GetWeaponStep());
         HpUIManager.Instance.UpdateHearts();
         InventoryUI.Instance.UpdateInventory();
+        Debug.Log(">>>>>>>>>>>>>>> 인벤토리 갱신!");
     }
 
     public void UpdateMoney()

@@ -2,29 +2,22 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// HUD만 관리하는게 아니므로 스크립트 이름을 수정해야 합니다
 // 인게임 씬 관리 
 public class IngameUIManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject pauseMenuPopUp;
-    [SerializeField]
-    private GameObject settingPopUp;
+    [SerializeField] private GameObject pauseMenuPopUp;
+    [SerializeField] private GameObject settingPopUp;
 
-    [SerializeField]
-    private GameObject GoToMainConfirmationPopupUI; // 진행중인 게임을 종료하고 메인 메뉴로 나가시겠습니까?
-    [SerializeField]
-    private GameObject exitConfirmationPopupUI;   // 종료하시겠습니까? 
+    [SerializeField] private GameObject GoToMainConfirmationPopupUI; // 진행중인 게임을 종료하고 메인 메뉴로 나가시겠습니까?
+    [SerializeField] private GameObject exitConfirmationPopupUI;   // 종료하시겠습니까? 
 
-    [SerializeField]
-    private GameObject skillTreeUI;
-    [SerializeField]
-    private GameObject inventoryUI;
+    [SerializeField] private GameObject skillTreeUI;
+    [SerializeField] private GameObject inventoryUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -72,14 +65,14 @@ public class IngameUIManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("Inventory")))
+        if (Input.GetKeyDown(KeyCode.E)) //(Input.GetKeyDown(DataManager.Setting.GetKeyCode("Inventory")))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             Time.timeScale = inventoryUI.activeSelf ? 0f : 1f;
 
         }
 
-        if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("SkillTree")))
+        if (Input.GetKeyDown(KeyCode.K))  //(Input.GetKeyDown(DataManager.Setting.GetKeyCode("SkillTree")))
         {
             skillTreeUI.SetActive(!skillTreeUI.activeSelf);
             Time.timeScale = skillTreeUI.activeSelf ? 0f : 1f;
