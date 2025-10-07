@@ -56,7 +56,7 @@ public class InventoryItemDescription : MonoBehaviour
 
     public void ShowWeaponDescription()
     {
-        int weaponStep = DataManager.Player.GetWeaponStep();
+        int weaponStep = PlayerDataManager.Instance.GetWeaponStep();
         Item item = null;
 
         switch(weaponStep)
@@ -153,7 +153,7 @@ public class InventoryItemDescription : MonoBehaviour
     {
 
         int id = currentItemId;
-        DataManager.Item.ItemCountReduce(id, 1);
+        ItemDataManager.Instance.ItemCountReduce(id, 1);
 
         //PrintAllItems();
        
@@ -170,7 +170,7 @@ public class InventoryItemDescription : MonoBehaviour
             case 33:
                 HpUIManager.Instance.FullHeal(); break;
         }
-        if (DataManager.Item.GetItemCountById(id) == 0)
+        if (ItemDataManager.Instance.GetItemCountById(id) == 0)
             HideItemDescription(id);
 
     }
@@ -178,14 +178,14 @@ public class InventoryItemDescription : MonoBehaviour
     //디버그용
     public void PrintAllItems()
     {
-        if (DataManager.Item.GetItemDataList() == null || DataManager.Item.GetItemDataList().Count == 0)
+        if (ItemDataManager.Instance.GetItemDataList() == null || ItemDataManager.Instance.GetItemDataList().Count == 0)
         {
             Debug.Log("인벤토리가 비어있습니다.");
             return;
         }
 
         Debug.Log("==== 현재 인벤토리 목록 ====");
-        foreach (var item in DataManager.Item.GetItemDataList())
+        foreach (var item in ItemDataManager.Instance.GetItemDataList())
         {
             Debug.Log($"아이템 ID: {item.itemId}, 개수: {item.count}");
         }

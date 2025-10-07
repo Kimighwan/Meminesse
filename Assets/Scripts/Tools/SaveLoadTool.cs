@@ -6,13 +6,13 @@ public class SaveLoadTool
     [MenuItem("Tools/Save&Load/AllSave")]
     public static void AllSave()
     {
-        DataManager.Instance.AllSave();
+        //SaveFileDataManager.Instance.AllSave();
     }
 
     [MenuItem("Tools/Save&Load/AllLoad")]
     public static void AllLoad()
     {
-        DataManager.Instance.AllLoad();
+        //SaveFileDataManager.Instance.AllLoad();
     }
 }
 

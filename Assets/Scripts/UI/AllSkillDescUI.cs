@@ -33,7 +33,7 @@ public class AllSkillDescUI : MonoBehaviour
 
         // 능력치 수치만큼 더 추가 하기
         addHealingAmountValue.color = new Color(addHealingAmountTxt.color.r, addHealingAmountTxt.color.g, addHealingAmountTxt.color.b, 1);
-        addHealingAmountValue.text = (DataManager.Player.GetAdditionalHealingProbability() * 100).ToString() + "%";
+        addHealingAmountValue.text = (PlayerDataManager.Instance.GetAdditionalHealingProbability() * 100).ToString() + "%";
     }
 
     public void DashCoolTimeDecrease()
@@ -48,7 +48,7 @@ public class AllSkillDescUI : MonoBehaviour
 
         // 능력치 수치만큼 더 추가 하기
         dashCoolTimeDecreaseValue.color = new Color(dashCoolTimeDecreaseTxt.color.r, dashCoolTimeDecreaseTxt.color.g, dashCoolTimeDecreaseTxt.color.b, 1);
-        dashCoolTimeDecreaseValue.text = (DataManager.Player.GetDashCoolTime() * 100).ToString() + "%";
+        dashCoolTimeDecreaseValue.text = (PlayerDataManager.Instance.GetDashCoolTime() * 100).ToString() + "%";
     }
 
     public void SkillCoolTimeDecrease()
@@ -63,7 +63,7 @@ public class AllSkillDescUI : MonoBehaviour
 
         // 능력치 수치만큼 더 추가 하기
         skillCoolTimeDecreaseValue.color = new Color(skillCoolTimeDecreaseTxt.color.r, skillCoolTimeDecreaseTxt.color.g, skillCoolTimeDecreaseTxt.color.b, 1);
-        skillCoolTimeDecreaseValue.text = (DataManager.Player.GetSkillCoolTime() * 100).ToString() + "%";
+        skillCoolTimeDecreaseValue.text = (PlayerDataManager.Instance.GetSkillCoolTime() * 100).ToString() + "%";
     }
 
     public void ItemDropRate()
@@ -78,7 +78,7 @@ public class AllSkillDescUI : MonoBehaviour
 
         // 능력치 수치만큼 더 추가 하기
         itemDropRateValue.color = new Color(itemDropRateTxt.color.r, itemDropRateTxt.color.g, itemDropRateTxt.color.b, 1);
-        itemDropRateValue.text = (DataManager.Player.GetItemDropRate() * 100).ToString() + "%";
+        itemDropRateValue.text = (PlayerDataManager.Instance.GetItemDropRate() * 100).ToString() + "%";
     }
 
     public void GoldDropRate()
@@ -93,7 +93,7 @@ public class AllSkillDescUI : MonoBehaviour
 
         // 능력치 수치만큼 더 추가 하기
         goldDropRateValue.color = new Color(goldDropRateTxt.color.r, goldDropRateTxt.color.g, goldDropRateTxt.color.b, 1);
-        goldDropRateValue.text = (DataManager.Player.GetGoldDropRate() * 100).ToString() + "%";
+        goldDropRateValue.text = (PlayerDataManager.Instance.GetGoldDropRate() * 100).ToString() + "%";
     }
 
     public void DefenseIgnoreIncrease()
@@ -108,7 +108,7 @@ public class AllSkillDescUI : MonoBehaviour
 
         // 능력치 수치만큼 더 추가 하기
         defenseIgnoreIncreaseValue.color = new Color(defenseIgnoreIncreaseTxt.color.r, defenseIgnoreIncreaseTxt.color.g, defenseIgnoreIncreaseTxt.color.b, 1);
-        defenseIgnoreIncreaseValue.text = (DataManager.Player.GetDefenseIgnore() * 100).ToString() + "%";
+        defenseIgnoreIncreaseValue.text = (PlayerDataManager.Instance.GetDefenseIgnore() * 100).ToString() + "%";
     }
 
     public void DamageIncrease()
@@ -123,7 +123,7 @@ public class AllSkillDescUI : MonoBehaviour
 
         // 능력치 수치만큼 더 추가 하기
         addDamageValue.color = new Color(addDamageTxt.color.r, addDamageTxt.color.g, addDamageTxt.color.b, 1);
-        addDamageValue.text = (DataManager.Player.GetAddDamage() * 100).ToString() + "%";
+        addDamageValue.text = (PlayerDataManager.Instance.GetAddDamage() * 100).ToString() + "%";
     }
 
 
