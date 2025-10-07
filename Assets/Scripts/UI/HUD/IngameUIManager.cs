@@ -103,7 +103,6 @@ public class IngameUIManager : MonoBehaviour
     // 진행중인 게임을 종료하고 메인 메뉴로 나가시겠습니까?
     public void OnConfirmGoToMainMenu() // 예
     {
-
         SceneManager.LoadScene("MainMenu");
     }
     public void OnCancelGoToMainMenu() // 아니오

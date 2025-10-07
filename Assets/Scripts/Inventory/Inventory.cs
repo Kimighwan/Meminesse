@@ -37,7 +37,7 @@ public class Inventory : UIBase
             return;
         }
         #endregion
-
+        itemDataList = ItemDataManager.Instance.GetItemDataList(); // 아이템 데이터 가져오기 
         RefreshInventory();
     }  
 
@@ -96,12 +96,6 @@ public class Inventory : UIBase
             //Debug.Log("마연석 아이템이 존재하지 않음");
             redMoney.text = "0";
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     //현재 무기레벨을 ui에 단계별 표시

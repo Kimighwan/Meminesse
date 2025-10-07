@@ -56,7 +56,7 @@ public class PlayerData
 
 public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
 {
-    private PlayerData playerData;
+    private PlayerData playerData = new PlayerData();
 
     private const string KEY = "Ikhwan@@ZZang!!";
     private string PATH = Path.Combine(Application.dataPath, "playerData.json");

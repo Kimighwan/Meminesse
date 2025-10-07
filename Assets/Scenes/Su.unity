@@ -6278,6 +6278,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -179
       objectReference: {fileID: 0}
+    - target: {fileID: 4823450322256274746, guid: 230bf647c7e0eef4fbe5e207b3b5c018, type: 3}
+      propertyPath: m_Name
+      value: Text (TMP)
+      objectReference: {fileID: 0}
     - target: {fileID: 4833265970203024606, guid: 230bf647c7e0eef4fbe5e207b3b5c018, type: 3}
       propertyPath: m_RaycastTarget
       value: 1
@@ -26367,6 +26371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapId: 13
+  respawnPoint: {fileID: 0}
+  portals: []
 --- !u!1 &621330488
 GameObject:
   m_ObjectHideFlags: 0
@@ -32954,8 +32960,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8889bdc119186a94189b866a7c1c60a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestinationPoint: {fileID: 1556489986}
-  DestinationMap: {fileID: 1962786897}
+  maps: []
+  startingMap: {fileID: 0}
+  currentMap: {fileID: 0}
+  targetPoint: {fileID: 0}
+  targetMap: {fileID: 0}
 --- !u!61 &853850383
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38344,6 +38353,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapId: 11
+  respawnPoint: {fileID: 0}
+  portals: []
 --- !u!1 &1228477142
 GameObject:
   m_ObjectHideFlags: 0
@@ -41472,7 +41483,7 @@ MonoBehaviour:
       \uC9C0\uB2C8\uACE0 \uC788\uC73C\uBA70, \uBAA8\uC744\uC218\uB85D \uAC15\uB825\uD55C
       \uD798\uC774 \uAE68\uC5B4\uB09C\uB2E4. "
   - itemName: "\uB3C4\uC57D\uC758 \uBD80\uCE20"
-    itemImage: {fileID: 7068313832627337150, guid: bcf9829ed5aacc44288776126bf3bf86, type: 3}
+    itemImage: {fileID: 6130125059131533177, guid: 57d01fad75c9d0d4ea18f08f857e89a8, type: 3}
     itemId: 51
     count: 0
     desc: "\uACE0\uB300 \uBAA8\uD5D8\uAC00\uC758 \uBD80\uCE20. \uC2E0\uC73C\uBA74
@@ -49747,17 +49758,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9332a4ef925f734fbe5fdee293e6356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invisibleDummyButton: {fileID: 0}
-  currentButton: {fileID: 1491515684}
   pauseMenuPopUp: {fileID: 1310745655}
   settingPopUp: {fileID: 119815108}
   GoToMainConfirmationPopupUI: {fileID: 1537777473}
   exitConfirmationPopupUI: {fileID: 5534604610750781045}
   skillTreeUI: {fileID: 1882223156}
   inventoryUI: {fileID: 1050055915}
-  pauseMenuFirstButton: {fileID: 1491515684}
-  skillTreeFirstButton: {fileID: 2074229732}
-  inventoryFirstButton: {fileID: 610588549}
 --- !u!1 &1766339561
 GameObject:
   m_ObjectHideFlags: 0
@@ -63850,6 +63856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapId: 12
+  respawnPoint: {fileID: 0}
+  portals: []
 --- !u!1 &1964143239
 GameObject:
   m_ObjectHideFlags: 0
@@ -65339,8 +65347,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8889bdc119186a94189b866a7c1c60a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestinationPoint: {fileID: 208382097}
-  DestinationMap: {fileID: 615038787}
+  maps: []
+  startingMap: {fileID: 0}
+  currentMap: {fileID: 0}
+  targetPoint: {fileID: 0}
+  targetMap: {fileID: 0}
 --- !u!1 &2045035475
 GameObject:
   m_ObjectHideFlags: 0
@@ -65608,10 +65619,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7b0a3af4c158f4ba230958fec4e40a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveFileData:
-    fileIndex: 0
-    mapId: 
-    lastMapId: 0
 --- !u!4 &2054666305
 Transform:
   m_ObjectHideFlags: 0
