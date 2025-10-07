@@ -20,21 +20,14 @@ public class InventoryItemDescription : MonoBehaviour
 
     public ItemDatabase itemDatabase;
 
-    [SerializeField]
-    private Image itemImage;
-    [SerializeField]
-    private TextMeshProUGUI itemNameText;
-    [SerializeField]
-    private TextMeshProUGUI itemDescText;
-    [SerializeField]
-    private TextMeshProUGUI noItemNotice;
-    [SerializeField]
-    private TextMeshProUGUI upgradeCost;
+    [SerializeField] private Image itemImage;
+    [SerializeField] private TextMeshProUGUI itemNameText;
+    [SerializeField] private TextMeshProUGUI itemDescText;
+    [SerializeField] private TextMeshProUGUI noItemNotice;
+    [SerializeField] private TextMeshProUGUI upgradeCost;
 
-    [SerializeField]
-    private GameObject upgradeButton;
-    [SerializeField]
-    private GameObject UseButton;
+    [SerializeField] private GameObject upgradeButton;
+    [SerializeField] private GameObject UseButton;
 
     private int currentItemId = -1;
 
@@ -147,7 +140,7 @@ public class InventoryItemDescription : MonoBehaviour
         UseButton.SetActive(false);
     }
 
-    // 이 스크립트에 이 함수를 넣는게 맞나...? 검토 요망 
+    // 이 스크립트에 이 함수를 넣는게 맞나...? 검토 요망  
     // 아이템 id에 따른 아이템 효과 발동
     public void ItemUseButton()
     {

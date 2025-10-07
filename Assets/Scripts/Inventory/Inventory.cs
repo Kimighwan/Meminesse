@@ -70,7 +70,7 @@ public class Inventory : UIBase
     {   
         UpdateMoney();
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponStep());
-        HpUIManager.Instance.UpdateHearts();
+        HpUIManager.Instance.SyncAllHpUI();
         InventoryUI.Instance.UpdateInventory();
         Debug.Log(">>>>>>>>>>>>>>> 인벤토리 갱신!");
     }
