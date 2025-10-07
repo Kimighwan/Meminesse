@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScreenMode : MonoBehaviour
+public class ScreenModeSetting : MonoBehaviour
 {
     [SerializeField]
     private TMP_Dropdown dropdown;

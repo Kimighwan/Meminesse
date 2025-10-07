@@ -4,7 +4,7 @@ using System.Text;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
-using static ScreenMode;
+using static ScreenModeSetting;
 
 [Serializable]
 public class SettingData
@@ -55,7 +55,7 @@ public class WrapperClassKeyDataList
 
 public class SettingDataManager : SingletonBehaviour<SettingDataManager>
 {
-    private SettingData settingData;
+    private SettingData settingData = new();
 
     // 테스트로 인스펙터 창에서 학인을 위해 public 선언
     public /*private*/ List<KeyData> keyDataList = new();
