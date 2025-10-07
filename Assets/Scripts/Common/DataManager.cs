@@ -34,10 +34,20 @@ public class DataManager : MonoBehaviour
             _instance.datas.Add(Item);
             _instance.datas.Add(Setting);
             _instance.datas.Add(SaveFile);
+
+            InitData();
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void InitData()
+    {
+        for (int i = 0; i < _instance.datas.Count; i++)
+        {
+            datas[i].Init();
         }
     }
 
