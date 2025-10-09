@@ -33,8 +33,9 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
     private string PATH = Path.Combine(Application.dataPath, "itemData.json");
     //private string PATH = Path.Combine(Application.persistentDataPath, "itemData.json");
 
-    public void Init()
+    protected override void Init()
     {
+        base.Init();
         Load();
     }
     public List<ItemData> GetItemDataList()
