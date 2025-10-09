@@ -113,9 +113,9 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
         playerData.goldDropRate += 1.25f;
     }
 
-    public void defenceIgnore()
+    public void DefenceIgnoreIncrease()
     {
-        playerData.defenceIgnore += 0.5f;
+        playerData.defenceIgnore += 50f;
     }
 
     public void DamageIncrease()

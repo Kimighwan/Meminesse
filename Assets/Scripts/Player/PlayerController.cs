@@ -76,10 +76,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] MapController mapController;
 
-    // Data Managers
-    [SerializeField] PlayerDataManager playerDataManager;
-    [SerializeField] SettingDataManager settingDataManager;
-
     public enum PlayerState
     {
         // Movements
@@ -231,7 +227,7 @@ public class PlayerController : MonoBehaviour
         // Skills > Dashing/Backdashing > CrouchAttack > AirHeavyAttack > AirAttack > GroundAttack > Jumping > Falling > Crouching > Idle
 
         // HolySlash
-        if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("HolySlash"))
+        if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("HolySlash"))
                 && isGrounded && canMove && canAttack && !isHolySlashOnCoolDown)
         {
             lockInput = true;
@@ -239,7 +235,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(HolySlash());
         }
         // LightCut
-        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("LightCut"))
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("LightCut"))
                 && isGrounded && canMove && canAttack && !isLightCutOnCoolDown)
         {
             lockInput = true;
@@ -247,7 +243,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(LightCut());
         }
         // Dash
-        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("Dash"))
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Dash"))
                 && canDash)
         {
             lockInput = true;
@@ -255,7 +251,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(DashCharacter());
         }
         // Backdash
-        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("BackDash"))
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("BackDash"))
                 && canDash && isGrounded)
         {
             lockInput = true;
@@ -263,8 +259,8 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(BackDashCharacter());
         }
         // Air Heavy Attack -> Requires certain height to perform
-        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("BasicAttack"))
-                && Input.GetKey(DataManager.Setting.GetKeyCode("Down"))
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("BasicAttack"))
+                && Input.GetKey(SettingDataManager.Instance.GetKeyCode("Down"))
                 && canAttack && !isGrounded && IsHighEnoughForAirHeavyAttack())
         {
             canMove = false;
@@ -272,7 +268,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(AirHeavyAttack());
         }
         // Crouch Attack -> Check isCrouching and current state
-        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("BasicAttack"))
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("BasicAttack"))
                 && canAttack && (isCrouching || currentState == PlayerState.Crouching))
         {
             canMove = false;
@@ -280,7 +276,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(CrouchAttack());
         }
         // Air Attack
-        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("BasicAttack"))
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("BasicAttack"))
                 && canAttack && !isGrounded)
         {
             canMove = false;
@@ -288,7 +284,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(AirAttack());
         }
         // Grounded Combo Attack -> Can be cancelled by dashing
-        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("BasicAttack"))
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("BasicAttack"))
                 && canAttack && isGrounded && !isCrouching && currentState != PlayerState.Crouching)
         {
             canMove = false;
@@ -296,7 +292,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(GroundedComboAttack());
         }
         // Jump
-        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("Jump"))
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Jump"))
                 && canMove && isGrounded)
         {
             ChangeState(PlayerState.Jumping);
@@ -308,7 +304,7 @@ public class PlayerController : MonoBehaviour
             ChangeState(PlayerState.Falling);
         }
         // Crouch
-        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("Down"))
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Down"))
                 && isGrounded && canCrouch)
         {
             // Enter Crouch
@@ -317,14 +313,14 @@ public class PlayerController : MonoBehaviour
             canDash = false;
             ChangeState(PlayerState.enterCrouching);
         }
-        else if (Input.GetKey(DataManager.Setting.GetKeyCode("Down"))
+        else if (Input.GetKey(SettingDataManager.Instance.GetKeyCode("Down"))
                 && isGrounded && canCrouch)
         {
             // Crouch
             canMove = false;
             ChangeState(PlayerState.Crouching);
         }
-        else if (Input.GetKeyUp(DataManager.Setting.GetKeyCode("Down"))
+        else if (Input.GetKeyUp(SettingDataManager.Instance.GetKeyCode("Down"))
                 && isGrounded)
         {
             // Exit Crouch
@@ -478,7 +474,7 @@ public class PlayerController : MonoBehaviour
     #region Basic Character Behaviour
     private IEnumerator DashCharacter()
     {
-        float dashCooldown = playerDataManager.GetDashCoolDown();
+        float dashCooldown = PlayerDataManager.Instance.GetDashCoolDown();
 
         isDashing = true;
         canDash = false;
@@ -514,7 +510,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator BackDashCharacter()
     {
-        float dashCooldown = playerDataManager.GetDashCoolDown();
+        float dashCooldown = PlayerDataManager.Instance.GetDashCoolDown();
 
         isBackDashing = true;
         canDash = false;
@@ -575,7 +571,7 @@ public class PlayerController : MonoBehaviour
         rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, baseJumpForce);
 
         // Continue applying force while the button is held
-        while (Input.GetKey(KeyCode.Space) && jumpTimer < maxJumpHoldTime)
+        while (Input.GetKey(SettingDataManager.Instance.GetKeyCode("Jump")) && jumpTimer < maxJumpHoldTime)
         {
             rigid.linearVelocity += VectorUp * holdJumpForce * Time.deltaTime;
             jumpTimer += Time.deltaTime;
@@ -957,7 +953,7 @@ public class PlayerController : MonoBehaviour
     {
         float maxScanTime = 0;
         float attackMultiplier = 1;
-        float baseAttack = playerDataManager.GetDamage();
+        float baseAttack = PlayerDataManager.Instance.GetDamage();
 
         // Select hitboxes
         switch (type)
@@ -1008,7 +1004,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Get defense ignore from playerdatamanager
-        float defIgnore = playerDataManager.GetDefenseIgnore();
+        float defIgnore = PlayerDataManager.Instance.GetDefenseIgnore();
 
         PlayerAttackHitbox hitboxManager = currentHitbox.GetComponent<PlayerAttackHitbox>();
         hitboxManager.setAttackType(type);
@@ -1081,9 +1077,9 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        int playerHealth = playerDataManager.GetHp();
+        int playerHealth = PlayerDataManager.Instance.GetHp();
         playerHealth -= (int)damage;
-        playerDataManager.SetHp(playerHealth);
+        PlayerDataManager.Instance.SetHp(playerHealth);
 
         Debug.Log(damage + " " + playerHealth);
 
@@ -1115,9 +1111,9 @@ public class PlayerController : MonoBehaviour
         // Get collider bounds
         Bounds bounds = GetComponent<Collider2D>().bounds;
         Vector2 topmost = new Vector2(bounds.center.x, bounds.max.y - 0.05f);
-        Vector2 top = new Vector2(bounds.center.x, bounds.max.y - 0.1f);
+        Vector2 top = new Vector2(bounds.center.x, bounds.max.y - 0.5f);
         Vector2 middle = new Vector2(bounds.center.x, bounds.center.y);
-        Vector2 bottom = new Vector2(bounds.center.x, bounds.min.y + 0.1f);
+        Vector2 bottom = new Vector2(bounds.center.x, bounds.min.y + 0.5f);
         Vector2 bottommost = new Vector2(bounds.center.x, bounds.min.y + 0.05f);
 
         Vector2 rayDir = new Vector2(direction, 0);
