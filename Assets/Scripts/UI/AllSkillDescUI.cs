@@ -48,7 +48,7 @@ public class AllSkillDescUI : MonoBehaviour
 
         // 능력치 수치만큼 더 추가 하기
         dashCoolTimeDecreaseValue.color = new Color(dashCoolTimeDecreaseTxt.color.r, dashCoolTimeDecreaseTxt.color.g, dashCoolTimeDecreaseTxt.color.b, 1);
-        dashCoolTimeDecreaseValue.text = (DataManager.Player.GetDashCoolTime() * 100).ToString() + "%";
+        dashCoolTimeDecreaseValue.text = (DataManager.Player.GetDashCoolDown() * 100).ToString() + "%";
     }
 
     public void SkillCoolTimeDecrease()
@@ -63,7 +63,7 @@ public class AllSkillDescUI : MonoBehaviour
 
         // 능력치 수치만큼 더 추가 하기
         skillCoolTimeDecreaseValue.color = new Color(skillCoolTimeDecreaseTxt.color.r, skillCoolTimeDecreaseTxt.color.g, skillCoolTimeDecreaseTxt.color.b, 1);
-        skillCoolTimeDecreaseValue.text = (DataManager.Player.GetSkillCoolTime() * 100).ToString() + "%";
+        skillCoolTimeDecreaseValue.text = (DataManager.Player.GetSkillCoolDown() * 100).ToString() + "%";
     }
 
     public void ItemDropRate()

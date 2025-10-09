@@ -4,14 +4,14 @@ Need to implement max hp?
 
 Remove cachedtransform?
 
-hp
-maxHp
-damage
-addDamage
-itemDropRate
-goldDropRate
-additionalHealingProbability
-defenceIgnoreIncrease
-dashCoolTimeDecrease
-skillCoolTimeDecrease
-weaponStep
+hp                                  - Done?
+maxHp                               - 
+damage                              - Done?
+addDamage                           - 
+itemDropRate                        - 
+goldDropRate                        - 
+additionalHealingProbability        - 
+defenceIgnoreIncrease               - Done?
+dashCoolTimeDecrease                - Done?
+skillCoolTimeDecrease               - 
+weaponStep                          - 

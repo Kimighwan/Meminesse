@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashSpeed = 12f;
     [SerializeField] float backDashSpeed = 9f;
     [SerializeField] float dashDuration = 0.3f;
-    [SerializeField] float dashCooldown = 0.5f;
 
     // Current attack type (Used in interactions)
     public AttackType currentAttackType;
@@ -146,9 +145,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SettingDataManager settingDataManager;
     [SerializeField] PlayerDataManager playerDataManager;
 
-    // Imported Data from PlayerDataManager
-    private PlayerData playerData;
-
     #endregion
 
     #region Awake/Update
@@ -175,12 +171,8 @@ public class PlayerController : MonoBehaviour
         currentState = (isGrounded ? PlayerState.Idle : PlayerState.Falling);
         animator.SetBool("isGrounded", isGrounded);
 
-        // Load Data Managers
-        settingDataManager = SettingDataManager.Instance;
-        playerDataManager = PlayerDataManager.Instance;
-
-        // Load player data
-        playerData = new PlayerData();
+        // Import player data
+        playerDataManager.Load();
     }
 
     private void Update()
@@ -472,6 +464,8 @@ public class PlayerController : MonoBehaviour
     #region Basic Character Behaviour
     private IEnumerator DashCharacter()
     {
+        float dashCooldown = playerDataManager.GetDashCoolDown();
+
         isDashing = true;
         canDash = false;
         float dashTimer = 0f;
@@ -506,6 +500,8 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator BackDashCharacter()
     {
+        float dashCooldown = playerDataManager.GetDashCoolDown();
+
         isBackDashing = true;
         canDash = false;
         float dashTimer = 0f;
@@ -996,9 +992,14 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
+        // Get defense ignore from playerdatamanager
+        float defIgnore = playerDataManager.GetDefenseIgnore();
+
         PlayerAttackHitbox hitboxManager = currentHitbox.GetComponent<PlayerAttackHitbox>();
         hitboxManager.setAttackType(type);
         hitboxManager.setAttackDamage(baseAttack * attackMultiplier);
+        hitboxManager.setPlayerPosition(transform.position);
+        hitboxManager.setDefenceIngore(defIgnore);
         currentHitbox.SetActive(true);
 
         // Flip the hitbox according to the player's facing direction
@@ -1233,4 +1234,4 @@ public class PlayerController : MonoBehaviour
     #endregion
 }
 
-// WIP
+// WIP, recent

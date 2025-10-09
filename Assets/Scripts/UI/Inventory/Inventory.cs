@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
         
 
         // 무기 레벨 UI 초기화
-        UpdateWeaponUI(DataManager.Player.GetWeaponStep()); 
+        UpdateWeaponUI(DataManager.Player.GetWeaponLevel()); 
 
 
     }
@@ -108,8 +108,8 @@ public class Inventory : MonoBehaviour
     public void UpgradeWeaponStep()
     {
         // 마연석 개수에 따라 조건문 걸 부분
-        DataManager.Player.UpgradeWeaponStep();
-        UpdateWeaponUI(DataManager.Player.GetWeaponStep());
+        DataManager.Player.UpgradeWeaponLevel();
+        UpdateWeaponUI(DataManager.Player.GetWeaponLevel());
         InventoryItemDescription.Instance.ShowWeaponDescription(); // 무기 업그레이드 후 설명창 업데이트
     }
 }

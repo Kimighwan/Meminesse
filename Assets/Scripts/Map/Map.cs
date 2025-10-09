@@ -8,7 +8,7 @@ public class Map : MonoBehaviour
 
     public void CheckMapVisited()
     {
-        DataManager.SaveFile.AddVisitedMapId(mapId);
+        //DataManager.SaveFile.AddVisitedMapId(mapId);
         Debug.Log("CheckMapVisited() 호출");
     }
 

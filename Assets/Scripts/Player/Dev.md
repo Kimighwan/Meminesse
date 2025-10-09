@@ -120,10 +120,16 @@ MISC:
 TODO:
     Implement MapController                                                 - Implemented 09/19
     Implement Portals                                                       - Implemented 09/19
-    Implement PlayerDataControl
+    Implement PlayerDataControl                                             - 
+    Implement barrier with def                                              - Implemented 10/09
 
 BUGS:
     Player not being teleported                                             - Fixed 09/28
         - Code was not being executed properly because of bad import
     Player can't exit out of jump when on tilemaps                          - Fixed 09/28
         - Changed composite collider 'Geometry Type' to polygons
+    Player wall scan raycasts are too far apart                             - Fixed 10/09
+
+MISC:
+    Player jump?
+

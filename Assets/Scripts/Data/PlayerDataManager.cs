@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Scripting;
 using System;
 //using System.Diagnostics;
 using System.IO;
@@ -14,15 +15,15 @@ public class PlayerData
 
     public float damage;
     public float addDamage;
-    public float defenseIgnoreIncrease;
+    public float defenceIgnore;
 
-    public float dashCoolTimeDecrease;
-    public float skillCoolTimeDecrease;
+    public float dashCoolDown;
+    public float skillCoolDownDecrease;
 
     public float itemDropRate;
     public float goldDropRate;
 
-    public int weaponStep;
+    public int weaponLevel;
 
     public PlayerData()
     {
@@ -33,10 +34,10 @@ public class PlayerData
         itemDropRate = 1f;
         goldDropRate = 1f;
         additionalHealingProbability = 0;
-        defenseIgnoreIncrease = 0f;
-        dashCoolTimeDecrease = 0f;
-        skillCoolTimeDecrease = 0f;
-        weaponStep = 1;
+        defenceIgnore = 0f;
+        dashCoolDown = 2f;
+        skillCoolDownDecrease = 0f;
+        weaponLevel = 1;
     }
     public PlayerData(PlayerData data)
     {
@@ -47,10 +48,10 @@ public class PlayerData
         itemDropRate = data.itemDropRate;
         goldDropRate = data.goldDropRate;
         additionalHealingProbability = data.additionalHealingProbability;
-        defenseIgnoreIncrease = data.defenseIgnoreIncrease;
-        dashCoolTimeDecrease = data.dashCoolTimeDecrease;
-        skillCoolTimeDecrease = data.skillCoolTimeDecrease;
-        weaponStep = data.weaponStep;
+        defenceIgnore = data.defenceIgnore;
+        dashCoolDown = data.dashCoolDown;
+        skillCoolDownDecrease = data.skillCoolDownDecrease;
+        weaponLevel = data.weaponLevel;
     }
 }
 
@@ -68,9 +69,9 @@ public class PlayerDataManager : Security, ISaveAndLoad
     }
 
     #region Set Value
-    public void UpgradeWeaponStep()
+    public void UpgradeWeaponLevel()
     {
-        playerData.weaponStep += 1;
+        playerData.weaponLevel += 1;
     }
     public void AddHP()  // 무시하셈 스킬 트리에서 사용하는 이벤트 등록용 함수다
     {
@@ -90,14 +91,14 @@ public class PlayerDataManager : Security, ISaveAndLoad
         playerData.additionalHealingProbability += 0.25f;
     }
 
-    public void DashCoolTimeDecrease()
+    public void DashCoolDownDecrease()
     {
-        playerData.dashCoolTimeDecrease += 0.5f;
+        playerData.dashCoolDown -= 0.5f;
     }
 
-    public void SkillCoolTimeDecrease()
+    public void SkillCoolDownDecrease()
     {
-        playerData.skillCoolTimeDecrease += 0.1f;
+        playerData.skillCoolDownDecrease += 0.1f;
     }
 
     public void ItemDropRate()
@@ -110,9 +111,9 @@ public class PlayerDataManager : Security, ISaveAndLoad
         playerData.goldDropRate += 1.25f;
     }
 
-    public void DefenseIgnoreIncrease()
+    public void defenceIgnore()
     {
-        playerData.defenseIgnoreIncrease += 0.5f;
+        playerData.defenceIgnore += 0.5f;
     }
 
     public void DamageIncrease()
@@ -122,9 +123,9 @@ public class PlayerDataManager : Security, ISaveAndLoad
     #endregion
 
     #region Get Value
-    public int GetWeaponStep()
+    public int GetWeaponLevel()
     {
-        return playerData.weaponStep;
+        return playerData.weaponLevel;
     }
     public int GetHp()
     {
@@ -138,14 +139,14 @@ public class PlayerDataManager : Security, ISaveAndLoad
     {
         return playerData.additionalHealingProbability;
     }
-    public float GetDashCoolTime()
+    public float GetDashCoolDown()
     {
-        return playerData.dashCoolTimeDecrease;
+        return playerData.dashCoolDown;
     }
 
-    public float GetSkillCoolTime()
+    public float GetSkillCoolDown()
     {
-        return playerData.skillCoolTimeDecrease;
+        return playerData.skillCoolDownDecrease;
     }
 
     public float GetItemDropRate()
@@ -160,7 +161,7 @@ public class PlayerDataManager : Security, ISaveAndLoad
 
     public float GetDefenseIgnore()
     {
-        return playerData.defenseIgnoreIncrease;
+        return playerData.defenceIgnore;
     }
 
     public float GetDamage()

@@ -110,7 +110,7 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "대쉬 쿨타임 감소";
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(DataManager.Player.DashCoolTimeDecrease);
+                    skillActiveButton.onClick.AddListener(DataManager.Player.DashCoolDownDecrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.DashCoolTimeDecrease);
                     skillActiveButton.gameObject.SetActive(true);
                     skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
@@ -192,7 +192,7 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "방어력 무시";
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(DataManager.Player.DefenseIgnoreIncrease);
+                    skillActiveButton.onClick.AddListener(DataManager.Player.defenceIgnore);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.DefenseIgnoreIncrease);
                     skillActiveButton.gameObject.SetActive(true);
                     skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());
@@ -250,7 +250,7 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "스킬 쿨타임 감소";
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(DataManager.Player.SkillCoolTimeDecrease);
+                    skillActiveButton.onClick.AddListener(DataManager.Player.SkillCoolDownDecrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.SkillCoolTimeDecrease);
                     skillActiveButton.gameObject.SetActive(true);
                     skillActiveButton.onClick.AddListener(() => DataManager.Player.Save());

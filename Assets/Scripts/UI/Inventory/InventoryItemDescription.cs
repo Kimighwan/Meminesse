@@ -56,7 +56,7 @@ public class InventoryItemDescription : MonoBehaviour
 
     public void ShowWeaponDescription()
     {
-        int weaponStep = DataManager.Player.GetWeaponStep();
+        int weaponStep = DataManager.Player.GetWeaponLevel();
         Item item = null;
 
         switch(weaponStep)

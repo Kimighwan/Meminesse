@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
 {
     #region Variables/References
 
-    [SerializeField] PlayerDataManager playerDataManager;
-
     [SerializeField] float moveSpeed = 5f;
 
     // Jump parameters - Not to be messsed
@@ -25,7 +23,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashSpeed = 12f;
     [SerializeField] float backDashSpeed = 9f;
     [SerializeField] float dashDuration = 0.3f;
-    [SerializeField] float dashCooldown = 0.5f;
 
     // Current attack type (Used in interactions)
     public AttackType currentAttackType;
@@ -35,13 +32,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float maxAttackInterval = 0.3f;
 
     // Attack damages
-    [SerializeField] float baseAttack = 100f;
     [SerializeField] float[] damage_GroundedComboAttack = new float[3];
     [SerializeField] float damage_CrouchAttack;
     [SerializeField] float damage_AirAttack;
     [SerializeField] float damage_AirHeavyAttack;
     [SerializeField] float damage_HolySlash;
     [SerializeField] float damage_LightCut;
+
+    // Skill cooldowns
+    [SerializeField] float holySlashCoolDown = 30f;
+    [SerializeField] float lightCutCoolDown = 15f;
+    bool isHolySlashOnCoolDown = false;
+    bool isLightCutOnCoolDown = false;
 
 
     // Hitboxes for combat
@@ -57,7 +59,6 @@ public class PlayerController : MonoBehaviour
     // TBA
 
     // Player damage related
-    [SerializeField] float playerHealth = 0;
     private Vector2 attackerPosition;
     private bool isStunned;
     [SerializeField] float invincibleTimeAfterHit = 1.5f;
@@ -74,6 +75,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float groundCheckWidth = 0.8f;
 
     [SerializeField] MapController mapController;
+
+    // Data Managers
+    [SerializeField] PlayerDataManager playerDataManager;
+    [SerializeField] SettingDataManager settingDataManager;
 
     public enum PlayerState
     {
@@ -144,9 +149,6 @@ public class PlayerController : MonoBehaviour
     // Layers
     private int groundLayerMask;
 
-    // Imports
-    SettingDataManager settingDataManager;
-
     #endregion
 
     #region Awake/Update
@@ -155,7 +157,6 @@ public class PlayerController : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        settingDataManager = GetComponent<SettingDataManager>();
         cachedTransform = transform;
 
         rigid.freezeRotation = true;
@@ -230,63 +231,73 @@ public class PlayerController : MonoBehaviour
         // Skills > Dashing/Backdashing > CrouchAttack > AirHeavyAttack > AirAttack > GroundAttack > Jumping > Falling > Crouching > Idle
 
         // HolySlash
-        if (Input.GetKeyDown(KeyCode.A) && isGrounded && canMove && canAttack)
+        if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("HolySlash"))
+                && isGrounded && canMove && canAttack && !isHolySlashOnCoolDown)
         {
             lockInput = true;
             ChangeState(PlayerState.HolySlash);
             StartCoroutine(HolySlash());
         }
         // LightCut
-        else if (Input.GetKeyDown(KeyCode.S) && isGrounded && canMove && canAttack)
+        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("LightCut"))
+                && isGrounded && canMove && canAttack && !isLightCutOnCoolDown)
         {
             lockInput = true;
             ChangeState(PlayerState.LightCut);
             StartCoroutine(LightCut());
         }
         // Dash
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("Dash"))
+                && canDash)
         {
             lockInput = true;
             ChangeState(PlayerState.Dashing);
             StartCoroutine(DashCharacter());
         }
         // Backdash
-        else if (Input.GetKeyDown(KeyCode.LeftControl) && canDash && isGrounded)
+        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("BackDash"))
+                && canDash && isGrounded)
         {
             lockInput = true;
             ChangeState(PlayerState.BackDashing);
             StartCoroutine(BackDashCharacter());
         }
         // Air Heavy Attack -> Requires certain height to perform
-        else if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.DownArrow) && canAttack && !isGrounded && IsHighEnoughForAirHeavyAttack())
+        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("BasicAttack"))
+                && Input.GetKey(DataManager.Setting.GetKeyCode("Down"))
+                && canAttack && !isGrounded && IsHighEnoughForAirHeavyAttack())
         {
             canMove = false;
             ChangeState(PlayerState.AirHeavyAttack_Swing);
             StartCoroutine(AirHeavyAttack());
         }
         // Crouch Attack -> Check isCrouching and current state
-        else if (Input.GetKeyDown(KeyCode.Z) && canAttack && (isCrouching || currentState == PlayerState.Crouching))
+        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("BasicAttack"))
+                && canAttack && (isCrouching || currentState == PlayerState.Crouching))
         {
             canMove = false;
             ChangeState(PlayerState.CrouchAttack);
             StartCoroutine(CrouchAttack());
         }
         // Air Attack
-        else if (Input.GetKeyDown(KeyCode.Z) && canAttack && !isGrounded)
+        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("BasicAttack"))
+                && canAttack && !isGrounded)
         {
             canMove = false;
             ChangeState(PlayerState.AirAttack);
             StartCoroutine(AirAttack());
         }
         // Grounded Combo Attack -> Can be cancelled by dashing
-        else if (Input.GetKeyDown(KeyCode.Z) && canAttack && isGrounded && !isCrouching && currentState != PlayerState.Crouching)
+        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("BasicAttack"))
+                && canAttack && isGrounded && !isCrouching && currentState != PlayerState.Crouching)
         {
             canMove = false;
             ChangeState(PlayerState.Attacking);
             StartCoroutine(GroundedComboAttack());
         }
         // Jump
-        else if (Input.GetKeyDown(KeyCode.Space) && canMove && isGrounded)
+        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("Jump"))
+                && canMove && isGrounded)
         {
             ChangeState(PlayerState.Jumping);
             StartCoroutine(JumpCharacter());
@@ -297,7 +308,8 @@ public class PlayerController : MonoBehaviour
             ChangeState(PlayerState.Falling);
         }
         // Crouch
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && isGrounded && canCrouch)
+        else if (Input.GetKeyDown(DataManager.Setting.GetKeyCode("Down"))
+                && isGrounded && canCrouch)
         {
             // Enter Crouch
             isCrouching = true;
@@ -305,13 +317,15 @@ public class PlayerController : MonoBehaviour
             canDash = false;
             ChangeState(PlayerState.enterCrouching);
         }
-        else if (Input.GetKey(KeyCode.DownArrow) && isGrounded && canCrouch)
+        else if (Input.GetKey(DataManager.Setting.GetKeyCode("Down"))
+                && isGrounded && canCrouch)
         {
             // Crouch
             canMove = false;
             ChangeState(PlayerState.Crouching);
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) && isGrounded)
+        else if (Input.GetKeyUp(DataManager.Setting.GetKeyCode("Down"))
+                && isGrounded)
         {
             // Exit Crouch
             isCrouching = false;
@@ -464,6 +478,8 @@ public class PlayerController : MonoBehaviour
     #region Basic Character Behaviour
     private IEnumerator DashCharacter()
     {
+        float dashCooldown = playerDataManager.GetDashCoolDown();
+
         isDashing = true;
         canDash = false;
         float dashTimer = 0f;
@@ -498,6 +514,8 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator BackDashCharacter()
     {
+        float dashCooldown = playerDataManager.GetDashCoolDown();
+
         isBackDashing = true;
         canDash = false;
         float dashTimer = 0f;
@@ -938,7 +956,8 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Attack(AttackType type)
     {
         float maxScanTime = 0;
-        float attackMultiplier = 0;
+        float attackMultiplier = 1;
+        float baseAttack = playerDataManager.GetDamage();
 
         // Select hitboxes
         switch (type)
@@ -988,9 +1007,14 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
+        // Get defense ignore from playerdatamanager
+        float defIgnore = playerDataManager.GetDefenseIgnore();
+
         PlayerAttackHitbox hitboxManager = currentHitbox.GetComponent<PlayerAttackHitbox>();
         hitboxManager.setAttackType(type);
         hitboxManager.setAttackDamage(baseAttack * attackMultiplier);
+        hitboxManager.setPlayerPosition(transform.position);
+        hitboxManager.setDefenceIngore(defIgnore);
         currentHitbox.SetActive(true);
 
         // Flip the hitbox according to the player's facing direction
@@ -1057,7 +1081,9 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        playerHealth -= damage;
+        int playerHealth = playerDataManager.GetHp();
+        playerHealth -= (int)damage;
+        playerDataManager.SetHp(playerHealth);
 
         Debug.Log(damage + " " + playerHealth);
 
@@ -1082,26 +1108,33 @@ public class PlayerController : MonoBehaviour
     private bool IsTouchingWall()
     {
         float direction = playerSpriteRenderer.flipX ? -1f : 1f;
-        float rayLength = 0.8f; // Adjust as needed
+        // Adjust as needed
+        float rayLength = 0.8f; 
         int wallLayerMask = LayerMask.GetMask("Ground");
 
         // Get collider bounds
         Bounds bounds = GetComponent<Collider2D>().bounds;
-        Vector2 top = new Vector2(bounds.center.x, bounds.max.y - 0.05f);
+        Vector2 topmost = new Vector2(bounds.center.x, bounds.max.y - 0.05f);
+        Vector2 top = new Vector2(bounds.center.x, bounds.max.y - 0.1f);
         Vector2 middle = new Vector2(bounds.center.x, bounds.center.y);
-        Vector2 bottom = new Vector2(bounds.center.x, bounds.min.y + 0.05f);
+        Vector2 bottom = new Vector2(bounds.center.x, bounds.min.y + 0.1f);
+        Vector2 bottommost = new Vector2(bounds.center.x, bounds.min.y + 0.05f);
 
         Vector2 rayDir = new Vector2(direction, 0);
 
+        RaycastHit2D hitTopmost = Physics2D.Raycast(topmost, rayDir, rayLength, wallLayerMask);
         RaycastHit2D hitTop = Physics2D.Raycast(top, rayDir, rayLength, wallLayerMask);
         RaycastHit2D hitMiddle = Physics2D.Raycast(middle, rayDir, rayLength, wallLayerMask);
         RaycastHit2D hitBottom = Physics2D.Raycast(bottom, rayDir, rayLength, wallLayerMask);
+        RaycastHit2D hitBottommost = Physics2D.Raycast(bottommost, rayDir, rayLength, wallLayerMask);
 
-        Debug.DrawRay(top, rayDir * rayLength, Color.blue);
-        Debug.DrawRay(middle, rayDir * rayLength, Color.cyan);
-        Debug.DrawRay(bottom, rayDir * rayLength, Color.magenta);
+        Debug.DrawRay(topmost, rayDir * rayLength, Color.red);
+        Debug.DrawRay(top, rayDir * rayLength, Color.red);
+        Debug.DrawRay(middle, rayDir * rayLength, Color.red);
+        Debug.DrawRay(bottom, rayDir * rayLength, Color.red);
+        Debug.DrawRay(bottommost, rayDir * rayLength, Color.red);
 
-        return (hitTop.collider != null || hitMiddle.collider != null || hitBottom.collider != null);
+        return (hitTopmost.collider != null || hitTop.collider != null || hitMiddle.collider != null || hitBottom.collider != null || hitBottommost.collider != null);
     }
 
     private void CheckGrounded()
@@ -1199,30 +1232,9 @@ public class PlayerController : MonoBehaviour
 
     #region getters/setters
 
-    public Vector2 getPosition()
-    {
-        return transform.position;
-    }
 
-    public PlayerState getState()
-    {
-        return currentState;
-    }
-
-    public AttackType getAttackType()
-    {
-        Debug.Log("Returning: " + currentAttackType);
-        return currentAttackType;
-    }
-
-    public float getAttackDamage()
-    {
-        float multiplier = 1f;
-
-        return baseAttack * multiplier;
-    }
 
     #endregion
 }
 
-// PlayerController.cs - Most Recent
+// WIP, most recent
