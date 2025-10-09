@@ -29,4 +29,4 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
-  defense: 50
+  defense: 0

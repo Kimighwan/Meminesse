@@ -25,5 +25,5 @@ public class D_Entity : ScriptableObject
     public LayerMask whatIsPlatform;                // Platform 레이어 마스크
     public LayerMask whatIsPlayer;                  // Player 레이어 마스크
 
-    public float defense = 50f;                     // 몬스터 방어
+    public float defense = 0f;                     // 몬스터 방어
 }

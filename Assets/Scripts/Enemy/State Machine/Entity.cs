@@ -143,6 +143,7 @@ public class Entity : MonoBehaviour
         float finalDamage = Mathf.Max(damage - effectDefense, 1f);
 
         currentHp -= finalDamage;
+        
 
         Knockback(entityData.knockbackSpeed, entityData.knockbackAngle, LastDamagedDirection);
 
