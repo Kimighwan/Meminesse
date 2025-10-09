@@ -26,15 +26,20 @@ public class HpUIManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        maxHp = DataManager.Player.GetMaxHp(); // 저장된 최대 체력 불러오기. 총 하트칸 수
+        maxHp = PlayerDataManager.Instance.GetMaxHp(); // 저장된 최대 체력 불러오기. 총 하트칸 수
         
-        UpdateHearts();
+        SyncAllHpUI();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+    private void OnEnable()
+    {
+        maxHp = PlayerDataManager.Instance.GetMaxHp();
+        SyncAllHpUI();
     }
 
     private void InitHearts(int newMaxHp)
@@ -61,7 +66,7 @@ public class HpUIManager : MonoBehaviour
     public void UpdateHearts()
     {
         InitHearts(maxHp);
-        int hp = DataManager.Player.GetHp();
+        int hp = PlayerDataManager.Instance.GetHp();
 
         for (int i = 0; i < hearts.Count; i++)
         {
@@ -78,44 +83,55 @@ public class HpUIManager : MonoBehaviour
         Debug.Log("현재 HP = " + hp);
     }
 
+    public void SyncAllHpUI()
+    {
+        HpUIManager[] allUIs = Object.FindObjectsByType<HpUIManager>(FindObjectsSortMode.None);
+        foreach (var ui in allUIs)
+            ui.UpdateHearts();
+    }
+
     // 체력 회복 함수(물약 사용) - 추가회복량 포함 힐
     public void Heal(int healingAmount)
     {
-        int currentHp = DataManager.Player.GetHp(); 
-        float additionalHealingRate = DataManager.Player.GetAdditionalHealingProbability(); // 추가 회복 확률 가져오기 //////////////보류
-        DataManager.Player.SetHp(healingAmount); 
+        int currentHp = PlayerDataManager.Instance.GetHp(); 
+        float additionalHealingRate = PlayerDataManager.Instance.GetAdditionalHealingProbability(); // 추가 회복 확률 가져오기 //////////////보류
+        PlayerDataManager.Instance.SetHp(healingAmount); 
 
         if (UnityEngine.Random.value < additionalHealingRate)        // 일정 확률로 추가 회복
-            DataManager.Player.SetHp(20);
+            PlayerDataManager.Instance.SetHp(20);
 
         Debug.Log($"HP +{healingAmount * (1 + additionalHealingRate)}");
-        UpdateHearts();
+        SyncAllHpUI();
+        Canvas.ForceUpdateCanvases();
     }
 
     // 체력 최대로 회복 함수(특정 지점에 가면)
     public void FullHeal()
     {
         int currentHp = maxHp;
-        DataManager.Player.SetHp(currentHp); // maxHp를 현재 체력에 더해서 max로 만듦
+        PlayerDataManager.Instance.SetHp(currentHp); // maxHp를 현재 체력에 더해서 max로 만듦
         Debug.Log("HP Full");
-        UpdateHearts(); 
+        SyncAllHpUI();
+        Canvas.ForceUpdateCanvases();
     }
 
 
     // 체력 감소 함수(디버그용)     //// player 부분에서 함
     public void TakeDamage(int damage)
     {
-        int currentHp = DataManager.Player.GetHp();
-        DataManager.Player.SetHp(-damage); 
+        int currentHp = PlayerDataManager.Instance.GetHp();
+        PlayerDataManager.Instance.SetHp(-damage); 
         Debug.Log($"HP -{damage}");
-        UpdateHearts();
+        SyncAllHpUI();
+        Canvas.ForceUpdateCanvases();
     }
 
     // 최대 체력 증가
     public void IncreaseMaxHp()
     {
-        DataManager.Player.AddMaxHp(20); 
-        InitHearts(DataManager.Player.GetMaxHp()); 
-        UpdateHearts();
+        PlayerDataManager.Instance.AddMaxHp(20); 
+        InitHearts(PlayerDataManager.Instance.GetMaxHp()); 
+        SyncAllHpUI();
+        Canvas.ForceUpdateCanvases();
     }
 }

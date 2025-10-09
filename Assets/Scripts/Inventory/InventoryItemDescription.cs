@@ -20,21 +20,14 @@ public class InventoryItemDescription : MonoBehaviour
 
     public ItemDatabase itemDatabase;
 
-    [SerializeField]
-    private Image itemImage;
-    [SerializeField]
-    private TextMeshProUGUI itemNameText;
-    [SerializeField]
-    private TextMeshProUGUI itemDescText;
-    [SerializeField]
-    private TextMeshProUGUI noItemNotice;
-    [SerializeField]
-    private TextMeshProUGUI upgradeCost;
+    [SerializeField] private Image itemImage;
+    [SerializeField] private TextMeshProUGUI itemNameText;
+    [SerializeField] private TextMeshProUGUI itemDescText;
+    [SerializeField] private TextMeshProUGUI noItemNotice;
+    [SerializeField] private TextMeshProUGUI upgradeCost;
 
-    [SerializeField]
-    private GameObject upgradeButton;
-    [SerializeField]
-    private GameObject UseButton;
+    [SerializeField] private GameObject upgradeButton;
+    [SerializeField] private GameObject UseButton;
 
     private int currentItemId = -1;
 
@@ -56,7 +49,7 @@ public class InventoryItemDescription : MonoBehaviour
 
     public void ShowWeaponDescription()
     {
-        int weaponStep = DataManager.Player.GetWeaponLevel();
+        int weaponStep = PlayerDataManager.Instance.GetWeaponStep();
         Item item = null;
 
         switch(weaponStep)
@@ -147,13 +140,13 @@ public class InventoryItemDescription : MonoBehaviour
         UseButton.SetActive(false);
     }
 
-    // 이 스크립트에 이 함수를 넣는게 맞나...? 검토 요망 
+    // 이 스크립트에 이 함수를 넣는게 맞나...? 검토 요망  
     // 아이템 id에 따른 아이템 효과 발동
     public void ItemUseButton()
     {
 
         int id = currentItemId;
-        DataManager.Item.ItemCountReduce(id, 1);
+        ItemDataManager.Instance.ItemCountReduce(id, 1);
 
         //PrintAllItems();
        
@@ -170,7 +163,7 @@ public class InventoryItemDescription : MonoBehaviour
             case 33:
                 HpUIManager.Instance.FullHeal(); break;
         }
-        if (DataManager.Item.GetItemCountById(id) == 0)
+        if (ItemDataManager.Instance.GetItemCountById(id) == 0)
             HideItemDescription(id);
 
     }
@@ -178,14 +171,14 @@ public class InventoryItemDescription : MonoBehaviour
     //디버그용
     public void PrintAllItems()
     {
-        if (DataManager.Item.GetItemDataList() == null || DataManager.Item.GetItemDataList().Count == 0)
+        if (ItemDataManager.Instance.GetItemDataList() == null || ItemDataManager.Instance.GetItemDataList().Count == 0)
         {
             Debug.Log("인벤토리가 비어있습니다.");
             return;
         }
 
         Debug.Log("==== 현재 인벤토리 목록 ====");
-        foreach (var item in DataManager.Item.GetItemDataList())
+        foreach (var item in ItemDataManager.Instance.GetItemDataList())
         {
             Debug.Log($"아이템 ID: {item.itemId}, 개수: {item.count}");
         }

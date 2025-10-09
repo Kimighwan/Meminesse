@@ -34,7 +34,7 @@ public class Slime : Entity
 
     }
 
-    public override void Damaged(float damage, Vector2 position, bool isStun = false)
+    public override void Damaged(float damage, Vector2 position, bool isStun = false, float defIgnore = 0f)
     {
         base.Damaged(damage, position, isStun);
     }

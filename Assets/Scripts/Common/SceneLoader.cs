@@ -3,13 +3,12 @@ using UnityEngine.SceneManagement;
 
 public enum SceneType
 {
-    LoadingScene,
     MainMenu,
-    InGame,
+    GameScene,
 }
 
-public class SceneLoader : SingletonBehaviour<SceneLoader>
-{
+public class SceneLoader
+{ 
     // 씬 불러오기
     public void LoadScene(SceneType sceneType)  
     {

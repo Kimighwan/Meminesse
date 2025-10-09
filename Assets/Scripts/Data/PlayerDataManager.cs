@@ -55,16 +55,18 @@ public class PlayerData
     }
 }
 
-public class PlayerDataManager : Security, ISaveAndLoad
+public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
 {
-    private PlayerData playerData;
+    private PlayerData playerData = new PlayerData();
 
     private const string KEY = "Ikhwan@@ZZang!!";
     private string PATH = Path.Combine(Application.dataPath, "playerData.json");
     //PATH = Path.Combine(Application.persistentDataPath, "playerData.json");
 
-    public void Init()
+    protected override void Init()
     {
+        base.Init();
+
         Load();
     }
 
@@ -194,6 +196,60 @@ public class PlayerDataManager : Security, ISaveAndLoad
             string loadJson = File.ReadAllText(PATH);
             playerData = JsonUtility.FromJson<PlayerData>(Decrypt(loadJson, KEY));
         }
+    }
+    #endregion
+    #region Security
+    protected string Encrypt(string plainText, string key)
+    {
+        byte[] keyBytes = AdjustKeyLength(Encoding.UTF8.GetBytes(key));
+
+        using (Aes aes = Aes.Create())
+        {
+            aes.Key = keyBytes;
+            aes.GenerateIV();
+            byte[] iv = aes.IV;
+            using (var encryptor = aes.CreateEncryptor(aes.Key, iv))
+            using (var memoryStream = new MemoryStream())
+            {
+                memoryStream.Write(iv, 0, iv.Length);
+                using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                using (var streamWriter = new StreamWriter(cryptoStream))
+                {
+                    streamWriter.Write(plainText);
+                }
+                return Convert.ToBase64String(memoryStream.ToArray());
+            }
+        }
+    }
+
+    protected string Decrypt(string cipherText, string key)
+    {
+        byte[] fullCipher = Convert.FromBase64String(cipherText);
+        byte[] iv = new byte[16];
+        byte[] cipher = new byte[fullCipher.Length - iv.Length];
+
+        Array.Copy(fullCipher, iv, iv.Length);
+        Array.Copy(fullCipher, iv.Length, cipher, 0, cipher.Length);
+
+        byte[] keyBytes = AdjustKeyLength(Encoding.UTF8.GetBytes(key));
+        using (Aes aes = Aes.Create())
+        {
+            aes.Key = keyBytes;
+            using (var decryptor = aes.CreateDecryptor(aes.Key, iv))
+            using (var memoryStream = new MemoryStream(cipher))
+            using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+            using (var streamReader = new StreamReader(cryptoStream))
+            {
+                return streamReader.ReadToEnd();
+            }
+        }
+    }
+
+    protected byte[] AdjustKeyLength(byte[] keyBytes)
+    {
+        byte[] adjustedKey = new byte[32];
+        Array.Copy(keyBytes, adjustedKey, Math.Min(keyBytes.Length, 32));
+        return adjustedKey;
     }
     #endregion
 }
