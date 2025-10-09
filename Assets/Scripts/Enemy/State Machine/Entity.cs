@@ -136,7 +136,13 @@ public class Entity : MonoBehaviour
     /// <param name="isStun"></param>
     public virtual void Damaged(float damage, Vector2 position, bool isStun = false, float defIgnore = 0f)
     {
-        currentHp -= damage;
+        float defense = entityData.defense;
+        // 방무를 적용한 뎀감 수치(방어력 수치)
+        float effectDefense = defense * (1f - Mathf.Clamp01(defIgnore));
+        // 최종 데미지 = 공격력 - 방어력(뎀감 수치)
+        float finalDamage = Mathf.Max(damage - effectDefense, 1f);
+
+        currentHp -= finalDamage;
 
         Knockback(entityData.knockbackSpeed, entityData.knockbackAngle, LastDamagedDirection);
 
