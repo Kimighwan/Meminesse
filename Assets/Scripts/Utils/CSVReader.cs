@@ -18,6 +18,10 @@ public class CSVReader
         if (lines.Length <= 1) return list;
 
         var header = Regex.Split(lines[0], SPLIT_RE);
+
+        for (int i = 0; i < header.Length; i++)
+            header[i] = header[i].Trim('\uFEFF');
+        Debug.Log($"Header raw: '{string.Join("', '", header)}'");
         for (var i = 1; i < lines.Length; i++)
         {
             var values = Regex.Split(lines[i], SPLIT_RE);
