@@ -6,62 +6,52 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [Serializable]
-public class ItemData
-{
-    public int itemId;
-    public int count;
-
-
-    public ItemData(int itemId, int count)
-    {
-        this.itemId = itemId;
-        this.count = count;
-    }
-}
-
-[Serializable]
 public class WrapperItemDataList
 {
-    public List<ItemData> itemDataList;
+    public List<InventoryData> itemDataList;
 }
 
-public class ItemDataManager : SingletonBehaviour<ItemDataManager>
+public class InventoryDataManager : SingletonBehaviour<InventoryDataManager>
 {
-    private List<ItemData> itemDataList = new List<ItemData>();
+    private List<InventoryData> itemDataList = new List<InventoryData>();
 
     private const string KEY = "Ikhwan@@ZZang!!";
-    private string PATH = Path.Combine(Application.dataPath, "itemData.json");
-    //private string PATH = Path.Combine(Application.persistentDataPath, "itemData.json");
+    private string PATH = Path.Combine(Application.dataPath, "inventoryData.json");
+    //private string PATH = Path.Combine(Application.persistentDataPath, "inventoryData.json");
 
     protected override void Init()
     {
         base.Init();
         Load();
     }
-    public List<ItemData> GetItemDataList()
+    public List<InventoryData> GetItemDataList()
     {
         return itemDataList;
     }
-    public int GetItemCountById(int id)
+
+
+    public int GetItemCountById(string id)
     {
         return itemDataList.Find(item => item.itemId == id)?.count ?? 0;
     }
-    public List<ItemData> SortItem()
+
+    // 왜 필요함?
+    public List<InventoryData> SortItem()
     {
         itemDataList.Sort((x, y) => x.itemId.CompareTo(y.itemId));
         return itemDataList;
     }
-    public bool ExistItem(int id)
+    public bool ExistItem(string id)
     {
-        foreach(var item in itemDataList)
+        foreach (var item in itemDataList)
         {
-            if(item.itemId == id)
+            if (item.itemId == id)
                 return true;
         }
         Debug.Log("아이템이 존재하지 않음");
         return false;
     }
-    public int ItemCounting(int id)
+    public int ItemCounting(string id)
     {
         foreach (var item in itemDataList)
         {
@@ -71,7 +61,7 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
         return 0;
     }
 
-    public bool ItemCountReduce(int id, int count)
+    public bool ItemCountReduce(string id, int count)
     {
         if (!ExistItem(id)) return false;
 
@@ -80,7 +70,7 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
             if (item.itemId == id)
             {
                 item.count -= count;
-                if(item.count <= 0)
+                if (item.count <= 0)
                 {
                     itemDataList.Remove(item);
                     return true;
@@ -90,18 +80,18 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
 
         return false;
     }
-    public bool AddItem(int id, int count)
+    public bool AddItem(ItemData itemData, int count)
     {
         foreach (var item in itemDataList)
         {
-            if (item.itemId == id)
+            if (item.itemId == itemData.itemId)
             {
-                item.count += count;  
+                item.count += count;
                 return true;
             }
         }
 
-        itemDataList.Add(new ItemData(id, count));
+        itemDataList.Add(new InventoryData(itemData.itemId, itemData, count));
         return true;
     }
 
@@ -118,6 +108,7 @@ public class ItemDataManager : SingletonBehaviour<ItemDataManager>
     {
         if (!File.Exists(PATH)) // Create
         {
+            itemDataList = new List<InventoryData>();
             Save();
         }
         else // Load

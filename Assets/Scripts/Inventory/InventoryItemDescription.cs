@@ -16,9 +16,6 @@ public class InventoryItemDescription : MonoBehaviour
         Instance = this;
     }
     #endregion
-   
-
-    public ItemDatabase itemDatabase;
 
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemNameText;
@@ -29,7 +26,7 @@ public class InventoryItemDescription : MonoBehaviour
     [SerializeField] private GameObject upgradeButton;
     [SerializeField] private GameObject UseButton;
 
-    private int currentItemId = -1;
+    private string currentItemId;
 
     void Start()
     {
@@ -42,48 +39,48 @@ public class InventoryItemDescription : MonoBehaviour
         
     }
 
-    public Item GetItemById(int id)
+    public ItemData GetItemById(string id)
     {
-        return itemDatabase.itemDB.Find(item => item.itemId == id);
+        return DataTableManager.Instance.GetItemData(id);
     }
 
     public void ShowWeaponDescription()
     {
         int weaponStep = PlayerDataManager.Instance.GetWeaponLevel();
-        Item item = null;
+        ItemData item = null;
 
         switch(weaponStep)
         {
             // 낡은 검
             case 1:
-                item = GetItemById(11);
+                item = GetItemById("11");
                 upgradeCost.text = "200 필요";
                 break;
             // 평범한 검
             case 2:
-                item = GetItemById(12);
+                item = GetItemById("12");
                 upgradeCost.text = "500 필요";
                 break;
             // 단련된 검
             case 3:
-                item = GetItemById(13);
+                item = GetItemById("13");
                 upgradeCost.text = "1000 필요";
                 break;
             // 불멸의 검
             case 4:
-                item = GetItemById(14);
+                item = GetItemById("14");
                 upgradeCost.text = "5000 필요";
                 break;
             // 만계황혼의 심연룡섬검
             case 5:
-                item = GetItemById(15);
+                item = GetItemById("15");
                 break;  
         }
         
         if (item != null)
         {
             UseButton.SetActive(false);
-            if(item.itemId != 15) 
+            if(item.itemId != "15") 
                 upgradeButton.SetActive(true); //최고 레벨이라서 업그레이드 불가
             else
                 upgradeButton.SetActive(false);
@@ -91,8 +88,8 @@ public class InventoryItemDescription : MonoBehaviour
             itemImage.gameObject.SetActive(true);
             itemNameText.gameObject.SetActive(true);
             itemDescText.gameObject.SetActive(true);
-            itemImage.sprite = item.itemImage; // 아이템 이미지 설정
-            itemNameText.text = item.itemName;
+            itemImage.sprite = Resources.Load<Sprite>($"Item/{item.itemId}"); // 아이템 이미지 설정
+            itemNameText.text = item.name;
             itemDescText.text = item.desc;
         }
         else
@@ -104,11 +101,11 @@ public class InventoryItemDescription : MonoBehaviour
         }
     }
 
-    public void ShowItemDescription(int itemId)
+    public void ShowItemDescription(string itemId)
     {
         currentItemId = itemId;
         //int[] availableToUseIds = { 23, 31, 32, 33 };  
-        Item item = GetItemById(itemId);
+        ItemData item = GetItemById(itemId);
 
         if (item != null)
         {
@@ -117,8 +114,8 @@ public class InventoryItemDescription : MonoBehaviour
             itemImage.gameObject.SetActive(true);
             itemNameText.gameObject.SetActive(true);
             itemDescText.gameObject.SetActive(true);
-            itemImage.sprite = item.itemImage;
-            itemNameText.text = item.itemName;
+            itemImage.sprite = Resources.Load<Sprite>($"Item/{item.itemId}");
+            itemNameText.text = item.name;
             itemDescText.text = item.desc;
         }
         else
@@ -130,9 +127,9 @@ public class InventoryItemDescription : MonoBehaviour
         }
     }
 
-    public void HideItemDescription(int itemId)
+    public void HideItemDescription(string itemId)
     {
-        currentItemId = -1;
+        currentItemId = null;
         itemImage.gameObject.SetActive(false);
         itemNameText.gameObject.SetActive(false);
         itemDescText.gameObject.SetActive(false);
@@ -145,8 +142,8 @@ public class InventoryItemDescription : MonoBehaviour
     public void ItemUseButton()
     {
 
-        int id = currentItemId;
-        ItemDataManager.Instance.ItemCountReduce(id, 1);
+        string id = currentItemId;
+        InventoryDataManager.Instance.ItemCountReduce(id.ToString(), 1);
 
         //PrintAllItems();
        
@@ -154,16 +151,16 @@ public class InventoryItemDescription : MonoBehaviour
         switch (id)
         {
             // 좋은 물약
-            case 31:
+            case "31":
                 HpUIManager.Instance.Heal(10); break;   
             // 참 좋은 물약
-            case 32:
+            case "32":
                 HpUIManager.Instance.Heal(40); break;
             // 엄청 좋은 물약
-            case 33:
+            case "33":
                 HpUIManager.Instance.FullHeal(); break;
         }
-        if (ItemDataManager.Instance.GetItemCountById(id) == 0)
+        if (InventoryDataManager.Instance.GetItemCountById(id.ToString()) == 0)
             HideItemDescription(id);
 
     }
@@ -171,14 +168,14 @@ public class InventoryItemDescription : MonoBehaviour
     //디버그용
     public void PrintAllItems()
     {
-        if (ItemDataManager.Instance.GetItemDataList() == null || ItemDataManager.Instance.GetItemDataList().Count == 0)
+        if (InventoryDataManager.Instance.GetItemDataList() == null || InventoryDataManager.Instance.GetItemDataList().Count == 0)
         {
             Debug.Log("인벤토리가 비어있습니다.");
             return;
         }
 
         Debug.Log("==== 현재 인벤토리 목록 ====");
-        foreach (var item in ItemDataManager.Instance.GetItemDataList())
+        foreach (var item in InventoryDataManager.Instance.GetItemDataList())
         {
             Debug.Log($"아이템 ID: {item.itemId}, 개수: {item.count}");
         }
