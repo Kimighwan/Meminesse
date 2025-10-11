@@ -9,17 +9,17 @@ public class Slot : MonoBehaviour
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI countText;
 
-    private Item itemInfo;
+    private ItemData itemData;
     private int itemCount;
 
-    public void SetSlot(Item newItem, int count)
+    public void SetSlot(ItemData newItem, int count)
     {
-        itemInfo = newItem;
+        itemData = newItem;
         itemCount = count;
 
-        if (itemInfo != null)
+        if (itemData != null)
         {
-            icon.sprite = itemInfo.itemImage;
+            icon.sprite = Resources.Load<Sprite>($"Item/{itemData.itemId}");
             icon.enabled = true;
             countText.text = count > 1 ? count.ToString() : "";
         }
@@ -31,7 +31,7 @@ public class Slot : MonoBehaviour
 
     public void ClearSlot()
     {
-        itemInfo = null;
+        itemData = null;
         itemCount = 0;
         icon.sprite = null;
         icon.enabled = false;
@@ -40,11 +40,11 @@ public class Slot : MonoBehaviour
 
     public void OnClick()
     {
-        if (itemInfo == null)
+        if (itemData == null)
         {
             Debug.LogWarning("슬롯에 아이템 정보가 없음!");
             return;
         }
-        InventoryItemDescription.Instance.ShowItemDescription(itemInfo.itemId);
+        InventoryItemDescription.Instance.ShowItemDescription(itemData.itemId);
     }
 }

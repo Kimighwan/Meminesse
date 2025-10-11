@@ -8,10 +8,6 @@ using NUnit.Framework;
 // 인벤토리창 모든 UI 관리
 public class Inventory : MonoBehaviour
 {
-    // 데이터베이스
-    public ItemDatabase itemDatabase;
-    public List<ItemData> itemDataList;
-
     // 돈 두종류 임시 이름
     [SerializeField]
     private TextMeshProUGUI mintMoney;
@@ -44,23 +40,19 @@ public class Inventory : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // 데이터 가져오기
-        itemDataList = ItemDataManager.Instance.GetItemDataList();
-
-        // 돈 초기화         
-        ItemData dia, ma;
-        if (ItemDataManager.Instance.ExistItem(21) != false)
+        // 돈 초기화
+        if (InventoryDataManager.Instance.ExistItem("21") != false)
         {
-            dia = itemDataList.Find(item => item.itemId == 21);
-            mintMoney.text = dia.count.ToString();
+            var inventoryData  = InventoryDataManager.Instance.GetItemCountById("21");
+            mintMoney.text = inventoryData.ToString();
         }
         else
             mintMoney.text = "0";
 
-        if (ItemDataManager.Instance.ExistItem(22) != false)
+        if (InventoryDataManager.Instance.ExistItem("22") != false)
         {
-            ma = itemDataList.Find(item => item.itemId == 22);
-            redMoney.text = ma.count.ToString();
+            var inventoryData = InventoryDataManager.Instance.GetItemCountById("22");
+            redMoney.text = inventoryData.ToString();
         }
         else
         {
@@ -71,8 +63,6 @@ public class Inventory : MonoBehaviour
 
         // 무기 레벨 UI 초기화
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponLevel());
-
-
     }
 
     // Update is called once per frame

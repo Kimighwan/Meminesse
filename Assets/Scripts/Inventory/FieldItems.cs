@@ -5,11 +5,13 @@ using System.Collections;
 
 public class FieldItems : MonoBehaviour
 {
-    public Item item;
+    public ItemData itemData;
 
     public SpriteRenderer spriteRenderer;
 
     private Rigidbody2D rb;
+
+    bool dontDestroy = false;
 
     private void Awake()
     {
@@ -22,35 +24,23 @@ public class FieldItems : MonoBehaviour
 
         rb.gravityScale = 1f; // 중력 세기
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; // 회전은 막음
+
+        SetItem();
     }
 
     private void Start()
     {
-        Destroy(gameObject, 60f);
         StartCoroutine(BlinkBeforeDestroy(55f, 5f));
     }
 
-    public void SetItem(Item _item)
+    public void SetItem()
     {
-        item = new Item
-        {
-            itemId = _item.itemId,
-            itemName = _item.itemName,
-            itemImage = _item.itemImage,
-            desc = _item.desc
-        };
+        string resultItemId = Random.Range(21, 23).ToString();
 
-        if (spriteRenderer != null && item.itemImage != null)
-        {
-            spriteRenderer.sprite = item.itemImage;
-        }
+        itemData = DataTableManager.Instance.GetItemData(resultItemId);
+        spriteRenderer.sprite = Resources.Load<Sprite>($"Item/{itemData.itemId}");
 
         rb.AddForce(new Vector2(Random.Range(-1f, 1f), 3f), ForceMode2D.Impulse);
-    }
-
-    public Item GetItem()
-    {
-        return item;
     }
 
     public void DestroyItem()
@@ -69,15 +59,15 @@ public class FieldItems : MonoBehaviour
 
     private void PickUpItem()
     {
-        if (item == null)
+        if (itemData == null)
         {
             return;
         }
 
         Destroy(this.gameObject);
 
-        ItemDataManager.Instance.AddItem(item.itemId, 1);
-        Debug.Log($"플레이어가 {item.itemName} 획득!");
+        InventoryDataManager.Instance.AddItem(itemData, 1);
+        Debug.Log($"플레이어가 {itemData.name} 획득!");
         
     }
 
@@ -97,5 +87,8 @@ public class FieldItems : MonoBehaviour
 
             yield return new WaitForSeconds(0.2f); 
         }
+
+        if(!dontDestroy)
+            Destroy(gameObject);
     }
 }

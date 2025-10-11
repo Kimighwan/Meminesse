@@ -8,7 +8,7 @@ public class SaveLoadTool
     {
         SaveFileDataManager.Instance.Save();
         PlayerDataManager.Instance.Save();
-        ItemDataManager.Instance.Save();
+        InventoryDataManager.Instance.Save();
         SettingDataManager.Instance.Save();
     }
 
@@ -17,7 +17,7 @@ public class SaveLoadTool
     {
         SaveFileDataManager.Instance.Load();
         PlayerDataManager.Instance.Load();
-        ItemDataManager.Instance.Load();
+        InventoryDataManager.Instance.Load();
         SettingDataManager.Instance.Load();
     }
 }

@@ -45,23 +45,23 @@ public class InventoryUI : MonoBehaviour
  
 
     //슬롯에 아이템 추가하는 함수      <<  플레이어가 아이템 먹을 때 사용
-    public void AddItemToInventory(int id)
+    public void AddItemToInventory(ItemData itemData)
     {
-        ItemDataManager.Instance.AddItem(id, 1);
+        InventoryDataManager.Instance.AddItem(itemData, 1);
         UpdateInventory();
     }
 
     public void UpdateInventory()
     {
         // itemDataList를 가져와 인벤토리 UI 업데이트
-        List<ItemData> itemDataList = ItemDataManager.Instance.GetItemDataList();
+        List<InventoryData> inventoryItemDataList = InventoryDataManager.Instance.GetItemDataList();
         
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i < itemDataList.Count)
+            if (i < inventoryItemDataList.Count)
             {
-                ItemData data = itemDataList[i];
-                if (data.itemId == 21 || data.itemId == 22) // 돈 아이템은 인벤토리에 표시x
+                InventoryData inventoryItemData = inventoryItemDataList[i];
+                if (inventoryItemData.itemId == "21" || inventoryItemData.itemId == "22") // 돈 아이템은 인벤토리에 표시x
                 {
                     slots[i].ClearSlot();
                     slots[i].gameObject.SetActive(false);
@@ -69,9 +69,9 @@ public class InventoryUI : MonoBehaviour
                 }
                 else
                 {
-                    Item itemInfo = Inventory.Instance.itemDatabase.GetItemById(data.itemId);
+                    ItemData itemData = inventoryItemData.itemData;
                     slots[i].gameObject.SetActive(true);
-                    slots[i].SetSlot(itemInfo, data.count);
+                    slots[i].SetSlot(itemData, inventoryItemData.count);
                 }
             }
             else
@@ -82,7 +82,7 @@ public class InventoryUI : MonoBehaviour
         }
 
         // 인벤토리가 비어있으면
-        if (itemDataList.Count == 0)
+        if (inventoryItemDataList.Count == 0)
         {
             noItemMessage.gameObject.SetActive(true);
         }
@@ -102,7 +102,9 @@ public class InventoryUI : MonoBehaviour
         int randomIndex = Random.Range(0, possibleItems.Length);
         int randomId = possibleItems[randomIndex];
 
-        ItemDataManager.Instance.AddItem(randomId, 1);
+        var itemData = DataTableManager.Instance.GetItemData(randomId.ToString());
+
+        InventoryDataManager.Instance.AddItem(itemData, 1);
         UpdateInventory();
     }
 

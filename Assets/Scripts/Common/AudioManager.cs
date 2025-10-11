@@ -23,7 +23,6 @@ public class AudioManager : SingletonBehaviour<AudioManager>
 
     const string AUDIO_PATH = "Audio";
 
-    [SerializeField]
     private AudioMixer audioMixer;
 
     Dictionary<BGM, AudioSource> BGMPlayer = new Dictionary<BGM, AudioSource>();
