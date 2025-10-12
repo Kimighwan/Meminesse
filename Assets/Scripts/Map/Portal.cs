@@ -11,6 +11,7 @@ public class Portal : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             mapController.TeleportPlayer(collision.GetComponent<PlayerController>(), targetMap, targetPoint);
+            targetMap.SetRespawnPoint(targetPoint);
         }
     }
 }

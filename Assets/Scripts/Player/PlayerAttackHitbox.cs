@@ -30,13 +30,13 @@ public class PlayerAttackHitbox : MonoBehaviour
         {
             Entity hit = collider.gameObject.GetComponent<Entity>();
             Debug.Log("Enemy hit, Type: " + attackType + ", Damage: " + attackDamage);
-            hit.Damaged(attackDamage, playerPosition, isStunAttack);
+            hit.Damaged(attackDamage, playerPosition, isStunAttack, defIgnore);
         }
         else if (collider.gameObject.CompareTag("Barrier"))
         {
             Barrier barrier = collider.gameObject.GetComponent<Barrier>();
             Debug.Log("Barrier hit, Type: " + attackType + ", Damage: " + attackDamage);
-            barrier.Damaged(attackDamage, defIgnore);
+            barrier.Damaged(attackDamage, playerPosition, defIgnore);
         }
     }
 

@@ -227,7 +227,7 @@ public class PlayerController : MonoBehaviour
         // Skills > Dashing/Backdashing > CrouchAttack > AirHeavyAttack > AirAttack > GroundAttack > Jumping > Falling > Crouching > Idle
 
         // HolySlash
-        if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("HolySlash"))
+        if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Skill1"))
                 && isGrounded && canMove && canAttack && !isHolySlashOnCoolDown)
         {
             lockInput = true;
@@ -235,7 +235,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(HolySlash());
         }
         // LightCut
-        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("LightCut"))
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Skill2"))
                 && isGrounded && canMove && canAttack && !isLightCutOnCoolDown)
         {
             lockInput = true;
@@ -887,6 +887,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator HolySlash()
     {
+        isHolySlashOnCoolDown = true;
         isAttacking = true;
         canAttack = false;
         canDash = false;
@@ -904,10 +905,16 @@ public class PlayerController : MonoBehaviour
         canMove = true;
         canDash = true;
         lockInput = false;
+
+        float cooldownReduction = PlayerDataManager.Instance.GetSkillCoolDown();
+        float effectiveCoolDown = holySlashCoolDown * (1 - cooldownReduction);
+        yield return new WaitForSeconds(effectiveCoolDown);
+        isHolySlashOnCoolDown = false;
     }
 
     private IEnumerator LightCut()
     {
+        isLightCutOnCoolDown = true;
         isAttacking = true;
         canAttack = false;
         canDash = false;
@@ -943,6 +950,11 @@ public class PlayerController : MonoBehaviour
         canMove = true;
         canDash = true;
         lockInput = false;
+
+        float cooldownReduction = PlayerDataManager.Instance.GetSkillCoolDown();
+        float effectiveCoolDown = lightCutCoolDown * (1 - cooldownReduction);
+        yield return new WaitForSeconds(effectiveCoolDown);
+        isLightCutOnCoolDown = false;
     }
 
     #endregion

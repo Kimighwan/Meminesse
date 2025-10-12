@@ -7,7 +7,6 @@ public class Map : MonoBehaviour
     [SerializeField] GameObject respawnPoint;
     [SerializeField] GameObject[] portals;
 
-
     public void CheckMapVisited()
     {
         SaveFileDataManager.Instance.AddVisitedMapId(mapId);
@@ -17,6 +16,11 @@ public class Map : MonoBehaviour
     public int GetMapId()
     {
         return mapId;
+    }
+
+    public void SetRespawnPoint(Transform point)
+    {
+        respawnPoint = point.gameObject;
     }
 
     public GameObject GetRespawnPoint()

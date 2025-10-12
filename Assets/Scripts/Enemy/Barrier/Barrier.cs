@@ -3,8 +3,13 @@ using UnityEngine;
 public class Barrier : MonoBehaviour
 {
     [SerializeField] bool higherDefence;
-    float hp = 100;
+    [SerializeField] bool damagableFromLeft;
+    [SerializeField] bool damagableFromRight;
+    [SerializeField] float hp = 100;
     private float defence;
+
+    // For testing purposes
+    [SerializeField] bool noDefence;
 
     void Start()
     {
@@ -12,10 +17,17 @@ public class Barrier : MonoBehaviour
             defence = 200;
         else
             defence = 100;
+
+        // For testing purposes
+        if (noDefence)
+            defence = 0;
     }
 
-    public void Damaged(float damage, float defIgnore)
+    public void Damaged(float damage, Vector2 position, float defIgnore)
     {
+        if (position.x < transform.position.x && !damagableFromLeft) return;
+        if (position.x > transform.position.x && !damagableFromRight) return;
+
         float realDefence = defence * (1 - defIgnore);
         float damageReduction = 1 - (realDefence / 100);
         damage *= damageReduction;
@@ -27,7 +39,7 @@ public class Barrier : MonoBehaviour
 
         if (hp <= 0)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

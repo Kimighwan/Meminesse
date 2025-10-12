@@ -21117,6 +21117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f6f441a0b0f8c47962ef692ed56a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestoryOnLoad: 0
+  itemDataList: []
+  PATH: C:/Users/Lappy/Documents/Repos/Meminesse/Assets\itemData.json
 --- !u!1 &968354579
 GameObject:
   m_ObjectHideFlags: 0
