@@ -7,21 +7,13 @@ using UnityEngine.Rendering;
 // 인게임, 인벤토리, 세이브파일화면에서 쓸려고 만듦
 // 체력 하트 UI 관리
 
-public class HpUIManager : MonoBehaviour
+public class HpUIManager : SingletonBehaviour<HpUIManager>
 {
     public GameObject heartPrefab;      
     public Transform heartParent;       
     private List<Heart> hearts = new List<Heart>();
 
     private int maxHp;
-
-    #region Singleton
-    public static HpUIManager Instance;
-    private void Awake()
-    {
-        Instance = this;
-    }
-    #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
