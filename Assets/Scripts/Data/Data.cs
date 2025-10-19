@@ -26,7 +26,7 @@ public class MonsterDropData
 {
     public string Name;
     public int DiaProbability;
-    public int MaPoobability;
+    public int MaProbability;
     public int DiaCount;
     public int MaCount;
 }

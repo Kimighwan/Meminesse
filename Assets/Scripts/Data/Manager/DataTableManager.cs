@@ -59,7 +59,7 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
             {
                 Name = data["Name"].ToString(),
                 DiaProbability = Convert.ToInt32(data["DiaProbability"]),
-                MaPoobability = Convert.ToInt32(data["MaPoobability"]),
+                MaProbability = Convert.ToInt32(data["MaProbability"]),
                 DiaCount = Convert.ToInt32(data["DiaCount"]),
                 MaCount = Convert.ToInt32(data["MaCount"]),
             };

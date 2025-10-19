@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -136,6 +137,8 @@ public class Entity : MonoBehaviour
     /// <param name="isStun"></param>
     public virtual void Damaged(float damage, Vector2 position, bool isStun = false, float defIgnore = 0f)
     {
+        if (isDead) return;
+
         float defense = entityData.defense;
         // 방무를 적용한 뎀감 수치(방어력 수치)
         float effectDefense = defense * (1f - Mathf.Clamp01(defIgnore));
@@ -143,11 +146,6 @@ public class Entity : MonoBehaviour
         float finalDamage = Mathf.Max(damage - effectDefense, 1f);
 
         currentHp -= finalDamage;
-        
-
-        Knockback(entityData.knockbackSpeed, entityData.knockbackAngle, LastDamagedDirection);
-
-        // 데미지 입을 때 생성될 파티클 인스턴스화
 
         if (position.x > transform.position.x)   // 플레이어가 오른쪽에 있음
         {
@@ -157,8 +155,32 @@ public class Entity : MonoBehaviour
         {
             LastDamagedDirection = 1;
         }
+        Knockback(entityData.knockbackSpeed, entityData.knockbackAngle, LastDamagedDirection);
 
-        if (currentHp <= 0) isDead = true;
+        if (currentHp <= 0)
+        {
+            isDead = true;
+            var monsterDropData = DataTableManager.Instance.GetMonsterDropData($"{GetType()}");
+
+            List<(ItemData, float)> prob = new List<(ItemData, float)>();
+
+            prob.Add((DataTableManager.Instance.GetItemData("21"), monsterDropData.DiaProbability));
+            prob.Add((DataTableManager.Instance.GetItemData("22"), monsterDropData.MaProbability));
+
+            var dropItemData = GameSystem.Instance.Pick(prob);
+
+            int itemCount = 0;
+
+            if (dropItemData.itemId == "21") itemCount = monsterDropData.DiaCount;
+            else itemCount = monsterDropData.MaCount;
+
+            var newOB = Resources.Load<GameObject>("Item/FieldItem");
+            if(newOB.TryGetComponent<FieldItems>(out var item))
+            {
+                item.SetItem(dropItemData, itemCount);
+            }
+            Instantiate(newOB, transform.position, Quaternion.identity);
+        }
     }
 
     #region Player Dectected
