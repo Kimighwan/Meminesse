@@ -53,7 +53,7 @@ public class UIBase : MonoBehaviour
     {
         currentButton = gb;
 
-        EventSystem.current.SetSelectedGameObject(null); 
+        EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(gb);   
     }
 }

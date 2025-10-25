@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 // 인게임 씬 관리 
 public class IngameUIManager : MonoBehaviour
-{
+{ 
     [SerializeField] private GameObject pauseMenuPopUp;
     [SerializeField] private GameObject settingPopUp;
 

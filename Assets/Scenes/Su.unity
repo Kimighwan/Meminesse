@@ -2366,19 +2366,7 @@ MonoBehaviour:
   - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SettingsPopup, Assembly-CSharp
-          m_MethodName: SetCurrentButton
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 219030296}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!222 &219030300
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5587,19 +5575,7 @@ MonoBehaviour:
   - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SettingsPopup, Assembly-CSharp
-          m_MethodName: SetCurrentButton
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 329819342}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!114 &329819345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8481,19 +8457,7 @@ MonoBehaviour:
   - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SettingsPopup, Assembly-CSharp
-          m_MethodName: SetCurrentButton
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 432854197}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!114 &432854200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31012,7 +30976,7 @@ Tilemap:
       - {fileID: 1734142237, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: -637284095, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: 570245934, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
-      m_AnimationSpeed: 15.000001
+      m_AnimationSpeed: 15
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 24, y: 9, z: 0}
@@ -31147,7 +31111,7 @@ Tilemap:
       - {fileID: 1734142237, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: -637284095, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: 570245934, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
-      m_AnimationSpeed: 15.000001
+      m_AnimationSpeed: 15
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 33, y: 9, z: 0}
@@ -31177,7 +31141,7 @@ Tilemap:
       - {fileID: 1734142237, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: -637284095, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: 570245934, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
-      m_AnimationSpeed: 15
+      m_AnimationSpeed: 15.000001
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 35, y: 9, z: 0}
@@ -31192,7 +31156,7 @@ Tilemap:
       - {fileID: 1734142237, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: -637284095, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: 570245934, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
-      m_AnimationSpeed: 15.000001
+      m_AnimationSpeed: 15
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 36, y: 9, z: 0}
@@ -31207,7 +31171,7 @@ Tilemap:
       - {fileID: 1734142237, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: -637284095, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: 570245934, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
-      m_AnimationSpeed: 15.000001
+      m_AnimationSpeed: 15
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 37, y: 9, z: 0}
@@ -31462,7 +31426,7 @@ Tilemap:
       - {fileID: 1734142237, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: -637284095, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: 570245934, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
-      m_AnimationSpeed: 15.000001
+      m_AnimationSpeed: 15
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 54, y: 9, z: 0}
@@ -31477,7 +31441,7 @@ Tilemap:
       - {fileID: 1734142237, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: -637284095, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: 570245934, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
-      m_AnimationSpeed: 15
+      m_AnimationSpeed: 15.000001
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 55, y: 9, z: 0}
@@ -31552,7 +31516,7 @@ Tilemap:
       - {fileID: 1734142237, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: -637284095, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: 570245934, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
-      m_AnimationSpeed: 15.000001
+      m_AnimationSpeed: 15
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 60, y: 9, z: 0}
@@ -31612,7 +31576,7 @@ Tilemap:
       - {fileID: 1734142237, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: -637284095, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
       - {fileID: 570245934, guid: fd2733a2d1d6b224f8cccbfafdb469b5, type: 3}
-      m_AnimationSpeed: 15.000001
+      m_AnimationSpeed: 15
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 64, y: 9, z: 0}
@@ -40690,22 +40654,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Delegates:
   - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SettingsPopup, Assembly-CSharp
-          m_MethodName: SetCurrentButton
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1491515684}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 9
     callback:
       m_PersistentCalls:
         m_Calls:
