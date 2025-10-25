@@ -77,7 +77,7 @@ public class SettingsPopup : UIBase
             }
         }
 
-        // esc - 상위로 (오디오 버튼으로)
+        // esc - 상위로 (오디오 버튼으로)         ////esc누르면 설정창이 꺼져버림(IngameUIManager이먼저실행되서) 나중에수정
         else
         {
             //ChangeTextColor(currentBtnText);
