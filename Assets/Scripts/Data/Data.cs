@@ -21,3 +21,25 @@ public class InventoryData
         this.count = count;
     }
 }
+[System.Serializable]
+public class MonsterDropData
+{
+    public string Name;
+    public int DiaProbability;
+    public int MaProbability;
+    public int DiaCount;
+    public int MaCount;
+}
+[System.Serializable]
+public class ShopData
+{
+    public string ID;
+    public int Count;
+    public int Price;
+}
+[System.Serializable]
+public class UpgradeData
+{
+    public string ID;
+    public int Count;
+}

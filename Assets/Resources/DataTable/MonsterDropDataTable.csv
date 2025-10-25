@@ -1,0 +1,13 @@
+Name,DiaProbability,MaProbability,DiaCount,MaCount
+Archer,70,30,3,10
+Bat,70,30,3,10
+Mushroom,70,30,3,10
+Slime,70,30,3,10
+TestEnemy,60,40,3,10
+Wolf,60,40,5,10
+EvilWizard,60,40,5,20
+FireWizard,60,40,5,20
+NomalCultist,50,50,7,20
+CultistAssassin,50,50,7,20
+TwistedCultist,50,50,7,20
+VoidbornGoddess,0,0,14,40
