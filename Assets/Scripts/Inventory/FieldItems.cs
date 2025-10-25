@@ -13,6 +13,8 @@ public class FieldItems : MonoBehaviour
 
     bool dontDestroy = false;
 
+    int itemCount;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,8 +26,6 @@ public class FieldItems : MonoBehaviour
 
         rb.gravityScale = 1f; // 중력 세기
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; // 회전은 막음
-
-        SetItem();
     }
 
     private void Start()
@@ -33,14 +33,14 @@ public class FieldItems : MonoBehaviour
         StartCoroutine(BlinkBeforeDestroy(55f, 5f));
     }
 
-    public void SetItem()
+    public void SetItem(ItemData itemData, int itemCount)
     {
-        string resultItemId = Random.Range(21, 23).ToString();
+        this.itemCount = itemCount;
+        this.itemData = itemData;
 
-        itemData = DataTableManager.Instance.GetItemData(resultItemId);
         spriteRenderer.sprite = Resources.Load<Sprite>($"Item/{itemData.itemId}");
 
-        rb.AddForce(new Vector2(Random.Range(-1f, 1f), 3f), ForceMode2D.Impulse);
+        //rb.AddForce(new Vector2(Random.Range(-1f, 1f), 3f), ForceMode2D.Impulse);
     }
 
     public void DestroyItem()
@@ -66,7 +66,7 @@ public class FieldItems : MonoBehaviour
 
         Destroy(this.gameObject);
 
-        InventoryDataManager.Instance.AddItem(itemData, 1);
+        InventoryDataManager.Instance.AddItem(itemData, itemCount);
         Debug.Log($"플레이어가 {itemData.name} 획득!");
         
     }

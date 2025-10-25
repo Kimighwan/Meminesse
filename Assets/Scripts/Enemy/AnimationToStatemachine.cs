@@ -21,13 +21,11 @@ public class AnimationToStatemachine : MonoBehaviour
     private void DamagedAnimationDone()
     {
         damageState.DamagedAnimationDone();
-        Debug.Log("Bat_Damaged Done!!");
     }
 
     private void FinishCharge()
     {
         chargeState.FinishCharge();
-        Debug.Log("Bat_Charge Done!!");
     }
 
     private void FinishTransition()
