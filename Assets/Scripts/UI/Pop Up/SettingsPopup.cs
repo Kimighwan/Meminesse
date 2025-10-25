@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using TMPro;
@@ -6,41 +7,39 @@ using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class SettingPage
+{
+    public GameObject topButtons;
+    public TextMeshProUGUI topButtonTexts;  // 설정창 상위 버튼 텍스트들
+    public GameObject tabs;
+}
+
 public class SettingsPopup : UIBase
 {
     public GameObject popUp;
-    public GameObject audioPopup;
-    public GameObject graphicPopup;
-    public GameObject controlPopup;
+
+    [SerializeField] private List<SettingPage> page = new List<SettingPage>();
 
     // 포커스가 상위부분에 있는지 하위부분에 있는지 판단하는 변수
     private static bool isTopFocus = true;
 
     [SerializeField]
     public TextMeshProUGUI currentBtnText;
-    [SerializeField] 
-    private TextMeshProUGUI[] topButtonTexts;  // 설정창 상위 버튼 텍스트들
 
     private Color32 defaultColor = new Color32(170, 131, 167, 255);
     private Color32 selectedColor = Color.white;
 
     //오디오 슬라이더 관리
     private AudioMixer audioMixer;
-    [SerializeField]
-    private Slider BGMslider;
-    [SerializeField]
-    private Slider SFXslider;
-    [SerializeField]
-    private TextMeshProUGUI BGMText;
-    [SerializeField]
-    private TextMeshProUGUI SFXText;
+    [SerializeField] private Slider BGMslider;
+    [SerializeField] private Slider SFXslider;
+    [SerializeField] private TextMeshProUGUI BGMText;
+    [SerializeField] private TextMeshProUGUI SFXText;
 
-    //조작법 관리
-    [SerializeField]
-    private TextMeshProUGUI ControlText;
-
-    private void Awake()
+    private void OnEnable()
     {
+        Time.timeScale = 0f;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -52,9 +51,7 @@ public class SettingsPopup : UIBase
 
         currentButton = invisibleDummyButton; // 현재 선택된 버튼을 더미버튼으로 초기화
 
-        audioPopup.SetActive(true);          //audio tab active, others inactive
-        graphicPopup.SetActive(false);
-        controlPopup.SetActive(false);
+        ShowTab(1);
 
         BGMslider.onValueChanged.AddListener(OnBGMSliderEvent);
         SFXslider.onValueChanged.AddListener(OnSFXSliderEvent);
@@ -90,48 +87,48 @@ public class SettingsPopup : UIBase
                 isTopFocus = true;
             }
         }
-
-        //DontDestroyOnLoad(this); // 씬이 넘어가도 이 스크립트는 파괴되면 안됨
     }
 
 
     // 선택된 버튼 색상 흰색으로 바꾸는 함수
     public void ChangeTextColor()
     {
-        foreach (var btnText in topButtonTexts)
+        foreach (SettingPage p in page)
         {
-            if (btnText == currentBtnText)
-                btnText.color = selectedColor;   // 선택된 버튼 흰색
+            if (p.topButtonTexts == currentBtnText)
+                p.topButtonTexts.color = selectedColor;   // 선택된 버튼 흰색
             else
-                btnText.color = defaultColor;   // 나머지 보라색
+                p.topButtonTexts.color = defaultColor;   // 나머지 보라색
         }
     }
 
     public void OnClickAudioButton()
     {
-        currentBtnText = topButtonTexts[0]; // 오디오 버튼 텍스트로 현재 버튼 텍스트 설정
-        audioPopup.SetActive(true);          //audio tab active, others inactive
-        graphicPopup.SetActive(false);
-        controlPopup.SetActive(false);
+        ShowTab(0);
         Debug.Log("오디오 설정창 활성화");
     }
 
     public void OnClickGraphicButton()
     {
-        currentBtnText = topButtonTexts[1]; // 그래픽 버튼 텍스트로 현재 버튼 텍스트 설정
-        graphicPopup.SetActive(true);       //graphic tab active, others inactive
-        audioPopup.SetActive(false);
-        controlPopup.SetActive(false);
+        ShowTab(1);
         Debug.Log("그래픽 설정창 활성화");
     }
 
     public void OnClickControlButton()
     {
-        currentBtnText = topButtonTexts[2]; // 조작법 버튼 텍스트로 현재 버튼 텍스트 설정
-        controlPopup.SetActive(true);       //control tab active, others inactive
-        graphicPopup.SetActive(false);
-        audioPopup.SetActive(false);
+        ShowTab(2);
         Debug.Log("조작법 설정창 활성화");
+    }
+
+    public void ShowTab(int index)
+    {
+        currentBtnText = page[index].topButtonTexts;
+        for (int i = 0; i < page.Count; i++)
+        {
+            page[i].tabs.SetActive(false);
+        }
+        page[index].tabs.SetActive(true);
+        SetCurrentButton(page[index].topButtons);
     }
 
     public override void SetCurrentButton(GameObject gb)

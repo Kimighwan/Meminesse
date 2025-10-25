@@ -19,6 +19,23 @@ public class ButtonOutlineController : MonoBehaviour, IPointerClickHandler, IPoi
             outline.gameObject.SetActive(false);
     }
 
+    void OnDisable()
+    {
+        if (blinkCoroutine != null)
+        {
+            StopCoroutine(blinkCoroutine);
+            blinkCoroutine = null;
+        }
+
+        if (outline != null)
+        {
+            outline.gameObject.SetActive(false);
+        }
+
+        isClicked = false;
+    }
+
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!isClicked) ShowOutline(true);
@@ -55,8 +72,8 @@ public class ButtonOutlineController : MonoBehaviour, IPointerClickHandler, IPoi
 
     private void ShowOutline(bool isShow)
     {
-        if (outline == null) return;
-        
+        if (outline == null || !gameObject.activeInHierarchy) return;
+
         outline.gameObject.SetActive(isShow);
         
         if (isShow)

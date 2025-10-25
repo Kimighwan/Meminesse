@@ -66,14 +66,16 @@ public class IngameUIManager : MonoBehaviour
         }
 
         if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))
-        {
+        {   
             inventoryUI.SetActive(!inventoryUI.activeSelf);
+            Cursor.visible = inventoryUI.activeSelf;
             Time.timeScale = inventoryUI.activeSelf ? 0f : 1f;
         }
 
         if(Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
         {
             skillTreeUI.SetActive(!skillTreeUI.activeSelf);
+            Cursor.visible = skillTreeUI.activeSelf;
             Time.timeScale = skillTreeUI.activeSelf ? 0f : 1f;
         }
     }

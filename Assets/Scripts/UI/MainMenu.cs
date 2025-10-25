@@ -47,6 +47,11 @@ public class MainMenu : UIBase
 
     }
 
+    public override void SetCurrentButton(GameObject gb)
+    {
+        base.SetCurrentButton(gb);
+    }
+
     // 종료하시겠습니까 - 예
     public void OnConfirmQuit()
     {
