@@ -6,22 +6,13 @@ using UnityEngine.Rendering;
 using TMPro;
 
 // 인벤토리창 아이템 슬롯창 관리
-public class InventoryUI : MonoBehaviour
+public class InventoryUI : SingletonBehaviour<InventoryUI>
 {
-
     public Slot[] slots; // 인벤토리 슬롯 배열
     public Transform slotHolder; // 슬롯을 담고 있는 부모 오브젝트
 
     [SerializeField]
     private TextMeshProUGUI noItemMessage;
-
-    #region Singleton
-    public static InventoryUI Instance;
-    private void Awake()
-    {
-        Instance = this;
-    }
-    #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

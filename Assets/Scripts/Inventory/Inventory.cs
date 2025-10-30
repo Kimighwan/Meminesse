@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 
 // 인벤토리창 모든 UI 관리
-public class Inventory : MonoBehaviour
+public class Inventory : SingletonBehaviour<Inventory>
 {
     // 돈 두종류 임시 이름
     [SerializeField]
@@ -19,23 +19,6 @@ public class Inventory : MonoBehaviour
 
     // 무기 레벨 UI
     public GameObject[] weaponLevels; 
-
-    #region Singleton
-    public static Inventory Instance;
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
-    #endregion
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

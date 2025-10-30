@@ -24,36 +24,44 @@ public class UIBase : MonoBehaviour
 
     protected virtual void Update()
     {
+        CheckMouseInput();
+        CheckKeyboardInput(); 
+    }
+
+    public void CheckMouseInput()
+    {
         // mouse mode
         if ((isKeyboardMode == true) && (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0))
         {
-            Debug.Log("마우스 모드 진입");
+            Debug.Log("UIBase - 마우스 모드 진입");
             EventSystem.current.SetSelectedGameObject(null);  // 선택 끊기
             isKeyboardMode = false;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
+    }
 
+    public void CheckKeyboardInput()
+    {
         // keyboard mode
         if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)) && (isKeyboardMode == false))
         {
-            Debug.Log("키보드 모드 진입");
+            Debug.Log("UIBase - 키보드 모드 진입");
 
             EventSystem.current.SetSelectedGameObject(currentButton); //다시 선택
             SetCurrentButton(currentButton);
 
             isKeyboardMode = true;
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked; 
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
-    
     public virtual void SetCurrentButton(GameObject gb)
     {
         currentButton = gb;
 
-        EventSystem.current.SetSelectedGameObject(null); 
+        EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(gb);   
     }
 }

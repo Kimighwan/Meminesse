@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 // 인게임 씬 관리 
 public class IngameUIManager : MonoBehaviour
-{
+{ 
     [SerializeField] private GameObject pauseMenuPopUp;
     [SerializeField] private GameObject settingPopUp;
 
@@ -17,7 +17,7 @@ public class IngameUIManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Cursor.visible = false;
+        Cursor.visible = false;  
     }
 
     // Update is called once per frame
@@ -66,14 +66,16 @@ public class IngameUIManager : MonoBehaviour
         }
 
         if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))
-        {
+        {   
             inventoryUI.SetActive(!inventoryUI.activeSelf);
+            Cursor.visible = inventoryUI.activeSelf;
             Time.timeScale = inventoryUI.activeSelf ? 0f : 1f;
         }
 
         if(Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
         {
             skillTreeUI.SetActive(!skillTreeUI.activeSelf);
+            Cursor.visible = skillTreeUI.activeSelf;
             Time.timeScale = skillTreeUI.activeSelf ? 0f : 1f;
         }
     }

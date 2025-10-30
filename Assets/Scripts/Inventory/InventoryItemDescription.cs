@@ -6,17 +6,8 @@ using TMPro;
 using JetBrains.Annotations;
 
 // 인벤토리창 아이템 설명칸 관리
-public class InventoryItemDescription : MonoBehaviour
+public class InventoryItemDescription : SingletonBehaviour<InventoryItemDescription>
 {
-    
-    #region Singleton
-    public static InventoryItemDescription Instance;
-    private void Awake()
-    {
-        Instance = this;
-    }
-    #endregion
-
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private TextMeshProUGUI itemDescText;
