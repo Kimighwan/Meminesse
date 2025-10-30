@@ -105,6 +105,7 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
         keyDataList.Add(new KeyData("BasicAttack", KeyCode.Z));
         keyDataList.Add(new KeyData("Jump", KeyCode.X));
         keyDataList.Add(new KeyData("Dash", KeyCode.LeftShift));
+        keyDataList.Add(new KeyData("BackDash", KeyCode.LeftAlt));
         keyDataList.Add(new KeyData("Skill1", KeyCode.A));
         keyDataList.Add(new KeyData("Skill2", KeyCode.S));
         keyDataList.Add(new KeyData("Skill3", KeyCode.D));
