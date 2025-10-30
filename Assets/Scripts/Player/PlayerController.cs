@@ -1023,6 +1023,9 @@ public class PlayerController : MonoBehaviour
         hitboxManager.setAttackDamage(baseAttack * attackMultiplier);
         hitboxManager.setPlayerPosition(transform.position);
         hitboxManager.setDefenceIngore(defIgnore);
+        
+        // Prepare the hitbox for this attack activation (clears per-activation cache)
+        hitboxManager.BeginAttack();
         currentHitbox.SetActive(true);
 
         // Flip the hitbox according to the player's facing direction

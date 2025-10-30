@@ -17,6 +17,7 @@ public class MapController : MonoBehaviour
         if (startingMap != null)
         {
             startingMap.gameObject.SetActive(true);
+            Debug.Log("Starting map activated");
             currentMap = startingMap;
             currentMap.CheckMapVisited();
         }

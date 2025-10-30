@@ -134,7 +134,7 @@ BUGS:
         - Added additional raycasts
     Player input not being received                                         - Fixed 10/12
         - Fixed naming issues in playercontroller and added indices in SettingDataManager
-    Skill cooldowns                                                         - 
+    Skill cooldowns                                                         - Fixed 10/12
 
 MISC:
     Player jump?
