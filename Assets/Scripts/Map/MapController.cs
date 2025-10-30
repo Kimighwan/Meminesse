@@ -18,6 +18,7 @@ public class MapController : MonoBehaviour
         if (startingMap != null)
         {
             startingMap.gameObject.SetActive(true);
+            Debug.Log("Starting map activated");
             currentMap = startingMap;
             currentMap.CheckMapVisited();
         }
@@ -25,12 +26,16 @@ public class MapController : MonoBehaviour
 
     public void TeleportPlayer(PlayerController player, Map targetMap, Transform targetPoint)
     {
-        if (targetMap == null || targetMap == currentMap) return;
+        if (targetMap == null || targetPoint == null || player == null)
+        {
+            return;
+        }
 
         currentMap.gameObject.SetActive(false);
         targetMap.gameObject.SetActive(true);
         currentMap = targetMap;
         currentMap.CheckMapVisited();
+
         player.transform.position = targetPoint.position;
         respawnPoint = targetPoint;
     }

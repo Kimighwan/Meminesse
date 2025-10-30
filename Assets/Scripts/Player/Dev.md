@@ -120,8 +120,10 @@ MISC:
 TODO:
     Implement MapController                                                 - Implemented 09/19
     Implement Portals                                                       - Implemented 09/19
-    Implement PlayerDataControl                                             - 
+    Implement PlayerDataControl                                             - Implemented 10/09
     Implement barrier with def                                              - Implemented 10/09
+    Implement sideways invincibility barrier                                - Implemented 10/12
+    Implement more respawn point functionalities for mapcontroller          - Implemented 10/12
 
 BUGS:
     Player not being teleported                                             - Fixed 09/28
@@ -129,7 +131,12 @@ BUGS:
     Player can't exit out of jump when on tilemaps                          - Fixed 09/28
         - Changed composite collider 'Geometry Type' to polygons
     Player wall scan raycasts are too far apart                             - Fixed 10/09
+        - Added additional raycasts
+    Player input not being received                                         - Fixed 10/12
+        - Fixed naming issues in playercontroller and added indices in SettingDataManager
+    Skill cooldowns                                                         - Fixed 10/12
 
 MISC:
     Player jump?
+    Combat check?
 

@@ -934,11 +934,9 @@ MonoBehaviour:
   dashSpeed: 12
   backDashSpeed: 9
   dashDuration: 0.3
-  dashCooldown: 0.5
   currentAttackType: 0
   attackCoolDown: 0
   maxAttackInterval: 0.3
-  baseAttack: 1
   damage_GroundedComboAttack:
   - 1
   - 1
@@ -948,6 +946,8 @@ MonoBehaviour:
   damage_AirHeavyAttack: 1
   damage_HolySlash: 1
   damage_LightCut: 1
+  holySlashCoolDown: 30
+  lightCutCoolDown: 15
   hitboxPivot: {fileID: 5984628344062893047}
   groundAttackHitbox:
   - {fileID: 5767237368388627619}
@@ -961,8 +961,7 @@ MonoBehaviour:
   - {fileID: 8451189062291722143}
   holySlashAttackHitbox: {fileID: 4043574755532172727}
   lightCutAttackHitbox: {fileID: 4266524566150522156}
-  playerHealth: 3
-  invincibleTimeAfterHit: 10
+  invincibleTimeAfterHit: 3
   minHeightForAirHeavyAttack: 3
   groundCheckDistance: 0.6
   groundCheckWidth: 0.4
