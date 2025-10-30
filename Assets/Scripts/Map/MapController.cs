@@ -6,6 +6,7 @@ public class MapController : MonoBehaviour
     [SerializeField] Map[] maps;
     [SerializeField] Map startingMap;
     [SerializeField] Map currentMap;
+    [SerializeField] Transform respawnPoint;
 
     private void Start()
     {
@@ -36,13 +37,14 @@ public class MapController : MonoBehaviour
         currentMap.CheckMapVisited();
 
         player.transform.position = targetPoint.position;
+        respawnPoint = targetPoint;
     }
 
     public IEnumerator RespawnPlayer(PlayerController player)
     {
         player.gameObject.SetActive(false);
         yield return new WaitForSeconds(1f);
-        player.transform.position = currentMap.GetRespawnPoint().transform.position;
+        player.transform.position = respawnPoint.position;
         player.gameObject.SetActive(true);
         yield return null;
     }
