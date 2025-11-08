@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
         {
             popupStack.Remove(popup);
         }
-        DebugPopupStack();
+        //DebugPopupStack();
         popupStack.Add(popup);
         UpdateGlobalState();
     }
@@ -96,7 +96,9 @@ public class UIManager : MonoBehaviour
         // 커서 제어 보류
         Cursor.visible = hasActivePopup;
         Cursor.lockState = hasActivePopup ? CursorLockMode.None : CursorLockMode.Locked;
-        Time.timeScale = hasActivePopup ? 0f : 1f;
+        
+        if(hasActivePopup) TimeManager.Instance.Pause();
+        else TimeManager.Instance.Resume();
     }
 
     // 디버그
