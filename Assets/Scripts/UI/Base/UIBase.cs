@@ -56,7 +56,7 @@ public class UIBase : MonoBehaviour, IPopupUI
         }
         UIManager.Instance?.NotifyPopupShown(this);
         OnShown();
-        UIManager.Instance.DebugPopupStack();
+        //UIManager.Instance.DebugPopupStack();
     }
     public virtual void Hide()
     {
@@ -68,7 +68,7 @@ public class UIBase : MonoBehaviour, IPopupUI
         RootObject.SetActive(false);
         UIManager.Instance?.NotifyPopupHidden(this);
         OnHidden();
-        UIManager.Instance.DebugPopupStack();
+        //UIManager.Instance.DebugPopupStack();
     }
 
     protected virtual void OnShown()
