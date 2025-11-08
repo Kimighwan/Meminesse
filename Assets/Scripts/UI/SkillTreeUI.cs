@@ -63,8 +63,9 @@ public class SkillTreeUI : UIBase
         }
     }
 
-    private void OnEnable()
+    protected override void OnShown()
     {
+        base.OnShown();
         descActiveGO.SetActive(false);
     }
 

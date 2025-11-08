@@ -1329,7 +1329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e365542293096c41a9c025a9bcd0cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDatabase: {fileID: 0}
   itemImage: {fileID: 258719861764740795}
   itemNameText: {fileID: 1073513225911892300}
   itemDescText: {fileID: 761425670551401593}
@@ -1789,6 +1788,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d4af16070c12749b2dfa415346ed05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rootObject: {fileID: 2701582711324262280}
+  invisibleDummyButton: {fileID: 0}
+  closableByEscape: 1
+  currentButton: {fileID: 0}
   slots: []
   slotHolder: {fileID: 5521179081222799491}
   noItemMessage: {fileID: 2078115132610331101}
@@ -1804,10 +1807,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402cac1c8fd86204990102ca37c94b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invisibleDummyButton: {fileID: 0}
-  currentButton: {fileID: 0}
-  itemDatabase: {fileID: 0}
-  itemDataList: []
   mintMoney: {fileID: 5564495605084879599}
   redMoney: {fileID: 579766781705575325}
   weaponImages:
