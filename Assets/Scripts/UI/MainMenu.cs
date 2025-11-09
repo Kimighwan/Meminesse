@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class MainMenu : UIBase
 {
     [SerializeField]
-    private GameObject settingUI;
+    private UIBase settingUI;
 
     [SerializeField]
-    private GameObject exitConfirmationPopupUI;
+    private UIBase exitConfirmationPopupUI;
 
     protected override void Start()
     {
@@ -21,7 +21,7 @@ public class MainMenu : UIBase
     protected override void Update()
     {
         // 창이 넘어갔을 때 포커스에 메인에 그대로 있는 문제 해결
-        if (settingUI.activeSelf) return;
+        if (settingUI != null && settingUI.IsActive) return;
         
         base.Update();
     }
@@ -38,11 +38,12 @@ public class MainMenu : UIBase
 
     public void OnClickSetting()
     {
+        settingUI?.Show();
     }
 
     public void OnClickQuit()   
     {
-        exitConfirmationPopupUI.SetActive(true);
+        exitConfirmationPopupUI?.Show();
         //SetCurrentButton(exitConfirmationPopupUI.transform.Find("Yes").gameObject); // 팝업의 Yes 버튼에 포커스 설정
 
     }
@@ -66,10 +67,7 @@ public class MainMenu : UIBase
     // 종료하시겠습니까 - 아니오
     public void OnCancelQuit()
     {
-        exitConfirmationPopupUI.SetActive(false);
-
-        // 창이 넘어갔을 때 포커스에 메인에 그대로 있는 문제 해결
-        if (exitConfirmationPopupUI.activeSelf) return;
+        exitConfirmationPopupUI?.Hide();
     }
 
 }

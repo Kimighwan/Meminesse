@@ -1,50 +1,118 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIBase : MonoBehaviour
+public class UIBase : MonoBehaviour, IPopupUI
 {
+    [SerializeField] private GameObject rootObject;
 
     [Header("기본 포커싱용 더미 버튼")]
-    public GameObject invisibleDummyButton;
+    [SerializeField] protected GameObject invisibleDummyButton;
 
+    [SerializeField] private bool closableByEscape = true;
     public static bool isKeyboardMode = false; 
 
     public GameObject currentButton;
 
-
+    protected virtual void Awake()
+    {
+        if (rootObject == null)
+        {
+            rootObject = gameObject;
+        }
+    }
     protected virtual void Start()
     {
         isKeyboardMode = false;
-        Cursor.visible = true;   // Default -> mouse cursor visible
-        Cursor.lockState = CursorLockMode.None;
-
-        SetCurrentButton(invisibleDummyButton);
+        if (invisibleDummyButton != null)
+        {
+            SetCurrentButton(invisibleDummyButton);
+        }
     }
 
 
     protected virtual void Update()
     {
+        if (!IsActive)
+        {
+            return;
+        }
+
         CheckMouseInput();
         CheckKeyboardInput(); 
     }
+    protected GameObject RootObject => rootObject != null ? rootObject : gameObject;
+    public bool IsClosableByEscape => closableByEscape;
+    public bool IsActive => RootObject.activeSelf;
 
-    public void CheckMouseInput()
+    protected void SetRootObject(GameObject root)
     {
-        // mouse mode
-        if ((isKeyboardMode == true) && (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0))
+        rootObject = root;
+    }
+    public virtual void Show()
+    {
+        if (!IsActive)
         {
-            Debug.Log("UIBase - 마우스 모드 진입");
-            EventSystem.current.SetSelectedGameObject(null);  // 선택 끊기
-            isKeyboardMode = false;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            RootObject.SetActive(true);
+        }
+        UIManager.Instance?.NotifyPopupShown(this);
+        OnShown();
+        //UIManager.Instance.DebugPopupStack();
+    }
+    public virtual void Hide()
+    {
+        if (!IsActive)
+        {
+            return;
+        }
+
+        RootObject.SetActive(false);
+        UIManager.Instance?.NotifyPopupHidden(this);
+        OnHidden();
+        //UIManager.Instance.DebugPopupStack();
+    }
+
+    protected virtual void OnShown()
+    {
+        isKeyboardMode = false;
+
+        if (invisibleDummyButton != null)
+        {
+            SetCurrentButton(invisibleDummyButton);
         }
     }
 
-    public void CheckKeyboardInput()
+    protected virtual void OnHidden()
+    {
+    }
+
+    public virtual bool HandleEscape()
+    {
+        return false;  // false - esc버튼으로 팝업 닫기 가능
+    }
+
+    protected void CheckMouseInput()
+    {
+        if (!isKeyboardMode)
+        {
+            return;
+        }
+
+        if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+        {
+            if (EventSystem.current != null)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+            }
+
+            isKeyboardMode = false;
+        }
+    }
+    protected void CheckKeyboardInput()
     {
         // keyboard mode
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)) && (isKeyboardMode == false))
+        if (isKeyboardMode)
+            return;
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Debug.Log("UIBase - 키보드 모드 진입");
 
@@ -52,8 +120,6 @@ public class UIBase : MonoBehaviour
             SetCurrentButton(currentButton);
 
             isKeyboardMode = true;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
@@ -61,6 +127,10 @@ public class UIBase : MonoBehaviour
     {
         currentButton = gb;
 
+        if (EventSystem.current == null)
+        {
+            return;
+        }
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(gb);   
     }

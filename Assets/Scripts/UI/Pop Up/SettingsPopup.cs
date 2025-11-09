@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class SettingPage
@@ -17,7 +18,8 @@ public class SettingPage
 
 public class SettingsPopup : UIBase
 {
-    public GameObject popUp;
+    [FormerlySerializedAs("popUp")]
+    [SerializeField] private GameObject popupRoot;
 
     [SerializeField] private List<SettingPage> page = new List<SettingPage>();
 
@@ -37,21 +39,22 @@ public class SettingsPopup : UIBase
     [SerializeField] private TextMeshProUGUI BGMText;
     [SerializeField] private TextMeshProUGUI SFXText;
 
-    private void OnEnable()
+    protected override void Awake()
     {
-        Time.timeScale = 0f;
+        SetRootObject(popupRoot);
+        base.Awake();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
-        base.Start(); //UIBase꺼 그대로 사용 
+        base.Start(); 
 
         audioMixer = Resources.Load<AudioMixer>("Audio/AudioMixer");
 
         currentButton = invisibleDummyButton; // 현재 선택된 버튼을 더미버튼으로 초기화
 
-        ShowTab(1);
+        ShowTab(0);
 
         BGMslider.onValueChanged.AddListener(OnBGMSliderEvent);
         SFXslider.onValueChanged.AddListener(OnSFXSliderEvent);
@@ -62,33 +65,39 @@ public class SettingsPopup : UIBase
     protected override void Update()
     {
         base.Update();
-
+        if (!IsActive)
+        {
+            return;
+        }
         ChangeTextColor();
         if (isTopFocus)
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
                 isTopFocus = false;
-
-            // esc - 설정창 끄기
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Debug.Log("설정 팝업 닫힘");
-                this.popUp.SetActive(false); // 팝업 꺼짐
-            }
-        }
-
-        // esc - 상위로 (오디오 버튼으로)         ////esc누르면 설정창이 꺼져버림(IngameUIManager이먼저실행되서) 나중에수정
-        else
-        {
-            //ChangeTextColor(currentBtnText);
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                EventSystem.current.SetSelectedGameObject(currentButton);
-                isTopFocus = true;
-            }
         }
     }
 
+    protected override void OnShown()
+    {
+        base.OnShown();
+        isTopFocus = true;
+    }
+
+    public override bool HandleEscape()
+    {
+        if (!isTopFocus)
+        {
+            if (EventSystem.current != null && currentButton != null)
+            {
+                EventSystem.current.SetSelectedGameObject(currentButton);
+            }
+
+            isTopFocus = true;
+            return true;
+        }
+
+        return base.HandleEscape();
+    }
 
     // 선택된 버튼 색상 흰색으로 바꾸는 함수
     public void ChangeTextColor()
@@ -156,5 +165,10 @@ public class SettingsPopup : UIBase
     public void SetSFXSlider(float value)
     { 
         audioMixer.SetFloat("SFX", Mathf.Log10(value) * 20);
+    }
+
+    public override void Hide()
+    {
+        base.Hide();
     }
 }

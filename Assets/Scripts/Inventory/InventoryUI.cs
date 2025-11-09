@@ -6,34 +6,39 @@ using UnityEngine.Rendering;
 using TMPro;
 
 // 인벤토리창 아이템 슬롯창 관리
-public class InventoryUI : SingletonBehaviour<InventoryUI>
+public class InventoryUI : UIBase
 {
+    public static InventoryUI Instance { get; private set; }
+
     public Slot[] slots; // 인벤토리 슬롯 배열
     public Transform slotHolder; // 슬롯을 담고 있는 부모 오브젝트
 
     [SerializeField]
     private TextMeshProUGUI noItemMessage;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    #region Singleton
+    protected override void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        base.Awake();
+    }
+    #endregion
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    protected override void Start()
+    {
+        base.Start();
         slots = slotHolder.GetComponentsInChildren<Slot>(); // 자식 오브젝트 가져오기
         UpdateInventory();
     }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        if(gameObject.activeSelf)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                gameObject.SetActive(false);
-            }
-        }
-    }
-
- 
 
     //슬롯에 아이템 추가하는 함수      <<  플레이어가 아이템 먹을 때 사용
     public void AddItemToInventory(ItemData itemData)
@@ -99,5 +104,6 @@ public class InventoryUI : SingletonBehaviour<InventoryUI>
         UpdateInventory();
     }
 
+    
 
 }

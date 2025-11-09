@@ -6,18 +6,6 @@ public class ItemDropManager : SingletonBehaviour<ItemDropManager>
     public GameObject fieldItemPrefab;
     [SerializeField] private GameObject player;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void MonsterDrop(Vector3 monsterPos)
     {
         for (int i = 0; i < dropItemCount; i++)
