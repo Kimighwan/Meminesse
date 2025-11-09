@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float fallGravityScale = 3.5f;
     [SerializeField] float jumpGravityScale = 2.2f;
     [SerializeField] float normalGravityScale = 2.5f;
+    [SerializeField] float maxFallSpeed = -20f;
 
     // Dash parameters
     [SerializeField] float dashSpeed = 12f;
@@ -209,7 +210,7 @@ public class PlayerController : MonoBehaviour
     private void ManageInputs()
     {
         // Uncontrollable state
-        if (lockInput)
+        if (lockInput || Time.timeScale == 0)
         {
             return;
         }
@@ -302,6 +303,7 @@ public class PlayerController : MonoBehaviour
         else if (!isGrounded && rigid.linearVelocity.y < 0 && !isAttacking && !isDashing && !isBackDashing)
         {
             ChangeState(PlayerState.Falling);
+            LimitVelocity();
         }
         // Crouch
         else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Down"))
@@ -396,7 +398,7 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyStateEffects()
     {
-        // Only gravity fixes for now, more to be added later
+        // Adjust gravity based on state
         AdjustGravity();
     }
 
@@ -442,6 +444,15 @@ public class PlayerController : MonoBehaviour
         }
 
         rigid.gravityScale = targetGravity;
+    }
+
+    private void LimitVelocity()
+    {
+        // Falling speed = negative value
+        if (rigid.linearVelocity.y < maxFallSpeed)
+        {
+            rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, maxFallSpeed);
+        }
     }
 
     // State checks
@@ -538,7 +549,7 @@ public class PlayerController : MonoBehaviour
 
     private void MoveCharacter()
     {
-        if (lockInput)
+        if (lockInput || Time.timeScale == 0)
             return;
 
         if (canMove)
@@ -966,6 +977,8 @@ public class PlayerController : MonoBehaviour
         float maxScanTime = 0;
         float attackMultiplier = 1;
         float baseAttack = PlayerDataManager.Instance.GetDamage();
+        float weaponLevel = PlayerDataManager.Instance.GetWeaponLevel();
+        baseAttack *= (1 + (weaponLevel - 1) * 0.1f);
 
         // Select hitboxes
         switch (type)

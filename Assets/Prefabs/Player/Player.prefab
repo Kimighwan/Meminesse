@@ -931,6 +931,7 @@ MonoBehaviour:
   fallGravityScale: 7
   jumpGravityScale: 2.2
   normalGravityScale: 5
+  maxFallSpeed: -20
   dashSpeed: 12
   backDashSpeed: 9
   dashDuration: 0.3
@@ -944,8 +945,8 @@ MonoBehaviour:
   damage_CrouchAttack: 1
   damage_AirAttack: 1
   damage_AirHeavyAttack: 1
-  damage_HolySlash: 1
-  damage_LightCut: 1
+  damage_HolySlash: 3
+  damage_LightCut: 2
   holySlashCoolDown: 30
   lightCutCoolDown: 15
   hitboxPivot: {fileID: 5984628344062893047}
