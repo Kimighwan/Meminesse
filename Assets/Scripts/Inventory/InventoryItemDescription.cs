@@ -62,7 +62,7 @@ public class InventoryItemDescription : SingletonBehaviour<InventoryItemDescript
                 item = GetItemById("14");
                 upgradeCost.text = "5000 필요";
                 break;
-            // 만계황혼의 심연룡섬검
+            // 전설의 검
             case 5:
                 item = GetItemById("15");
                 break;  

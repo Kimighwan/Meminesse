@@ -23,11 +23,6 @@ public class HpUIManager : SingletonBehaviour<HpUIManager>
         SyncAllHpUI();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnEnable()
     {
         maxHp = PlayerDataManager.Instance.GetMaxHp();

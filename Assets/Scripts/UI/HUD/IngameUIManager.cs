@@ -5,132 +5,87 @@ using UnityEngine.SceneManagement;
 // 인게임 씬 관리 
 public class IngameUIManager : MonoBehaviour
 { 
-    [SerializeField] private GameObject pauseMenuPopUp;
-    [SerializeField] private GameObject settingPopUp;
+    [SerializeField] private UIBase pauseMenuPopUp;
+    [SerializeField] private UIBase settingPopUp;
 
-    [SerializeField] private GameObject GoToMainConfirmationPopupUI; // 진행중인 게임을 종료하고 메인 메뉴로 나가시겠습니까?
-    [SerializeField] private GameObject exitConfirmationPopupUI;   // 종료하시겠습니까? 
+    [SerializeField] private ExitConfirmPopUp exitPopup;
+    [SerializeField] private UIBase exitConfirmPopUp;   // 종료하시겠습니까? 
 
-    [SerializeField] private GameObject skillTreeUI;
-    [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private UIBase skillTreeUI;
+    [SerializeField] private UIBase inventoryUI;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Cursor.visible = false;  
-    }
 
     // Update is called once per frame
     void Update()
     {
-        // 리팩토링 시급 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            bool isActive = pauseMenuPopUp.activeSelf;
-            if (settingPopUp.activeSelf)
+            if (UIManager.Instance != null && UIManager.Instance.HasActivePopup)
             {
-                settingPopUp.SetActive(false);
-                pauseMenuPopUp.SetActive(true);
+                return;
             }
-            else if (GoToMainConfirmationPopupUI.activeSelf)
-            {
-                GoToMainConfirmationPopupUI.SetActive(false);
-                pauseMenuPopUp.SetActive(true);
-            }
-            else if (exitConfirmationPopupUI.activeSelf)
-            {
-                exitConfirmationPopupUI.SetActive(false);
-                pauseMenuPopUp.SetActive(true);
-            }
-            else if (skillTreeUI.activeSelf)
-            {
-                skillTreeUI.SetActive(false);
-            }
-            else if (inventoryUI.activeSelf)
-            {
-                inventoryUI.SetActive(false);
-            }
-            else
-                pauseMenuPopUp.SetActive(!pauseMenuPopUp.activeSelf);
 
-            if (pauseMenuPopUp.activeSelf)
+
+            if (pauseMenuPopUp != null)
             {
-                // 메뉴를 켤 때
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                // 메뉴를 끌 때
-                Time.timeScale = 1f;
+                if (pauseMenuPopUp.IsActive)
+                {
+                    pauseMenuPopUp.Hide();
+                }
+                else
+                {
+                    Debug.Log("IngameUIManager - 일시정지 팝업 열기");
+                    pauseMenuPopUp.Show();
+                }
             }
         }
 
         if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))
-        {   
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
-            Cursor.visible = inventoryUI.activeSelf;
-            Time.timeScale = inventoryUI.activeSelf ? 0f : 1f;
+        {
+            if (inventoryUI != null)
+            {
+                if (inventoryUI.IsActive)
+                {
+                    inventoryUI.Hide();
+                }
+                else
+                {
+                    inventoryUI.Show();
+                }
+            }
         }
 
-        if(Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
+        if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
         {
-            skillTreeUI.SetActive(!skillTreeUI.activeSelf);
-            Cursor.visible = skillTreeUI.activeSelf;
-            Time.timeScale = skillTreeUI.activeSelf ? 0f : 1f;
-        }
+            if (skillTreeUI != null)
+            {
+                if (skillTreeUI.IsActive)
+                {
+                    skillTreeUI.Hide();
+                }
+                else
+                {
+                    skillTreeUI.Show();
+                }
+            }
     }
+}
     public void OnClickResume()
     {
-        pauseMenuPopUp.SetActive(false);
-        Time.timeScale = 1f;
+        pauseMenuPopUp.Hide();
     }
     public void OnClickSetting()
     {
-        settingPopUp.SetActive(true);
+        settingPopUp.Show();
     }
-    public void OnClickMainMenu()
-    {
-        pauseMenuPopUp.SetActive(false);
-        GoToMainConfirmationPopupUI.SetActive(true);
+    public void OnClickMain()
+    { 
+        exitPopup.ShowMessage(ExitConfirmPopUp.ConfirmType.GoToMain);
+        exitConfirmPopUp.Show();
     }
     public void OnClickQuit()
     {
-        //if (pauseMenuPopUp.activeSelf) return;
-        pauseMenuPopUp.SetActive(false);
-        exitConfirmationPopupUI.SetActive(true);
-        //SetCurrentButton(exitConfirmationPopupUI.transform.Find("Yes").gameObject); // 팝업의 Yes 버튼에 포커스 설정
-
+        exitPopup.ShowMessage(ExitConfirmPopUp.ConfirmType.QuitGame);
+        exitConfirmPopUp.Show();
     }
-
-    // 진행중인 게임을 종료하고 메인 메뉴로 나가시겠습니까?
-    public void OnConfirmGoToMainMenu() // 예
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-    public void OnCancelGoToMainMenu() // 아니오
-    {
-        pauseMenuPopUp.SetActive(true);
-        GoToMainConfirmationPopupUI.SetActive(false);
-    }
-
-
-    // 종료하시겠습니까?
-    public void OnConfirmQuit() // 예
-    {
-        Debug.Log("Game closed");
-#if UNITY_EDITOR                  //Unity 에디터에서 실행 중일 때만 아래 코드를 실행
-        UnityEditor.EditorApplication.isPlaying = false;       //에디터에서 Play 중지
-#else
-        Application.Quit();       //실제 게임에서 종료
-#endif
-    }
-    public void OnCancelQuit() // 아니오
-    {
-        // 팝업 닫기
-        exitConfirmationPopupUI.SetActive(false);
-        pauseMenuPopUp.SetActive(true);
-        // 창이 넘어갔을 때 포커스에 메인에 그대로 있는 문제 해결
-        if (exitConfirmationPopupUI.activeSelf) return;
-    }
-
 }
