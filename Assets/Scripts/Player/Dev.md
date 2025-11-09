@@ -124,6 +124,8 @@ TODO:
     Implement barrier with def                                              - Implemented 10/09
     Implement sideways invincibility barrier                                - Implemented 10/12
     Implement more respawn point functionalities for mapcontroller          - Implemented 10/12
+    Skill cooldowns                                                         - Implemented 10/12
+    Limit vertical velocity when falling                                    - Implemented 11/09
 
 BUGS:
     Player not being teleported                                             - Fixed 09/28
@@ -134,9 +136,8 @@ BUGS:
         - Added additional raycasts
     Player input not being received                                         - Fixed 10/12
         - Fixed naming issues in playercontroller and added indices in SettingDataManager
-    Skill cooldowns                                                         - Fixed 10/12
+    Player being able to turn around when paused
+        - Added timescale checks on movement-related code                   - Fixed 11/09
 
 MISC:
-    Player jump?
-    Combat check?
-
+    Levels Q/A
