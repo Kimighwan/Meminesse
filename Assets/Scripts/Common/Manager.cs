@@ -5,9 +5,9 @@ public class Manager : MonoBehaviour
 {
     private static Manager _instance;
 
-    SceneLoader _scene;
+    //SceneLoader _scene;
     public static Manager Instance {  get { return _instance; } }
-    public static SceneLoader Scene { get { return _instance._scene; } }
+    //public static SceneLoader Scene { get { return _instance._scene; } }
 
     private void Awake()
     {
@@ -24,6 +24,6 @@ public class Manager : MonoBehaviour
 
     private void Init()
     {
-        _scene = new();
+        //_scene = new();
     }
 }

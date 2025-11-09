@@ -33,7 +33,7 @@ public class MainMenu : UIBase
 
     public void OnClickLoadGame()
     {
-        SceneManager.LoadScene("ReloadScene");  
+        //SceneManager.LoadScene("ReloadScene");  
     }
 
     public void OnClickSetting()

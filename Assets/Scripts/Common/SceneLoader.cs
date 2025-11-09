@@ -7,7 +7,7 @@ public enum SceneType
     GameScene,
 }
 
-public class SceneLoader
+public class SceneLoader : SingletonBehaviour<SceneLoader>
 { 
     // 씬 불러오기
     public void LoadScene(SceneType sceneType)  
