@@ -10,6 +10,8 @@ using static UnityEditor.Timeline.Actions.MenuPriority;
 // 인벤토리창 모든 UI 관리
 public class Inventory : SingletonBehaviour<Inventory>
 {
+    public List<InventoryData> itemDataList;
+
     // 돈 두종류 임시 이름
     [SerializeField] private TextMeshProUGUI mintMoney;
     [SerializeField] private TextMeshProUGUI redMoney;
@@ -23,17 +25,35 @@ public class Inventory : SingletonBehaviour<Inventory>
     // 재화 불충분 경고 메시지
     [SerializeField] private TextMeshProUGUI message;
 
+    private void Awake()
+    {
+        RefreshInventory();
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // 돈 초기화
-        UpdateMoneyUI();
-
-        // 무기 레벨 UI 초기화
-        UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponLevel());
+        RefreshInventory();
     }
 
-    public void UpdateMoneyUI()
+    private void OnEnable()
+    {
+        RefreshInventory();
+    }
+
+    // 인벤토리 모든 부분 최신화 
+    public void RefreshInventory()
+    {
+        itemDataList = InventoryDataManager.Instance.GetItemDataList();
+
+        UpdateMoney();
+        UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponLevel());
+        HpUIManager.Instance.UpdateHearts();
+        InventoryUI.Instance.UpdateInventory();
+        Debug.Log(">>>>>>>>>>>>>>> 인벤토리 갱신!");
+    }
+
+    public void UpdateMoney()
     {
         if (InventoryDataManager.Instance.ExistItem("21") != false)
         {
@@ -90,7 +110,7 @@ public class Inventory : SingletonBehaviour<Inventory>
             Debug.Log("업그레이드 데이터 null");
             return;
         }
-        Debug.Log($"현재 무기 레벨: {weaponStep}, 보유 마연석: {money}, 필요마연석 : {upgradeInfo.Count}");
+        Debug.Log($"현재 무기 레벨: {weaponStep}, 보유 마연석: {money}, 필요 마연석 : {upgradeInfo.Count}");
         if (money <= upgradeInfo.Count)
         {
             Debug.Log($"업그레이드 실패! 마연석이 부족합니다. 필요: {upgradeInfo.Count}, 보유: {money}");
@@ -103,7 +123,7 @@ public class Inventory : SingletonBehaviour<Inventory>
         PlayerDataManager.Instance.UpgradeWeaponLevel();
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponLevel());
         InventoryItemDescription.Instance.ShowWeaponDescription(); // 무기 업그레이드 후 설명창 업데이트
-        UpdateMoneyUI();
+        UpdateMoney();
         Debug.Log($"업그레이드 성공! 무기 레벨이 {weaponStep + 1}로 상승했습니다.");
     }
 
@@ -113,7 +133,7 @@ public class Inventory : SingletonBehaviour<Inventory>
         var itemData = DataTableManager.Instance.GetItemData("22");
 
         InventoryDataManager.Instance.AddItem(itemData, 1000);
-        UpdateMoneyUI();
+        UpdateMoney();
     }
 
 }

@@ -31,11 +31,12 @@ public class IngameUIManager : MonoBehaviour
                 if (pauseMenuPopUp.IsActive)
                 {
                     pauseMenuPopUp.Hide();
+                    Debug.Log("IngameUIManager - 일시정지 팝업 끄기");
                 }
                 else
                 {
-                    Debug.Log("IngameUIManager - 일시정지 팝업 열기");
                     pauseMenuPopUp.Show();
+                    Debug.Log("IngameUIManager - 일시정지 팝업 열기");
                 }
             }
         }
