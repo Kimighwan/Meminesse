@@ -94,10 +94,10 @@ public class UIManager : MonoBehaviour
         bool hasActivePopup = popupStack.Count > 0;
         
         // 커서 제어 보류
-        Cursor.visible = hasActivePopup;
-        Cursor.lockState = hasActivePopup ? CursorLockMode.None : CursorLockMode.Locked;
-        
-        if(hasActivePopup) TimeManager.Instance.Pause();
+        //Cursor.visible = hasActivePopup;
+        //Cursor.lockState = hasActivePopup ? CursorLockMode.None : CursorLockMode.Locked;
+        //Time.timeScale = hasActivePopup ? 0f : 1f;
+        if (hasActivePopup) TimeManager.Instance.Pause();
         else TimeManager.Instance.Resume();
     }
 

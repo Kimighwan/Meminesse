@@ -167,6 +167,7 @@ public class SettingsPopup : UIBase
         audioMixer.SetFloat("SFX", Mathf.Log10(value) * 20);
     }
 
+    // 필요한가?
     public override void Hide()
     {
         base.Hide();
