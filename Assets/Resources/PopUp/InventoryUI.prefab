@@ -1807,6 +1807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402cac1c8fd86204990102ca37c94b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDataList: []
   mintMoney: {fileID: 5564495605084879599}
   redMoney: {fileID: 579766781705575325}
   weaponImages:
@@ -1821,6 +1822,7 @@ MonoBehaviour:
   - {fileID: 6456971877390882546}
   - {fileID: 642999151658298476}
   - {fileID: 5570461668780067948}
+  inventoryHpBar: {fileID: 142710936640573762}
   message: {fileID: 6043523338723474741}
 --- !u!1 &2738298886134029546
 GameObject:
@@ -7041,6 +7043,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aa8aa5792559c5409aeaaa30586ea82, type: 3}
+--- !u!114 &142710936640573762 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1581069068586208983, guid: 7aa8aa5792559c5409aeaaa30586ea82, type: 3}
+  m_PrefabInstance: {fileID: 1443992090462003093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9fdd2895d8135143a2fb6995e844d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5787281297045257218 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4925419063197492119, guid: 7aa8aa5792559c5409aeaaa30586ea82, type: 3}

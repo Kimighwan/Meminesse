@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-// 아직 안씀
 public class UIManager : MonoBehaviour
 {
     private static UIManager instance;

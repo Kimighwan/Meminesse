@@ -48,6 +48,7 @@ public class IngameUIManager : MonoBehaviour
                 if (inventoryUI.IsActive)
                 {
                     inventoryUI.Hide();
+                    HUD.Instance.UpdateHUD();
                 }
                 else
                 {
@@ -63,6 +64,7 @@ public class IngameUIManager : MonoBehaviour
                 if (skillTreeUI.IsActive)
                 {
                     skillTreeUI.Hide();
+                    HUD.Instance.UpdateHUD();
                 }
                 else
                 {

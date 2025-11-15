@@ -19,17 +19,6 @@ public class InventoryItemDescription : SingletonBehaviour<InventoryItemDescript
 
     private string currentItemId;
 
-    void Start()
-    {
-       
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public ItemData GetItemById(string id)
     {
         return DataTableManager.Instance.GetItemData(id);
@@ -38,48 +27,32 @@ public class InventoryItemDescription : SingletonBehaviour<InventoryItemDescript
     public void ShowWeaponDescription()
     {
         int weaponStep = PlayerDataManager.Instance.GetWeaponLevel();
-        ItemData item = null;
+        string itemId = "1" + weaponStep.ToString();
+        ItemData item = GetItemById(itemId);
 
-        switch(weaponStep)
-        {
-            // 낡은 검
-            case 1:
-                item = GetItemById("11");
-                upgradeCost.text = "200 필요";
-                break;
-            // 평범한 검
-            case 2:
-                item = GetItemById("12");
-                upgradeCost.text = "500 필요";
-                break;
-            // 단련된 검
-            case 3:
-                item = GetItemById("13");
-                upgradeCost.text = "1000 필요";
-                break;
-            // 불멸의 검
-            case 4:
-                item = GetItemById("14");
-                upgradeCost.text = "5000 필요";
-                break;
-            // 전설의 검
-            case 5:
-                item = GetItemById("15");
-                break;  
-        }
-        
+        string costText = null;
+
         if (item != null)
         {
+            if (weaponStep < 5)  // 5 : max weapon level
+            {
+                int costCount = DataTableManager.Instance.GetUpgradeData(itemId).Count;
+                costText = costCount.ToString() + " 필요";
+            }
+
+            if (upgradeCost != null && costText != null)
+            {
+                upgradeCost.text = costText;
+            }
+
             UseButton.SetActive(false);
-            if(item.itemId != "15") 
-                upgradeButton.SetActive(true); //최고 레벨이라서 업그레이드 불가
-            else
-                upgradeButton.SetActive(false);
+            upgradeButton.SetActive(weaponStep < 5);
 
             itemImage.gameObject.SetActive(true);
             itemNameText.gameObject.SetActive(true);
             itemDescText.gameObject.SetActive(true);
-            itemImage.sprite = Resources.Load<Sprite>($"Item/{item.itemId}"); // 아이템 이미지 설정
+
+            itemImage.sprite = Resources.Load<Sprite>($"Item/{item.itemId}");
             itemNameText.text = item.name;
             itemDescText.text = item.desc;
         }
@@ -132,28 +105,32 @@ public class InventoryItemDescription : SingletonBehaviour<InventoryItemDescript
     // 아이템 id에 따른 아이템 효과 발동
     public void ItemUseButton()
     {
-
         string id = currentItemId;
         InventoryDataManager.Instance.ItemCountReduce(id.ToString(), 1);
 
         //PrintAllItems();
-       
-        InventoryUI.Instance.UpdateInventory();
+
+        // 물약 먹기 - data없이 하드코딩함
         switch (id)
         {
             // 좋은 물약
             case "31":
-                HpUIManager.Instance.Heal(10); break;   
+                Inventory.Instance.inventoryHpBar.Heal(10); break;   
             // 참 좋은 물약
             case "32":
-                HpUIManager.Instance.Heal(40); break;
+                Inventory.Instance.inventoryHpBar.Heal(40); break;
             // 엄청 좋은 물약
             case "33":
-                HpUIManager.Instance.FullHeal(); break;
+                Inventory.Instance.inventoryHpBar.FullHeal(); break;
+            /*
+            //최대 체력 증가시키는 아이템
+            case "??":
+                Inventory.Instance.inventoryHpBar.IncreaseMaxHp(); break;
+            */
         }
         if (InventoryDataManager.Instance.GetItemCountById(id.ToString()) == 0)
             HideItemDescription(id);
-
+        InventorySlots.Instance.UpdateInventory();
     }
 
     //디버그용

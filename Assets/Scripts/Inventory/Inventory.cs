@@ -22,19 +22,11 @@ public class Inventory : SingletonBehaviour<Inventory>
     // 무기 레벨 UI
     public GameObject[] weaponLevels;
 
+    //체력바
+    public HpUI inventoryHpBar;
+
     // 재화 불충분 경고 메시지
     [SerializeField] private TextMeshProUGUI message;
-
-    private void Awake()
-    {
-        RefreshInventory();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        RefreshInventory();
-    }
 
     private void OnEnable()
     {
@@ -48,8 +40,8 @@ public class Inventory : SingletonBehaviour<Inventory>
 
         UpdateMoney();
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponLevel());
-        HpUIManager.Instance.UpdateHearts();
-        InventoryUI.Instance.UpdateInventory();
+        inventoryHpBar.UpdateHearts();
+        InventorySlots.Instance.UpdateInventory();
         Debug.Log(">>>>>>>>>>>>>>> 인벤토리 갱신!");
     }
 
@@ -93,9 +85,7 @@ public class Inventory : SingletonBehaviour<Inventory>
                 weaponImages[i].gameObject.SetActive(true);
             else
                 weaponImages[i].gameObject.SetActive(false);
-            
         }
-        
     }
 
     // 무기 업그레이드

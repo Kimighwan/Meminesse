@@ -6,9 +6,9 @@ using UnityEngine.Rendering;
 using TMPro;
 
 // 인벤토리창 아이템 슬롯창 관리
-public class InventoryUI : UIBase
+public class InventorySlots : UIBase
 {
-    public static InventoryUI Instance { get; private set; }
+    public static InventorySlots Instance { get; private set; }
 
     public Slot[] slots; // 인벤토리 슬롯 배열
     public Transform slotHolder; // 슬롯을 담고 있는 부모 오브젝트

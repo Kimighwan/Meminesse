@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 // 인게임, 인벤토리, 세이브파일화면에서 쓸려고 만듦
 // 체력 하트 UI 관리
 
-public class HpUIManager : SingletonBehaviour<HpUIManager>
+public class HpUI : SingletonBehaviour<HpUI>
 {
     public GameObject heartPrefab;      
     public Transform heartParent;       
@@ -18,17 +18,15 @@ public class HpUIManager : SingletonBehaviour<HpUIManager>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        maxHp = PlayerDataManager.Instance.GetMaxHp(); // 저장된 최대 체력 불러오기. 총 하트칸 수
-        
-        SyncAllHpUI();
+        UpdateHearts();
     }
 
     private void OnEnable()
     {
-        maxHp = PlayerDataManager.Instance.GetMaxHp();
-        SyncAllHpUI();
+        UpdateHearts();
     }
 
+    // 총 하트 개수 설정
     private void InitHearts(int newMaxHp)
     {
         int heartCount = newMaxHp / 20;
@@ -49,9 +47,10 @@ public class HpUIManager : SingletonBehaviour<HpUIManager>
         }
     }
 
-    // HP를 UI에 반영
+    // HP만큼 하트 채우기 
     public void UpdateHearts()
     {
+        maxHp = PlayerDataManager.Instance.GetMaxHp(); // 저장된 최대 체력 불러오기. 총 하트칸 수
         InitHearts(maxHp);
         int hp = PlayerDataManager.Instance.GetHp();
 
@@ -72,11 +71,12 @@ public class HpUIManager : SingletonBehaviour<HpUIManager>
 
     public void SyncAllHpUI()
     {
-        HpUIManager[] allUIs = Object.FindObjectsByType<HpUIManager>(FindObjectsSortMode.None);
+        HpUI[] allUIs = Object.FindObjectsByType<HpUI>(FindObjectsSortMode.None);
         foreach (var ui in allUIs)
             ui.UpdateHearts();
     }
 
+    #region hp manage
     // 체력 회복 함수(물약 사용) - 추가회복량 포함 힐
     public void Heal(int healingAmount)
     {
@@ -88,18 +88,17 @@ public class HpUIManager : SingletonBehaviour<HpUIManager>
             PlayerDataManager.Instance.SetHp(20);
 
         Debug.Log($"HP +{healingAmount * (1 + additionalHealingRate)}");
-        SyncAllHpUI();
+        UpdateHearts();
         Canvas.ForceUpdateCanvases();
     }
 
-    // 체력 최대로 회복 함수(특정 지점에 가면)
+    // 체력 최대로 회복 함수(빨간물약 사용, 특정 지점에 가면)
     public void FullHeal()
     {
         int currentHp = maxHp;
         PlayerDataManager.Instance.SetHp(currentHp); // maxHp를 현재 체력에 더해서 max로 만듦
         Debug.Log("HP Full");
-        SyncAllHpUI();
-        Canvas.ForceUpdateCanvases();
+        UpdateHearts();
     }
 
 
@@ -109,16 +108,16 @@ public class HpUIManager : SingletonBehaviour<HpUIManager>
         int currentHp = PlayerDataManager.Instance.GetHp();
         PlayerDataManager.Instance.SetHp(-damage); 
         Debug.Log($"HP -{damage}");
-        SyncAllHpUI();
-        Canvas.ForceUpdateCanvases();
+        UpdateHearts();
     }
 
     // 최대 체력 증가
     public void IncreaseMaxHp()
     {
         PlayerDataManager.Instance.AddMaxHp(20); 
-        InitHearts(PlayerDataManager.Instance.GetMaxHp()); 
-        SyncAllHpUI();
+        InitHearts(PlayerDataManager.Instance.GetMaxHp());
+        UpdateHearts();
         Canvas.ForceUpdateCanvases();
     }
+    #endregion
 }
