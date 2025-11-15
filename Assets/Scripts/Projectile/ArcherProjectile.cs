@@ -20,7 +20,7 @@ public class ArcherProjectile : Projectile
     {
         base.Update();
         
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 2f);
         //if (isHitGround)
         //{
         //    rigid.simulated = false;

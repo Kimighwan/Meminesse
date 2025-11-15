@@ -32,7 +32,7 @@ public class Slime_MoveState : MoveState
         {
             stateMachine.ChangeState(enemy.attackState);
         }
-        else if (isDetectWall || isDetectLedge)
+        else if (isDetectWall || !isDetectLedge)
         {
             enemy.idleState.SetFlipAfterIdle(true);
             enemy.stateMachine.ChangeState(enemy.idleState);
