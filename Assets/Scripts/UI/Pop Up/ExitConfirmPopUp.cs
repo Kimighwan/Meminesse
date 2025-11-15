@@ -74,7 +74,7 @@ public class ExitConfirmPopUp : UIBase
     //메인메뉴로 가시겠습니까 - 예
     private void GoToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("LobbyScene");
     }
 
     // 종료하시겠습니까 - 아니오

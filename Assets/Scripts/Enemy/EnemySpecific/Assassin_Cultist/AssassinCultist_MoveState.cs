@@ -28,7 +28,7 @@ public class AssassinCultist_MoveState : MoveState
     {
         base.LogicalUpdate();
 
-        if (isDetectWall || isDetectLedge)
+        if (isDetectWall || !isDetectLedge)
         {
             enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);

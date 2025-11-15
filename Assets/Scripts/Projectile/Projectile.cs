@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Projectile : MonoBehaviour
 {
@@ -52,6 +53,12 @@ public class Projectile : MonoBehaviour
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }
         }
+
+        if(isHitGround || isHitPlayer)
+        {
+            rigid.simulated = false;
+            Destroy(gameObject, 2f);
+        }
     }
 
     public virtual void FixedUpdate()
@@ -93,5 +100,11 @@ public class Projectile : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(damagePos.position, damageRadius);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var player = collision.gameObject.GetComponent<PlayerController>();
+        //player.Damaged(damage, entity.gameObject.transform.position);
     }
 }

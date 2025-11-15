@@ -140,9 +140,7 @@ public class Entity : MonoBehaviour
         if (isDead) return;
 
         float defense = entityData.defense;
-        // 방무를 적용한 뎀감 수치(방어력 수치)
         float effectDefense = defense * (1f - Mathf.Clamp01(defIgnore));
-        // 최종 데미지 = 공격력 - 방어력(뎀감 수치)
         float finalDamage = Mathf.Max(damage - effectDefense, 1f);
 
         currentHp -= finalDamage;
@@ -160,6 +158,7 @@ public class Entity : MonoBehaviour
         if (currentHp <= 0)
         {
             isDead = true;
+            rigid.simulated = false;
             var monsterDropData = DataTableManager.Instance.GetMonsterDropData($"{GetType()}");
 
             List<(ItemData, float)> prob = new List<(ItemData, float)>();
@@ -180,6 +179,8 @@ public class Entity : MonoBehaviour
                 item.SetItem(dropItemData, itemCount);
             }
             Instantiate(newOB, transform.position, Quaternion.identity);
+
+            Destroy(gameObject, 2f);
         }
     }
 
@@ -210,7 +211,7 @@ public class Entity : MonoBehaviour
     {
         hit = Physics2D.Raycast(playerCheck.position, transform.right * defaultDirection, entityData.playerDetectRange, ~(1<<8));
         
-        if (hit &&  hit.collider.name == "TempPlayer")
+        if (hit &&  hit.collider.name == "Player")
             return true;
         else 
             return false;
@@ -233,7 +234,7 @@ public class Entity : MonoBehaviour
         RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerDetectRange, ~(1 << 8));
         Debug.DrawRay(playerCheck.position, dirV * entityData.playerDetectRange, Color.red);
 
-        if (hitCheck && hitCheck.collider.name == "TempPlayer")
+        if (hitCheck && hitCheck.collider.name == "Player")
             return true;
         else
             return false;
@@ -245,7 +246,7 @@ public class Entity : MonoBehaviour
         RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerInRangeAttackRadius, ~(1 << 8));
         Debug.DrawRay(playerCheck.position, dirV * entityData.playerDetectRange, Color.green);
 
-        if (hitCheck && hitCheck.collider.name == "TempPlayer")
+        if (hitCheck && hitCheck.collider.name == "Player")
             return true;
         else
             return false;

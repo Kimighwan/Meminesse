@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public enum SceneType
 {
-    MainMenu,
+    LobbyScene,
     GameScene,
 }
 

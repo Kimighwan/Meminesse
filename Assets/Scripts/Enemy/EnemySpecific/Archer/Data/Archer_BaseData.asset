@@ -15,10 +15,10 @@ MonoBehaviour:
   maxHp: 50
   knockbackSpeed: 5
   knockbackAngle: {x: 1, y: 2}
-  playerInMeleeAttackRange: 3
-  playerInRangeAttackRadius: 9
-  playerInChargeRadius: 6
-  playerDetectRange: 9
+  playerInMeleeAttackRange: 9
+  playerInRangeAttackRadius: 15
+  playerInChargeRadius: 0
+  playerDetectRange: 10
   wallCheckDistance: 0.2
   ledgeCheckDistance: 0.4
   groundCheckRadius: 0.3
