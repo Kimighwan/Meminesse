@@ -3,38 +3,31 @@ using TMPro;
 using System;
 using UnityEngine.SceneManagement;
 
-public class ExitConfirmPopUp : UIBase
+public class ExitPopUp : UIBase
 {
-    [SerializeField] private GameObject popupRoot;
     [SerializeField] private TextMeshProUGUI message;
     
     ConfirmType currentType;
     Action onConfirmAction;
 
-    private void Start()
-    {
-        message.text = "정말 게임을 종료하시겠습니까?";
-        onConfirmAction = QuitGame;
-    }
+    private bool initialized = false;
 
     public enum ConfirmType
     {
         QuitGame, //게임 종료
         GoToMain  //메인 메뉴로
     }
-    protected override void Awake()
-    {
-        SetRootObject(popupRoot);
-        base.Awake();
-    }
-    public override bool HandleEscape()
-    {
-        Debug.Log("ExitConfirmPopUp - ESC로 닫기 실행");
-        Hide();
 
-        return true;
-    }
+    public override void OnShown()
+    {
+        base.OnShown();
 
+        if (!initialized)
+        {
+            initialized = true;
+            ShowMessage(ConfirmType.QuitGame);
+        }
+    }
     public void ShowMessage(ConfirmType type)
     {
         currentType = type;
@@ -51,9 +44,6 @@ public class ExitConfirmPopUp : UIBase
                 onConfirmAction = GoToMainMenu;
                 break;
         }
-
-        Debug.Log("ExitConfirmPopUp - 종료 확인 팝업");
-        Show(); // UIBase의 Show() 호출 (SetActive(true))
     }
     public void OnClickYes()
     {
@@ -74,13 +64,14 @@ public class ExitConfirmPopUp : UIBase
     //메인메뉴로 가시겠습니까 - 예
     private void GoToMainMenu()
     {
+        UIManager.Instance.CloseAllPopups();
         SceneManager.LoadScene("LobbyScene");
     }
 
     // 종료하시겠습니까 - 아니오
     public void OnCancelQuit()
     {
-        this.Hide();
+        UIManager.Instance.ClosePopup(this);
     }
 
 }

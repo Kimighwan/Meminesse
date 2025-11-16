@@ -8,8 +8,17 @@ using System.Collections;
 using static UnityEditor.Timeline.Actions.MenuPriority;
 
 // 인벤토리창 모든 UI 관리
-public class Inventory : SingletonBehaviour<Inventory>
+public class Inventory : UIBase
 {
+    #region singleton
+    public static Inventory Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    #endregion
     public List<InventoryData> itemDataList;
 
     // 돈 두종류 임시 이름
@@ -116,7 +125,7 @@ public class Inventory : SingletonBehaviour<Inventory>
         UpdateMoney();
         Debug.Log($"업그레이드 성공! 무기 레벨이 {weaponStep + 1}로 상승했습니다.");
     }
-
+   
     // 디버그용 돈 추가 
     public void DebugAddMoney()
     {

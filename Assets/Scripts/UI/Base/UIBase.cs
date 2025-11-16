@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIBase : MonoBehaviour, IPopupUI
+public class UIBase : MonoBehaviour
 {
-    [SerializeField] private GameObject rootObject;
-
     [Header("기본 포커싱용 더미 버튼")]
     [SerializeField] protected GameObject invisibleDummyButton;
 
@@ -15,10 +13,6 @@ public class UIBase : MonoBehaviour, IPopupUI
 
     protected virtual void Awake()
     {
-        if (rootObject == null)
-        {
-            rootObject = gameObject;
-        }
     }
     protected virtual void Start()
     {
@@ -32,46 +26,20 @@ public class UIBase : MonoBehaviour, IPopupUI
 
     protected virtual void Update()
     {
-        if (!IsActive)
-        {
-            return;
-        }
-
         CheckMouseInput();
         CheckKeyboardInput(); 
     }
-    protected GameObject RootObject => rootObject != null ? rootObject : gameObject;
     public bool IsClosableByEscape => closableByEscape;
-    public bool IsActive => RootObject.activeSelf;
 
-    protected void SetRootObject(GameObject root)
+    public bool IsActive
     {
-        rootObject = root;
-    }
-    public virtual void Show()
-    {
-        if (!IsActive)
+        get
         {
-            RootObject.SetActive(true);
+            return UIManager.Instance.IsPopupOnStack(this);
         }
-        UIManager.Instance?.NotifyPopupShown(this);
-        OnShown();
-        //UIManager.Instance.DebugPopupStack();
-    }
-    public virtual void Hide()
-    {
-        if (!IsActive)
-        {
-            return;
-        }
-
-        RootObject.SetActive(false);
-        UIManager.Instance?.NotifyPopupHidden(this);
-        OnHidden();
-        //UIManager.Instance.DebugPopupStack();
     }
 
-    protected virtual void OnShown()
+    public virtual void OnShown()
     {
         isKeyboardMode = false;
 
@@ -81,13 +49,15 @@ public class UIBase : MonoBehaviour, IPopupUI
         }
     }
 
-    protected virtual void OnHidden()
+    public virtual void OnHidden()
     {
     }
 
     public virtual bool HandleEscape()
     {
-        return false;  // false - esc버튼으로 팝업 닫기 가능
+        return false;
+        // false - esc버튼으로 팝업 닫기를 manager에서 처리
+        // true - 팝업에서 esc버튼 입력을 자체 처리 
     }
 
     protected void CheckMouseInput()

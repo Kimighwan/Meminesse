@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 5806392509964561995}
   - component: {fileID: 8469516578168603770}
   m_Layer: 5
-  m_Name: ExitConfirmation
+  m_Name: ExitPopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
