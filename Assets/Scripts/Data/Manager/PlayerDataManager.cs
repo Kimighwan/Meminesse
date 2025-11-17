@@ -74,6 +74,24 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     public void UpgradeWeaponLevel()
     {
         playerData.weaponLevel += 1;
+
+        switch(playerData.weaponLevel)
+        {
+            case 2:
+                playerData.damage = 14f;
+                break;
+            case 3:
+                playerData.damage = 20f;
+                break;
+            case 4:
+                playerData.damage = 28f;
+                break;
+            case 5:
+                playerData.damage = 40f;
+                break;
+            default:
+                break;
+        }
     }
     public void AddHP()  // 무시하셈 스킬 트리에서 사용하는 이벤트 등록용 함수다
     {

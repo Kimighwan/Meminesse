@@ -300,7 +300,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(JumpCharacter());
         }
         // Fall
-        else if (!isGrounded && rigid.linearVelocity.y < 0 && !isAttacking && !isDashing && !isBackDashing)
+        else if (!isGrounded && rigid.linearVelocity.y < -0.01 && !isAttacking && !isDashing && !isBackDashing)
         {
             ChangeState(PlayerState.Falling);
             LimitVelocity();
@@ -603,6 +603,7 @@ public class PlayerController : MonoBehaviour
         ChangeState(PlayerState.Hurt);
         isHurt = true;
         isInvincible = true;
+        StartCoroutine(FlickerInvincibility());
         lockInput = true;
         float animationTime = 0.153f;
 
@@ -628,6 +629,17 @@ public class PlayerController : MonoBehaviour
         isInvincible = false;
         lockInput = false;
         ChangeState(PlayerState.Idle);
+    }
+
+    private IEnumerator FlickerInvincibility()
+    {
+        float flickerInterval = 0.1f;
+        while (isInvincible)
+        {
+            playerSpriteRenderer.enabled = !playerSpriteRenderer.enabled;
+            yield return new WaitForSeconds(flickerInterval);
+        }
+        playerSpriteRenderer.enabled = true;
     }
 
     #endregion
@@ -1214,15 +1226,18 @@ public class PlayerController : MonoBehaviour
         }
 
         // Update grounded state
-        isGrounded = (hitLeft.collider || hitRight.collider) && rigid.linearVelocity.y <= 0;
+        isGrounded = (hitLeft.collider || hitRight.collider) && (rigid.linearVelocity.y > -0.01f && rigid.linearVelocity.y < 0.01f);
 
         // Handle state transitions
+        // THIS SEEMS OFF - NEEDS TESTING
         if (isGrounded && currentState == PlayerState.Falling)
         {
+            Debug.Log("if (isGrounded && currentState == PlayerState.Falling)");
             ChangeState(PlayerState.Idle);
         }
         else if (!isGrounded && !IsAirborneState(currentState))
         {
+            Debug.Log("else if (!isGrounded && !IsAirborneState(currentState))");
             ChangeState(PlayerState.Falling);
         }
 
