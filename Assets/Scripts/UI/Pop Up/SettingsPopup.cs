@@ -39,11 +39,6 @@ public class SettingsPopup : UIBase
     [SerializeField] private TextMeshProUGUI BGMText;
     [SerializeField] private TextMeshProUGUI SFXText;
 
-    protected override void Awake()
-    {
-        SetRootObject(popupRoot);
-        base.Awake();
-    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
@@ -77,7 +72,7 @@ public class SettingsPopup : UIBase
         }
     }
 
-    protected override void OnShown()
+    void OnEnable()
     {
         base.OnShown();
         isTopFocus = true;
@@ -167,9 +162,8 @@ public class SettingsPopup : UIBase
         audioMixer.SetFloat("SFX", Mathf.Log10(value) * 20);
     }
 
-    // 필요한가?
-    public override void Hide()
+    public void OnClickCloseButton()
     {
-        base.Hide();
+        UIManager.Instance.CloseTopPopup();
     }
 }

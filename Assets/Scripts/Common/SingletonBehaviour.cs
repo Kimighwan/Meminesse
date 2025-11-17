@@ -3,7 +3,7 @@ using UnityEngine;
 public class SingletonBehaviour<T> : MonoBehaviour where T : SingletonBehaviour<T>
 {
     // 씬 전환 시 삭제 여부
-    protected bool isDestoryOnLoad = false;     // 디폴트 : 유지
+    protected bool isDestroyOnLoad = false;     // 디폴트 : 유지
 
     protected static T instance;
 
@@ -23,7 +23,7 @@ public class SingletonBehaviour<T> : MonoBehaviour where T : SingletonBehaviour<
         {
             instance = (T)this;
 
-            if(!isDestoryOnLoad) DontDestroyOnLoad(instance);
+            if(!isDestroyOnLoad) DontDestroyOnLoad(instance);
         }
         else
         {

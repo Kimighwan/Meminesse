@@ -8,8 +8,17 @@ using System.Collections;
 using static UnityEditor.Timeline.Actions.MenuPriority;
 
 // 인벤토리창 모든 UI 관리
-public class Inventory : SingletonBehaviour<Inventory>
+public class Inventory : UIBase
 {
+    #region singleton
+    public static Inventory Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    #endregion
     public List<InventoryData> itemDataList;
 
     // 돈 두종류 임시 이름
@@ -22,19 +31,11 @@ public class Inventory : SingletonBehaviour<Inventory>
     // 무기 레벨 UI
     public GameObject[] weaponLevels;
 
+    //체력바
+    public HpUI inventoryHpBar;
+
     // 재화 불충분 경고 메시지
     [SerializeField] private TextMeshProUGUI message;
-
-    private void Awake()
-    {
-        RefreshInventory();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        RefreshInventory();
-    }
 
     private void OnEnable()
     {
@@ -48,8 +49,8 @@ public class Inventory : SingletonBehaviour<Inventory>
 
         UpdateMoney();
         UpdateWeaponUI(PlayerDataManager.Instance.GetWeaponLevel());
-        HpUIManager.Instance.UpdateHearts();
-        InventoryUI.Instance.UpdateInventory();
+        inventoryHpBar.UpdateHearts();
+        InventorySlots.Instance.UpdateInventory();
         Debug.Log(">>>>>>>>>>>>>>> 인벤토리 갱신!");
     }
 
@@ -93,9 +94,7 @@ public class Inventory : SingletonBehaviour<Inventory>
                 weaponImages[i].gameObject.SetActive(true);
             else
                 weaponImages[i].gameObject.SetActive(false);
-            
         }
-        
     }
 
     // 무기 업그레이드
@@ -126,7 +125,7 @@ public class Inventory : SingletonBehaviour<Inventory>
         UpdateMoney();
         Debug.Log($"업그레이드 성공! 무기 레벨이 {weaponStep + 1}로 상승했습니다.");
     }
-
+   
     // 디버그용 돈 추가 
     public void DebugAddMoney()
     {

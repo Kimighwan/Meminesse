@@ -2,12 +2,23 @@ using UnityEngine;
 
 public class PausePopUp : UIBase
 {
-    [SerializeField] private GameObject popupRoot;
-
-    public override void Show()
+    public void OnClickResume()
     {
-        SetRootObject(popupRoot);
-        Debug.Log($"----팝업 Show 호출");
-        base.Show();
+        UIManager.Instance.CloseAllPopups();
+    }
+    public void OnClickSetting()
+    {
+        UIManager.Instance.OpenPopup<SettingsPopup>("SettingsPopup");
+    }
+    public void OnClickMain()
+    {
+        var popup = UIManager.Instance.OpenPopup<ExitPopUp>("ExitPopUp");
+        popup.ShowMessage(ExitPopUp.ConfirmType.GoToMain);
+    }
+
+    public void OnClickQuit()
+    {
+        var popup = UIManager.Instance.OpenPopup<ExitPopUp>("ExitPopUp");
+        popup.ShowMessage(ExitPopUp.ConfirmType.QuitGame);
     }
 }
