@@ -63,7 +63,7 @@ public class SkillTreeUI : UIBase
         }
     }
 
-    protected override void OnShown()
+    public override void OnShown()
     {
         base.OnShown();
         descActiveGO.SetActive(false);
@@ -369,7 +369,7 @@ public class SkillTreeUI : UIBase
                 break;
         }
     }
-
+    
     public override void SetCurrentButton(GameObject gb)
     {
         base.SetCurrentButton(gb);

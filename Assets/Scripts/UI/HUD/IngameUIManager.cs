@@ -1,92 +1,73 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// 인게임 씬 관리 
 public class IngameUIManager : MonoBehaviour
-{ 
-    [SerializeField] private UIBase pauseMenuPopUp;
-    [SerializeField] private UIBase settingPopUp;
-
-    [SerializeField] private ExitConfirmPopUp exitPopup;
-    [SerializeField] private UIBase exitConfirmPopUp;   // 종료하시겠습니까? 
-
-    [SerializeField] private UIBase skillTreeUI;
-    [SerializeField] private UIBase inventoryUI;
-
-
-    // Update is called once per frame
+{
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        HandlePause();
+        HandleInventory();
+        HandleSkillTree();
+    }
+
+    private void HandlePause()
+    {
+        if (!Input.GetKeyDown(KeyCode.Escape))
+            return;
+
+        // 1) 다른 팝업이 떠 있다면 → UIManager가 자동으로 ESC 처리해야 함
+        if (UIManager.Instance.HasActivePopup)
         {
-            if (UIManager.Instance != null && UIManager.Instance.HasActivePopup)
+            // 단, PausePopUp이 아닌 팝업이면 닫기만 하고 종료
+            UIBase top = UIManager.Instance.GetTopPopup();
+
+            if (!(top is PausePopUp))
             {
+                UIManager.Instance.CloseTopPopup();
                 return;
             }
 
-
-            if (pauseMenuPopUp != null)
-            {
-                if (pauseMenuPopUp.IsActive)
-                {
-                    pauseMenuPopUp.Hide();
-                    Debug.Log("IngameUIManager - 일시정지 팝업 끄기");
-                }
-                else
-                {
-                    pauseMenuPopUp.Show();
-                    Debug.Log("IngameUIManager - 일시정지 팝업 열기");
-                }
-            }
+            // 최상단이 PausePopUp이라면 Pause를 닫음
+            UIManager.Instance.ClosePopup(top);
+            return;
         }
 
-        if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))
-        {
-            if (inventoryUI != null)
-            {
-                if (inventoryUI.IsActive)
-                {
-                    inventoryUI.Hide();
-                }
-                else
-                {
-                    inventoryUI.Show();
-                }
-            }
-        }
+        // 2) 팝업이 아무것도 없다면 PausePopUp을 연다
+        UIManager.Instance.OpenPopup<PausePopUp>("PausePopUp");
+    }
 
-        if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
+
+    private void HandleInventory()
+    {
+        if (!Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Inventory")))
+            return;
+
+        if (UIManager.Instance.HasActivePopup)
         {
-            if (skillTreeUI != null)
-            {
-                if (skillTreeUI.IsActive)
-                {
-                    skillTreeUI.Hide();
-                }
-                else
-                {
-                    skillTreeUI.Show();
-                }
-            }
+            UIManager.Instance.CloseTopPopup();
+            HUD.Instance.UpdateHUD();
+        }
+        else
+        {
+            UIManager.Instance.OpenPopup<Inventory>("Inventory");
+            HUD.Instance.UpdateHUD();
+        }
     }
-}
-    public void OnClickResume()
+
+
+    private void HandleSkillTree()
     {
-        pauseMenuPopUp.Hide();
-    }
-    public void OnClickSetting()
-    {
-        settingPopUp.Show();
-    }
-    public void OnClickMain()
-    { 
-        exitPopup.ShowMessage(ExitConfirmPopUp.ConfirmType.GoToMain);
-        exitConfirmPopUp.Show();
-    }
-    public void OnClickQuit()
-    {
-        exitPopup.ShowMessage(ExitConfirmPopUp.ConfirmType.QuitGame);
-        exitConfirmPopUp.Show();
+        if (!Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
+            return;
+
+        if (UIManager.Instance.HasActivePopup)
+        {
+            UIManager.Instance.CloseTopPopup();
+            HUD.Instance.UpdateHUD();
+        }
+        else
+        {
+            UIManager.Instance.OpenPopup<SkillTreeUI>("SkillTreeUI");
+        }
     }
 }
