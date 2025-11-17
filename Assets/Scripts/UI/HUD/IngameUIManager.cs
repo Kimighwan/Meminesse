@@ -3,11 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class IngameUIManager : MonoBehaviour
 {
-    [SerializeField] private UIBase skillTreeUI; // 추후에 삭제
-
     void Update()
     {
-        
         HandlePause();
         HandleInventory();
         HandleSkillTree();
@@ -36,9 +33,7 @@ public class IngameUIManager : MonoBehaviour
         }
 
         // 2) 팝업이 아무것도 없다면 PausePopUp을 연다
-        
         UIManager.Instance.OpenPopup<PausePopUp>("PausePopUp");
-        Debug.Log("]]]]]]]]]]]]]]]]]]]]]escape감지");
     }
 
 
@@ -49,7 +44,6 @@ public class IngameUIManager : MonoBehaviour
 
         if (UIManager.Instance.HasActivePopup)
         {
-            // 최상단 팝업 닫기
             UIManager.Instance.CloseTopPopup();
             HUD.Instance.UpdateHUD();
         }
@@ -66,7 +60,6 @@ public class IngameUIManager : MonoBehaviour
         if (!Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree")))
             return;
 
-        /*
         if (UIManager.Instance.HasActivePopup)
         {
             UIManager.Instance.CloseTopPopup();
@@ -74,21 +67,7 @@ public class IngameUIManager : MonoBehaviour
         }
         else
         {
-            UIManager.Instance.OpenPopup<SkillTree>("SkillTree");
-        }
-        */
-
-        // 추후에 밑 코드 삭제 후 위에있는 코드로 사용
-        if(skillTreeUI.gameObject.activeSelf)
-        {
-            skillTreeUI.gameObject.SetActive(false);
-            HUD.Instance.UpdateHUD();
-            TimeManager.Instance.Resume();
-        }
-        else
-        {
-            skillTreeUI.gameObject.SetActive(true);
-            TimeManager.Instance.Pause();
+            UIManager.Instance.OpenPopup<SkillTreeUI>("SkillTreeUI");
         }
     }
 }

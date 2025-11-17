@@ -152,5 +152,4 @@ public class UIManager : MonoBehaviour
             Debug.Log(popup.name);
         }
     }
-
 }
