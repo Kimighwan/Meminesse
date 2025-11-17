@@ -24,7 +24,7 @@ public class MoveState : State
         isDetectLedge = entity.CheckLedge();
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
-        isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
+        isDetectedPlayer = entity.CanDetectPlayer();
         isPlayerInChargeRange = entity.CheckPlayerInChargeRange();
     }
 

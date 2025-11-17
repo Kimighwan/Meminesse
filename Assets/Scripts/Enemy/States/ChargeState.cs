@@ -23,7 +23,7 @@ public class ChargeState : State
 
         isDetectWall = entity.CheckWall();
         isDetectLedge = entity.CheckLedge();
-        isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
+        isDetectedPlayer = entity.CanDetectPlayer();
         isPlayerInChargeRange = entity.CheckPlayerInChargeRange();
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
     }

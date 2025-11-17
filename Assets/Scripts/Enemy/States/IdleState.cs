@@ -26,7 +26,7 @@ public class IdleState : State
 
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
-        isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
+        isDetectedPlayer = entity.CanDetectPlayer();
         isPlayerInChargeRange = entity.CheckPlayerInChargeRange();
         entity.animationToStatemachine.idleState = this;
     }

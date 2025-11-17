@@ -21,7 +21,7 @@ public class DodgeState : State
         base.DoCheck();
 
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
-        isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
+        isDetectedPlayer = entity.CanDetectPlayer();
         isDetectWall = entity.CheckWall();
         isDetectLedge = entity.CheckLedge();
         //isGround = entity.CheckGround();

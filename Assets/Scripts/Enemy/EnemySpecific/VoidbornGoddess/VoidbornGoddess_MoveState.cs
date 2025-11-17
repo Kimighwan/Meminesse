@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class VoidbornGoddess_MoveState : MoveState
 {
-    private VoidbornGoddess enemy;
+    VoidbornGoddess enemy;
+    bool isMoveTimeOver;
+    float moveTime;
+
     public VoidbornGoddess_MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData, VoidbornGoddess enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
@@ -16,6 +19,8 @@ public class VoidbornGoddess_MoveState : MoveState
     public override void Enter()
     {
         base.Enter();
+        isMoveTimeOver = false;
+        SetRandomMoveTIme();
     }
 
     public override void Exit()
@@ -27,21 +32,17 @@ public class VoidbornGoddess_MoveState : MoveState
     {
         base.LogicalUpdate();
 
-        if (isDetectWall || !isDetectLedge)
-        {
-            enemy.idleState.SetFlipAfterIdle(true);
+        if (Time.time > startTIme + moveTime)
+            isMoveTimeOver = true;
+
+        if(isMoveTimeOver)
             stateMachine.ChangeState(enemy.idleState);
-        }
-        else if (isPlayerInRangeAttackRange)
-            stateMachine.ChangeState(enemy.rangeAttackState);
-        //else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
-        //    stateMachine.ChangeState(enemy.meleeAttackState);
-        //else if (isDetectedPlayer)
-        //    stateMachine.ChangeState(enemy.detectState);
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
     }
+
+    void SetRandomMoveTIme() => moveTime = Random.Range(1, 3);
 }
