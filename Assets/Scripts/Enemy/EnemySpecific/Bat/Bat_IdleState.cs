@@ -41,7 +41,7 @@ public class Bat_IdleState : IdleState
 
 
 
-        if (isStartCountDown && Time.time >= startCountDownTime + 3f)
+        if (isStartCountDown && Time.time >= startCountDownTime + 2f)
             stateMachine.ChangeState(enemy.sleepState);
 
         if (!isPlayerInRangeAttackRange)

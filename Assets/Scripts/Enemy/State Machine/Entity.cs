@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.EventSystems.EventTrigger;
 
 
@@ -174,13 +175,13 @@ public class Entity : MonoBehaviour
             else itemCount = monsterDropData.MaCount;
 
             var newOB = Resources.Load<GameObject>("Item/FieldItem");
-            if(newOB.TryGetComponent<FieldItems>(out var item))
+            if (newOB.TryGetComponent<FieldItems>(out var item))
             {
                 item.SetItem(dropItemData, itemCount);
             }
             Instantiate(newOB, transform.position, Quaternion.identity);
 
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, entityData.DestroyTime);
         }
     }
 
@@ -228,11 +229,18 @@ public class Entity : MonoBehaviour
         return collider2D ? collider2D.transform : transform;
     }
 
-    public bool CanDetectPlayer()                 // Checking obstacles for Player detect           
+    public bool CanDetectPlayer(bool allCheck = false)                 // Checking obstacles for Player detect           
     {
+        if(!allCheck)
+        {
+            float playerX = PlayerTransformForRangeAttack().position.x;
+
+            if ((playerX > transform.position.x && facingDirection == -1) || (playerX < transform.position.x && facingDirection == 1))
+                return false;
+        }
+
         Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
         RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerDetectRange, ~(1 << 8));
-        Debug.DrawRay(playerCheck.position, dirV * entityData.playerDetectRange, Color.red);
 
         if (hitCheck && hitCheck.collider.name == "Player")
             return true;
@@ -244,7 +252,6 @@ public class Entity : MonoBehaviour
     {
         Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
         RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerInRangeAttackRadius, ~(1 << 8));
-        Debug.DrawRay(playerCheck.position, dirV * entityData.playerDetectRange, Color.green);
 
         if (hitCheck && hitCheck.collider.name == "Player")
             return true;

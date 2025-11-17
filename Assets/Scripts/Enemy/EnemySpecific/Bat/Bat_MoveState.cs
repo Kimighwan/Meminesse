@@ -38,8 +38,7 @@ public class Bat_MoveState : MoveState
 
         if(entity.CanDetectPlayer())
         {
-            moveDir = entity.GetDirectionToPlayer();
-            entity.SetVelocity(stateData.moveSpeed, moveDir, 1);
+            stateMachine.ChangeState(enemy.detectState);
         }
         else
             stateMachine.ChangeState(enemy.idleState);

@@ -31,7 +31,7 @@ public class NomalCultist_IdleState : IdleState
         {
             stateMachine.ChangeState(enemy.moveState);
         }
-        else if (isPlayerInRangeAttackRange && enemy.AttackCoolTime + enemy.LastAttackTime <= Time.time)
+        else if (isPlayerInRangeAttackRange && enemy.entityData.AttackCoolTime + enemy.LastAttackTime <= Time.time)
         {
             stateMachine.ChangeState(enemy.rangeAttackState);
         }

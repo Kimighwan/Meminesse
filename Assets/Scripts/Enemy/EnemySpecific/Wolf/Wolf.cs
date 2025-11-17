@@ -33,7 +33,6 @@ public class Wolf : Entity
     [SerializeField]
     private Transform meleeAttackPosition;
 
-    public float AttackCoolTime { get; set; } = 2f;
     public float ChargeCoolTime { get; set; } = 3f;
     public float LastAttackTime { get; set; }
     public float LastChargeTime { get; set; }

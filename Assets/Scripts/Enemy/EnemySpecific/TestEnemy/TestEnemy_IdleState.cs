@@ -32,7 +32,7 @@ public class TestEnemy_IdleState : IdleState
         {
             stateMachine.ChangeState(enemy.moveState);
         }
-        else if (isPlayerInMeleeAttackRange)
+        else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.entityData.AttackCoolTime <= Time.time)
         {
             stateMachine.ChangeState(enemy.meleeAttackState);
         }

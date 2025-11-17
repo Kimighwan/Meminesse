@@ -31,7 +31,7 @@ public class BulletA : MonoBehaviour
 
             if (damageHit)
             {
-                Debug.Log("발사체 피격!");
+                damageHit.GetComponent<PlayerController>().Damaged(damage, transform.position);
                 isHitPlayer = true;
             }
 

@@ -32,7 +32,7 @@ public class NomalCultist_MoveState : MoveState
             enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);
         }
-        else if (isPlayerInRangeAttackRange && enemy.AttackCoolTime + enemy.LastAttackTime <= Time.time)
+        else if (isPlayerInRangeAttackRange && enemy.entityData.AttackCoolTime + enemy.LastAttackTime <= Time.time)
             stateMachine.ChangeState(enemy.rangeAttackState);
         else if (isDetectedPlayer)
             stateMachine.ChangeState(enemy.detectState);

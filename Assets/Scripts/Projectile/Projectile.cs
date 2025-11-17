@@ -70,8 +70,12 @@ public class Projectile : MonoBehaviour
 
             if (damageHit)
             {
-                Debug.Log("발사체 피격!");
-                isHitPlayer = true;
+                if(damageHit.CompareTag("Player"))
+                {
+                    Debug.Log("Player Hit by Projectile");
+                    damageHit.GetComponent<PlayerController>().Damaged(damage, transform.position);
+                    isHitPlayer = true;
+                }
             }
 
             if (groundHit)

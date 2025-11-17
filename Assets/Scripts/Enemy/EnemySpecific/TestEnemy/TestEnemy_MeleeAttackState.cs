@@ -16,6 +16,7 @@ public class TestEnemy_MeleeAttackState : MeleeAttackState
     public override void Enter()
     {
         base.Enter();
+        enemy.LastAttackTime = startTIme;
     }
 
     public override void Exit()

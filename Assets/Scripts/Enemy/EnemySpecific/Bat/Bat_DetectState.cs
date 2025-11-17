@@ -41,15 +41,15 @@ public class Bat_DetectState : DetectState
         // 2) in chargeRange : to chargeState
         if (!isPlayerInRangeAttackRange || !isDetectedPlayer)
             stateMachine.ChangeState(enemy.idleState);
-        else if(isPlayerInChargeRange)
-        {
-            stateMachine.ChangeState(enemy.chargeState);
+        //else if(isPlayerInChargeRange)
+        //{
+        //    stateMachine.ChangeState(enemy.chargeState);
 
-            //if (Time.time >= enemy.chargeState.eixtChargeStateTime + enemy.chargeState.coolTIme)
+        //    //if (Time.time >= enemy.chargeState.eixtChargeStateTime + enemy.chargeState.coolTIme)
                 
-            //else 
-            //    stateMachine.ChangeState(enemy.moveState);
-        }
+        //    //else 
+        //    //    stateMachine.ChangeState(enemy.moveState);
+        //}
     }
 
     public override void PhysicsUpdate()

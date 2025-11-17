@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6066a386fc454da027b372848cbdc, type: 3}
   m_Name: VoidbornGoddess_EntityData
   m_EditorClassIdentifier: 
-  maxHp: 100
+  maxHp: 600
   knockbackSpeed: 10
   knockbackAngle: {x: 0, y: 0}
   playerInMeleeAttackRange: 3
-  playerInRangeAttackRadius: 15.53
+  playerInRangeAttackRadius: 20
   playerInChargeRadius: 0
   playerDetectRange: 0
   wallCheckDistance: 0.2
@@ -30,3 +30,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   defense: 100
+  AttackCoolTime: 2
+  DestroyTime: 2

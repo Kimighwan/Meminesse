@@ -17,6 +17,7 @@ public class Archer_RangeAttackState : RangeAttackState
     public override void Enter()
     {
         base.Enter();
+        enemy.LastAttackTime = startTIme;
     }
 
     public override void Exit()

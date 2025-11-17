@@ -26,4 +26,6 @@ public class D_Entity : ScriptableObject
     public LayerMask whatIsPlayer;                  // Player 레이어 마스크
 
     public float defense = 0f;                     // 몬스터 방어
+    public float AttackCoolTime = 2f;                 // 몬스터 공격 쿨타임
+    public float DestroyTime = 2f;                  // 몬스터 사망 후 오브젝트 파괴 시간
 }

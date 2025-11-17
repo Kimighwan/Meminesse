@@ -29,7 +29,6 @@ public class AssassinCultist : Entity
     [SerializeField] private Transform meleeAttackPos;
     [SerializeField] private Transform hidingAttackPos;
 
-    public float AttackCoolTime { get; private set; } = 4f;
     public float LastAttackTime { get; set; }
 
     public bool isAttackFinish { get; set; }

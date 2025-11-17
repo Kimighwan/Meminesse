@@ -32,7 +32,7 @@ public class TwistedCultist_MoveState : MoveState
             enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);
         }
-        else if (isPlayerInMeleeAttackRange && enemy.AttackCoolTime + enemy.LastAttackTime <= Time.time)
+        else if (isPlayerInMeleeAttackRange && enemy.entityData.AttackCoolTime + enemy.LastAttackTime <= Time.time)
             stateMachine.ChangeState(enemy.meleeAttackState);
         else if (isDetectedPlayer)
             stateMachine.ChangeState(enemy.detectState);

@@ -34,21 +34,22 @@ public class VoidbornGoddess_IdleState : IdleState
 
         if (isIdleTimeOver)
         {
-            int randomValue = Random.Range(1, 11);
+            int randomValue = Random.Range(1, 16);
             if (randomValue < 7) stateMachine.ChangeState(enemy.rangeAttackState);
-            else stateMachine.ChangeState(enemy.chargeState);
+            else if (randomValue >= 7 && randomValue < 11) stateMachine.ChangeState(enemy.moveState);
+            else stateMachine.ChangeState(enemy.chargeReadyState);
         }
-        else if(isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
+        else if(isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.entityData.AttackCoolTime <= Time.time)
             stateMachine.ChangeState(enemy.meleeAttackState);
         else if(enemy.firstHandPatternStart)
         {
             enemy.firstHandPatternStart = false;
-            stateMachine.ChangeState(enemy.cast2State);
+            stateMachine.ChangeState(enemy.smallDespawnState);
         }
         else if(enemy.secondHandPatternStart)
         {
             enemy.secondHandPatternStart = false;
-            stateMachine.ChangeState(enemy.cast2State);
+            stateMachine.ChangeState(enemy.smallDespawnState);
         }
     }
 

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6066a386fc454da027b372848cbdc, type: 3}
   m_Name: FireWizard_EntityData
   m_EditorClassIdentifier: 
-  maxHp: 50
+  maxHp: 40
   knockbackSpeed: 10
   knockbackAngle: {x: 0, y: 0}
   playerInMeleeAttackRange: 3.5
   playerInRangeAttackRadius: 0
   playerInChargeRadius: 0
   playerDetectRange: 7
-  wallCheckDistance: 0.2
+  wallCheckDistance: 1
   ledgeCheckDistance: 0.4
   groundCheckRadius: 0.3
   stunRecoveryTIme: 2
@@ -29,3 +29,6 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
+  defense: 0
+  AttackCoolTime: 2
+  DestroyTime: 2

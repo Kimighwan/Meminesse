@@ -57,7 +57,7 @@ public class SkillTreeUI : UIBase
 
         UpdateEdgeImage();
 
-        if(Input.GetKeyDown(KeyCode.F)) // 스킬 활성화 버튼 클릭
+        if(Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree"))) // 스킬 활성화 버튼 클릭
         {
             skillActiveButton.onClick.Invoke();
         }

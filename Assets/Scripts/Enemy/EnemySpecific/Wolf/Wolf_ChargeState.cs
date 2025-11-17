@@ -34,11 +34,11 @@ public class Wolf_ChargeState : ChargeState
     {
         base.LogicalUpdate();
 
-        if (isDetectWall || isDetectLedge || isChargeTimeOver)
+        if (isDetectWall || !isDetectLedge || isChargeTimeOver)
         {
             stateMachine.ChangeState(enemy.idleState);
         }
-        else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
+        else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.entityData.AttackCoolTime <= Time.time)
             stateMachine.ChangeState(enemy.meleeAttackState);
     }
 

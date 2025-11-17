@@ -30,7 +30,7 @@ public class FireWizard_IdleState : IdleState
 
         if(isIdleTimeOver)
             stateMachine.ChangeState(enemy.moveState);
-        else if(isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
+        else if(isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.entityData.AttackCoolTime <= Time.time)
             stateMachine.ChangeState(enemy.meleeAttackState);
         else if(isDetectedPlayer)
             stateMachine.ChangeState(enemy.detectState);

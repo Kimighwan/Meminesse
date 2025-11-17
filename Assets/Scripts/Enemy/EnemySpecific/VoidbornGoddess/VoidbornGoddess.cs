@@ -42,10 +42,10 @@ public class VoidbornGoddess : Entity
     public List<GameObject> spellPositions;
 
     public float LastAttackTime;
-    public float AttackCoolTime { get; private set; }
 
-    public bool firstHandPattern { get; private set; }
-    public bool secondHandPattern { get; private set; }
+    public bool firstHandPattern { get; private set; }  // 첫번째 패턴 발동 여부
+    public bool secondHandPattern { get; private set; }     // 두번째 패턴 발동 여부
+
     public bool firstHandPatternStart;
     public bool secondHandPatternStart;
 
@@ -55,7 +55,6 @@ public class VoidbornGoddess : Entity
 
         facingDirection = -1;
         defaultDirection = -1;
-        AttackCoolTime = 1f;
 
         firstHandPattern = false;
         secondHandPattern = false;
@@ -77,7 +76,13 @@ public class VoidbornGoddess : Entity
         chargeReadyState = new VoidbornGoddess_ChargeReadyState(this, stateMachine, "chargeReady", chargeReadyStateData, this);
         chargeState = new VoidbornGoddess_ChargeState(this, stateMachine, "charge", chargeStateData, this);
 
-        stateMachine.Init(cast2State);
+        stateMachine.Init(smallSpawnState);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        CheckXPositionForFlip();
     }
 
     public override void OnDrawGizmos()
@@ -91,12 +96,12 @@ public class VoidbornGoddess : Entity
     {
         base.Damaged(damage, position, isStun);
 
-        if (currentHp < 70 && !firstHandPattern)
+        if (currentHp < 400 && !firstHandPattern)
         {
             firstHandPattern = true;
             firstHandPatternStart = true;
         }
-        else if (currentHp < 30 && !secondHandPattern)
+        else if (currentHp < 200 && !secondHandPattern)
         {
             secondHandPattern = true;
             secondHandPatternStart = true;

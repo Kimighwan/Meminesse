@@ -33,10 +33,8 @@ public class AssassinCultist_MoveState : MoveState
             enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);
         }
-        else if (isPlayerInMeleeAttackRange && (enemy.firstAttack || enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time))
+        else if (isPlayerInMeleeAttackRange && (enemy.firstAttack || enemy.LastAttackTime + enemy.entityData.AttackCoolTime <= Time.time))
             stateMachine.ChangeState(enemy.meleeAttackState);
-        else if (isDetectedPlayer)
-            stateMachine.ChangeState(enemy.detectState);
     }
 
     public override void PhysicsUpdate()

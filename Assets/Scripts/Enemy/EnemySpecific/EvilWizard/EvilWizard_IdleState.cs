@@ -32,7 +32,7 @@ public class EvilWizard_IdleState : IdleState
         {
             stateMachine.ChangeState(enemy.moveState);
         }
-        else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
+        else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.entityData.AttackCoolTime <= Time.time)
         {
             int randomValue = RandomAttack();
 

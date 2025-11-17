@@ -30,7 +30,6 @@ public class NomalCultist : Entity
     [SerializeField]
     private Transform rangeAttackPos;
 
-    public float AttackCoolTime { get; set; } = 2f;
     public float LastAttackTime { get; set; }
 
     public override void Start()

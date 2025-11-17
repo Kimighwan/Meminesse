@@ -19,7 +19,7 @@ public class DetectState : State
     {
         base.DoCheck();
 
-        isDetectedPlayer = entity.CheckPlayerInDetectRangeTpyeLine();
+        isDetectedPlayer = entity.CanDetectPlayer();
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
         isDetectLedge = entity.CheckLedge();

@@ -30,7 +30,7 @@ public class EvilWizard_DetechState : DetectState
 
         if (!isDetectedPlayer)
             stateMachine.ChangeState(enemy.idleState);
-        else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
+        else if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.entityData.AttackCoolTime <= Time.time)
         {
             int randomValue = RandomAttack();
 
@@ -41,7 +41,8 @@ public class EvilWizard_DetechState : DetectState
         }
         else if (!isDetectLedge)
         {
-            stateMachine.ChangeState(enemy.moveState);
+            enemy.idleState.SetFlipAfterIdle(true);
+            stateMachine.ChangeState(enemy.idleState);
         }
     }
 
