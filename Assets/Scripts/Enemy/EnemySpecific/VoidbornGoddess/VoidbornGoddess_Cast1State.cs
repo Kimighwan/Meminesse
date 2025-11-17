@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class VoidbornGoddess_Cast1State : IdleState
 {
@@ -47,14 +48,16 @@ public class VoidbornGoddess_Cast1State : IdleState
             {
                 stop = true;
 
-                Debug.Log("탄막 생성");
                 GameObject bullet = GameObject.Instantiate(Resources.Load("Enemy/BulltetA"), enemy.rangeAttackPosition) as GameObject;
-                Rigidbody2D bulletRigid = bullet.GetComponent<Rigidbody2D>();
+
                 Vector2 dirVec = enemy.GetDirectionToPlayer();
                 Vector2 ranVec = new Vector2(Random.Range(0f, 2f), Random.Range(-3f, 3f));
                 //Vector2 ranVec = new Vector2(1, Mathf.Cos(Mathf.PI * 10 * Time.time));
                 dirVec += ranVec;
+                Debug.DrawRay(enemy.transform.position, dirVec);
+                Rigidbody2D bulletRigid = bullet.GetComponent<Rigidbody2D>();
                 bulletRigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
+
                 count++;
             }
 

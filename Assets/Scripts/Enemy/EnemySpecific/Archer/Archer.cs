@@ -34,6 +34,8 @@ public class Archer : Entity
     [SerializeField]
     private Transform rangeAttackPosition;
 
+    public float LastAttackTime;
+
     public override void Start()
     {
         base.Start();

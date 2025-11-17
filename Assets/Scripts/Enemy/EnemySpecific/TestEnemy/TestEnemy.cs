@@ -35,6 +35,8 @@ public class TestEnemy : Entity
     [SerializeField]
     private Transform meleeAttackPosition;
 
+    public float LastAttackTime { get; set; }
+
     public override void Start()
     {
         base.Start();

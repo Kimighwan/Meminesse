@@ -42,7 +42,6 @@ public class VoidbornGoddess : Entity
     public List<GameObject> spellPositions;
 
     public float LastAttackTime;
-    public float AttackCoolTime { get; private set; }
 
     public bool firstHandPattern { get; private set; }
     public bool secondHandPattern { get; private set; }
@@ -55,7 +54,6 @@ public class VoidbornGoddess : Entity
 
         facingDirection = -1;
         defaultDirection = -1;
-        AttackCoolTime = 1f;
 
         firstHandPattern = false;
         secondHandPattern = false;
@@ -77,7 +75,13 @@ public class VoidbornGoddess : Entity
         chargeReadyState = new VoidbornGoddess_ChargeReadyState(this, stateMachine, "chargeReady", chargeReadyStateData, this);
         chargeState = new VoidbornGoddess_ChargeState(this, stateMachine, "charge", chargeStateData, this);
 
-        stateMachine.Init(cast2State);
+        stateMachine.Init(smallSpawnState);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        CheckXPositionForFlip();
     }
 
     public override void OnDrawGizmos()

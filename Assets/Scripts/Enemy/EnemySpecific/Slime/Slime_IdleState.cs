@@ -28,7 +28,7 @@ public class Slime_IdleState : IdleState
     {
         base.LogicalUpdate();
 
-        if (isPlayerInMeleeAttackRange)
+        if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.entityData.AttackCoolTime <= Time.time)
         {
             stateMachine.ChangeState(enemy.attackState);
         }

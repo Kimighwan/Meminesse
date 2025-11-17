@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
@@ -22,7 +23,6 @@ public class EvilWizard : Entity
     [SerializeField] private Transform meleeAttack1Position;
     [SerializeField] private Transform meleeAttack2Position;
 
-    public float AttackCoolTime { get; set; } = 1.5f;
     public float LastAttackTime { get; set; }
 
 
@@ -39,6 +39,20 @@ public class EvilWizard : Entity
         deadState = new EvilWizard_DeadState(this, stateMachine, "dead", deadStateData, this);
 
         stateMachine.Init(idleState);
+    }
+
+    public override void Damaged(float damage, Vector2 position, bool isStun, float defIgnore = 0f)
+    {
+        base.Damaged(damage, position, isStun);
+
+        if (isDead)
+        {
+            stateMachine.ChangeState(deadState);
+        }
+        else
+        {
+            stateMachine.ChangeState(damagedState);
+        }
     }
 
     public override void OnDrawGizmos()

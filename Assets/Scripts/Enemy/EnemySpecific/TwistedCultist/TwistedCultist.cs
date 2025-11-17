@@ -27,7 +27,6 @@ public class TwistedCultist : Entity
 
     [SerializeField] private Transform meleeAttackPosition;
 
-    public float AttackCoolTime { get; private set; } = 2f;
     public float LastAttackTime { get; set; }
 
     public override void Start()

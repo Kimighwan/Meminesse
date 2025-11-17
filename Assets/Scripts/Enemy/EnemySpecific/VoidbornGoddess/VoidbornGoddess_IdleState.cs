@@ -38,7 +38,7 @@ public class VoidbornGoddess_IdleState : IdleState
             if (randomValue < 7) stateMachine.ChangeState(enemy.rangeAttackState);
             else stateMachine.ChangeState(enemy.chargeState);
         }
-        else if(isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
+        else if(isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.entityData.AttackCoolTime <= Time.time)
             stateMachine.ChangeState(enemy.meleeAttackState);
         else if(enemy.firstHandPatternStart)
         {

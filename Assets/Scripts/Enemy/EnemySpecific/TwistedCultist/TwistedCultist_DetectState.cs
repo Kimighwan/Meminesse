@@ -29,7 +29,7 @@ public class TwistedCultist_DetectState : DetectState
 
         if (!isDetectedPlayer)
             stateMachine.ChangeState(enemy.idleState);
-        else if (isPlayerInMeleeAttackRange && enemy.AttackCoolTime + enemy.LastAttackTime <= Time.time)
+        else if (isPlayerInMeleeAttackRange && enemy.entityData.AttackCoolTime + enemy.LastAttackTime <= Time.time)
             stateMachine.ChangeState(enemy.meleeAttackState);
         else if (!isDetectLedge)
             stateMachine.ChangeState(enemy.moveState);

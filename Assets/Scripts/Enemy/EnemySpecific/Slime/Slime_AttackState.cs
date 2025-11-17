@@ -17,6 +17,7 @@ public class Slime_AttackState : MeleeAttackState
     public override void Enter()
     {
         base.Enter();
+        enemy.LastAttackTime = startTIme;
     }
 
     public override void Exit()
@@ -40,12 +41,7 @@ public class Slime_AttackState : MeleeAttackState
 
         if (isAttackAnimationFinished)
         {
-            if(isPlayerInMeleeAttackRange)
-            {
-                stateMachine.ChangeState(enemy.attackState);
-            }
-            else
-                stateMachine.ChangeState(enemy.moveState);
+            stateMachine.ChangeState(enemy.moveState);
         }
     }
 

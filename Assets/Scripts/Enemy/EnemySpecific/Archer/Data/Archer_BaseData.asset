@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6066a386fc454da027b372848cbdc, type: 3}
   m_Name: Archer_BaseData
   m_EditorClassIdentifier: 
-  maxHp: 50
+  maxHp: 40
   knockbackSpeed: 5
   knockbackAngle: {x: 1, y: 2}
-  playerInMeleeAttackRange: 9
+  playerInMeleeAttackRange: 6
   playerInRangeAttackRadius: 15
   playerInChargeRadius: 0
   playerDetectRange: 10
@@ -30,3 +30,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   defense: 0
+  AttackCoolTime: 0.5
+  DestroyTime: 2

@@ -30,7 +30,7 @@ public class Archer_DodgeState : DodgeState
 
         if (isDodgeTimeOver)
         {
-            if (isPlayerInRangeAttackRange)
+            if (isPlayerInRangeAttackRange && enemy.LastAttackTime + enemy.entityData.AttackCoolTime <= Time.time)
             {
                 enemy.stateMachine.ChangeState(enemy.rangeAttackState);
             }

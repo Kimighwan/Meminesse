@@ -35,7 +35,7 @@ public class Archer_DetectState : DetectState
             {
                 stateMachine.ChangeState(enemy.dodgeState);
             }
-            else if(isPlayerInRangeAttackRange)
+            else if(isPlayerInRangeAttackRange && enemy.LastAttackTime + enemy.entityData.AttackCoolTime <= Time.time)
             {
                 stateMachine.ChangeState(enemy.rangeAttackState);
             }

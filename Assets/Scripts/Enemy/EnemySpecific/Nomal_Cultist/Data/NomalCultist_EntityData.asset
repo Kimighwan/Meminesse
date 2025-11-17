@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6066a386fc454da027b372848cbdc, type: 3}
   m_Name: NomalCultist_EntityData
   m_EditorClassIdentifier: 
-  maxHp: 50
+  maxHp: 100
   knockbackSpeed: 10
   knockbackAngle: {x: 0, y: 0}
   playerInMeleeAttackRange: 0
@@ -30,3 +30,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   defense: 0
+  AttackCoolTime: 2
+  DestroyTime: 2

@@ -28,11 +28,14 @@ public class Wolf_DetectState : DetectState
     {
         base.LogicalUpdate();
 
-        if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.AttackCoolTime <= Time.time)
+        if (isPlayerInMeleeAttackRange && enemy.LastAttackTime + enemy.entityData.AttackCoolTime <= Time.time)
             stateMachine.ChangeState(enemy.meleeAttackState);
         else if(!isDetectedPlayer)
+        {
+            enemy.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemy.idleState);
-        else if(!isDetectLedge)
+        }
+        else if (!isDetectLedge)
         {
             enemy.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemy.idleState);

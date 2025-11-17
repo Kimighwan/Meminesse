@@ -7,4 +7,29 @@ public class AssassinCultist_DeadState : DeadState
     {
         this.enemy = enemy;
     }
+
+    public override void Enter()
+    {
+        base.Enter();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void FinishDeadAnimation()
+    {
+        base.FinishDeadAnimation();
+    }
+
+    public override void LogicalUpdate()
+    {
+        base.LogicalUpdate();
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+    }
 }
