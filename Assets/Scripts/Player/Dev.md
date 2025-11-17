@@ -141,3 +141,21 @@ BUGS:
 
 MISC:
     Levels Q/A
+
+----------------------------------
+
+11/11 ~
+
+TODO:
+    Create camera boundaries for the test scene
+    Make character sprite flicker while invincible                          - Implemented 11/17
+
+BUGS:
+    Running -> Crouching animation not working                              - Fixed 11/17
+        - Added another link with condition check to ensure the transition is working
+    Player not being able to move on tilemaps
+        isGrounded = (hitLeft.collider || hitRight.collider) && (rigid.linearVelocity.y > -0.01f && rigid.linearVelocity.y < 0.01f);
+        - Player was only being checked grounded at <=0 vertical velocity -> added checkes for -0.01f ~ 0.01f
+
+MISC:
+    Levels Q/A
