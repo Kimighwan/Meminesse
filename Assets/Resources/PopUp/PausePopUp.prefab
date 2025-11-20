@@ -896,8 +896,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SettingsPopup, Assembly-CSharp
+        - m_Target: {fileID: 7471972919883061775}
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
           m_MethodName: SetCurrentButton
           m_Mode: 2
           m_Arguments:
@@ -911,7 +911,19 @@ MonoBehaviour:
   - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 7471972919883061775}
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
+          m_MethodName: SetCurrentButton
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5717723716254039424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,8 +1075,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SettingsPopup, Assembly-CSharp
+        - m_Target: {fileID: 7471972919883061775}
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
           m_MethodName: SetCurrentButton
           m_Mode: 2
           m_Arguments:
@@ -1078,7 +1090,19 @@ MonoBehaviour:
   - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 7471972919883061775}
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
+          m_MethodName: SetCurrentButton
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 5717723716254039424}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6368122673360898735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,8 +1390,24 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SettingsPopup, Assembly-CSharp
+        - m_Target: {fileID: 7471972919883061775}
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
+          m_MethodName: SetCurrentButton
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 7033845423885993099}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7471972919883061775}
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
           m_MethodName: SetCurrentButton
           m_Mode: 2
           m_Arguments:
@@ -1529,8 +1569,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SettingsPopup, Assembly-CSharp
+        - m_Target: {fileID: 7471972919883061775}
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
           m_MethodName: SetCurrentButton
           m_Mode: 2
           m_Arguments:
@@ -1544,7 +1584,19 @@ MonoBehaviour:
   - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 7471972919883061775}
+          m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
+          m_MethodName: SetCurrentButton
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &9034522943005640242
 GameObject:
   m_ObjectHideFlags: 0

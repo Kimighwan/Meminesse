@@ -21,4 +21,9 @@ public class PausePopUp : UIBase
         var popup = UIManager.Instance.OpenPopup<ExitPopUp>("ExitPopUp");
         popup.ShowMessage(ExitPopUp.ConfirmType.QuitGame);
     }
+
+    public override void SetCurrentButton(GameObject gb)
+    {
+        base.SetCurrentButton(gb);
+    }
 }

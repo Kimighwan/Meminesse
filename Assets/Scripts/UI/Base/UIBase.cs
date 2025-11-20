@@ -96,12 +96,5 @@ public class UIBase : MonoBehaviour
     public virtual void SetCurrentButton(GameObject gb)
     {
         currentButton = gb;
-
-        if (EventSystem.current == null)
-        {
-            return;
-        }
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(gb);   
     }
 }
