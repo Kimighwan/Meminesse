@@ -9,7 +9,7 @@ public class MainMenu : UIBase
     {
         base.Start();
 
-        AudioManager.Instance.PlayBGM(BGM.ForestCradle);
+        //AudioManager.Instance.PlayBGM(BGM.ForestCradle);
     }
 
     protected override void Update()
