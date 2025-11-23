@@ -15,6 +15,8 @@ public class HpUI : SingletonBehaviour<HpUI>
 
     private int maxHp;
 
+    private Coroutine damageFlashRoutine;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -106,7 +108,12 @@ public class HpUI : SingletonBehaviour<HpUI>
     public void TakeDamage(int damage)
     {
         int currentHp = PlayerDataManager.Instance.GetHp();
-        PlayerDataManager.Instance.SetHp(-damage); 
+        PlayerDataManager.Instance.SetHp(-damage);
+
+        if (damageFlashRoutine != null)
+            StopCoroutine(damageFlashRoutine);
+
+        damageFlashRoutine = StartCoroutine(FlashHearts());
         Debug.Log($"HP -{damage}");
         UpdateHearts();
     }
@@ -120,4 +127,44 @@ public class HpUI : SingletonBehaviour<HpUI>
         Canvas.ForceUpdateCanvases();
     }
     #endregion
+
+    
+
+    private IEnumerator FlashHearts()
+    {
+        float duration = 0.4f;   // 깜빡임 전체 시간
+        float interval = 0.1f;   // 깜빡임 간격
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            SetHeartsAlpha(0.2f);   // 투명하게
+            yield return new WaitForSeconds(interval);
+
+            SetHeartsAlpha(1f);     // 원래대로
+            yield return new WaitForSeconds(interval);
+
+            timer += interval * 2;
+        }
+
+        SetHeartsAlpha(1f); // 마지막 원상복구
+    }
+
+    private void SetHeartsAlpha(float alpha)
+    {
+        foreach (var heart in hearts)
+        {
+            if (heart == null) continue;
+
+            var img = heart.GetComponent<Image>();
+            if (img != null)
+            {
+                var color = img.color;
+                color.a = alpha;
+                img.color = color;
+            }
+        }
+    }
+
+
 }
