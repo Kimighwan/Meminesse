@@ -1,9 +1,12 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class TopSkillUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI numberTxt;
+
+    public Action OnAction;
 
     int number;
 
@@ -29,6 +32,7 @@ public class TopSkillUI : MonoBehaviour
     {
         PlayerDataManager.Instance.SetTopPassive(number, index);
         PlayerDataManager.Instance.Save();
+        OnAction?.Invoke();
         Destroy(gameObject);
     }
 }

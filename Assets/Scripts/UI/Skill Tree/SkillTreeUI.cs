@@ -406,7 +406,9 @@ public class SkillTreeUI : UIBase
         TopSkillUI topSkillUI;
        var newGO = Resources.Load<GameObject>("PopUp/TopSkillUI");
         if (newGO.TryGetComponent<TopSkillUI>(out topSkillUI))
+        {
             topSkillUI.Init(n);
+        }
         Instantiate(newGO);
     }
 }
