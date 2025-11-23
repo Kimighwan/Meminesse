@@ -671,6 +671,7 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForSeconds(30f);
                 break;
             default:
+            if (skillLevel != 0)
                 Debug.LogError("Invalid skill level for Shield Regeneration: " + skillLevel);
                 break;
         }   
@@ -699,7 +700,10 @@ public class PlayerController : MonoBehaviour
                 rageDuration = 6f;
                 break;
             default:
-                Debug.LogError("Invalid skill level for Rage Mode: " + skillLevel);
+                if (skillLevel != 0)
+                {
+                    Debug.LogError("Invalid skill level for Rage Mode: " + skillLevel);
+                }
                 break;
         }
 
@@ -1060,7 +1064,10 @@ public class PlayerController : MonoBehaviour
                 break;
             default:
                 bonusDamage = 0;
-                Debug.LogError("Invalid balanced skill level for bonus damage: " + balancedLevel);
+                if (balancedLevel != 0)
+                {
+                    Debug.LogError("Invalid balanced skill level for bonus damage: " + balancedLevel);
+                }
                 break;
         }
         return bonusDamage;
@@ -1238,7 +1245,10 @@ public class PlayerController : MonoBehaviour
                     break;
                 default:
                     reflectDamage = 0;
-                    Debug.LogError("Invalid balanced skill level for damage reflection: " + topPassiveLevel_balanced);
+                    if (topPassiveLevel_balanced != 0)
+                    {
+                        Debug.LogError("Invalid balanced skill level for damage reflection: " + topPassiveLevel_balanced);
+                    }
                     break;
             }
 
