@@ -35,7 +35,6 @@ public class InventoryDataManager : SingletonBehaviour<InventoryDataManager>
         return itemDataList.Find(item => item.itemId == id)?.count ?? 0;
     }
 
-    // 왜 필요함?
     public List<InventoryData> SortItem()
     {
         itemDataList.Sort((x, y) => x.itemId.CompareTo(y.itemId));
@@ -97,6 +96,12 @@ public class InventoryDataManager : SingletonBehaviour<InventoryDataManager>
 
     #region Save-Load
 
+    public void SetDefaultData()
+    {
+        itemDataList = new List<InventoryData>();
+        Save();
+    }
+
     public void Save()
     {
         WrapperItemDataList itemDataListWrapper = new WrapperItemDataList();
@@ -108,8 +113,7 @@ public class InventoryDataManager : SingletonBehaviour<InventoryDataManager>
     {
         if (!File.Exists(PATH)) // Create
         {
-            itemDataList = new List<InventoryData>();
-            Save();
+            SetDefaultData();
         }
         else // Load
         {

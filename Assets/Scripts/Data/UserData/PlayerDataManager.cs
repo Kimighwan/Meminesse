@@ -168,11 +168,11 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     #region Get Value
     public int GetTopPassive(int index)
     {
-        if (index == 1) 
+        if (index == 1)
             return playerData.A;
-        else if (index == 2) 
+        else if (index == 2)
             return playerData.B;
-        else 
+        else
             return playerData.C;
     }
     public int GetTopNumber(int number) => playerData.SelectedActive[number - 1];
@@ -229,6 +229,11 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
 
     #region Save-Load
 
+    public void SetDefaultData()
+    {
+        playerData = new PlayerData();
+        Save();
+    }
     public void Save()
     {
         string jsonData = JsonUtility.ToJson(playerData);
@@ -239,8 +244,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     {
         if (!File.Exists(PATH)) // Create
         {
-            playerData = new PlayerData();
-            Save();
+            SetDefaultData();
         }
         else // Load
         {

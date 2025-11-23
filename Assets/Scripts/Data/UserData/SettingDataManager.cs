@@ -174,6 +174,11 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
     /*-------------
           SAVE
      -------------*/
+    public void SetDefaultData()
+    {
+        InitSettingData();
+        ResetKeyData();
+    }
     public void Save()
     {
         SettingDataSave();

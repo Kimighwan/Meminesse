@@ -74,6 +74,14 @@ public class SaveFileDataManager : SingletonBehaviour<SaveFileDataManager>
     #endregion
 
     #region Save-Load
+
+    public void SetDefaultData()
+    {
+        saveFileData = new SaveFileData();
+        saveFileData.mapId.Add(1);
+        Save();
+    }
+
     public void Save()
     {
         string jsonData = JsonUtility.ToJson(saveFileData);
@@ -83,9 +91,7 @@ public class SaveFileDataManager : SingletonBehaviour<SaveFileDataManager>
     {
         if (!File.Exists(PATH)) // Create
         {
-            saveFileData = new SaveFileData();
-            saveFileData.mapId.Add(1);
-            Save();
+            SetDefaultData(); 
         }
         else // Load
         {
