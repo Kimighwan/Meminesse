@@ -30,6 +30,7 @@ public class PlayerData
     public int C;
 
     public bool[] IsSkillActive;
+    public int[] SelectedActive;
 
     public PlayerData()
     {
@@ -48,6 +49,7 @@ public class PlayerData
         B = 0;
         C = 0;
         IsSkillActive = new bool[24];
+        SelectedActive = new int[3] { 0, 0, 0 };
     }
     public PlayerData(PlayerData data)
     {
@@ -64,6 +66,7 @@ public class PlayerData
         weaponLevel = data.weaponLevel;
         A = data.A; B = data.B; C = data.C;
         IsSkillActive = data.IsSkillActive;
+        SelectedActive = data.SelectedActive;
     }
 }
 
@@ -83,6 +86,14 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     }
 
     #region Set Value
+    public void SetTopPassive(int number, int index)
+    {
+        if (index == 1) playerData.A++;
+        else if (index == 2) playerData.B++;
+        else playerData.C++;
+
+        playerData.SelectedActive[number] = index;
+    }
     public void UpgradeWeaponLevel()
     {
         playerData.weaponLevel += 1;
@@ -155,6 +166,16 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     #endregion
 
     #region Get Value
+    public int GetTopPassive(int index)
+    {
+        if (index == 1) 
+            return playerData.A;
+        else if (index == 2) 
+            return playerData.B;
+        else 
+            return playerData.C;
+    }
+    public int GetTopNumber(int number) => playerData.SelectedActive[number - 1];
     public int GetWeaponLevel()
     {
         return playerData.weaponLevel;

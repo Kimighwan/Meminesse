@@ -14,7 +14,7 @@ public class SkillTreeUI : UIBase
     [SerializeField] TextMeshProUGUI descUIText;
     const string IMAGE_PATH = "UI/SkillTree/SkillIcon";
 
-    public Image[] edgeImage; //= new Image[24];
+    public Image[] edgeImage;
 
     [SerializeField] RectTransform contentRectTransform;
     [SerializeField] AllSkillDescUI allSkillDescUI;
@@ -263,16 +263,26 @@ public class SkillTreeUI : UIBase
                 }
                 break;
             case 21:
-                descUIText.text = "첫 번째 상위 패시브";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Active1");
                 descUISkillName.text = "첫 번째 상위 패시브";
                 if (!BActive[nodeID])
                 {
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
+                    descUIText.text = "첫 번째 상위 패시브";
+                    skillActiveButton.onClick.AddListener(() => OpenTopSkillUI(1));
                 }
                 else
+                {
                     skillActiveButton.gameObject.SetActive(false);
+                    int index = PlayerDataManager.Instance.GetTopNumber(1);
+                    if(index == 1)
+                        descUIText.text = "고수 모드";
+                    else if(index == 2)
+                        descUIText.text = "?? 모드";
+                    else
+                        descUIText.text = "겁쟁이 모드";
+                }
+                    
 
                 if (!BActive[4] || !BActive[5])
                 {
@@ -280,16 +290,25 @@ public class SkillTreeUI : UIBase
                 }
                 break;
             case 22:
-                descUIText.text = "두 번째 상위 패시브";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Active2");
                 descUISkillName.text = "두 번째 상위 패시브";
                 if (!BActive[nodeID])
                 {
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
+                    descUIText.text = "두 번째 상위 패시브";
+                    skillActiveButton.onClick.AddListener(() => OpenTopSkillUI(2));
                 }
                 else
+                {
                     skillActiveButton.gameObject.SetActive(false);
+                    int index = PlayerDataManager.Instance.GetTopNumber(2);
+                    if (index == 1)
+                        descUIText.text = "고수 모드";
+                    else if (index == 2)
+                        descUIText.text = "?? 모드";
+                    else
+                        descUIText.text = "겁쟁이 모드";
+                }
 
                 if (!BActive[11] || !BActive[12] || !BActive[13])
                 {
@@ -297,16 +316,25 @@ public class SkillTreeUI : UIBase
                 }
                 break;
             case 23:
-                descUIText.text = "세 번째 상위 패시브";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Active3");
                 descUISkillName.text = "세 번째 상위 패시브";
                 if (!BActive[nodeID])
                 {
                     skillActiveButton.gameObject.SetActive(true);
-                    skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
+                    descUIText.text = "세 번째 상위 패시브";
+                    skillActiveButton.onClick.AddListener(() => OpenTopSkillUI(3));
                 }
                 else
+                {
                     skillActiveButton.gameObject.SetActive(false);
+                    int index = PlayerDataManager.Instance.GetTopNumber(3);
+                    if (index == 1)
+                        descUIText.text = "고수 모드";
+                    else if (index == 2)
+                        descUIText.text = "?? 모드";
+                    else
+                        descUIText.text = "겁쟁이 모드";
+                }
 
                 if (!BActive[18] || !BActive[19] || !BActive[20])
                 {
@@ -362,7 +390,7 @@ public class SkillTreeUI : UIBase
     }
     #endregion
 
-    private void UpdateEdgeImage()
+    void UpdateEdgeImage()
     {
         for(int i = 1; i <= 23; i++)
         {
@@ -371,5 +399,14 @@ public class SkillTreeUI : UIBase
                 edgeImage[i].sprite = Resources.Load<Sprite>($"UI/SkillTree/normal outline");
             }
         }
+    }
+
+    void OpenTopSkillUI(int n)
+    {
+        TopSkillUI topSkillUI;
+       var newGO = Resources.Load<GameObject>("PopUp/TopSkillUI");
+        if (newGO.TryGetComponent<TopSkillUI>(out topSkillUI))
+            topSkillUI.Init(n);
+        Instantiate(newGO);
     }
 }
