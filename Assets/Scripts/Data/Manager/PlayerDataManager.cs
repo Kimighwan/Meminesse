@@ -25,6 +25,12 @@ public class PlayerData
 
     public int weaponLevel;
 
+    public int A;
+    public int B;
+    public int C;
+
+    public bool[] IsSkillActive;
+
     public PlayerData()
     {
         hp = 100;  //한칸이 20 반칸이 10 풀피가 100 /////////////////
@@ -38,6 +44,10 @@ public class PlayerData
         dashCoolDown = 2f;
         skillCoolDownDecrease = 0f;
         weaponLevel = 1;
+        A = 0;
+        B = 0;
+        C = 0;
+        IsSkillActive = new bool[24];
     }
     public PlayerData(PlayerData data)
     {
@@ -52,6 +62,8 @@ public class PlayerData
         dashCoolDown = data.dashCoolDown;
         skillCoolDownDecrease = data.skillCoolDownDecrease;
         weaponLevel = data.weaponLevel;
+        A = data.A; B = data.B; C = data.C;
+        IsSkillActive = data.IsSkillActive;
     }
 }
 
@@ -75,7 +87,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     {
         playerData.weaponLevel += 1;
 
-        switch(playerData.weaponLevel)
+        switch (playerData.weaponLevel)
         {
             case 2:
                 playerData.damage = 14f;
@@ -93,7 +105,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
                 break;
         }
     }
-    public void AddHP()  // 무시하셈 스킬 트리에서 사용하는 이벤트 등록용 함수다
+    public void AddHP()
     {
         playerData.maxHp += 20;
     }
@@ -204,7 +216,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     }
     public void Load()
     {
-        if(!File.Exists(PATH)) // Create
+        if (!File.Exists(PATH)) // Create
         {
             playerData = new PlayerData();
             Save();

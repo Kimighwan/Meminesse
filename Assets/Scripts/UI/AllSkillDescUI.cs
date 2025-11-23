@@ -127,64 +127,42 @@ public class AllSkillDescUI : MonoBehaviour
     }
 
 
-    private bool BAcitveAddHp = false;
-    private bool BAcitveHealingAmount = false;
-    private bool BAcitveAddDamage = false;
-    private bool BAcitveDefenseIgnoreIncrease = false;
-    private bool BAcitveDashCoolTimeDecrease = false;
-    private bool BAcitveSkillCoolTimeDecrease = false;
-    private bool BAcitveItemDropRate = false;
-    private bool BAcitveGoldDropRate = false;
+    bool BAcitveAddHp = false;
+    bool BAcitveHealingAmount = false;
+    bool BAcitveAddDamage = false;
+    bool BAcitveDefenseIgnoreIncrease = false;
+    bool BAcitveDashCoolTimeDecrease = false;
+    bool BAcitveSkillCoolTimeDecrease = false;
+    bool BAcitveItemDropRate = false;
+    bool BAcitveGoldDropRate = false;
 
     [Header("image")]
-    [SerializeField]
-    private Image hpImg;
-    [SerializeField]
-    private Image addHealingAmountImg;
-    [SerializeField]
-    private Image addDamageImg;
-    [SerializeField]
-    private Image defenseIgnoreIncreaseImg;
-    [SerializeField]
-    private Image dashCoolTimeDecreaseImg;
-    [SerializeField]
-    private Image skillCoolTimeDecreaseImg;
-    [SerializeField]
-    private Image itemDropRateImg;
-    [SerializeField]
-    private Image goldDropRateImg;
+    [SerializeField] Image hpImg;
+    [SerializeField] Image addHealingAmountImg;
+    [SerializeField] Image addDamageImg;
+    [SerializeField] Image defenseIgnoreIncreaseImg;
+    [SerializeField] Image dashCoolTimeDecreaseImg;
+    [SerializeField] Image skillCoolTimeDecreaseImg;
+    [SerializeField] Image itemDropRateImg;
+    [SerializeField] Image goldDropRateImg;
+
     [Header("text")]
-    [SerializeField]
-    private TextMeshProUGUI hpTxt;
-    [SerializeField]
-    private TextMeshProUGUI addHealingAmountTxt;
-    [SerializeField]
-    private TextMeshProUGUI addDamageTxt;
-    [SerializeField]
-    private TextMeshProUGUI defenseIgnoreIncreaseTxt;
-    [SerializeField]
-    private TextMeshProUGUI dashCoolTimeDecreaseTxt;
-    [SerializeField]
-    private TextMeshProUGUI skillCoolTimeDecreaseTxt;
-    [SerializeField]
-    private TextMeshProUGUI itemDropRateTxt;
-    [SerializeField]
-    private TextMeshProUGUI goldDropRateTxt;
+    [SerializeField] TextMeshProUGUI hpTxt;
+    [SerializeField] TextMeshProUGUI addHealingAmountTxt;
+    [SerializeField] TextMeshProUGUI addDamageTxt;
+    [SerializeField] TextMeshProUGUI defenseIgnoreIncreaseTxt;
+    [SerializeField] TextMeshProUGUI dashCoolTimeDecreaseTxt;
+    [SerializeField] TextMeshProUGUI skillCoolTimeDecreaseTxt;
+    [SerializeField] TextMeshProUGUI itemDropRateTxt;
+    [SerializeField] TextMeshProUGUI goldDropRateTxt;
+
     [Header("value")]
-    [SerializeField]
-    private TextMeshProUGUI hpValue;
-    [SerializeField]
-    private TextMeshProUGUI addHealingAmountValue;
-    [SerializeField]
-    private TextMeshProUGUI addDamageValue;
-    [SerializeField]
-    private TextMeshProUGUI defenseIgnoreIncreaseValue;
-    [SerializeField]
-    private TextMeshProUGUI dashCoolTimeDecreaseValue;
-    [SerializeField]
-    private TextMeshProUGUI skillCoolTimeDecreaseValue;
-    [SerializeField]
-    private TextMeshProUGUI itemDropRateValue;
-    [SerializeField]
-    private TextMeshProUGUI goldDropRateValue;
+    [SerializeField] TextMeshProUGUI hpValue;
+    [SerializeField] TextMeshProUGUI addHealingAmountValue;
+    [SerializeField] TextMeshProUGUI addDamageValue;
+    [SerializeField] TextMeshProUGUI defenseIgnoreIncreaseValue;
+    [SerializeField] TextMeshProUGUI dashCoolTimeDecreaseValue;
+    [SerializeField] TextMeshProUGUI skillCoolTimeDecreaseValue;
+    [SerializeField] TextMeshProUGUI itemDropRateValue;
+    [SerializeField] TextMeshProUGUI goldDropRateValue;
 }

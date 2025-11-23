@@ -7,60 +7,30 @@ using UnityEngine.UI;
 
 public class SkillTreeUI : UIBase
 {
-    /*------------
-        Desc Ui
-     ------------*/
-    [SerializeField]
-    private GameObject descActiveGO;
-    [SerializeField]
-    private Image descUISkill_Icon;
-    [SerializeField]
-    private TextMeshProUGUI descUISkillName;
-    [SerializeField]
-    private TextMeshProUGUI descUIText;
-    private const string IMAGE_PATH = "UI/SkillTree/SkillIcon";
+    [Header("Desc UI")]
+    [SerializeField] GameObject descActiveGO;
+    [SerializeField] Image descUISkill_Icon;
+    [SerializeField] TextMeshProUGUI descUISkillName;
+    [SerializeField] TextMeshProUGUI descUIText;
+    const string IMAGE_PATH = "UI/SkillTree/SkillIcon";
 
     public Image[] edgeImage; //= new Image[24];
 
-    [SerializeField]
-    private RectTransform contentRectTransform;
-    [SerializeField]
-    private AllSkillDescUI allSkillDescUI;
-    [SerializeField]
-    private Button skillActiveButton;
-    private bool[] BActive = new bool[24];
-
-    [Header("Skill descUI Position")]
-    private Vector2 upPosition = Vector2.zero;
-    private Vector2 downPosition = new Vector2(0f, -310f);
+    [SerializeField] RectTransform contentRectTransform;
+    [SerializeField] AllSkillDescUI allSkillDescUI;
+    [SerializeField] Button skillActiveButton;
+    bool[] BActive = new bool[24];
 
     [Header("Scroll position to move")]
-    private Vector2 rightPosition = new Vector2(-800f, 0f);    // Scroll Right Position to move right
-    private Vector2 leftPosition = new Vector2(-0f, 0f);     // Scroll Left Position to move right
+    Vector2 rightPosition = new Vector2(-800f, 0f);    // Scroll Right Position to move right
+    Vector2 leftPosition = new Vector2(-0f, 0f);     // Scroll Left Position to move right
 
-    private float elapsedTime;
-    private float clampT;
-    private float t;
-
-    // conditional variable
     public bool descUIActiveCheck = false;
-
-    protected override void Start()
-    {
-        base.Start();
-    }
 
     protected override void Update()
     {
         base.Update();
-
-
         UpdateEdgeImage();
-
-        if(Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("SkillTree"))) // 스킬 활성화 버튼 클릭
-        {
-            skillActiveButton.onClick.Invoke();
-        }
     }
 
     public override void OnShown()
@@ -73,13 +43,11 @@ public class SkillTreeUI : UIBase
     {
         descUIActiveCheck = true;
         descActiveGO.SetActive(true);
+
         // 활성화 버튼 이벤트 전부 삭제
         skillActiveButton.onClick.RemoveAllListeners();
         skillActiveButton.onClick.AddListener(() => BActive[nodeID] = true);    // 해당 노드 스킬 찍었음을 확인하는 조건 변수
         skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false)); // 스킬 활성화 버튼 비활성화
-
-
-
 
         // 노드에 맞게 설명과 버튼 이벤트 할당
         // 1) 노드에 맞는 기능들 버튼에 부여
@@ -100,8 +68,6 @@ public class SkillTreeUI : UIBase
                 }
                 else
                     skillActiveButton.gameObject.SetActive(false);
-                //PlayerDataManager.Instance.AddHP();
-                //allSkillDescUI.AddHP();
                 break;
             case 2:
             case 4:
@@ -131,8 +97,6 @@ public class SkillTreeUI : UIBase
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                //PlayerDataManager.Instance.DashCoolTimeDecrease();
-                //allSkillDescUI.DashCoolTimeDecrease();
                 break;
             case 3:
             case 10:
@@ -157,8 +121,6 @@ public class SkillTreeUI : UIBase
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                //PlayerDataManager.Instance.ItemDropRate();
-                //allSkillDescUI.ItemDropRate();
                 break;
             case 5:
             case 13:
@@ -183,8 +145,6 @@ public class SkillTreeUI : UIBase
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                //PlayerDataManager.Instance.GoldDropRate();
-                //allSkillDescUI.GoldDropRate();
                 break;
             case 6:
             case 14:
@@ -209,8 +169,6 @@ public class SkillTreeUI : UIBase
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                //PlayerDataManager.Instance.DefenseIgnoreIncrease();
-                //allSkillDescUI.DefenseIgnoreIncrease();
                 break;
             case 7:
             case 17:
@@ -240,8 +198,6 @@ public class SkillTreeUI : UIBase
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                //PlayerDataManager.Instance.DamageIncrease();
-                //allSkillDescUI.DamageIncrease();
                 break;
             case 8:
             case 15:
@@ -271,8 +227,6 @@ public class SkillTreeUI : UIBase
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                //PlayerDataManager.Instance.SkillCoolTimeDecrease();
-                //allSkillDescUI.SkillCoolTimeDecrease();
                 break;
             case 9:
             case 12:
@@ -307,8 +261,6 @@ public class SkillTreeUI : UIBase
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                //PlayerDataManager.Instance.HealingAmountIncrease();
-                //allSkillDescUI.HealingAmount();
                 break;
             case 21:
                 descUIText.text = "첫 번째 상위 패시브";
@@ -316,8 +268,6 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "첫 번째 상위 패시브";
                 if (!BActive[nodeID])
                 {
-                    //skillActiveButton.onClick.AddListener();
-                    //skillActiveButton.onClick.AddListener();
                     skillActiveButton.gameObject.SetActive(true);
                     skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
@@ -335,8 +285,6 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "두 번째 상위 패시브";
                 if (!BActive[nodeID])
                 {
-                    //skillActiveButton.onClick.AddListener();
-                    //skillActiveButton.onClick.AddListener();
                     skillActiveButton.gameObject.SetActive(true);
                     skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
@@ -354,8 +302,6 @@ public class SkillTreeUI : UIBase
                 descUISkillName.text = "세 번째 상위 패시브";
                 if (!BActive[nodeID])
                 {
-                    //skillActiveButton.onClick.AddListener();
-                    //skillActiveButton.onClick.AddListener();
                     skillActiveButton.gameObject.SetActive(true);
                     skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
@@ -370,11 +316,7 @@ public class SkillTreeUI : UIBase
         }
     }
     
-    public override void SetCurrentButton(GameObject gb)
-    {
-        base.SetCurrentButton(gb);
-    }
-
+    #region Move Scroll
     public void MoveRightScroll()
     {
         if (contentRectTransform.anchoredPosition == rightPosition)
@@ -418,6 +360,7 @@ public class SkillTreeUI : UIBase
 
         contentRectTransform.anchoredPosition = leftPosition;
     }
+    #endregion
 
     private void UpdateEdgeImage()
     {
