@@ -1257,6 +1257,7 @@ public class PlayerController : MonoBehaviour
 
         int takenDamage = 0 - (int)damage;
         PlayerDataManager.Instance.SetHp(takenDamage);
+        HUD.Instance.UpdateHUD();
 
         int playerHealth = PlayerDataManager.Instance.GetHp();
         Debug.Log("Damage took: " + damage + ", Remaining Health: " + playerHealth);
