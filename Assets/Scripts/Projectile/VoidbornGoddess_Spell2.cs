@@ -6,7 +6,7 @@ public class VoidbornGoddess_Spell2 : Projectile
     {
         base.Start();
 
-        InitProjectile(10f, 100f, 1f, Vector2.right);
+        InitProjectile(10f, 100f, 20f, Vector2.right, entity);
     }
 
     public override void FixedUpdate()

@@ -625,7 +625,7 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(invincibleTimeAfterHit - animationTime);
         isInvincible = false;
-        Debug.Log("isinvincible: "+isInvincible);
+        Debug.Log("isinvincible: " + isInvincible);
     }
 
     private IEnumerator Dead()
@@ -657,7 +657,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator ShieldRegeneration(int skillLevel)
     {
         shieldRegenCountdown = true;
-        
+
         // Timer for shield regeneration after taking damage
         switch (skillLevel)
         {
@@ -671,10 +671,10 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForSeconds(30f);
                 break;
             default:
-            if (skillLevel != 0)
-                Debug.LogError("Invalid skill level for Shield Regeneration: " + skillLevel);
+                if (skillLevel != 0)
+                    Debug.LogError("Invalid skill level for Shield Regeneration: " + skillLevel);
                 break;
-        }   
+        }
 
         Debug.Log("Shield Regenerated");
 
@@ -1148,7 +1148,7 @@ public class PlayerController : MonoBehaviour
         hitboxManager.setAttackDamage(baseAttack * attackMultiplier);
         hitboxManager.setPlayerPosition(transform.position);
         hitboxManager.setDefenceIngore(defIgnore);
-        
+
         // Prepare the hitbox for this attack activation (clears per-activation cache)
         hitboxManager.BeginAttack();
         currentHitbox.SetActive(true);
@@ -1209,7 +1209,7 @@ public class PlayerController : MonoBehaviour
         yield return null;
     }
 
-    public void Damaged(float damage, Vector2 position, bool isStun = false)
+    public void Damaged(float damage, Entity entity, bool isStun = false)
     {
         if (isInvincible)
         {
@@ -1252,17 +1252,18 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-            // Reflect damage to enemy who attacked me (given by position)
-            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(position, 0.1f);
-            foreach (var hitCollider in hitColliders)
-            {
-                Entity enemy = hitCollider.GetComponent<Entity>();
-                if (enemy != null)
-                {
-                    enemy.Damaged(reflectDamage, transform.position);
-                    Debug.Log("Reflected Damage to Enemy at position: " + enemy.transform.position);
-                }
-            }
+
+            //// Reflect damage to enemy who attacked me (given by position)
+            //Collider2D[] hitColliders = Physics2D.OverlapCircleAll(position, 0.1f);
+            //foreach (var hitCollider in hitColliders)
+            //{
+            //    Entity enemy = hitCollider.GetComponent<Entity>();
+            //    if (enemy != null)
+            //    {
+            //        enemy.Damaged(reflectDamage, transform.position);
+            //        Debug.Log("Reflected Damage to Enemy at position: " + enemy.transform.position);
+            //    }
+            //}
         }
 
         int takenDamage = 0 - (int)damage;
@@ -1281,7 +1282,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Hurt());
         }
 
-        attackerPosition = position;
+        //attackerPosition = position;
         isStunned = isStun;
     }
 
@@ -1295,7 +1296,7 @@ public class PlayerController : MonoBehaviour
         // Shoot five rays in the facing direction to detect walls
         float direction = playerSpriteRenderer.flipX ? -1f : 1f;
         // Adjust as needed
-        float rayLength = 0.8f; 
+        float rayLength = 0.8f;
         int wallLayerMask = LayerMask.GetMask("Ground");
 
         // Get collider bounds

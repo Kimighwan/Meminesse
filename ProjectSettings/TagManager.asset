@@ -9,6 +9,8 @@ TagManager:
   - PlayerAttackHitbox
   - Barrier
   - FieldItem
+  - Water
+  - OneWayPlatform
   layers:
   - Default
   - TransparentFX
@@ -26,8 +28,6 @@ TagManager:
   - 
   - Item
   - Trap
-  - 
-  - 
   - 
   - 
   - 

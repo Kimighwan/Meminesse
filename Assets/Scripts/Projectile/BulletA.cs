@@ -3,7 +3,7 @@ using UnityEngine;
 public class BulletA : MonoBehaviour
 {
     protected float speed;
-    protected float damage;
+    protected float damage = 20f;
     [SerializeField] protected float damageRadius;
     [SerializeField] protected Transform damagePos;
 
@@ -13,6 +13,13 @@ public class BulletA : MonoBehaviour
     protected Rigidbody2D rigid;
     [SerializeField] protected LayerMask whatIsPlayer;
     [SerializeField] protected LayerMask whatIsGround;
+
+    Entity entity;
+
+    public void Init(Entity entity)
+    {
+        this.entity = entity;
+    }
 
     public virtual void Start()
     {
@@ -31,7 +38,7 @@ public class BulletA : MonoBehaviour
 
             if (damageHit)
             {
-                damageHit.GetComponent<PlayerController>().Damaged(damage, transform.position);
+                damageHit.GetComponent<PlayerController>().Damaged(damage, entity);
                 isHitPlayer = true;
             }
 

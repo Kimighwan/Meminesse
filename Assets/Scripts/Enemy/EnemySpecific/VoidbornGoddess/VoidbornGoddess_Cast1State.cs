@@ -49,6 +49,7 @@ public class VoidbornGoddess_Cast1State : IdleState
                 stop = true;
 
                 GameObject bullet = GameObject.Instantiate(Resources.Load("Enemy/BulltetA"), enemy.rangeAttackPosition) as GameObject;
+                bullet.GetComponent<BulletA>().Init(enemy);
 
                 Vector2 dirVec = enemy.GetDirectionToPlayer();
                 Vector2 ranVec = new Vector2(Random.Range(0f, 2f), Random.Range(-3f, 3f));

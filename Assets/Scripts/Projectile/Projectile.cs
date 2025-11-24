@@ -27,6 +27,8 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     protected Transform damagePos;
 
+    protected Entity entity;
+
     public virtual void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -73,7 +75,7 @@ public class Projectile : MonoBehaviour
                 if(damageHit.CompareTag("Player"))
                 {
                     Debug.Log("Player Hit by Projectile");
-                    damageHit.GetComponent<PlayerController>().Damaged(damage, transform.position);
+                    damageHit.GetComponent<PlayerController>().Damaged(damage, entity);
                     isHitPlayer = true;
                 }
             }
@@ -93,12 +95,13 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void InitProjectile(float speed, float travelDistance, float damage, Vector2 targetPos)
+    public void InitProjectile(float speed, float travelDistance, float damage, Vector2 targetPos, Entity entity)
     {
         this.speed = speed;
         this.travelDistance = travelDistance;
         this.damage = damage;
         this.targetPos = targetPos;
+        this.entity = entity;
     }
 
     private void OnDrawGizmos()
