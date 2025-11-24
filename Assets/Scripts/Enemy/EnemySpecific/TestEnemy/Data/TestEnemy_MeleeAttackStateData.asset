@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestEnemy_MeleeAttackStateData
   m_EditorClassIdentifier: 
   attackRadius: 2
-  attackDamage: 10
+  attackDamage: 20
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048

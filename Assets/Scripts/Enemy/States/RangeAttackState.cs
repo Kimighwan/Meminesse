@@ -60,7 +60,7 @@ public class RangeAttackState : AttackState
     {
         projectileGameObject = GameObject.Instantiate(stateData.projectileGameObject, attackPosition.position, attackPosition.rotation);
         projectileScript = projectileGameObject.GetComponent<Projectile>();
-        projectileScript.InitProjectile(stateData.projectileSpeed, stateData.projectiletravelDistance, stateData.projectileDamage, tartgetPos.position);
+        projectileScript.InitProjectile(stateData.projectileSpeed, stateData.projectiletravelDistance, stateData.projectileDamage, tartgetPos.position, entity);
         projectileGameObject.SetActive(false);
     }
 

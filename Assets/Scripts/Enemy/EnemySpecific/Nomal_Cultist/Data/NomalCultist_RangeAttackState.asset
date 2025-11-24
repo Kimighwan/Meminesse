@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: NomalCultist_RangeAttackState
   m_EditorClassIdentifier: 
   projectileGameObject: {fileID: 6154287405758097844, guid: b2807496e00b602478221e186f459c22, type: 3}
-  projectileDamage: 10
+  projectileDamage: 20
   projectileSpeed: 12
   projectiletravelDistance: 0

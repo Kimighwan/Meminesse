@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wolf_MeleeAttackStateData
   m_EditorClassIdentifier: 
   attackRadius: 1.5
-  attackDamage: 10
+  attackDamage: 20
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
