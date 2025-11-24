@@ -25,9 +25,9 @@ public class PlayerData
 
     public int weaponLevel;
 
-    public int A;
-    public int B;
-    public int C;
+    public int topPassiveA;
+    public int topPassiveB;
+    public int topPassiveC;
 
     public bool[] IsSkillActive;
     public int[] SelectedActive;
@@ -45,9 +45,12 @@ public class PlayerData
         dashCoolDown = 2f;
         skillCoolDownDecrease = 0f;
         weaponLevel = 1;
-        A = 0;
-        B = 0;
-        C = 0;
+        // expert
+        topPassiveA = 0;
+        // normal
+        topPassiveB = 0;
+        // beginner
+        topPassiveC = 0;
         IsSkillActive = new bool[24];
         SelectedActive = new int[3] { 0, 0, 0 };
     }
@@ -64,7 +67,9 @@ public class PlayerData
         dashCoolDown = data.dashCoolDown;
         skillCoolDownDecrease = data.skillCoolDownDecrease;
         weaponLevel = data.weaponLevel;
-        A = data.A; B = data.B; C = data.C;
+        topPassiveA = data.topPassiveA;
+        topPassiveB = data.topPassiveB;
+        topPassiveC = data.topPassiveC;
         IsSkillActive = data.IsSkillActive;
         SelectedActive = data.SelectedActive;
     }
@@ -88,9 +93,9 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     #region Set Value
     public void SetTopPassive(int number, int index)
     {
-        if (index == 1) playerData.A++;
-        else if (index == 2) playerData.B++;
-        else playerData.C++;
+        if (index == 1) playerData.topPassiveA++;
+        else if (index == 2) playerData.topPassiveB++;
+        else playerData.topPassiveC++;
 
         playerData.SelectedActive[number] = index;
     }
@@ -168,12 +173,12 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     #region Get Value
     public int GetTopPassive(int index)
     {
-        if (index == 1)
-            return playerData.A;
-        else if (index == 2)
-            return playerData.B;
-        else
-            return playerData.C;
+        if (index == 1) 
+            return playerData.topPassiveA;
+        else if (index == 2) 
+            return playerData.topPassiveB;
+        else 
+            return playerData.topPassiveC;
     }
     public int GetTopNumber(int number) => playerData.SelectedActive[number - 1];
     public int GetWeaponLevel()

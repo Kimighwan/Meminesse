@@ -8,6 +8,9 @@ public class PlayerAttackHitbox : MonoBehaviour
     private Vector2 playerPosition;
     private bool isStunAttack;
     private float defIgnore;
+
+    // For top passive skill (expert) bonus hits
+    private bool additionalHit = false;
     
     // Cached collider and per-activation hit tracking
     private Collider2D cachedCollider;
@@ -59,7 +62,50 @@ public class PlayerAttackHitbox : MonoBehaviour
         if (alreadyHitObjects.Contains(id))
             return;
 
-        Debug.Log(collider.gameObject.name);
+        // Get bonus hits when player has top passive skill(expert) enabled
+        // Only enabled when player health is 20 or below
+        float bonusAttackMultiplier = 0f;
+        int playerHealth = PlayerDataManager.Instance.GetHp();
+        if (playerHealth <= 20)
+        {
+            int topPassiveLevel_expert = PlayerDataManager.Instance.GetTopPassive(1);
+            if (topPassiveLevel_expert > 0 && !additionalHit)
+            {
+                float bonusAttackChance = 0f;
+
+                switch (topPassiveLevel_expert)
+                {
+                    case 1:
+                        bonusAttackMultiplier = 0.3f;
+                        bonusAttackChance = 0.1f;
+                        break;
+                    case 2:
+                        bonusAttackMultiplier = 0.6f;
+                        bonusAttackChance = 0.15f;
+                        break;
+                    case 3:
+                        bonusAttackMultiplier = 1f;
+                        bonusAttackChance = 0.3f;
+                        break;
+                    default:
+                        bonusAttackMultiplier = 0f;
+                        bonusAttackChance = 0f;
+                        Debug.LogError("Invalid top passive level for expert skill: " + topPassiveLevel_expert);
+                        break;
+                }
+
+                if (Random.value <= bonusAttackChance)
+                {
+                    additionalHit = true;
+                }
+            }
+        }
+        else
+        {
+            additionalHit = false;
+        }
+
+        Debug.Log("Collider hit: " + collider.gameObject.name);
         if (collider.gameObject.CompareTag("Enemy"))
         {
             alreadyHitObjects.Add(id);
@@ -68,6 +114,13 @@ public class PlayerAttackHitbox : MonoBehaviour
             {
                 Debug.Log("Enemy hit, Type: " + attackType + ", Damage: " + attackDamage);
                 hit.Damaged(attackDamage, playerPosition, isStunAttack, defIgnore);
+                // Bonus hit
+                if (additionalHit)
+                {
+                    float bonusDamage = attackDamage * bonusAttackMultiplier;
+                    Debug.Log("Bonus hit triggered, damage: " + bonusDamage);
+                    hit.Damaged(bonusDamage, playerPosition, isStunAttack, defIgnore);
+                }
             }
         }
         else if (collider.gameObject.CompareTag("Barrier"))
@@ -78,6 +131,13 @@ public class PlayerAttackHitbox : MonoBehaviour
             {
                 Debug.Log("Barrier hit, Type: " + attackType + ", Damage: " + attackDamage);
                 barrier.Damaged(attackDamage, playerPosition, defIgnore);
+                // Bonus hit
+                if (additionalHit)
+                {
+                    float bonusDamage = attackDamage * bonusAttackMultiplier;
+                    Debug.Log("Bonus hit triggered, damage: " + bonusDamage);
+                    barrier.Damaged(bonusDamage, playerPosition, defIgnore);
+                }
             }
         }
     }

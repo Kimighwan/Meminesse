@@ -66,6 +66,10 @@ public class PlayerController : MonoBehaviour
     private bool isInvincible;
     private bool isHurt;
     private bool isDead;
+    private bool shieldRegenCountdown = false;
+    // Related to top passive skill (balanced)
+    private bool isRageMode = false;
+
 
     // Minimum height required above ground for AirHeavyAttack
     [SerializeField] float minHeightForAirHeavyAttack = 2f;
@@ -600,6 +604,8 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Hurt()
     {
+        int topPassiveLevel_beginner = PlayerDataManager.Instance.GetTopPassive(3);
+
         ChangeState(PlayerState.Hurt);
         isHurt = true;
         isInvincible = true;
@@ -610,6 +616,12 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(animationTime);
         lockInput = false;
         Debug.Log("lockinput: " + lockInput);
+
+        if (topPassiveLevel_beginner >= 3)
+        {
+            Debug.Log("Top Passive Beginner Level 3: bonus invincibility time");
+            yield return new WaitForSeconds(1f);
+        }
 
         yield return new WaitForSeconds(invincibleTimeAfterHit - animationTime);
         isInvincible = false;
@@ -642,6 +654,64 @@ public class PlayerController : MonoBehaviour
         playerSpriteRenderer.enabled = true;
     }
 
+    private IEnumerator ShieldRegeneration(int skillLevel)
+    {
+        shieldRegenCountdown = true;
+        
+        // Timer for shield regeneration after taking damage
+        switch (skillLevel)
+        {
+            case 1:
+                yield return new WaitForSeconds(60f);
+                break;
+            case 2:
+                yield return new WaitForSeconds(45f);
+                break;
+            case 3:
+                yield return new WaitForSeconds(30f);
+                break;
+            default:
+            if (skillLevel != 0)
+                Debug.LogError("Invalid skill level for Shield Regeneration: " + skillLevel);
+                break;
+        }   
+
+        Debug.Log("Shield Regenerated");
+
+        shieldRegenCountdown = false;
+
+        yield return null;
+    }
+
+    private IEnumerator EnterRageMode(int skillLevel)
+    {
+        isRageMode = true;
+
+        float rageDuration = 0f;
+        switch (skillLevel)
+        {
+            case 1:
+                rageDuration = 4f;
+                break;
+            case 2:
+                rageDuration = 6f;
+                break;
+            case 3:
+                rageDuration = 6f;
+                break;
+            default:
+                if (skillLevel != 0)
+                {
+                    Debug.LogError("Invalid skill level for Rage Mode: " + skillLevel);
+                }
+                break;
+        }
+
+        yield return new WaitForSeconds(rageDuration);
+
+        isRageMode = false;
+    }
+
     #endregion
 
     #region Attack
@@ -656,8 +726,6 @@ public class PlayerController : MonoBehaviour
         AirHeavyAttack,
         HolySlash,
         LightCut,
-
-        // TODO: Add another attack type for the hit animation
     }
 
     private IEnumerator GroundedComboAttack()
@@ -980,6 +1048,31 @@ public class PlayerController : MonoBehaviour
         isLightCutOnCoolDown = false;
     }
 
+    private float GetSkillBonusDamage(int balancedLevel)
+    {
+        float bonusDamage = 0;
+        switch (balancedLevel)
+        {
+            case 1:
+                bonusDamage = 1;
+                break;
+            case 2:
+                bonusDamage = 2;
+                break;
+            case 3:
+                bonusDamage = 3;
+                break;
+            default:
+                bonusDamage = 0;
+                if (balancedLevel != 0)
+                {
+                    Debug.LogError("Invalid balanced skill level for bonus damage: " + balancedLevel);
+                }
+                break;
+        }
+        return bonusDamage;
+    }
+
     #endregion
 
     #region Interactions
@@ -988,9 +1081,16 @@ public class PlayerController : MonoBehaviour
     {
         float maxScanTime = 0;
         float attackMultiplier = 1;
+
         float baseAttack = PlayerDataManager.Instance.GetDamage();
         float weaponLevel = PlayerDataManager.Instance.GetWeaponLevel();
-        baseAttack *= (1 + (weaponLevel - 1) * 0.1f);
+        int topPassiveLevel_balanced = PlayerDataManager.Instance.GetTopPassive(2);
+
+        float skillBonus = GetSkillBonusDamage(topPassiveLevel_balanced);
+
+        baseAttack *= (1 + (weaponLevel - 1 + skillBonus) * 0.1f);
+        // e.g. Level 1 weapon = 100% base damage, Level 2 weapon = 110% base damage, etc.
+        // skillBonus can be added later when top passive skills are leveled up
 
         // Select hitboxes
         switch (type)
@@ -1113,15 +1213,64 @@ public class PlayerController : MonoBehaviour
     {
         if (isInvincible)
         {
-            Debug.Log("Damage Nullified");
+            Debug.Log("Damage Nullified: invincible");
             return;
         }
 
-        int playerHealth = PlayerDataManager.Instance.GetHp();
-        playerHealth -= (int)damage;
-        PlayerDataManager.Instance.SetHp(playerHealth);
+        int topPassiveLevel_beginner = PlayerDataManager.Instance.GetTopPassive(3);
 
-        Debug.Log(damage + " " + playerHealth);
+        // Top Passive Beginner Skill: Shield Regeneration
+        if (topPassiveLevel_beginner >= 1 && !shieldRegenCountdown)
+        {
+            Debug.Log("Damage Nullified: shielded");
+            StartCoroutine(ShieldRegeneration(topPassiveLevel_beginner));
+            return;
+        }
+
+        int topPassiveLevel_balanced = PlayerDataManager.Instance.GetTopPassive(2);
+        // Top Passive Balanced Skill: Danage reflection
+        if (topPassiveLevel_balanced >= 1)
+        {
+            float reflectDamage = PlayerDataManager.Instance.GetDamage();
+            switch (topPassiveLevel_balanced)
+            {
+                case 1:
+                    reflectDamage *= 1f;
+                    break;
+                case 2:
+                    reflectDamage *= 1.5f;
+                    break;
+                case 3:
+                    reflectDamage *= 3f;
+                    break;
+                default:
+                    reflectDamage = 0;
+                    if (topPassiveLevel_balanced != 0)
+                    {
+                        Debug.LogError("Invalid balanced skill level for damage reflection: " + topPassiveLevel_balanced);
+                    }
+                    break;
+            }
+
+            // Reflect damage to enemy who attacked me (given by position)
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(position, 0.1f);
+            foreach (var hitCollider in hitColliders)
+            {
+                Entity enemy = hitCollider.GetComponent<Entity>();
+                if (enemy != null)
+                {
+                    enemy.Damaged(reflectDamage, transform.position);
+                    Debug.Log("Reflected Damage to Enemy at position: " + enemy.transform.position);
+                }
+            }
+        }
+
+        int takenDamage = 0 - (int)damage;
+        PlayerDataManager.Instance.SetHp(takenDamage);
+        HUD.Instance.UpdateHUD();
+
+        int playerHealth = PlayerDataManager.Instance.GetHp();
+        Debug.Log("Damage took: " + damage + ", Remaining Health: " + playerHealth);
 
         if (playerHealth <= 0)
         {
@@ -1143,6 +1292,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsTouchingWall()
     {
+        // Shoot five rays in the facing direction to detect walls
         float direction = playerSpriteRenderer.flipX ? -1f : 1f;
         // Adjust as needed
         float rayLength = 0.8f; 
@@ -1202,20 +1352,16 @@ public class PlayerController : MonoBehaviour
 
         if (hitLeft.collider && hitRight.collider)
         {
-            //Debug.DrawLine(rayStartLeft, hitLeft.point, Color.green);
-            //Debug.DrawLine(rayStartRight, hitRight.point, Color.green);
             Debug.DrawLine(rayStartLeft, leftVector, Color.green);
             Debug.DrawLine(rayStartRight, rightVector, Color.green);
         }
         else if (hitRight.collider)
         {
-            //Debug.DrawLine(rayStartRight, hitRight.point, Color.green);
             Debug.DrawLine(rayStartLeft, leftVector, Color.red);
             Debug.DrawLine(rayStartRight, rightVector, Color.green);
         }
         else if (hitLeft.collider)
         {
-            //Debug.DrawLine(rayStartLeft, hitLeft.point, Color.green);
             Debug.DrawLine(rayStartLeft, leftVector, Color.green);
             Debug.DrawLine(rayStartRight, rightVector, Color.red);
         }
@@ -1229,7 +1375,6 @@ public class PlayerController : MonoBehaviour
         isGrounded = (hitLeft.collider || hitRight.collider) && (rigid.linearVelocity.y > -0.01f && rigid.linearVelocity.y < 0.01f);
 
         // Handle state transitions
-        // THIS SEEMS OFF - NEEDS TESTING
         if (isGrounded && currentState == PlayerState.Falling)
         {
             Debug.Log("if (isGrounded && currentState == PlayerState.Falling)");
@@ -1268,12 +1413,4 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
-
-    #region getters/setters
-
-
-
-    #endregion
 }
-
-// WIP, most recent
