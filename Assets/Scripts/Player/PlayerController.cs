@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
     bool isHolySlashOnCoolDown = false;
     bool isLightCutOnCoolDown = false;
 
-
     // Hitboxes for combat
     private GameObject currentHitbox = null;
     [SerializeField] GameObject hitboxPivot;
@@ -238,6 +237,13 @@ public class PlayerController : MonoBehaviour
             lockInput = true;
             ChangeState(PlayerState.HolySlash);
             StartCoroutine(HolySlash());
+        }
+        // Testing
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Heal")))
+        {
+            Debug.Log("Heal Key Pressed - For Testing Only");
+            PlayerDataManager.Instance.SetHp(20);
+            HUD.Instance.UpdateHUD();
         }
         // LightCut
         else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Skill2"))
@@ -1252,21 +1258,12 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-
-            //// Reflect damage to enemy who attacked me (given by position)
-            //Collider2D[] hitColliders = Physics2D.OverlapCircleAll(position, 0.1f);
-            //foreach (var hitCollider in hitColliders)
-            //{
-            //    Entity enemy = hitCollider.GetComponent<Entity>();
-            //    if (enemy != null)
-            //    {
-            //        enemy.Damaged(reflectDamage, transform.position);
-            //        Debug.Log("Reflected Damage to Enemy at position: " + enemy.transform.position);
-            //    }
-            //}
+            // Reflect damage to enemy who attacked me
+            entity.Damaged(reflectDamage, transform.position);
         }
 
-        int takenDamage = 0 - (int)damage;
+        // TODO: fix this later when monster damages are updated
+        int takenDamage = -20;
         PlayerDataManager.Instance.SetHp(takenDamage);
         HUD.Instance.UpdateHUD();
 
@@ -1282,7 +1279,6 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Hurt());
         }
 
-        //attackerPosition = position;
         isStunned = isStun;
     }
 
