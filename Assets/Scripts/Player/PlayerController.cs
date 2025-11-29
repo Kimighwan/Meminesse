@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     #region Variables/References
 
+    OneWayPlatform oneWayPlatform;
+
     [SerializeField] float moveSpeed = 5f;
 
     // Jump parameters - Not to be messsed
@@ -158,6 +160,7 @@ public class PlayerController : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        oneWayPlatform = GetComponent<OneWayPlatform>();
         cachedTransform = transform;
 
         rigid.freezeRotation = true;
@@ -230,6 +233,8 @@ public class PlayerController : MonoBehaviour
 
         // Priorities
         // Skills > Dashing/Backdashing > CrouchAttack > AirHeavyAttack > AirAttack > GroundAttack > Jumping > Falling > Crouching > Idle
+        if(Input.GetKeyDown(KeyCode.P))
+            oneWayPlatform.OneWayPlatfrom();
 
         // HolySlash
         if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Skill1"))
