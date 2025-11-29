@@ -11,16 +11,10 @@ public class OneWayPlatform : MonoBehaviour
         playerCollider = GetComponent<Collider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OneWayPlatfrom()
     {
-        if(Input.GetKeyDown(KeyCode.X) && Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (currentPlatform != null)
-            {
-                StartCoroutine(DisableCollider());
-            }
-        }
+        if(currentPlatform != null)
+            StartCoroutine(DisableCollider());
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -41,10 +35,10 @@ public class OneWayPlatform : MonoBehaviour
 
     IEnumerator DisableCollider()
     {
-        Collider2D platformCollider = currentPlatform.GetComponent<Collider2D>();
+        var platformCollider = currentPlatform.GetComponent<PlatformEffector2D>();
 
-        Physics2D.IgnoreCollision(playerCollider, platformCollider);
-        yield return null;
-        Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
+        platformCollider.rotationalOffset = 180f;
+        yield return new WaitForSeconds(0.25f);
+        platformCollider.rotationalOffset = 0f;
     }
 }
