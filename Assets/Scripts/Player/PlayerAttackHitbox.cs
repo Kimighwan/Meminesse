@@ -68,7 +68,7 @@ public class PlayerAttackHitbox : MonoBehaviour
         int playerHealth = PlayerDataManager.Instance.GetHp();
         if (playerHealth <= 20)
         {
-            int topPassiveLevel_expert = PlayerDataManager.Instance.GetTopPassive(1);
+            int topPassiveLevel_expert = PlayerDataManager.Instance.GetTopPassiveLevel(1);
             if (topPassiveLevel_expert > 0 && !additionalHit)
             {
                 float bonusAttackChance = 0f;
