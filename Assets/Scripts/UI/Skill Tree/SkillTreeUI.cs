@@ -13,9 +13,11 @@ public class SkillTreeUI : UIBase
     [SerializeField] TextMeshProUGUI descUISkillName;
     [SerializeField] TextMeshProUGUI descUIText;
     [SerializeField] GameObject confirmUI;
+    [SerializeField] TextMeshProUGUI skillPointText;
     const string IMAGE_PATH = "UI/SkillTree/SkillIcon";
 
     public Image[] edgeImage;
+    public Image[] skillImage;
 
     [SerializeField] RectTransform contentRectTransform;
     [SerializeField] AllSkillDescUI allSkillDescUI;
@@ -26,6 +28,15 @@ public class SkillTreeUI : UIBase
     Vector2 leftPosition = new Vector2(-0f, 0f);     // Scroll Left Position to move right
 
     public bool descUIActiveCheck = false;
+
+    private void OnEnable()
+    {
+        skillPointText.text = InventoryDataManager.Instance.GetItemCountById("23").ToString();
+        descUIText.gameObject.SetActive(false);
+        descUISkill_Icon.gameObject.SetActive(false);
+        descUISkillName.gameObject.SetActive(false);
+        skillActiveButton.gameObject.SetActive(false);
+    }
 
     protected override void Update()
     {
@@ -58,9 +69,15 @@ public class SkillTreeUI : UIBase
             InventoryDataManager.Instance.ItemCountReduce("23", 1);
             skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));    // 해당 노드 스킬 찍었음을 확인하는 조건 변수
             skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false)); // 스킬 활성화 버튼 비활성화
-            skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));
+            skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));  
         }
         
+
+        // 설명 UI 활성화
+        descUIText.gameObject.SetActive(true);
+        descUISkill_Icon.gameObject.SetActive(true);
+        descUISkillName.gameObject.SetActive(true);
+        skillActiveButton.gameObject.SetActive(true);
 
         // 노드에 맞게 설명과 버튼 이벤트 할당
         // 1) 노드에 맞는 기능들 버튼에 부여
@@ -74,7 +91,7 @@ public class SkillTreeUI : UIBase
 
                 if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
-                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.AddHP);
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.AddMaxHP);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.AddHP);
                     skillActiveButton.gameObject.SetActive(true);
                     skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
@@ -115,7 +132,7 @@ public class SkillTreeUI : UIBase
             case 10:
                 descUIText.text = "아이템 드랍률 상승 +25%";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Item");
-                descUISkillName.text = "아이템 트랍률 상승";
+                descUISkillName.text = "아이템 드랍률 상승";
                 if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.ItemDropRate);
@@ -139,7 +156,7 @@ public class SkillTreeUI : UIBase
             case 13:
                 descUIText.text = "재화 드랍률 상승 +25%";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Gold");
-                descUISkillName.text = "재화 드럅률 상승";
+                descUISkillName.text = "재화 드랍률 상승";
                 if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.GoldDropRate);
@@ -410,6 +427,7 @@ public class SkillTreeUI : UIBase
             if (PlayerDataManager.Instance.GetSkillActive(i))
             {
                 edgeImage[i].sprite = Resources.Load<Sprite>($"UI/SkillTree/normal outline");
+                skillImage[i].color = new Color(1, 1, 1, 1);
             }
         }
     }

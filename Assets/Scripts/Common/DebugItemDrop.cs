@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class ItemDropManager : SingletonBehaviour<ItemDropManager>
+//test용 아이템 드롭
+public class DebugItemDrop : SingletonBehaviour<DebugItemDrop>
 {
     [SerializeField] int dropItemCount = 3;
     public GameObject fieldItemPrefab;
