@@ -13,9 +13,11 @@ public class SkillTreeUI : UIBase
     [SerializeField] TextMeshProUGUI descUISkillName;
     [SerializeField] TextMeshProUGUI descUIText;
     [SerializeField] GameObject confirmUI;
+    [SerializeField] TextMeshProUGUI skillPointText;
     const string IMAGE_PATH = "UI/SkillTree/SkillIcon";
 
     public Image[] edgeImage;
+    public Image[] skillImage;
 
     [SerializeField] RectTransform contentRectTransform;
     [SerializeField] AllSkillDescUI allSkillDescUI;
@@ -29,6 +31,7 @@ public class SkillTreeUI : UIBase
 
     private void OnEnable()
     {
+        skillPointText.text = InventoryDataManager.Instance.GetItemCountById("23").ToString();
         descUIText.gameObject.SetActive(false);
         descUISkill_Icon.gameObject.SetActive(false);
         descUISkillName.gameObject.SetActive(false);
@@ -66,7 +69,7 @@ public class SkillTreeUI : UIBase
             InventoryDataManager.Instance.ItemCountReduce("23", 1);
             skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));    // 해당 노드 스킬 찍었음을 확인하는 조건 변수
             skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false)); // 스킬 활성화 버튼 비활성화
-            skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));
+            skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));  
         }
         
 
@@ -424,6 +427,7 @@ public class SkillTreeUI : UIBase
             if (PlayerDataManager.Instance.GetSkillActive(i))
             {
                 edgeImage[i].sprite = Resources.Load<Sprite>($"UI/SkillTree/normal outline");
+                skillImage[i].color = new Color(1, 1, 1, 1);
             }
         }
     }
