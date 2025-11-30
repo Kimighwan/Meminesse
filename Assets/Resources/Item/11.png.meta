@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 069710e15c9365147801a4c94ccebaec
+guid: 003127aa67ef0374aa8b375badd8381f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7758069813598969648
-    second: lv1 sword_0
+      213: -6349419124632550510
+    second: 630a7169-c758-42a9-9eeb-7d95a8404bf4_removalai_preview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lv1 sword_0
+      name: 630a7169-c758-42a9-9eeb-7d95a8404bf4_removalai_preview_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 692
-        height: 692
+        x: 232
+        y: 79
+        width: 129
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d0a0c9cb9cc55490800000000000000
-      internalID: -7758069813598969648
+      spriteID: 293843262f452e7a0800000000000000
+      internalID: -6349419124632550510
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      lv1 sword_0: -7758069813598969648
+      630a7169-c758-42a9-9eeb-7d95a8404bf4_removalai_preview_0: -6349419124632550510
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
