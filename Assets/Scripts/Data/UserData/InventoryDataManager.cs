@@ -4,6 +4,7 @@ using System.Text;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using NUnit.Framework.Interfaces;
 
 [Serializable]
 public class WrapperItemDataList
@@ -92,7 +93,6 @@ public class InventoryDataManager : SingletonBehaviour<InventoryDataManager>
         itemDataList.Add(new InventoryData(itemData.itemId, itemData, count));
         return true;
     }
-
     #region Save-Load
 
     public void SetDefaultData()
