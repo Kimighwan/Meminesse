@@ -121,17 +121,14 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
                 break;
         }
     }
-    public void AddHP()
-    {
-        playerData.maxHp += 20;
-    }
+    
     public void SetHp(int value)
     {
         playerData.hp = Mathf.Clamp(playerData.hp + value, 0, playerData.maxHp);
     }
-    public void AddMaxHp(int value)
+    public void AddMaxHP()
     {
-        playerData.maxHp += value;
+        playerData.maxHp += 20;
     }
 
     public void HealingProbabilityIncrease()

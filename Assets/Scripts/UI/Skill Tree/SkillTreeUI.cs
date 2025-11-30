@@ -27,6 +27,14 @@ public class SkillTreeUI : UIBase
 
     public bool descUIActiveCheck = false;
 
+    private void OnEnable()
+    {
+        descUIText.gameObject.SetActive(false);
+        descUISkill_Icon.gameObject.SetActive(false);
+        descUISkillName.gameObject.SetActive(false);
+        skillActiveButton.gameObject.SetActive(false);
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -49,6 +57,12 @@ public class SkillTreeUI : UIBase
         skillActiveButton.onClick.AddListener(() => BActive[nodeID] = true);    // 해당 노드 스킬 찍었음을 확인하는 조건 변수
         skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false)); // 스킬 활성화 버튼 비활성화
 
+        // 설명 UI 활성화
+        descUIText.gameObject.SetActive(true);
+        descUISkill_Icon.gameObject.SetActive(true);
+        descUISkillName.gameObject.SetActive(true);
+        skillActiveButton.gameObject.SetActive(true);
+
         // 노드에 맞게 설명과 버튼 이벤트 할당
         // 1) 노드에 맞는 기능들 버튼에 부여
         // 2) 모든 능력치 보는 UI에 능력치 업데이트
@@ -61,7 +75,7 @@ public class SkillTreeUI : UIBase
 
                 if (!BActive[nodeID])
                 {
-                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.AddHP);
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.AddMaxHP);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.AddHP);
                     skillActiveButton.gameObject.SetActive(true);
                     skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
@@ -102,7 +116,7 @@ public class SkillTreeUI : UIBase
             case 10:
                 descUIText.text = "아이템 드랍률 상승 +25%";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Item");
-                descUISkillName.text = "아이템 트랍률 상승";
+                descUISkillName.text = "아이템 드랍률 상승";
                 if (!BActive[nodeID])
                 {
                     skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.ItemDropRate);
@@ -126,7 +140,7 @@ public class SkillTreeUI : UIBase
             case 13:
                 descUIText.text = "재화 드랍률 상승 +25%";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Gold");
-                descUISkillName.text = "재화 드럅률 상승";
+                descUISkillName.text = "재화 드랍률 상승";
                 if (!BActive[nodeID])
                 {
                     skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.GoldDropRate);
