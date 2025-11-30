@@ -1,9 +1,8 @@
 using UnityEngine;
-using System.Collections.Generic;
+using System.Linq;
 using System;
 using UnityEngine.UI;
 using TMPro;
-using JetBrains.Annotations;
 
 // 인벤토리창 아이템 설명칸 관리
 public class InventoryItemDescription : SingletonBehaviour<InventoryItemDescription>
@@ -68,7 +67,7 @@ public class InventoryItemDescription : SingletonBehaviour<InventoryItemDescript
     public void ShowItemDescription(string itemId)
     {
         currentItemId = itemId;
-        //int[] availableToUseIds = { 23, 31, 32, 33 };  
+        string[] availableToUseIds = { "31", "32", "33" };  // 인벤토리에서 사용가능한 아이템
         ItemData item = GetItemById(itemId);
 
         if (item != null)
@@ -81,6 +80,12 @@ public class InventoryItemDescription : SingletonBehaviour<InventoryItemDescript
             itemImage.sprite = Resources.Load<Sprite>($"Item/{item.itemId}");
             itemNameText.text = item.name;
             itemDescText.text = item.desc;
+            if (!availableToUseIds.Contains(itemId))
+            {
+                Debug.Log("sssss");
+                upgradeButton.SetActive(false);
+                UseButton.SetActive(false);
+            }
         }
         else
         {
