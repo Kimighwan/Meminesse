@@ -12,6 +12,7 @@ public class SkillTreeUI : UIBase
     [SerializeField] Image descUISkill_Icon;
     [SerializeField] TextMeshProUGUI descUISkillName;
     [SerializeField] TextMeshProUGUI descUIText;
+    [SerializeField] GameObject confirmUI;
     const string IMAGE_PATH = "UI/SkillTree/SkillIcon";
 
     public Image[] edgeImage;
@@ -19,7 +20,6 @@ public class SkillTreeUI : UIBase
     [SerializeField] RectTransform contentRectTransform;
     [SerializeField] AllSkillDescUI allSkillDescUI;
     [SerializeField] Button skillActiveButton;
-    bool[] BActive = new bool[24];
 
     [Header("Scroll position to move")]
     Vector2 rightPosition = new Vector2(-800f, 0f);    // Scroll Right Position to move right
@@ -37,17 +37,30 @@ public class SkillTreeUI : UIBase
     {
         base.OnShown();
         descActiveGO.SetActive(false);
+        skillActiveButton.gameObject.SetActive(false);
     }
 
     public void OnClickSkillNode(int nodeID)    // 스킬 활성화 버튼
     {
         descUIActiveCheck = true;
         descActiveGO.SetActive(true);
+        descUISkill_Icon.gameObject.SetActive(true);
 
-        // 활성화 버튼 이벤트 전부 삭제
         skillActiveButton.onClick.RemoveAllListeners();
-        skillActiveButton.onClick.AddListener(() => BActive[nodeID] = true);    // 해당 노드 스킬 찍었음을 확인하는 조건 변수
-        skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false)); // 스킬 활성화 버튼 비활성화
+
+        // TODO : 스킬 포인트 확인
+        if (!InventoryDataManager.Instance.ExistItem("23"))
+        {
+            skillActiveButton.onClick.AddListener(() => confirmUI.SetActive(true));
+        }
+        else
+        {
+            InventoryDataManager.Instance.ItemCountReduce("23", 1);
+            skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));    // 해당 노드 스킬 찍었음을 확인하는 조건 변수
+            skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false)); // 스킬 활성화 버튼 비활성화
+            skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));
+        }
+        
 
         // 노드에 맞게 설명과 버튼 이벤트 할당
         // 1) 노드에 맞는 기능들 버튼에 부여
@@ -59,7 +72,7 @@ public class SkillTreeUI : UIBase
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/AddHP");
                 descUISkillName.text = "추가 체력";
 
-                if (!BActive[nodeID])
+                if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.AddHP);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.AddHP);
@@ -75,7 +88,7 @@ public class SkillTreeUI : UIBase
                 descUIText.text = "대쉬 쿨타임 감소 -0.5초";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/DashCoolTime");
                 descUISkillName.text = "대쉬 쿨타임 감소";
-                if (!BActive[nodeID])
+                if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.DashCoolDownDecrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.DashCoolTimeDecrease);
@@ -85,15 +98,15 @@ public class SkillTreeUI : UIBase
                 else
                     skillActiveButton.gameObject.SetActive(false);
 
-                if(nodeID == 2 && !BActive[1])
+                if(nodeID == 2 && !PlayerDataManager.Instance.GetSkillActive(1))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 4 && !BActive[2])
+                else if (nodeID == 4 && !PlayerDataManager.Instance.GetSkillActive(2))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 1 && !BActive[8])
+                else if (nodeID == 1 && !PlayerDataManager.Instance.GetSkillActive(8))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
@@ -103,7 +116,7 @@ public class SkillTreeUI : UIBase
                 descUIText.text = "아이템 드랍률 상승 +25%";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Item");
                 descUISkillName.text = "아이템 트랍률 상승";
-                if (!BActive[nodeID])
+                if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.ItemDropRate);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.ItemDropRate);
@@ -113,11 +126,11 @@ public class SkillTreeUI : UIBase
                 else
                     skillActiveButton.gameObject.SetActive(false);
 
-                if (nodeID == 3 && !BActive[1])
+                if (nodeID == 3 && !PlayerDataManager.Instance.GetSkillActive(1))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 10 && !BActive[7])
+                else if (nodeID == 10 && !PlayerDataManager.Instance.GetSkillActive(7))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
@@ -127,7 +140,7 @@ public class SkillTreeUI : UIBase
                 descUIText.text = "재화 드랍률 상승 +25%";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Gold");
                 descUISkillName.text = "재화 드럅률 상승";
-                if (!BActive[nodeID])
+                if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.GoldDropRate);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.GoldDropRate);
@@ -137,11 +150,11 @@ public class SkillTreeUI : UIBase
                 else
                     skillActiveButton.gameObject.SetActive(false);
 
-                if (nodeID == 5 && !BActive[3])
+                if (nodeID == 5 && !PlayerDataManager.Instance.GetSkillActive(3))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 13 && !BActive[10])
+                else if (nodeID == 13 && !PlayerDataManager.Instance.GetSkillActive(10))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
@@ -151,7 +164,7 @@ public class SkillTreeUI : UIBase
                 descUIText.text = "방어력 무시 증가 +50%";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/DefenseIgnore");
                 descUISkillName.text = "방어력 무시";
-                if (!BActive[nodeID])
+                if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.DefenceIgnoreIncrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.DefenseIgnoreIncrease);
@@ -161,11 +174,11 @@ public class SkillTreeUI : UIBase
                 else
                     skillActiveButton.gameObject.SetActive(false);
 
-                if (nodeID == 6 && !BActive[21])
+                if (nodeID == 6 && !PlayerDataManager.Instance.GetSkillActive(21))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 14 && !BActive[22])
+                else if (nodeID == 14 && !PlayerDataManager.Instance.GetSkillActive(22))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
@@ -176,7 +189,7 @@ public class SkillTreeUI : UIBase
                 descUIText.text = "공격력 상승 +10%";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/AddDamage");
                 descUISkillName.text = "공격력 상승";
-                if (!BActive[nodeID])
+                if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.DamageIncrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.DamageIncrease);
@@ -186,15 +199,15 @@ public class SkillTreeUI : UIBase
                 else
                     skillActiveButton.gameObject.SetActive(false);
 
-                if (nodeID == 7 && !BActive[6])
+                if (nodeID == 7 && !PlayerDataManager.Instance.GetSkillActive(6))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 17 && !BActive[14])
+                else if (nodeID == 17 && !PlayerDataManager.Instance.GetSkillActive(14))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 20 && !BActive[17])
+                else if (nodeID == 20 && !PlayerDataManager.Instance.GetSkillActive(17))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
@@ -205,7 +218,7 @@ public class SkillTreeUI : UIBase
                 descUIText.text = "스킬 쿨타임 감소 -10%";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/SkillCoolTime");
                 descUISkillName.text = "스킬 쿨타임 감소";
-                if (!BActive[nodeID])
+                if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.SkillCoolDownDecrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.SkillCoolTimeDecrease);
@@ -215,15 +228,15 @@ public class SkillTreeUI : UIBase
                 else
                     skillActiveButton.gameObject.SetActive(false);
 
-                if (nodeID == 8 && !BActive[7])
+                if (nodeID == 8 && !PlayerDataManager.Instance.GetSkillActive(7))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 15 && !BActive[14])
+                else if (nodeID == 15 && !PlayerDataManager.Instance.GetSkillActive(14))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 18 && !BActive[15])
+                else if (nodeID == 18 && !PlayerDataManager.Instance.GetSkillActive(15))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
@@ -235,7 +248,7 @@ public class SkillTreeUI : UIBase
                 descUIText.text = "체력 회복량 증가 +25%";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/HpRecoveryAmount");
                 descUISkillName.text = "회복량 증가";
-                if (!BActive[nodeID])
+                if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.HealingProbabilityIncrease);
                     skillActiveButton.onClick.AddListener(allSkillDescUI.HealingAmount);
@@ -245,19 +258,19 @@ public class SkillTreeUI : UIBase
                 else
                     skillActiveButton.gameObject.SetActive(false);
 
-                if (nodeID == 9 && !BActive[7])
+                if (nodeID == 9 && !PlayerDataManager.Instance.GetSkillActive(7))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 12 && !BActive[9])
+                else if (nodeID == 12 && !PlayerDataManager.Instance.GetSkillActive(9))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 16 && !BActive[14])
+                else if (nodeID == 16 && !PlayerDataManager.Instance.GetSkillActive(14))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 19 && !BActive[16])
+                else if (nodeID == 19 && !PlayerDataManager.Instance.GetSkillActive(16))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
@@ -265,7 +278,7 @@ public class SkillTreeUI : UIBase
             case 21:
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Active1");
                 descUISkillName.text = "첫 번째 상위 패시브";
-                if (!BActive[nodeID])
+                if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.gameObject.SetActive(true);
                     descUIText.text = "첫 번째 상위 패시브";
@@ -274,17 +287,17 @@ public class SkillTreeUI : UIBase
                 else
                 {
                     skillActiveButton.gameObject.SetActive(false);
-                    int index = PlayerDataManager.Instance.GetTopNumber(1);
+                    int index = PlayerDataManager.Instance.GetTopPassiveOfNode(1);
                     if(index == 1)
                         descUIText.text = "고수 모드";
                     else if(index == 2)
-                        descUIText.text = "?? 모드";
+                        descUIText.text = "보통 모드";
                     else
                         descUIText.text = "겁쟁이 모드";
                 }
                     
 
-                if (!BActive[4] || !BActive[5])
+                if (!PlayerDataManager.Instance.GetSkillActive(4) || !PlayerDataManager.Instance.GetSkillActive(5))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
@@ -292,7 +305,7 @@ public class SkillTreeUI : UIBase
             case 22:
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Active2");
                 descUISkillName.text = "두 번째 상위 패시브";
-                if (!BActive[nodeID])
+                if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.gameObject.SetActive(true);
                     descUIText.text = "두 번째 상위 패시브";
@@ -301,16 +314,16 @@ public class SkillTreeUI : UIBase
                 else
                 {
                     skillActiveButton.gameObject.SetActive(false);
-                    int index = PlayerDataManager.Instance.GetTopNumber(2);
+                    int index = PlayerDataManager.Instance.GetTopPassiveOfNode(2);
                     if (index == 1)
                         descUIText.text = "고수 모드";
                     else if (index == 2)
-                        descUIText.text = "?? 모드";
+                        descUIText.text = "보통 모드";
                     else
                         descUIText.text = "겁쟁이 모드";
                 }
 
-                if (!BActive[11] || !BActive[12] || !BActive[13])
+                if (!PlayerDataManager.Instance.GetSkillActive(11) || !PlayerDataManager.Instance.GetSkillActive(12) || !PlayerDataManager.Instance.GetSkillActive(13))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
@@ -318,7 +331,7 @@ public class SkillTreeUI : UIBase
             case 23:
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Active3");
                 descUISkillName.text = "세 번째 상위 패시브";
-                if (!BActive[nodeID])
+                if (!PlayerDataManager.Instance.GetSkillActive(nodeID))
                 {
                     skillActiveButton.gameObject.SetActive(true);
                     descUIText.text = "세 번째 상위 패시브";
@@ -327,16 +340,16 @@ public class SkillTreeUI : UIBase
                 else
                 {
                     skillActiveButton.gameObject.SetActive(false);
-                    int index = PlayerDataManager.Instance.GetTopNumber(3);
+                    int index = PlayerDataManager.Instance.GetTopPassiveOfNode(3);
                     if (index == 1)
                         descUIText.text = "고수 모드";
                     else if (index == 2)
-                        descUIText.text = "?? 모드";
+                        descUIText.text = "보통 모드";
                     else
                         descUIText.text = "겁쟁이 모드";
                 }
 
-                if (!BActive[18] || !BActive[19] || !BActive[20])
+                if (!PlayerDataManager.Instance.GetSkillActive(18) || !PlayerDataManager.Instance.GetSkillActive(19) || !PlayerDataManager.Instance.GetSkillActive(20))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
@@ -394,7 +407,7 @@ public class SkillTreeUI : UIBase
     {
         for(int i = 1; i <= 23; i++)
         {
-            if (BActive[i])
+            if (PlayerDataManager.Instance.GetSkillActive(i))
             {
                 edgeImage[i].sprite = Resources.Load<Sprite>($"UI/SkillTree/normal outline");
             }
@@ -403,12 +416,11 @@ public class SkillTreeUI : UIBase
 
     void OpenTopSkillUI(int n)
     {
-        TopSkillUI topSkillUI;
-       var newGO = Resources.Load<GameObject>("PopUp/TopSkillUI");
-        if (newGO.TryGetComponent<TopSkillUI>(out topSkillUI))
+        var prefab = Resources.Load<GameObject>("PopUp/TopSkillUI");
+        var instance = Instantiate(prefab);
+        if (instance.TryGetComponent<TopSkillUI>(out TopSkillUI topSkillUI))
         {
             topSkillUI.Init(n);
         }
-        Instantiate(newGO);
     }
 }

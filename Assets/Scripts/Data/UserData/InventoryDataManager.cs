@@ -47,7 +47,6 @@ public class InventoryDataManager : SingletonBehaviour<InventoryDataManager>
             if (item.itemId == id)
                 return true;
         }
-        Debug.Log("아이템이 존재하지 않음");
         return false;
     }
     public int ItemCounting(string id)
