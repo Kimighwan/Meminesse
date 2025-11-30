@@ -12,6 +12,7 @@ public class SkillTreeUI : UIBase
     [SerializeField] Image descUISkill_Icon;
     [SerializeField] TextMeshProUGUI descUISkillName;
     [SerializeField] TextMeshProUGUI descUIText;
+    [SerializeField] GameObject confirmUI;
     const string IMAGE_PATH = "UI/SkillTree/SkillIcon";
 
     public Image[] edgeImage;
@@ -45,11 +46,21 @@ public class SkillTreeUI : UIBase
         descActiveGO.SetActive(true);
         descUISkill_Icon.gameObject.SetActive(true);
 
-        // 활성화 버튼 이벤트 전부 삭제
         skillActiveButton.onClick.RemoveAllListeners();
-        skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));    // 해당 노드 스킬 찍었음을 확인하는 조건 변수
-        skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false)); // 스킬 활성화 버튼 비활성화
-        skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));
+
+        // TODO : 스킬 포인트 확인
+        if (!InventoryDataManager.Instance.ExistItem("23"))
+        {
+            skillActiveButton.onClick.AddListener(() => confirmUI.SetActive(true));
+        }
+        else
+        {
+            InventoryDataManager.Instance.ItemCountReduce("23", 1);
+            skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));    // 해당 노드 스킬 찍었음을 확인하는 조건 변수
+            skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false)); // 스킬 활성화 버튼 비활성화
+            skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));
+        }
+        
 
         // 노드에 맞게 설명과 버튼 이벤트 할당
         // 1) 노드에 맞는 기능들 버튼에 부여
