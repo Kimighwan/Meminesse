@@ -97,7 +97,7 @@ public class SkillTreeUI : UIBase
                     if (!skillPointCheck)
                         return;
 
-                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.AddHP);
+                    skillActiveButton.onClick.AddListener(PlayerDataManager.Instance.AddMaxHP);
                     skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.Save());
                 }
                 else
@@ -139,7 +139,7 @@ public class SkillTreeUI : UIBase
             case 10:
                 descUIText.text = "아이템 드랍률 상승 +25%";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Item");
-                descUISkillName.text = "아이템 트랍률 상승";
+                descUISkillName.text = "아이템 드랍률 상승";
 
                 if (nodeID == 3 && !PlayerDataManager.Instance.GetSkillActive(1))
                 {
@@ -166,7 +166,7 @@ public class SkillTreeUI : UIBase
             case 13:
                 descUIText.text = "재화 드랍률 상승 +25%";
                 descUISkill_Icon.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/Gold");
-                descUISkillName.text = "재화 드럅률 상승";
+                descUISkillName.text = "재화 드랍률 상승";
 
                 if (nodeID == 5 && !PlayerDataManager.Instance.GetSkillActive(3))
                 {

@@ -166,4 +166,12 @@ public class SettingsPopup : UIBase
     {
         UIManager.Instance.CloseTopPopup();
     }
+    
+    public void OnClickDataResetButton()
+    {
+        PlayerDataManager.Instance.SetDefaultData();
+        InventoryDataManager.Instance.SetDefaultData();
+        SaveFileDataManager.Instance.SetDefaultData();
+        SettingDataManager.Instance.SetDefaultData();
+    }
 }
