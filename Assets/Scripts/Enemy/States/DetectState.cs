@@ -8,6 +8,7 @@ public class DetectState : State
     protected bool isPlayerInRangeAttackRange;
     protected bool isPlayerInChargeRange;
     protected bool isDetectedPlayer;
+    protected bool isDetectedPlayerReverse;
     protected bool isDetectLedge;
 
     public DetectState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_DetectState stateData) : base(entity, stateMachine, animBoolName)
@@ -20,6 +21,7 @@ public class DetectState : State
         base.DoCheck();
 
         isDetectedPlayer = entity.CanDetectPlayer();
+        isDetectedPlayerReverse = entity.CanDetectPlayerReverse();
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
         isDetectLedge = entity.CheckLedge();

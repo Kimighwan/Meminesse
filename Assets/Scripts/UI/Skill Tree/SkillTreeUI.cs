@@ -61,6 +61,7 @@ public class SkillTreeUI : UIBase
         skillActiveButton.onClick.RemoveAllListeners();
 
         bool skillPointCheck = InventoryDataManager.Instance.ExistItem("23");
+        skillActiveButton.onClick.AddListener(() => RefreshLunes());
 
 
         if (!skillPointCheck)
@@ -72,7 +73,6 @@ public class SkillTreeUI : UIBase
             InventoryDataManager.Instance.ItemCountReduce("23", 1);
             skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));    // 해당 노드 스킬 찍었음을 확인하는 조건 변수
             skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false)); // 스킬 활성화 버튼 비활성화
-            skillActiveButton.onClick.AddListener(() => RefreshLunes()); 
         }
         
 
@@ -482,4 +482,6 @@ public class SkillTreeUI : UIBase
     {
         skillPointText.text = InventoryDataManager.Instance.GetItemCountById("23").ToString();
     }
+
+    public void OnClickCloseBtn() => HUD.Instance.UpdateHUD();
 }
