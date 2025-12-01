@@ -18,7 +18,7 @@ MonoBehaviour:
   playerInMeleeAttackRange: 3.5
   playerInRangeAttackRadius: 0
   playerInChargeRadius: 0
-  playerDetectRange: 7
+  playerDetectRange: 8.39
   wallCheckDistance: 1
   ledgeCheckDistance: 0.4
   groundCheckRadius: 0.3

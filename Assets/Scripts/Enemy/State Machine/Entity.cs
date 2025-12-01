@@ -241,9 +241,29 @@ public class Entity : MonoBehaviour
 
         Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
         RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerDetectRange, ~(1 << 8));
-
+        Debug.DrawRay(playerCheck.position, dirV * entityData.playerDetectRange, Color.green);
         if (hitCheck && hitCheck.collider.name == "Player")
             return true;
+        else
+            return false;
+    }
+
+    public bool CanDetectPlayerReverse()   
+    {
+        float playerX = PlayerTransformForRangeAttack().position.x;
+        if ((playerX > transform.position.x && facingDirection == 1) || (playerX < transform.position.x && facingDirection == -1))
+            return false;
+        Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
+        RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, -dirV, entityData.playerDetectRange, ~(1 << 8));
+
+        Debug.DrawRay(playerCheck.position, -dirV * entityData.playerDetectRange, Color.red);
+
+        if (hitCheck && hitCheck.collider.name == "Player")
+        {
+
+            Debug.Log($"[CanDetectPlayerReverse] 뒤쪽으로 플레이어 감지");
+            return true;
+        }
         else
             return false;
     }
@@ -281,6 +301,7 @@ public class Entity : MonoBehaviour
 
     #endregion
 
+#if UNITY_EDITOR
     public virtual void OnDrawGizmos()
     {
         // 벽 체크 표시
@@ -303,4 +324,5 @@ public class Entity : MonoBehaviour
         // 원거리 공격 범위 표시
         Gizmos.DrawWireSphere(playerCheck.position, entityData.playerInRangeAttackRadius);
     }
+#endif
 }
