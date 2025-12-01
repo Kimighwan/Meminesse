@@ -98,7 +98,6 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
         if (index == 1) playerData.topPassiveA++;
         else if (index == 2) playerData.topPassiveB++;
         else playerData.topPassiveC++;
-        Debug.Log($"[SetTopPassiveLevel] : {number}");
         playerData.TopPassiveLevel[number - 1] = index;
     }
     public void UpgradeWeaponLevel()
@@ -131,6 +130,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     public void AddMaxHP()
     {
         playerData.maxHp += 20;
+        SetHp(20);
     }
 
     public void HealingProbabilityIncrease()

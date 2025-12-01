@@ -36,6 +36,11 @@ public class FireWizard_DetectState : DetectState
         {
             stateMachine.ChangeState(enemy.moveState);
         }
+        else if (isDetectedPlayerReverse)
+        {
+            enemy.idleState.SetFlipAfterIdle(true);
+            stateMachine.ChangeState(enemy.idleState);
+        }
     }
 
     public override void PhysicsUpdate()

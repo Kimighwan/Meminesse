@@ -241,9 +241,29 @@ public class Entity : MonoBehaviour
 
         Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
         RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerDetectRange, ~(1 << 8));
-
+        Debug.DrawRay(playerCheck.position, dirV * entityData.playerDetectRange, Color.green);
         if (hitCheck && hitCheck.collider.name == "Player")
             return true;
+        else
+            return false;
+    }
+
+    public bool CanDetectPlayerReverse()   
+    {
+        float playerX = PlayerTransformForRangeAttack().position.x;
+        if ((playerX > transform.position.x && facingDirection == 1) || (playerX < transform.position.x && facingDirection == -1))
+            return false;
+        Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
+        RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, -dirV, entityData.playerDetectRange, ~(1 << 8));
+
+        Debug.DrawRay(playerCheck.position, -dirV * entityData.playerDetectRange, Color.red);
+
+        if (hitCheck && hitCheck.collider.name == "Player")
+        {
+
+            Debug.Log($"[CanDetectPlayerReverse] 뒤쪽으로 플레이어 감지");
+            return true;
+        }
         else
             return false;
     }

@@ -16,15 +16,15 @@ public class TopSkillUI : MonoBehaviour
 
         if (number == 1)
         {
-            numberTxt.text = "<첫 번째 상위 패시브>";
+            numberTxt.text = "<첫 번째 상위 패시브를 선택해주세요.>";
         }
         else if(number == 2)
         {
-            numberTxt.text = "<두 번째 상위 패시브>";
+            numberTxt.text = "<두 번째 상위 패시브를 선택해주세요.>";
         }
         else if(number == 3)
         {
-            numberTxt.text = "<세 번째 상위 패시브>";
+            numberTxt.text = "<세 번째 상위 패시브를 선택해주세요.>";
         }
     }
 
