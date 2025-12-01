@@ -281,6 +281,7 @@ public class Entity : MonoBehaviour
 
     #endregion
 
+#if UNITY_EDITOR
     public virtual void OnDrawGizmos()
     {
         // 벽 체크 표시
@@ -303,4 +304,5 @@ public class Entity : MonoBehaviour
         // 원거리 공격 범위 표시
         Gizmos.DrawWireSphere(playerCheck.position, entityData.playerInRangeAttackRadius);
     }
+#endif
 }

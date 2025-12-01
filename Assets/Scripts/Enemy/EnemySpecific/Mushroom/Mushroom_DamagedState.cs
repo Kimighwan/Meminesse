@@ -30,6 +30,7 @@ public class Mushroom_DamagedState : DamagedState
 
         if (isAnimationDone)
         {
+            enemy.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemy.idleState);
         }
     }
