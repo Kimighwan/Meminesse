@@ -1,5 +1,3 @@
-using NUnit.Framework.Interfaces;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class EvilWizard : Entity
@@ -55,6 +53,7 @@ public class EvilWizard : Entity
         }
     }
 
+#if UNITY_EDITOR
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -63,4 +62,5 @@ public class EvilWizard : Entity
         Gizmos.DrawWireSphere(meleeAttack1Position.position, meleeAttack1StateData.attackRadius);
         Gizmos.DrawWireSphere(meleeAttack2Position.position, meleeAttack2StateData.attackRadius);
     }
+#endif
 }

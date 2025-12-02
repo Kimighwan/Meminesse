@@ -1,4 +1,3 @@
-using Mono.Cecil.Cil;
 using UnityEngine;
 
 public class FireWizard_IdleState : IdleState

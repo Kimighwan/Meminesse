@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEngine.EventSystems.EventTrigger;
 
 
 public class Entity : MonoBehaviour
@@ -241,7 +238,6 @@ public class Entity : MonoBehaviour
 
         Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
         RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerDetectRange, ~(1 << 8));
-        Debug.DrawRay(playerCheck.position, dirV * entityData.playerDetectRange, Color.green);
         if (hitCheck && hitCheck.collider.name == "Player")
             return true;
         else
@@ -256,7 +252,6 @@ public class Entity : MonoBehaviour
         Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
         RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, -dirV, entityData.playerDetectRange, ~(1 << 8));
 
-        Debug.DrawRay(playerCheck.position, -dirV * entityData.playerDetectRange, Color.red);
 
         if (hitCheck && hitCheck.collider.name == "Player")
         {

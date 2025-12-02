@@ -1,6 +1,5 @@
+#if UNITY_EDITOR
 using UnityEditor;
-using UnityEngine;
-
 public class SaveLoadTool
 {
     [MenuItem("Tools/Save&Load/AllSave")]
@@ -21,4 +20,5 @@ public class SaveLoadTool
         SettingDataManager.Instance.Load();
     }
 }
+#endif
 
