@@ -1321,7 +1321,9 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        int takenDamage = 0 - (int)damage;
+        // Apply fixed damage to player since enemy damage calculation is malfunctioning
+        //int takenDamage = 0 - (int)damage;
+        int takenDamage = -20;
         PlayerDataManager.Instance.SetHp(takenDamage);
         HUD.Instance.UpdateHUD();
 
