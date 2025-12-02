@@ -207,6 +207,7 @@ public class PlayerController : MonoBehaviour
 
         if (currentState != newState)
         {
+            //Debug.Log("State changed from " + currentState + " to " + newState);
             currentState = newState;
             UpdateAnimation();
             ApplyStateEffects();
@@ -366,8 +367,7 @@ public class PlayerController : MonoBehaviour
             rigid.linearVelocity = new Vector2(0, rigid.linearVelocity.y);
             ChangeState(PlayerState.Crouching);
         }
-        else if (Input.GetKeyUp(SettingDataManager.Instance.GetKeyCode("Down"))
-                && isGrounded)
+        else if (Input.GetKeyUp(SettingDataManager.Instance.GetKeyCode("Down")))
         {
             // Exit Crouch
             isCrouching = false;
