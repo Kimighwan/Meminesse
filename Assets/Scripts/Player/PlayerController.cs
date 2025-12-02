@@ -337,6 +337,7 @@ public class PlayerController : MonoBehaviour
             isCrouching = true;
             canMove = false;
             canDash = false;
+            rigid.linearVelocity = new Vector2(0, rigid.linearVelocity.y);
             ChangeState(PlayerState.enterCrouching);
         }
         // Down + jump to drop through platform
@@ -356,6 +357,7 @@ public class PlayerController : MonoBehaviour
             isCrouching = true;
             canMove = false;
             canDash = false;
+            rigid.linearVelocity = new Vector2(0, rigid.linearVelocity.y);
             ChangeState(PlayerState.Crouching);
         }
         else if (Input.GetKeyUp(SettingDataManager.Instance.GetKeyCode("Down"))
