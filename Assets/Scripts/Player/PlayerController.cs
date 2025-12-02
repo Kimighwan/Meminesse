@@ -1319,8 +1319,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // TODO: fix this later when monster damages are updated
-        int takenDamage = -20;
+        int takenDamage = 0 - (int)damage;
         PlayerDataManager.Instance.SetHp(takenDamage);
         HUD.Instance.UpdateHUD();
 
