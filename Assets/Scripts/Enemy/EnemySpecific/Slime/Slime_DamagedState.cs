@@ -29,7 +29,10 @@ public class Slime_DamagedState : DamagedState
         base.LogicalUpdate();
 
         if(isAnimationDone)
+        {
+            enemy.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemy.idleState);
+        }
     }
 
     public override void PhysicsUpdate()
