@@ -197,7 +197,6 @@ public class Entity : MonoBehaviour
         if(CanRangeAttackPlayer())
             return Physics2D.OverlapCircle(playerCheck.position, entityData.playerInRangeAttackRadius, entityData.whatIsPlayer);
         else return false;
-        //return Physics2D.Raycast(playerCheck.position, transform.right, entityData.playerInRangeAttackRange, entityData.whatIsPlayer);
     }
 
     public virtual bool CheckPlayerInChargeRange()     // 플레이어가 몬스터의 돌진 패턴 범위에서 탐지되는지
@@ -251,12 +250,8 @@ public class Entity : MonoBehaviour
         RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerInRangeAttackRadius, ~(1 << 8));
 
         
-
         if (hitCheck && hitCheck.collider.name == "Player")
-        {
-            Debug.Log($"[CanRangeAttackPlayer] {hitCheck.collider.name}");
             return true;
-        }
         else
             return false;
     }
