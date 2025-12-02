@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using NUnit.Framework;
 
 public class MapController : SingletonBehaviour<MapController>
 {
@@ -7,6 +8,8 @@ public class MapController : SingletonBehaviour<MapController>
     [SerializeField] Map startingMap;
     [SerializeField] Map currentMap;
     [SerializeField] Transform respawnPoint;
+
+    public System.Collections.Generic.List<GameObject> activeObjects = new();
 
     protected override void Init()
     {
@@ -32,6 +35,13 @@ public class MapController : SingletonBehaviour<MapController>
         {
             return;
         }
+
+        for (int i = 0; i < activeObjects.Count; i++)
+        {
+            if(activeObjects[i] != null)
+                Destroy(activeObjects[i].gameObject);
+        }
+        activeObjects.Clear();
 
         currentMap.gameObject.SetActive(false);
         targetMap.gameObject.SetActive(true);
