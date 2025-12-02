@@ -121,7 +121,7 @@ public class HpUI : SingletonBehaviour<HpUI>
     // 최대 체력 증가
     public void IncreaseMaxHp()
     {
-        PlayerDataManager.Instance.AddMaxHp(20); 
+        PlayerDataManager.Instance.AddMaxHP(); 
         InitHearts(PlayerDataManager.Instance.GetMaxHp());
         UpdateHearts();
         Canvas.ForceUpdateCanvases();

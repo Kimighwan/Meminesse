@@ -4,6 +4,7 @@ using System.Text;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using NUnit.Framework.Interfaces;
 
 [Serializable]
 public class WrapperItemDataList
@@ -47,7 +48,6 @@ public class InventoryDataManager : SingletonBehaviour<InventoryDataManager>
             if (item.itemId == id)
                 return true;
         }
-        Debug.Log("아이템이 존재하지 않음");
         return false;
     }
     public int ItemCounting(string id)
@@ -93,7 +93,6 @@ public class InventoryDataManager : SingletonBehaviour<InventoryDataManager>
         itemDataList.Add(new InventoryData(itemData.itemId, itemData, count));
         return true;
     }
-
     #region Save-Load
 
     public void SetDefaultData()

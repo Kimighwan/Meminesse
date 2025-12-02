@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     #region Variables/References
 
+    OneWayPlatform oneWayPlatform;
+
     [SerializeField] float moveSpeed = 5f;
 
     // Jump parameters - Not to be messsed
@@ -157,6 +159,7 @@ public class PlayerController : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        oneWayPlatform = GetComponent<OneWayPlatform>();
         cachedTransform = transform;
 
         rigid.freezeRotation = true;
@@ -229,6 +232,8 @@ public class PlayerController : MonoBehaviour
 
         // Priorities
         // Skills > Dashing/Backdashing > CrouchAttack > AirHeavyAttack > AirAttack > GroundAttack > Jumping > Falling > Crouching > Idle
+        if(Input.GetKeyDown(KeyCode.P))
+            oneWayPlatform.OneWayPlatfrom();
 
         // HolySlash
         if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Skill1"))
@@ -610,7 +615,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Hurt()
     {
-        int topPassiveLevel_beginner = PlayerDataManager.Instance.GetTopPassive(3);
+        int topPassiveLevel_beginner = PlayerDataManager.Instance.GetTopPassiveLevel(3);
 
         ChangeState(PlayerState.Hurt);
         isHurt = true;
@@ -1090,7 +1095,7 @@ public class PlayerController : MonoBehaviour
 
         float baseAttack = PlayerDataManager.Instance.GetDamage();
         float weaponLevel = PlayerDataManager.Instance.GetWeaponLevel();
-        int topPassiveLevel_balanced = PlayerDataManager.Instance.GetTopPassive(2);
+        int topPassiveLevel_balanced = PlayerDataManager.Instance.GetTopPassiveLevel(2);
 
         float skillBonus = GetSkillBonusDamage(topPassiveLevel_balanced);
 
@@ -1223,7 +1228,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        int topPassiveLevel_beginner = PlayerDataManager.Instance.GetTopPassive(3);
+        int topPassiveLevel_beginner = PlayerDataManager.Instance.GetTopPassiveLevel(3);
 
         // Top Passive Beginner Skill: Shield Regeneration
         if (topPassiveLevel_beginner >= 1 && !shieldRegenCountdown)
@@ -1233,7 +1238,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        int topPassiveLevel_balanced = PlayerDataManager.Instance.GetTopPassive(2);
+        int topPassiveLevel_balanced = PlayerDataManager.Instance.GetTopPassiveLevel(2);
         // Top Passive Balanced Skill: Danage reflection
         if (topPassiveLevel_balanced >= 1)
         {

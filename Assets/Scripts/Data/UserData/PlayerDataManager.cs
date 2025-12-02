@@ -30,7 +30,7 @@ public class PlayerData
     public int topPassiveC;
 
     public bool[] IsSkillActive;
-    public int[] SelectedActive;
+    public int[] TopPassiveLevel;
 
     public PlayerData()
     {
@@ -51,8 +51,8 @@ public class PlayerData
         topPassiveB = 0;
         // beginner
         topPassiveC = 0;
-        IsSkillActive = new bool[24];
-        SelectedActive = new int[3] { 0, 0, 0 };
+        IsSkillActive = new bool[24];   // 스킬을 찍었는 가?
+        TopPassiveLevel = new int[3] { 0, 0, 0 };
     }
     public PlayerData(PlayerData data)
     {
@@ -71,7 +71,7 @@ public class PlayerData
         topPassiveB = data.topPassiveB;
         topPassiveC = data.topPassiveC;
         IsSkillActive = data.IsSkillActive;
-        SelectedActive = data.SelectedActive;
+        TopPassiveLevel = data.TopPassiveLevel;
     }
 }
 
@@ -91,13 +91,14 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     }
 
     #region Set Value
-    public void SetTopPassive(int number, int index)
+    public void SetSkillActive(int index) => playerData.IsSkillActive[index- 1] = true;
+
+    public void SetTopPassiveLevel(int number, int index)
     {
         if (index == 1) playerData.topPassiveA++;
         else if (index == 2) playerData.topPassiveB++;
         else playerData.topPassiveC++;
-
-        playerData.SelectedActive[number] = index;
+        playerData.TopPassiveLevel[number - 1] = index;
     }
     public void UpgradeWeaponLevel()
     {
@@ -121,17 +122,15 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
                 break;
         }
     }
-    public void AddHP()
-    {
-        playerData.maxHp += 20;
-    }
+    
     public void SetHp(int value)
     {
         playerData.hp = Mathf.Clamp(playerData.hp + value, 0, playerData.maxHp);
     }
-    public void AddMaxHp(int value)
+    public void AddMaxHP()
     {
-        playerData.maxHp += value;
+        playerData.maxHp += 20;
+        SetHp(20);
     }
 
     public void HealingProbabilityIncrease()
@@ -171,7 +170,8 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     #endregion
 
     #region Get Value
-    public int GetTopPassive(int index)
+    public bool GetSkillActive(int index) => playerData.IsSkillActive[index - 1];
+    public int GetTopPassiveLevel(int index)
     {
         if (index == 1) 
             return playerData.topPassiveA;
@@ -180,7 +180,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
         else 
             return playerData.topPassiveC;
     }
-    public int GetTopNumber(int number) => playerData.SelectedActive[number - 1];
+    public int GetTopPassiveOfNode(int number) => playerData.TopPassiveLevel[number - 1];
     public int GetWeaponLevel()
     {
         return playerData.weaponLevel;
@@ -242,8 +242,8 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     public void Save()
     {
         string jsonData = JsonUtility.ToJson(playerData);
-        Debug.Log(jsonData);
-        File.WriteAllText(PATH, Encrypt(jsonData, KEY));
+        File.WriteAllText(PATH, jsonData);
+        //File.WriteAllText(PATH, Encrypt(jsonData, KEY));
     }
     public void Load()
     {
@@ -254,7 +254,8 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
         else // Load
         {
             string loadJson = File.ReadAllText(PATH);
-            playerData = JsonUtility.FromJson<PlayerData>(Decrypt(loadJson, KEY));
+            playerData = JsonUtility.FromJson<PlayerData>(loadJson);
+            //playerData = JsonUtility.FromJson<PlayerData>(Decrypt(loadJson, KEY));
         }
     }
     #endregion

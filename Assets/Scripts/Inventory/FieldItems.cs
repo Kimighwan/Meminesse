@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 
 public class FieldItems : MonoBehaviour
 {
+    [SerializeField] bool autoDestroy = true;
     public ItemData itemData;
 
     public SpriteRenderer spriteRenderer;
@@ -14,7 +15,7 @@ public class FieldItems : MonoBehaviour
 
     bool dontDestroy = false;
 
-    int itemCount;
+    int itemCount = 1;
 
     private void Awake()
     {
@@ -31,7 +32,8 @@ public class FieldItems : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(BlinkBeforeDestroy(55f, 5f));
+        if(autoDestroy)
+            StartCoroutine(BlinkBeforeDestroy(55f, 5f));
     }
 
     public void SetItem(ItemData itemData, int itemCount)

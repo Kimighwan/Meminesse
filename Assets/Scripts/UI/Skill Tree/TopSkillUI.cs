@@ -10,27 +10,27 @@ public class TopSkillUI : MonoBehaviour
 
     int number;
 
-    public void Init(int number)
+    public void Init(int n)
     {
-        this.number = number;
+        number = n;
 
         if (number == 1)
         {
-            this.numberTxt.text = "<첫 번째 상위 패시브>";
+            numberTxt.text = "<첫 번째 상위 패시브를 선택해주세요.>";
         }
         else if(number == 2)
         {
-            this.numberTxt.text = "<두 번째 상위 패시브>";
+            numberTxt.text = "<두 번째 상위 패시브를 선택해주세요.>";
         }
         else if(number == 3)
         {
-            this.numberTxt.text = "<세 번째 상위 패시브>";
+            numberTxt.text = "<세 번째 상위 패시브를 선택해주세요.>";
         }
     }
 
     public void OnClickSelectBtn(int index)
     {
-        PlayerDataManager.Instance.SetTopPassive(number, index);
+        PlayerDataManager.Instance.SetTopPassiveLevel(number, index);
         PlayerDataManager.Instance.Save();
         OnAction?.Invoke();
         Destroy(gameObject);
