@@ -557,7 +557,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator BackDashCharacter()
     {
-        float dashCooldown = PlayerDataManager.Instance.GetDashCoolDown();
+        // float dashCooldown = PlayerDataManager.Instance.GetDashCoolDown();
+        // No cooldown for backdash
+        float dashCooldown = 0f;
 
         isBackDashing = true;
         canDash = false;
