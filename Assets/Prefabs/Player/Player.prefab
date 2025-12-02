@@ -933,6 +933,8 @@ MonoBehaviour:
   jumpGravityScale: 2.2
   normalGravityScale: 5
   maxFallSpeed: -20
+  canDoubleJump: 0
+  maxJumpCount: 1
   dashSpeed: 12
   backDashSpeed: 9
   dashDuration: 0.3
@@ -966,8 +968,7 @@ MonoBehaviour:
   invincibleTimeAfterHit: 3
   minHeightForAirHeavyAttack: 3
   groundCheckDistance: 0.6
-  groundCheckWidth: 0.4
-  mapController: {fileID: 0}
+  groundCheckWidth: 0.7
 --- !u!95 &2016939861136809588
 Animator:
   serializedVersion: 7

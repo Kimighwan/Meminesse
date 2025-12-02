@@ -76,9 +76,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float minHeightForAirHeavyAttack = 2f;
 
     // Distance to check for ground
-    [SerializeField] float groundCheckDistance = 0.05f;
+    [SerializeField] float groundCheckDistance = 0.6f;
     // Width between ground check points
-    [SerializeField] float groundCheckWidth = 1.2f;
+    [SerializeField] float groundCheckWidth = 0.7f;
 
     public enum PlayerState
     {
