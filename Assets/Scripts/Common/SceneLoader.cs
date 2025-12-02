@@ -5,6 +5,7 @@ public enum SceneType
 {
     LobbyScene,
     GameScene,
+    Grid_Su,
 }
 
 public class SceneLoader : SingletonBehaviour<SceneLoader>

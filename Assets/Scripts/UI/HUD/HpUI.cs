@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Rendering;
 
 // 인게임, 인벤토리, 세이브파일화면에서 쓸려고 만듦
 // 체력 하트 UI 관리
