@@ -173,12 +173,11 @@ public class Entity : MonoBehaviour
             else if (dropItemData.itemId == "22") itemCount = monsterDropData.MaCount;
             else itemCount = monsterDropData.PotionCount;
 
-            var newOB = Resources.Load<GameObject>("Item/FieldItem");
+            var newOB = Instantiate(Resources.Load<GameObject>("Item/FieldItem"), transform.position, Quaternion.identity);
             if (newOB.TryGetComponent<FieldItems>(out var item))
             {
                 item.SetItem(dropItemData, itemCount);
             }
-            Instantiate(newOB, transform.position, Quaternion.identity);
 
             Destroy(gameObject, entityData.DestroyTime);
         }

@@ -78,7 +78,6 @@ public class SkillTreeUI : UIBase
         descUIText.gameObject.SetActive(true);
         descUISkill_Icon.gameObject.SetActive(true);
         descUISkillName.gameObject.SetActive(true);
-        skillActiveButton.gameObject.SetActive(true);
 
         // 노드에 맞게 설명과 버튼 이벤트 할당
         // 1) 노드에 맞는 기능들 버튼에 부여
@@ -116,7 +115,7 @@ public class SkillTreeUI : UIBase
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }
-                else if (nodeID == 1 && !PlayerDataManager.Instance.GetSkillActive(8))
+                else if (nodeID == 11 && !PlayerDataManager.Instance.GetSkillActive(8))
                 {
                     skillActiveButton.gameObject.SetActive(false);
                 }

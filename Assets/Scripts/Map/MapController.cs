@@ -73,4 +73,6 @@ public class MapController : SingletonBehaviour<MapController>
         Debug.Log("Hit trap, relocating player to respawn point...");
         player.transform.position = respawnPoint.position;
     }
+
+    public void DestroyMap() => Destroy(gameObject);
 }
