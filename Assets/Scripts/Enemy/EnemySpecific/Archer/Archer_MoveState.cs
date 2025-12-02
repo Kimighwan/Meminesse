@@ -28,7 +28,6 @@ public class Archer_MoveState : MoveState
     {
         base.LogicalUpdate();
 
-        // TODO : transition to attackState and dodgeState
         if(isPlayerInMeleeAttackRange)
         {
             enemy.stateMachine.ChangeState(enemy.detectState);
