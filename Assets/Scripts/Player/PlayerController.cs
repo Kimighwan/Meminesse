@@ -233,8 +233,7 @@ public class PlayerController : MonoBehaviour
         // Priorities
         // Skills > Dashing/Backdashing > CrouchAttack > AirHeavyAttack > AirAttack > GroundAttack > Jumping > Falling > Crouching > Idle
         if(Input.GetKeyDown(KeyCode.P))
-            oneWayPlatform.OneWayPlatfrom();
-
+            oneWayPlatform.Activate();
         // HolySlash
         if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Skill1"))
                 && isGrounded && canMove && canAttack && !isHolySlashOnCoolDown)
@@ -330,12 +329,33 @@ public class PlayerController : MonoBehaviour
             canDash = false;
             ChangeState(PlayerState.enterCrouching);
         }
+        // Down + jump to drop through platform
+        else if (Input.GetKey(SettingDataManager.Instance.GetKeyCode("Down")) &&
+                Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Jump")))
+        {
+            Debug.Log("Drop through one-way platform");
+            isCrouching = false;
+            canMove = true;
+            canDash = true;
+            oneWayPlatform.Activate();
+
+            // If still holding down after dropping, continue crouch
+            //if (Input.GetKey(SettingDataManager.Instance.GetKeyCode("Down")))
+            //{
+            //    // Continue Crouch
+            //    isCrouching = true;
+            //    canMove = false;
+            //    canDash = false;
+            //}
+        }
         else if (Input.GetKey(SettingDataManager.Instance.GetKeyCode("Down"))
                 && isGrounded && canCrouch)
         {
             // Crouch
             canMove = false;
             ChangeState(PlayerState.Crouching);
+
+
         }
         else if (Input.GetKeyUp(SettingDataManager.Instance.GetKeyCode("Down"))
                 && isGrounded)

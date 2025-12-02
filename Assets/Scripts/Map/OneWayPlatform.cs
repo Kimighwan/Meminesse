@@ -11,7 +11,7 @@ public class OneWayPlatform : MonoBehaviour
         playerCollider = GetComponent<Collider2D>();
     }
 
-    public void OneWayPlatfrom()
+    public void Activate()
     {
         if(currentPlatform != null)
             StartCoroutine(DisableCollider());
