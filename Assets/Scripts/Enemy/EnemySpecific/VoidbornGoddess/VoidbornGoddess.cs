@@ -85,12 +85,14 @@ public class VoidbornGoddess : Entity
         CheckXPositionForFlip();
     }
 
+#if UNITY_EDITOR
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
 
         Gizmos.DrawWireSphere(meleeAttackPosition.position, meleeAttackStateData.attackRadius);
     }
+#endif
 
     public override void Damaged(float damage, Vector2 position, bool isStun, float defIgnore = 0f)
     {

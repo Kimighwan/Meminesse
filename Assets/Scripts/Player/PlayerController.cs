@@ -1,9 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
-using NUnit.Framework.Constraints;
-using UnityEditor.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,12 +11,17 @@ public class PlayerController : MonoBehaviour
 
     // Jump parameters - Not to be messsed
     [SerializeField] float maxJumpHoldTime = 1f;
-    [SerializeField] float baseJumpForce = 7f;
-    [SerializeField] float holdJumpForce = 12f;
-    [SerializeField] float fallGravityScale = 3.5f;
+    [SerializeField] float baseJumpForce = 18f;//7f;
+    [SerializeField] float holdJumpForce = 0f;//12f;
+    [SerializeField] float fallGravityScale = 7f;//3.5f;
     [SerializeField] float jumpGravityScale = 2.2f;
-    [SerializeField] float normalGravityScale = 2.5f;
+    [SerializeField] float normalGravityScale = 5f;//2.5f;
     [SerializeField] float maxFallSpeed = -20f;
+
+    // Double jump
+    [SerializeField] bool canDoubleJump = false;
+    [SerializeField] int maxJumpCount = 1;
+    int remainingJumpCounter = 0;
 
     // Dash parameters
     [SerializeField] float dashSpeed = 12f;
@@ -48,7 +49,6 @@ public class PlayerController : MonoBehaviour
     bool isHolySlashOnCoolDown = false;
     bool isLightCutOnCoolDown = false;
 
-
     // Hitboxes for combat
     private GameObject currentHitbox = null;
     [SerializeField] GameObject hitboxPivot;
@@ -58,8 +58,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject[] airHeavyAttackHitbox = new GameObject[3];
     [SerializeField] GameObject holySlashAttackHitbox;
     [SerializeField] GameObject lightCutAttackHitbox;
-
-    // TBA
+    // TBA?
 
     // Player damage related
     private Vector2 attackerPosition;
@@ -77,11 +76,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float minHeightForAirHeavyAttack = 2f;
 
     // Distance to check for ground
-    [SerializeField] float groundCheckDistance = 0.05f;
+    [SerializeField] float groundCheckDistance = 0.6f;
     // Width between ground check points
-    [SerializeField] float groundCheckWidth = 0.8f;
-
-    [SerializeField] MapController mapController;
+    [SerializeField] float groundCheckWidth = 0.7f;
 
     public enum PlayerState
     {
@@ -127,7 +124,7 @@ public class PlayerController : MonoBehaviour
     private bool isCrouching;
     private bool isAttacking;
     private bool isJumping;
-    private Coroutine activeCoroutine;
+    private Coroutine activeJumpCoroutine;
     private Coroutine activeComboCoroutine;
 
     // For GroundedComboAttack
@@ -144,8 +141,6 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     // Cache components
-    private static readonly Vector2 VectorUp = Vector2.up;
-    private static readonly Vector2 VectorZero = Vector2.zero;
     private Transform cachedTransform;
     private Vector2 currentVelocity;
 
@@ -195,6 +190,9 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeState(PlayerState newState)
     {
+        if (isDead)
+            return;
+
         // Prevent any other state changes during AirHeavyAttack sequence
         if (IsAirHeavyAttackState(currentState))
         {
@@ -234,15 +232,22 @@ public class PlayerController : MonoBehaviour
         // Priorities
         // Skills > Dashing/Backdashing > CrouchAttack > AirHeavyAttack > AirAttack > GroundAttack > Jumping > Falling > Crouching > Idle
         if(Input.GetKeyDown(KeyCode.P))
-            oneWayPlatform.OneWayPlatfrom();
-
+            oneWayPlatform.Activate();
         // HolySlash
         if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Skill1"))
                 && isGrounded && canMove && canAttack && !isHolySlashOnCoolDown)
         {
             lockInput = true;
             ChangeState(PlayerState.HolySlash);
+            HUD.Instance.StartHolySlashCoolTime();
             StartCoroutine(HolySlash());
+        }
+        // Testing
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Heal")))
+        {
+            Debug.Log("Heal Key Pressed - For Testing Only");
+            PlayerDataManager.Instance.SetHp(20);
+            HUD.Instance.UpdateHUD();
         }
         // LightCut
         else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Skill2"))
@@ -250,6 +255,7 @@ public class PlayerController : MonoBehaviour
         {
             lockInput = true;
             ChangeState(PlayerState.LightCut);
+            HUD.Instance.StartLightCutCoolTime();
             StartCoroutine(LightCut());
         }
         // Dash
@@ -258,6 +264,7 @@ public class PlayerController : MonoBehaviour
         {
             lockInput = true;
             ChangeState(PlayerState.Dashing);
+            HUD.Instance.StartDashCoolTime();
             StartCoroutine(DashCharacter());
         }
         // Backdash
@@ -306,7 +313,18 @@ public class PlayerController : MonoBehaviour
                 && canMove && isGrounded)
         {
             ChangeState(PlayerState.Jumping);
-            StartCoroutine(JumpCharacter());
+            activeJumpCoroutine = StartCoroutine(JumpCharacter());
+        }
+        // Extra Jump
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Jump"))
+                && canMove && !isGrounded && canDoubleJump)
+        {
+            if (remainingJumpCounter > 0)
+            {
+                remainingJumpCounter--;
+                ChangeState(PlayerState.Jumping);
+                StartCoroutine(JumpCharacter());
+            }
         }
         // Fall
         else if (!isGrounded && rigid.linearVelocity.y < -0.01 && !isAttacking && !isDashing && !isBackDashing)
@@ -324,11 +342,23 @@ public class PlayerController : MonoBehaviour
             canDash = false;
             ChangeState(PlayerState.enterCrouching);
         }
+        // Down + jump to drop through platform
+        else if (Input.GetKey(SettingDataManager.Instance.GetKeyCode("Down")) &&
+                Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Jump")))
+        {
+            Debug.Log("Drop through one-way platform");
+            isCrouching = false;
+            canMove = true;
+            canDash = true;
+            oneWayPlatform.Activate();
+        }
         else if (Input.GetKey(SettingDataManager.Instance.GetKeyCode("Down"))
                 && isGrounded && canCrouch)
         {
             // Crouch
+            isCrouching = true;
             canMove = false;
+            canDash = false;
             ChangeState(PlayerState.Crouching);
         }
         else if (Input.GetKeyUp(SettingDataManager.Instance.GetKeyCode("Down"))
@@ -530,7 +560,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator BackDashCharacter()
     {
-        float dashCooldown = PlayerDataManager.Instance.GetDashCoolDown();
+        // float dashCooldown = PlayerDataManager.Instance.GetDashCoolDown();
+        // No cooldown for backdash
+        float dashCooldown = 0f;
 
         isBackDashing = true;
         canDash = false;
@@ -582,9 +614,18 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator JumpCharacter()
     {
+        // If double jumping
+        if (remainingJumpCounter == 0)
+        {
+            Debug.Log("Double Jump Activated");
+            StopCoroutine(activeJumpCoroutine);
+            ApplyStateEffects();
+            rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0f);
+            rigid.gravityScale *= 3f;
+        }
+
         isGrounded = false;
         isJumping = true;
-
         float jumpTimer = 0f;
 
         // Apply initial jump force
@@ -593,7 +634,7 @@ public class PlayerController : MonoBehaviour
         // Continue applying force while the button is held
         while (Input.GetKey(SettingDataManager.Instance.GetKeyCode("Jump")) && jumpTimer < maxJumpHoldTime)
         {
-            rigid.linearVelocity += VectorUp * holdJumpForce * Time.deltaTime;
+            rigid.linearVelocity += Vector2.up * holdJumpForce * Time.deltaTime;
             jumpTimer += Time.deltaTime;
             yield return null;
         }
@@ -641,10 +682,17 @@ public class PlayerController : MonoBehaviour
         lockInput = true;
         yield return new WaitForSeconds(3f);
 
-        mapController.RespawnPlayer(this);
+        StartCoroutine(MapController.Instance.RespawnPlayer(this));
+
         isDead = false;
         isInvincible = false;
         lockInput = false;
+
+        // Restore health
+        int maxHp = PlayerDataManager.Instance.GetMaxHp();
+        PlayerDataManager.Instance.SetHp(maxHp);
+        HUD.Instance.UpdateHUD();
+
         ChangeState(PlayerState.Idle);
     }
 
@@ -738,7 +786,7 @@ public class PlayerController : MonoBehaviour
         isAttacking = true;
 
         // Stop all momentum when starting attack
-        rigid.linearVelocity = VectorZero;
+        rigid.linearVelocity = Vector2.zero;
 
         // Stop previous attack coroutine before starting a new one as to prevent overlapping
         if (activeComboCoroutine != null)
@@ -879,7 +927,7 @@ public class PlayerController : MonoBehaviour
         // Complete stop during attack animation
         while (elapsedTime < attackDuration)
         {
-            rigid.linearVelocity = VectorZero;
+            rigid.linearVelocity = Vector2.zero;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -1091,11 +1139,15 @@ public class PlayerController : MonoBehaviour
         float weaponLevel = PlayerDataManager.Instance.GetWeaponLevel();
         int topPassiveLevel_balanced = PlayerDataManager.Instance.GetTopPassiveLevel(2);
 
-        float skillBonus = GetSkillBonusDamage(topPassiveLevel_balanced);
+        float skillBonus = 0;
+        if (isRageMode)
+        {
+            skillBonus = GetSkillBonusDamage(topPassiveLevel_balanced);
+        }
 
         baseAttack *= (1 + (weaponLevel - 1 + skillBonus) * 0.1f);
         // e.g. Level 1 weapon = 100% base damage, Level 2 weapon = 110% base damage, etc.
-        // skillBonus can be added later when top passive skills are leveled up
+        // skillBonus is added later when top passive skills are leveled up
 
         // Select hitboxes
         switch (type)
@@ -1233,9 +1285,10 @@ public class PlayerController : MonoBehaviour
         }
 
         int topPassiveLevel_balanced = PlayerDataManager.Instance.GetTopPassiveLevel(2);
-        // Top Passive Balanced Skill: Danage reflection
+        // Top Passive Balanced Skill: Danage reflection / Rage Mode
         if (topPassiveLevel_balanced >= 1)
         {
+            StartCoroutine(EnterRageMode(topPassiveLevel_balanced));
             float reflectDamage = PlayerDataManager.Instance.GetDamage();
             switch (topPassiveLevel_balanced)
             {
@@ -1257,21 +1310,15 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-
-            //// Reflect damage to enemy who attacked me (given by position)
-            //Collider2D[] hitColliders = Physics2D.OverlapCircleAll(position, 0.1f);
-            //foreach (var hitCollider in hitColliders)
-            //{
-            //    Entity enemy = hitCollider.GetComponent<Entity>();
-            //    if (enemy != null)
-            //    {
-            //        enemy.Damaged(reflectDamage, transform.position);
-            //        Debug.Log("Reflected Damage to Enemy at position: " + enemy.transform.position);
-            //    }
-            //}
+            // Reflect damage to enemy who attacked me
+            if (entity != null)
+            {
+                entity.Damaged(reflectDamage, transform.position);
+            }
         }
 
-        int takenDamage = 0 - (int)damage;
+        // TODO: fix this later when monster damages are updated
+        int takenDamage = -20;
         PlayerDataManager.Instance.SetHp(takenDamage);
         HUD.Instance.UpdateHUD();
 
@@ -1287,7 +1334,6 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Hurt());
         }
 
-        //attackerPosition = position;
         isStunned = isStun;
     }
 
@@ -1380,15 +1426,19 @@ public class PlayerController : MonoBehaviour
         // Update grounded state
         isGrounded = (hitLeft.collider || hitRight.collider) && (rigid.linearVelocity.y > -0.01f && rigid.linearVelocity.y < 0.01f);
 
+        // Restore jump count for double jumps
+        if (isGrounded)
+        {
+            remainingJumpCounter = maxJumpCount;
+        }
+
         // Handle state transitions
         if (isGrounded && currentState == PlayerState.Falling)
         {
-            Debug.Log("if (isGrounded && currentState == PlayerState.Falling)");
             ChangeState(PlayerState.Idle);
         }
         else if (!isGrounded && !IsAirborneState(currentState))
         {
-            Debug.Log("else if (!isGrounded && !IsAirborneState(currentState))");
             ChangeState(PlayerState.Falling);
         }
 
