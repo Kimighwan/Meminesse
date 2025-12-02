@@ -45,6 +45,7 @@ public class Mushroom : Entity
         stateMachine.Init(idleState);
     }
 
+#if UNITY_EDITOR
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -52,6 +53,7 @@ public class Mushroom : Entity
         // 근접 공격 범위 표시
         Gizmos.DrawWireSphere(meleeAttackPosition.position, meleeAttackStateData.attackRadius);
     }
+#endif
 
     public override void Damaged(float damage, Vector2 position, bool isStun, float defIgnore = 0f)
     {

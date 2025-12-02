@@ -80,7 +80,7 @@ public class PlayerDataManager : SingletonBehaviour<PlayerDataManager>
     private PlayerData playerData = new PlayerData();
 
     private const string KEY = "Ikhwan@@ZZang!!";
-    private string PATH = Path.Combine(Application.dataPath, "playerData.json");
+    private string PATH = Path.Combine(Application.dataPath, "Data/playerData.json");
     //PATH = Path.Combine(Application.persistentDataPath, "playerData.json");
 
     protected override void Init()

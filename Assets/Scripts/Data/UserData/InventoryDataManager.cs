@@ -17,7 +17,7 @@ public class InventoryDataManager : SingletonBehaviour<InventoryDataManager>
     private List<InventoryData> itemDataList = new List<InventoryData>();
 
     private const string KEY = "Ikhwan@@ZZang!!";
-    private string PATH = Path.Combine(Application.dataPath, "inventoryData.json");
+    private string PATH = Path.Combine(Application.dataPath, "Data/inventoryData.json");
     //private string PATH = Path.Combine(Application.persistentDataPath, "inventoryData.json");
 
     protected override void Init()

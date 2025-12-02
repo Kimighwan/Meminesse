@@ -1,5 +1,3 @@
-using NUnit.Framework.Interfaces;
-using System.Xml;
 using UnityEngine;
 
 public class Bat : Entity
@@ -86,6 +84,7 @@ public class Bat : Entity
         Damaged(5, new Vector2(0, 0), true);
     }
 
+#if UNITY_EDITOR
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -93,4 +92,5 @@ public class Bat : Entity
         
         Gizmos.DrawWireSphere(transform.position, entityData.playerInChargeRadius);
     }
+#endif
 }

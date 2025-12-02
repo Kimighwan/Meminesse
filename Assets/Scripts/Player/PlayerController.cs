@@ -1,9 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
-using NUnit.Framework.Constraints;
-using UnityEditor.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
