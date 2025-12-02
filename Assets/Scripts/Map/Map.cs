@@ -1,16 +1,19 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Map : MonoBehaviour
 {
+    [Header("Setting Map")]
     [SerializeField] private int mapId;
     [SerializeField] GameObject respawnPoint;
     [SerializeField] GameObject[] portals;
 
+    [Header("Setting Enemy Point")]
+    [SerializeField] GameObject[] enemySpawnPoints;
+
     public void CheckMapVisited()
     {
         SaveFileDataManager.Instance.AddVisitedMapId(mapId);
-        Debug.Log("CheckMapVisited() 호출");
+        SpawnEnemy();
     }
 
     public int GetMapId()
@@ -26,6 +29,15 @@ public class Map : MonoBehaviour
     public GameObject GetRespawnPoint()
     {
         return respawnPoint;
+    }
+
+    void SpawnEnemy()
+    {
+        for(int i = 0; i < enemySpawnPoints.Length; i++)
+        {
+            Instantiate(Resources.Load<GameObject>($"Enemy/{enemySpawnPoints[i].name}")
+                , enemySpawnPoints[i].transform.position, Quaternion.identity);
+        }
     }
 }
 
