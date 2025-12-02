@@ -15,12 +15,17 @@ public class PlayerController : MonoBehaviour
 
     // Jump parameters - Not to be messsed
     [SerializeField] float maxJumpHoldTime = 1f;
-    [SerializeField] float baseJumpForce = 7f;
-    [SerializeField] float holdJumpForce = 12f;
-    [SerializeField] float fallGravityScale = 3.5f;
+    [SerializeField] float baseJumpForce = 18f;//7f;
+    [SerializeField] float holdJumpForce = 0f;//12f;
+    [SerializeField] float fallGravityScale = 7f;//3.5f;
     [SerializeField] float jumpGravityScale = 2.2f;
-    [SerializeField] float normalGravityScale = 2.5f;
+    [SerializeField] float normalGravityScale = 5f;//2.5f;
     [SerializeField] float maxFallSpeed = -20f;
+
+    // Double jump
+    [SerializeField] bool canDoubleJump = false;
+    [SerializeField] int maxJumpCount = 1;
+    int remainingJumpCounter = 0;
 
     // Dash parameters
     [SerializeField] float dashSpeed = 12f;
@@ -57,8 +62,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject[] airHeavyAttackHitbox = new GameObject[3];
     [SerializeField] GameObject holySlashAttackHitbox;
     [SerializeField] GameObject lightCutAttackHitbox;
-
-    // TBA
+    // TBA?
 
     // Player damage related
     private Vector2 attackerPosition;
@@ -126,7 +130,7 @@ public class PlayerController : MonoBehaviour
     private bool isCrouching;
     private bool isAttacking;
     private bool isJumping;
-    private Coroutine activeCoroutine;
+    private Coroutine activeJumpCoroutine;
     private Coroutine activeComboCoroutine;
 
     // For GroundedComboAttack
@@ -143,8 +147,6 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     // Cache components
-    private static readonly Vector2 VectorUp = Vector2.up;
-    private static readonly Vector2 VectorZero = Vector2.zero;
     private Transform cachedTransform;
     private Vector2 currentVelocity;
 
@@ -311,7 +313,18 @@ public class PlayerController : MonoBehaviour
                 && canMove && isGrounded)
         {
             ChangeState(PlayerState.Jumping);
-            StartCoroutine(JumpCharacter());
+            activeJumpCoroutine = StartCoroutine(JumpCharacter());
+        }
+        // Extra Jump
+        else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Jump"))
+                && canMove && !isGrounded && canDoubleJump)
+        {
+            if (remainingJumpCounter > 0)
+            {
+                remainingJumpCounter--;
+                ChangeState(PlayerState.Jumping);
+                StartCoroutine(JumpCharacter());
+            }
         }
         // Fall
         else if (!isGrounded && rigid.linearVelocity.y < -0.01 && !isAttacking && !isDashing && !isBackDashing)
@@ -338,24 +351,15 @@ public class PlayerController : MonoBehaviour
             canMove = true;
             canDash = true;
             oneWayPlatform.Activate();
-
-            // If still holding down after dropping, continue crouch
-            //if (Input.GetKey(SettingDataManager.Instance.GetKeyCode("Down")))
-            //{
-            //    // Continue Crouch
-            //    isCrouching = true;
-            //    canMove = false;
-            //    canDash = false;
-            //}
         }
         else if (Input.GetKey(SettingDataManager.Instance.GetKeyCode("Down"))
                 && isGrounded && canCrouch)
         {
             // Crouch
+            isCrouching = true;
             canMove = false;
+            canDash = false;
             ChangeState(PlayerState.Crouching);
-
-
         }
         else if (Input.GetKeyUp(SettingDataManager.Instance.GetKeyCode("Down"))
                 && isGrounded)
@@ -608,9 +612,18 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator JumpCharacter()
     {
+        // If double jumping
+        if (remainingJumpCounter == 0)
+        {
+            Debug.Log("Double Jump Activated");
+            StopCoroutine(activeJumpCoroutine);
+            ApplyStateEffects();
+            rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0f);
+            rigid.gravityScale *= 3f;
+        }
+
         isGrounded = false;
         isJumping = true;
-
         float jumpTimer = 0f;
 
         // Apply initial jump force
@@ -619,7 +632,7 @@ public class PlayerController : MonoBehaviour
         // Continue applying force while the button is held
         while (Input.GetKey(SettingDataManager.Instance.GetKeyCode("Jump")) && jumpTimer < maxJumpHoldTime)
         {
-            rigid.linearVelocity += VectorUp * holdJumpForce * Time.deltaTime;
+            rigid.linearVelocity += Vector2.up * holdJumpForce * Time.deltaTime;
             jumpTimer += Time.deltaTime;
             yield return null;
         }
@@ -764,7 +777,7 @@ public class PlayerController : MonoBehaviour
         isAttacking = true;
 
         // Stop all momentum when starting attack
-        rigid.linearVelocity = VectorZero;
+        rigid.linearVelocity = Vector2.zero;
 
         // Stop previous attack coroutine before starting a new one as to prevent overlapping
         if (activeComboCoroutine != null)
@@ -905,7 +918,7 @@ public class PlayerController : MonoBehaviour
         // Complete stop during attack animation
         while (elapsedTime < attackDuration)
         {
-            rigid.linearVelocity = VectorZero;
+            rigid.linearVelocity = Vector2.zero;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -1396,15 +1409,19 @@ public class PlayerController : MonoBehaviour
         // Update grounded state
         isGrounded = (hitLeft.collider || hitRight.collider) && (rigid.linearVelocity.y > -0.01f && rigid.linearVelocity.y < 0.01f);
 
+        // Restore jump count for double jumps
+        if (isGrounded)
+        {
+            remainingJumpCounter = maxJumpCount;
+        }
+
         // Handle state transitions
         if (isGrounded && currentState == PlayerState.Falling)
         {
-            Debug.Log("if (isGrounded && currentState == PlayerState.Falling)");
             ChangeState(PlayerState.Idle);
         }
         else if (!isGrounded && !IsAirborneState(currentState))
         {
-            Debug.Log("else if (!isGrounded && !IsAirborneState(currentState))");
             ChangeState(PlayerState.Falling);
         }
 
