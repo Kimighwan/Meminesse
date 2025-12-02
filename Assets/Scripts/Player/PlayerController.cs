@@ -173,6 +173,8 @@ public class PlayerController : MonoBehaviour
 
         currentState = (isGrounded ? PlayerState.Idle : PlayerState.Falling);
         animator.SetBool("isGrounded", isGrounded);
+
+        InventoryDataManager.Instance.GetDoubleJump += () => EnableDoubleJump(true);
     }
 
     private void Update()

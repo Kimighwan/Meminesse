@@ -67,7 +67,7 @@ public class FieldItems : MonoBehaviour
         Destroy(this.gameObject);
 
         InventoryDataManager.Instance.AddItem(itemData, itemCount);
-        Debug.Log($"플레이어가 {itemData.name} 획득!");
+
         
     }
 
