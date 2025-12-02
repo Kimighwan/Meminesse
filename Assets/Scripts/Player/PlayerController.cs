@@ -239,6 +239,7 @@ public class PlayerController : MonoBehaviour
         {
             lockInput = true;
             ChangeState(PlayerState.HolySlash);
+            HUD.Instance.StartHolySlashCoolTime();
             StartCoroutine(HolySlash());
         }
         // Testing
@@ -254,6 +255,7 @@ public class PlayerController : MonoBehaviour
         {
             lockInput = true;
             ChangeState(PlayerState.LightCut);
+            HUD.Instance.StartLightCutCoolTime();
             StartCoroutine(LightCut());
         }
         // Dash
@@ -262,6 +264,7 @@ public class PlayerController : MonoBehaviour
         {
             lockInput = true;
             ChangeState(PlayerState.Dashing);
+            HUD.Instance.StartDashCoolTime();
             StartCoroutine(DashCharacter());
         }
         // Backdash
