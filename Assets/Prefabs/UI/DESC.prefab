@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "X \uBC84\uD2BC\uC744 \uB20C\uB7EC \uACF5\uACA9\nA, S\uBC84\uD2BC\uC744
+  m_text: "Z \uBC84\uD2BC\uC744 \uB20C\uB7EC \uACF5\uACA9\nA, S\uBC84\uD2BC\uC744
     \uB20C\uB7EC \uC2A4\uD0AC\uC0AC\uC6A9"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 66e4f76165130e24b93a499e3f48978c, type: 2}
