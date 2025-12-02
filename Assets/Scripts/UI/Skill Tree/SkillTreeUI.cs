@@ -25,7 +25,6 @@ public class SkillTreeUI : UIBase
     Vector2 rightPosition = new Vector2(-800f, 0f);    // Scroll Right Position to move right
     Vector2 leftPosition = new Vector2(-0f, 0f);     // Scroll Left Position to move right
 
-    public bool descUIActiveCheck = false;
 
     private void OnEnable()
     {
@@ -51,7 +50,6 @@ public class SkillTreeUI : UIBase
 
     public void OnClickSkillNode(int nodeID)    // 스킬 활성화 버튼
     {
-        descUIActiveCheck = true;
         skillActiveButton.gameObject.SetActive(true);
         descActiveGO.SetActive(true);
         descUISkill_Icon.gameObject.SetActive(true);
@@ -59,7 +57,6 @@ public class SkillTreeUI : UIBase
         skillActiveButton.onClick.RemoveAllListeners();
 
         bool skillPointCheck = InventoryDataManager.Instance.ExistItem("23");
-        skillActiveButton.onClick.AddListener(() => RefreshLunes());
 
 
         if (!skillPointCheck)
@@ -71,6 +68,7 @@ public class SkillTreeUI : UIBase
             InventoryDataManager.Instance.ItemCountReduce("23", 1);
             skillActiveButton.onClick.AddListener(() => PlayerDataManager.Instance.SetSkillActive(nodeID));    // 해당 노드 스킬 찍었음을 확인하는 조건 변수
             skillActiveButton.onClick.AddListener(() => skillActiveButton.gameObject.SetActive(false)); // 스킬 활성화 버튼 비활성화
+            skillActiveButton.onClick.AddListener(() => RefreshLunes());
         }
         
 
