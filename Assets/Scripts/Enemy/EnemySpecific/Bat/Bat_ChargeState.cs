@@ -36,7 +36,7 @@ public class Bat_ChargeState : ChargeState
 
         if (isChargeAnimationFinished)
         {
-            // TODO : transition state
+            //  : transition state
             // 1) in chargeRange : to moveState
             // 2) out chargeRange : to detectState
             //if(isPlayerInChargeRange)
