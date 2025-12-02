@@ -1134,11 +1134,15 @@ public class PlayerController : MonoBehaviour
         float weaponLevel = PlayerDataManager.Instance.GetWeaponLevel();
         int topPassiveLevel_balanced = PlayerDataManager.Instance.GetTopPassiveLevel(2);
 
-        float skillBonus = GetSkillBonusDamage(topPassiveLevel_balanced);
+        float skillBonus = 0;
+        if (isRageMode)
+        {
+            skillBonus = GetSkillBonusDamage(topPassiveLevel_balanced);
+        }
 
         baseAttack *= (1 + (weaponLevel - 1 + skillBonus) * 0.1f);
         // e.g. Level 1 weapon = 100% base damage, Level 2 weapon = 110% base damage, etc.
-        // skillBonus can be added later when top passive skills are leveled up
+        // skillBonus is added later when top passive skills are leveled up
 
         // Select hitboxes
         switch (type)
@@ -1276,9 +1280,10 @@ public class PlayerController : MonoBehaviour
         }
 
         int topPassiveLevel_balanced = PlayerDataManager.Instance.GetTopPassiveLevel(2);
-        // Top Passive Balanced Skill: Danage reflection
+        // Top Passive Balanced Skill: Danage reflection / Rage Mode
         if (topPassiveLevel_balanced >= 1)
         {
+            StartCoroutine(EnterRageMode(topPassiveLevel_balanced));
             float reflectDamage = PlayerDataManager.Instance.GetDamage();
             switch (topPassiveLevel_balanced)
             {
