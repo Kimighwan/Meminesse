@@ -1,15 +1,17 @@
 using UnityEngine;
 using System.Collections;
 
-public class MapController : MonoBehaviour
+public class MapController : SingletonBehaviour<MapController>
 {
     [SerializeField] Map[] maps;
     [SerializeField] Map startingMap;
     [SerializeField] Map currentMap;
     [SerializeField] Transform respawnPoint;
 
-    private void Start()
+    protected override void Init()
     {
+        base.Init();
+
         foreach (var map in maps)
         {
             map.gameObject.SetActive(false);
@@ -54,5 +56,11 @@ public class MapController : MonoBehaviour
         Debug.Log("Player position set to respawn point: " + respawnPoint.position);
 
         yield return null;
+    }
+
+    public void RelocatePlayer(PlayerController player)
+    {
+        Debug.Log("Hit trap, relocating player to respawn point...");
+        player.transform.position = respawnPoint.position;
     }
 }

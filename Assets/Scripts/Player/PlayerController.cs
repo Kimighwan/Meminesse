@@ -82,9 +82,7 @@ public class PlayerController : MonoBehaviour
     // Distance to check for ground
     [SerializeField] float groundCheckDistance = 0.05f;
     // Width between ground check points
-    [SerializeField] float groundCheckWidth = 0.8f;
-
-    [SerializeField] MapController mapController;
+    [SerializeField] float groundCheckWidth = 1.2f;
 
     public enum PlayerState
     {
@@ -683,7 +681,7 @@ public class PlayerController : MonoBehaviour
         lockInput = true;
         yield return new WaitForSeconds(3f);
 
-        StartCoroutine(mapController.RespawnPlayer(this));
+        StartCoroutine(MapController.Instance.RespawnPlayer(this));
 
         isDead = false;
         isInvincible = false;

@@ -168,10 +168,11 @@ BUGS:
         - Fixed camera operation mode
     Second jump goes way to high while double jumping                       - Fixed 12/02
         - Adjusted gravity scales
-    Improper respawn handling
-        - 
+    Improper respawn handling                                               - Fixed 12/02
+        - Gameobject should not be disabled whilst inside a method
     What's rage mode?
         - 
+    Traps
 
 MISC:
     Levels Q/A
