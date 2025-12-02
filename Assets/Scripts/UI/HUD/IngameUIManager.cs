@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class IngameUIManager : MonoBehaviour
 {
@@ -76,6 +75,7 @@ public class IngameUIManager : MonoBehaviour
         {
             SkillTreePopUp.SetActive(false);
             HUD.Instance.UpdateHUD();
+            Debug.Log("skilltree닫힘 - 체력갱신");
         }
         else
         {
