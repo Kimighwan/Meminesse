@@ -9,7 +9,6 @@ public class MoveState : State
     protected bool isPlayerInMeleeAttackRange;  // 플레이어가 근접 공격 거리에 있는가?
     protected bool isPlayerInRangeAttackRange;
     protected bool isDetectedPlayer;            // 플레이어를 감지했는가
-    protected bool isDetectedPlayerReverse;
     protected bool isPlayerInChargeRange;
 
     public MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(entity, stateMachine, animBoolName)
@@ -26,7 +25,6 @@ public class MoveState : State
         isPlayerInMeleeAttackRange = entity.CheckPlayerInMeleeAttackRange();
         isPlayerInRangeAttackRange = entity.CheckPlayerInRangeAttackRange();
         isDetectedPlayer = entity.CanDetectPlayer();
-        isDetectedPlayerReverse = entity.CanDetectPlayerReverse();
         isPlayerInChargeRange = entity.CheckPlayerInChargeRange();
     }
 
@@ -36,7 +34,6 @@ public class MoveState : State
 
         entity.SetVelocityX(stateData.moveSpeed);
         isDetectedPlayer = false;
-        isDetectedPlayerReverse = false;
     }
 
     public override void Exit()

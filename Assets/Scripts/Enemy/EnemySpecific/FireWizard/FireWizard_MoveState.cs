@@ -37,11 +37,6 @@ public class FireWizard_MoveState : MoveState
             stateMachine.ChangeState(enemy.meleeAttackState);
         else if (isDetectedPlayer)
             stateMachine.ChangeState(enemy.detectState);
-        else if (isDetectedPlayerReverse)
-        {
-            enemy.idleState.SetFlipAfterIdle(true);
-            stateMachine.ChangeState(enemy.idleState);
-        }
     }
 
     public override void PhysicsUpdate()

@@ -163,13 +163,15 @@ public class Entity : MonoBehaviour
 
             prob.Add((DataTableManager.Instance.GetItemData("21"), monsterDropData.DiaProbability));
             prob.Add((DataTableManager.Instance.GetItemData("22"), monsterDropData.MaProbability));
+            prob.Add((DataTableManager.Instance.GetItemData("33"), monsterDropData.PotionProbability));
 
             var dropItemData = GameSystem.Instance.Pick(prob);
 
             int itemCount = 0;
 
             if (dropItemData.itemId == "21") itemCount = monsterDropData.DiaCount;
-            else itemCount = monsterDropData.MaCount;
+            else if (dropItemData.itemId == "22") itemCount = monsterDropData.MaCount;
+            else itemCount = monsterDropData.PotionCount;
 
             var newOB = Resources.Load<GameObject>("Item/FieldItem");
             if (newOB.TryGetComponent<FieldItems>(out var item))
@@ -244,32 +246,18 @@ public class Entity : MonoBehaviour
             return false;
     }
 
-    public bool CanDetectPlayerReverse()   
-    {
-        float playerX = PlayerTransformForRangeAttack().position.x;
-        if ((playerX > transform.position.x && facingDirection == 1) || (playerX < transform.position.x && facingDirection == -1))
-            return false;
-        Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
-        RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, -dirV, entityData.playerDetectRange, ~(1 << 8));
-
-
-        if (hitCheck && hitCheck.collider.name == "Player")
-        {
-
-            Debug.Log($"[CanDetectPlayerReverse] 뒤쪽으로 플레이어 감지");
-            return true;
-        }
-        else
-            return false;
-    }
-
     private bool CanRangeAttackPlayer()                 // Checking obstacles for rangeAttack           
     {
         Vector3 dirV = PlayerTransformForRangeAttack().position - transform.position;
         RaycastHit2D hitCheck = Physics2D.Raycast(playerCheck.position, dirV, entityData.playerInRangeAttackRadius, ~(1 << 8));
 
+        
+
         if (hitCheck && hitCheck.collider.name == "Player")
+        {
+            Debug.Log($"[CanRangeAttackPlayer] {hitCheck.collider.name}");
             return true;
+        }
         else
             return false;
     }

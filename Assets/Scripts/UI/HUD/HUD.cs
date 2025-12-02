@@ -91,4 +91,6 @@ public class HUD : SingletonBehaviour<HUD>
     #endregion
 
     public void UpdateHUD() => hpBar.UpdateHearts();
+
+    public void DestroyHUD() => Destroy(gameObject);
 }

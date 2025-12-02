@@ -126,7 +126,7 @@ public class InventoryItemDescription : SingletonBehaviour<InventoryItemDescript
                 Inventory.Instance.inventoryHpBar.Heal(40); break;
             // 엄청 좋은 물약
             case "33":
-                Inventory.Instance.inventoryHpBar.FullHeal(); break;
+                Inventory.Instance.inventoryHpBar.Heal(20); break;
             /*
             //최대 체력 증가시키는 아이템
             case "??":

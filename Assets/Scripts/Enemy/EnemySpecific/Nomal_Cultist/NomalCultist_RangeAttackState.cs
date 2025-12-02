@@ -36,6 +36,7 @@ public class NomalCultist_RangeAttackState : RangeAttackState
 
         if (isAttackAnimationFinished)
         {
+            enemy.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemy.idleState);
         }
     }

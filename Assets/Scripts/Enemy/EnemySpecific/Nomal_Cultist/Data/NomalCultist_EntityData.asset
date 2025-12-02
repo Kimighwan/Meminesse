@@ -18,7 +18,7 @@ MonoBehaviour:
   playerInMeleeAttackRange: 0
   playerInRangeAttackRadius: 10
   playerInChargeRadius: 0
-  playerDetectRange: 0
+  playerDetectRange: 10
   wallCheckDistance: 0.2
   ledgeCheckDistance: 0.4
   groundCheckRadius: 0.3
@@ -30,5 +30,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   defense: 0
-  AttackCoolTime: 2
+  AttackCoolTime: 1
   DestroyTime: 2

@@ -29,6 +29,8 @@ public class MonsterDropData
     public int MaProbability;
     public int DiaCount;
     public int MaCount;
+    public int PotionProbability;
+    public int PotionCount;
 }
 [System.Serializable]
 public class ShopData

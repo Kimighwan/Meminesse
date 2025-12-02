@@ -13,6 +13,7 @@ public class PausePopUp : UIBase
     public void OnClickMain()
     {
         var popup = UIManager.Instance.OpenPopup<ExitPopUp>("ExitPopUp");
+        HUD.Instance.DestroyHUD();
         popup.ShowMessage(ExitPopUp.ConfirmType.GoToMain);
     }
 
