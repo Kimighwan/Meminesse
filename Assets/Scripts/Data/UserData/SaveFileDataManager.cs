@@ -31,7 +31,7 @@ public class SaveFileDataManager : SingletonBehaviour<SaveFileDataManager>
     private SaveFileData saveFileData = new();
 
     private const string KEY = "Ikhwan@@ZZang!!";
-    private string PATH = Path.Combine(Application.dataPath, "saveFileData.json");
+    private string PATH = Path.Combine(Application.dataPath, "Data/saveFileData.json");
     //PATH = Path.Combine(Application.persistentDataPath, "saveFileData.json");
 
     protected override void Init()
