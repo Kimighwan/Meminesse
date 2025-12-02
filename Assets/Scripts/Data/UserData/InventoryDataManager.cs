@@ -20,6 +20,8 @@ public class InventoryDataManager : SingletonBehaviour<InventoryDataManager>
     private string PATH = Path.Combine(Application.dataPath, "Data/inventoryData.json");
     //private string PATH = Path.Combine(Application.persistentDataPath, "inventoryData.json");
 
+    public Action GetDoubleJump;
+
     protected override void Init()
     {
         base.Init();
@@ -91,6 +93,7 @@ public class InventoryDataManager : SingletonBehaviour<InventoryDataManager>
         }
 
         itemDataList.Add(new InventoryData(itemData.itemId, itemData, count));
+        GetDoubleJump?.Invoke();
         return true;
     }
     #region Save-Load
