@@ -14,13 +14,14 @@ public class PausePopUp : UIBase
     {
         var popup = UIManager.Instance.OpenPopup<ExitPopUp>("ExitPopUp");
         HUD.Instance.DestroyHUD();
-        popup.ShowMessage(ExitPopUp.ConfirmType.GoToMain);
+        MapController.Instance.DestroyMap();
+        popup.ShowMessage(ConfirmType.GoToMain);
     }
 
     public void OnClickQuit()
     {
         var popup = UIManager.Instance.OpenPopup<ExitPopUp>("ExitPopUp");
-        popup.ShowMessage(ExitPopUp.ConfirmType.QuitGame);
+        popup.ShowMessage(ConfirmType.QuitGame);
     }
 
     public override void SetCurrentButton(GameObject gb)

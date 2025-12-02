@@ -93,7 +93,8 @@ public class InventoryDataManager : SingletonBehaviour<InventoryDataManager>
         }
 
         itemDataList.Add(new InventoryData(itemData.itemId, itemData, count));
-        GetDoubleJump?.Invoke();
+        if(itemData.itemId == "51")
+            GetDoubleJump?.Invoke();
         return true;
     }
     #region Save-Load

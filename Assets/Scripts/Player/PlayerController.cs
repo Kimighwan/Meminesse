@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
         currentState = (isGrounded ? PlayerState.Idle : PlayerState.Falling);
         animator.SetBool("isGrounded", isGrounded);
 
-        InventoryDataManager.Instance.GetDoubleJump += () => EnableDoubleJump(true);
+        InventoryDataManager.Instance.GetDoubleJump += EnableDoubleJump;
     }
 
     private void Update()
@@ -1478,9 +1478,10 @@ public class PlayerController : MonoBehaviour
 
     #region setters
 
-    public void EnableDoubleJump(bool enable)
+    public void EnableDoubleJump()
     {
-        canDoubleJump = enable;
+        canDoubleJump = true;
+        InventoryDataManager.Instance.GetDoubleJump -= EnableDoubleJump;
     }
 
     #endregion

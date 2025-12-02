@@ -3,6 +3,13 @@ using TMPro;
 using System;
 using UnityEngine.SceneManagement;
 
+
+public enum ConfirmType
+{
+    QuitGame, //게임 종료
+    GoToMain  //메인 메뉴로
+}
+
 public class ExitPopUp : UIBase
 {
     [SerializeField] private TextMeshProUGUI message;
@@ -12,11 +19,6 @@ public class ExitPopUp : UIBase
 
     private bool initialized = false;
 
-    public enum ConfirmType
-    {
-        QuitGame, //게임 종료
-        GoToMain  //메인 메뉴로
-    }
 
     public override void OnShown()
     {
@@ -53,7 +55,6 @@ public class ExitPopUp : UIBase
     // 종료하시겠습니까 - 예
     public void QuitGame()
     {
-        Debug.Log("Game closed");
 #if UNITY_EDITOR                 
         UnityEditor.EditorApplication.isPlaying = false;     
 #else
