@@ -170,9 +170,10 @@ BUGS:
         - Adjusted gravity scales
     Improper respawn handling                                               - Fixed 12/02
         - Gameobject should not be disabled whilst inside a method
-    What's rage mode?
-        - 
-    Traps
+    What's a rage mode?                                                     - Fixed 12/02
+        - Top passive-default was not implemented correctly; added damage increase after being damaged
+    Traps not activating                                                    - Fixed 12/02
+        - Fixed them by turning the colliders into a trigger
 
 MISC:
     Levels Q/A
