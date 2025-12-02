@@ -6,6 +6,7 @@ public class Chest : MonoBehaviour
     [SerializeField] private Sprite openSprite;
     [SerializeField] private int giveAmount = 1; // 상자에서 주는 스킬포인트 수량
     [SerializeField] private GameObject fieldItemPrefab;
+    //[SerializeField] int chestId;
 
     private SpriteRenderer sr;
     private bool isOpened = false;
