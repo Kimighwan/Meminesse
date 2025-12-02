@@ -13,10 +13,14 @@ public class Trap : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log($"{GetType()} : 충돌");
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             player.Damaged(20, null, false);
             MapController.Instance.RelocatePlayer(player);
+        }
+        else if(collision.gameObject.CompareTag("Enemy"))
+        {
+            var enemy = collision.gameObject.GetComponent<Entity>();
+            enemy.Damaged(1000, transform.position);
         }
     }
 }

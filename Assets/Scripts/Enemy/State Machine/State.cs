@@ -18,7 +18,7 @@ public class State
 
     public virtual void Enter() // 상태 진입
     {
-        Debug.Log($"{stateMachine.currentState} 상태 진입");
+        //Debug.Log($"{stateMachine.currentState} 상태 진입");
         startTIme = Time.time;
         entity.anim.SetBool(animBoolName, true);
         DoCheck();
@@ -26,7 +26,7 @@ public class State
 
     public virtual void Exit()  // 상태 종료
     {
-        Debug.Log($"{stateMachine.currentState} 상태 종료");
+        //Debug.Log($"{stateMachine.currentState} 상태 종료");
         entity.anim.SetBool(animBoolName, false);
     }
 

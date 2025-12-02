@@ -10,6 +10,7 @@ public class Map : MonoBehaviour
     [Header("Setting Enemy Point")]
     [SerializeField] GameObject[] enemySpawnPoints;
 
+
     public void CheckMapVisited()
     {
         SaveFileDataManager.Instance.AddVisitedMapId(mapId);
@@ -33,10 +34,13 @@ public class Map : MonoBehaviour
 
     void SpawnEnemy()
     {
-        for(int i = 0; i < enemySpawnPoints.Length; i++)
+
+        for (int i = 0; i < enemySpawnPoints.Length; i++)
         {
-            Instantiate(Resources.Load<GameObject>($"Enemy/{enemySpawnPoints[i].name}")
+            var newGO = Instantiate(Resources.Load<GameObject>($"Enemy/{enemySpawnPoints[i].name}")
                 , enemySpawnPoints[i].transform.position, Quaternion.identity);
+
+            MapController.Instance.activeObjects.Add(newGO);
         }
     }
 }
