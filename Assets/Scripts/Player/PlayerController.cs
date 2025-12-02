@@ -196,6 +196,9 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeState(PlayerState newState)
     {
+        if (isDead)
+            return;
+
         // Prevent any other state changes during AirHeavyAttack sequence
         if (IsAirHeavyAttackState(currentState))
         {
@@ -680,10 +683,17 @@ public class PlayerController : MonoBehaviour
         lockInput = true;
         yield return new WaitForSeconds(3f);
 
-        mapController.RespawnPlayer(this);
+        StartCoroutine(mapController.RespawnPlayer(this));
+
         isDead = false;
         isInvincible = false;
         lockInput = false;
+
+        // Restore health
+        int maxHp = PlayerDataManager.Instance.GetMaxHp();
+        PlayerDataManager.Instance.SetHp(maxHp);
+        HUD.Instance.UpdateHUD();
+
         ChangeState(PlayerState.Idle);
     }
 
@@ -1297,7 +1307,10 @@ public class PlayerController : MonoBehaviour
             }
 
             // Reflect damage to enemy who attacked me
-            entity.Damaged(reflectDamage, transform.position);
+            if (entity != null)
+            {
+                entity.Damaged(reflectDamage, transform.position);
+            }
         }
 
         // TODO: fix this later when monster damages are updated

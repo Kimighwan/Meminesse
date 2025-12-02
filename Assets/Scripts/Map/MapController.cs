@@ -42,10 +42,17 @@ public class MapController : MonoBehaviour
 
     public IEnumerator RespawnPlayer(PlayerController player)
     {
-        player.gameObject.SetActive(false);
+        Debug.Log("Respawning player...");
+        SpriteRenderer playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
+        playerSpriteRenderer.enabled = false;
+
         yield return new WaitForSeconds(1f);
+
+        playerSpriteRenderer.enabled = true;
         player.transform.position = respawnPoint.position;
-        player.gameObject.SetActive(true);
+
+        Debug.Log("Player position set to respawn point: " + respawnPoint.position);
+
         yield return null;
     }
 }
