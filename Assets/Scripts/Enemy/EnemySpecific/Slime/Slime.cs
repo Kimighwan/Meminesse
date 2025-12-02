@@ -56,6 +56,7 @@ public class Slime : Entity
         }
     }
 
+#if UNITY_EDITOR
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -63,6 +64,7 @@ public class Slime : Entity
         // 근접 공격 범위 표시
         Gizmos.DrawWireSphere(meleeAttackPos.position, meleeAttackStateData.attackRadius);
     }
+#endif
 
     public void OnClickDamaged()
     {

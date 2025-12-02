@@ -55,6 +55,7 @@ public class AssassinCultist : Entity
         stateMachine.Init(idleState);
     }
 
+#if UNITY_EDITOR
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -63,6 +64,7 @@ public class AssassinCultist : Entity
         Gizmos.DrawWireSphere(meleeAttackPos.position, meleeAttackStateData.attackRadius);
         Gizmos.DrawWireSphere(hidingAttackPos.position, hidingAttackStateData.attackRadius);
     }
+#endif
 
     public override void Damaged(float damage, Vector2 position, bool isStun, float defIgnore = 0f)
     {

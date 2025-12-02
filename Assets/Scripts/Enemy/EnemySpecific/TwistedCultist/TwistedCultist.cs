@@ -1,4 +1,3 @@
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class TwistedCultist : Entity
@@ -50,6 +49,7 @@ public class TwistedCultist : Entity
         stateMachine.Init(beforeIdleState);
     }
 
+#if UNITY_EDITOR
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -57,6 +57,7 @@ public class TwistedCultist : Entity
         // 근접 공격 범위 표시
         Gizmos.DrawWireSphere(meleeAttackPosition.position, meleeAttackStateData.attackRadius);
     }
+#endif
 
     public override void Damaged(float damage, Vector2 position, bool isStun, float defIgnore = 0f)
     {

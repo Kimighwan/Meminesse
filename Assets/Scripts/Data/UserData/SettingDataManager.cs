@@ -61,8 +61,8 @@ public class SettingDataManager : SingletonBehaviour<SettingDataManager>
     public /*private*/ List<KeyData> keyDataList = new();
 
     // persistentDataPath로 변경 예정
-    private string PATH_SETTING = Path.Combine(Application.dataPath, "settingData.json");
-    private string PATH_KEY = Path.Combine(Application.dataPath, "keyData.json");
+    private string PATH_SETTING = Path.Combine(Application.dataPath, "Data/settingData.json");
+    private string PATH_KEY = Path.Combine(Application.dataPath, "Data/keyData.json");
     private const string KEY = "Ikhwan@@ZZang!!";
 
     protected override void Init()
