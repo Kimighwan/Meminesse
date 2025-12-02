@@ -23,7 +23,6 @@ public class DeadState : State
         entity.SetVelocityX(0f);
         isDoneAnimation = false;
         entity.animationToStatemachine.deadState = this;
-        // 죽을 때 생성될 파티클이 있다면 인스턴스화 하기
     }
 
     public override void Exit()

@@ -246,9 +246,12 @@ public class PlayerController : MonoBehaviour
         // Testing
         else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Heal")))
         {
-            Debug.Log("Heal Key Pressed - For Testing Only");
-            PlayerDataManager.Instance.SetHp(20);
-            HUD.Instance.UpdateHUD();
+            if(InventoryDataManager.Instance.ExistItem("33"))
+            {
+                InventoryDataManager.Instance.ItemCountReduce("33", 1);
+                PlayerDataManager.Instance.SetHp(20);
+                HUD.Instance.UpdateHUD();
+            }
         }
         // LightCut
         else if (Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Skill2"))
@@ -348,7 +351,6 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(SettingDataManager.Instance.GetKeyCode("Down")) &&
                 Input.GetKeyDown(SettingDataManager.Instance.GetKeyCode("Jump")))
         {
-            Debug.Log("Drop through one-way platform");
             isCrouching = false;
             canMove = true;
             canDash = true;

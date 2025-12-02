@@ -29,9 +29,9 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
         {
             var itemData = new ItemData
             {
-                itemId = data["id"].ToString(),
-                name = data["name"].ToString(),
-                desc = data["desc"].ToString(),
+                itemId = data["ID"].ToString(),
+                name = data["Name"].ToString(),
+                desc = data["Desc"].ToString(),
             };
             ItemDataTable.Add(itemData);
         }
@@ -62,6 +62,8 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
                 MaProbability = Convert.ToInt32(data["MaProbability"]),
                 DiaCount = Convert.ToInt32(data["DiaCount"]),
                 MaCount = Convert.ToInt32(data["MaCount"]),
+                PotionCount = Convert.ToInt32(data["PotionCount"]),
+                PotionProbability = Convert.ToInt32(data["PotionProbability"]),
             };
             MonsterDropDataTable.Add(monsterDropData);
         }

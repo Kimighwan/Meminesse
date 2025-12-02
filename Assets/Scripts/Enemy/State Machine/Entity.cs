@@ -163,13 +163,15 @@ public class Entity : MonoBehaviour
 
             prob.Add((DataTableManager.Instance.GetItemData("21"), monsterDropData.DiaProbability));
             prob.Add((DataTableManager.Instance.GetItemData("22"), monsterDropData.MaProbability));
+            prob.Add((DataTableManager.Instance.GetItemData("33"), monsterDropData.PotionProbability));
 
             var dropItemData = GameSystem.Instance.Pick(prob);
 
             int itemCount = 0;
 
             if (dropItemData.itemId == "21") itemCount = monsterDropData.DiaCount;
-            else itemCount = monsterDropData.MaCount;
+            else if (dropItemData.itemId == "22") itemCount = monsterDropData.MaCount;
+            else itemCount = monsterDropData.PotionCount;
 
             var newOB = Resources.Load<GameObject>("Item/FieldItem");
             if (newOB.TryGetComponent<FieldItems>(out var item))
