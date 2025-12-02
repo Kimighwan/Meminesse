@@ -151,9 +151,10 @@ TODO:
     Make character sprite flicker while invincible                          - Implemented 11/17
     Change additional healing probability to max hp
     Modify camera border height
-    Modify camera zoom
+    Modify camera zoom                                                      - Implemented 11/24
     Player passive tree(Advanced) - C, B ,A                                 - Implemented 11/24
-    Double jump?
+    Double jump?                                                            - Implemented 12/02
+    Add control support for one-way-platforms                               - Implemented 12/02
 
 BUGS:
     Running -> Crouching animation not working                              - Fixed 11/17
@@ -163,8 +164,15 @@ BUGS:
         - Player was only being checked grounded at <=0 vertical velocity -> added checkes for -0.01f ~ 0.01f
     Player health not being deducted correctly when damaged                 - Fixed 11/23
         - Adjusted code to match the input of PlayerDataManager(which was changed for some reason??)
-    Camera does not instantly teleport
-    
+    Camera does not instantly teleport                                      - Fixed 11/24
+        - Fixed camera operation mode
+    Second jump goes way to high while double jumping                       - Fixed 12/02
+        - Adjusted gravity scales
+    Improper respawn handling                                               - Fixed 12/02
+        - Gameobject should not be disabled whilst inside a method
+    What's rage mode?
+        - 
+    Traps
 
 MISC:
     Levels Q/A
