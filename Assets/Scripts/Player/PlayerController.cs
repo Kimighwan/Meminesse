@@ -1470,4 +1470,22 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
+    #region setters
+
+    public void EnableDoubleJump(bool enable)
+    {
+        canDoubleJump = enable;
+    }
+
+    #endregion
+
+    #region getters
+
+    public bool GetDoubleJumpAvailability()
+    {
+        return canDoubleJump;
+    }
+
+    #endregion
 }
