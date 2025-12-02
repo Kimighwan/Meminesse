@@ -210,7 +210,6 @@ public class PlayerController : MonoBehaviour
             currentState = newState;
             UpdateAnimation();
             ApplyStateEffects();
-            Debug.Log("Entering State: " + currentState);
         }
     }
 
