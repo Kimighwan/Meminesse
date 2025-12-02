@@ -34,8 +34,7 @@ public class LoadingManager : MonoBehaviour
 
         Title.SetActive(true);
 
-        //_asyncOperation = SceneManager.LoadSceneAsync(2);
-        _asyncOperation = SceneLoader.Instance.LoadSceneAsync(SceneType.Grid_Su); /////////
+        _asyncOperation = SceneLoader.Instance.LoadSceneAsync(SceneType.GameScene);
 
         if (_asyncOperation == null)
         {

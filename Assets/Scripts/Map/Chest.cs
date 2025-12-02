@@ -8,6 +8,8 @@ public class Chest : MonoBehaviour
     [SerializeField] private GameObject fieldItemPrefab;
     //[SerializeField] int chestId;
 
+    [SerializeField] string itmeID = "23";
+
     private SpriteRenderer sr;
     private bool isOpened = false;
 
@@ -34,8 +36,6 @@ public class Chest : MonoBehaviour
         sr.sprite = openSprite;
 
         DropSkillPoint(transform.position, giveAmount);
-
-        Debug.Log($"보물상자 - 루네스 {giveAmount} 지급");
     }
 
     void DropSkillPoint(Vector3 dropPos, int count = 1)
@@ -50,7 +50,7 @@ public class Chest : MonoBehaviour
 
             GameObject go = Instantiate(fieldItemPrefab, spawnPos, Quaternion.identity);
 
-            ItemData data = DataTableManager.Instance.GetItemData("23");
+            ItemData data = DataTableManager.Instance.GetItemData(itmeID);
             if (data == null) return;
 
             FieldItems field = go.GetComponent<FieldItems>();
